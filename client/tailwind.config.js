@@ -14,7 +14,7 @@ export default {
         textColor: "#333333",
       },
       colors: {
-        primary: "#007BFF",
+        primary: "#00ABE4",
         secondary: "#6B7280",
       },
     },
@@ -24,7 +24,7 @@ export default {
         textColor: "#ffffff",
       },
       colors: {
-        primary: "#FF6347",
+        primary: "#00ABE4",
         secondary: "#6B7280",
       },
     },

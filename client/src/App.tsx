@@ -1,17 +1,24 @@
-import { Button } from '@nextui-org/react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
+import React, { Suspense } from 'react';
+
+const Home = React.lazy(() => import("./pages/root/home/Home"));
 
 function App() {
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <Button color="primary" variant="shadow">
-        Start
-      </Button>
-    </>
+    <div className='app'>
+      <BrowserRouter>
+        <Suspense fallback={"Loading..."}>
+          <Routes>
+
+            {/*============= root ================*/}
+            <Route path="/" element={<Home />} />
+
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </div>
   )
 }
 

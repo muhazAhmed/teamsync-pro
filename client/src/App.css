@@ -1,0 +1,9 @@
+.app { height: 100dvh; }
+
+:root {
+    --primary: #00ABE4;
+    --secondary: #00C3E3;
+}
+
+.text-primary { color: var(--primary) !important; }
+.text-secondary { color: var(--secondary) !important; }
