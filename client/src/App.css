@@ -1,4 +1,4 @@
-.app { height: 100dvh; }
+.app { height: 100dvh; display: flex; gap: 1rem; }
 
 :root {
     --primary: #00ABE4;
@@ -7,3 +7,6 @@
 
 .text-primary { color: var(--primary) !important; }
 .text-secondary { color: var(--secondary) !important; }
+.btn-primary { color: var(#fff) !important; background-color: var(--primary) !important; }
+.btn-ghost { color: var(#fff) !important; background-color: transparent !important; border: 2px solid var(--primary) !important; }
+.btn-ghost:hover { background-color: var(--primary) !important; border: none !important; }

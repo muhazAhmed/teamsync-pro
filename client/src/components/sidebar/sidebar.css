@@ -1,0 +1,68 @@
+.sidebar {
+    height: 100dvh;
+    width: 15vw;
+    background-color: rgb(24, 24, 24);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.sidebar i {
+    color: #a3a3a3;
+}
+
+.sidebar .profile {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.sidebar .profile i {
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar .profile i:hover {
+    transform: rotate(60deg);
+}
+
+.sidebar .menu-items .dropdown-container {
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    border-left: 1px solid gray;
+}
+
+.sidebar .menu-items .dropdown-container p {
+    margin-left: 1rem;
+}
+
+.sidebar .items .drop-down {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa-caret-down {
+    text-align: end;
+}
+
+.sidebar .menu-items {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.sidebar .menu-items .items {
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;
+    width: 100%;
+    align-items: center;
+
+}
