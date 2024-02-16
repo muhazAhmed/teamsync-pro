@@ -1,32 +1,31 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import './App.css'
 import React, { Suspense } from 'react';
-import Sidebar from "./components/sidebar/Sidebar";
-import Toolbar from "./components/toolbar/Toolbar";
+
+const Sidebar = React.lazy(() => import("./components/sidebar/Sidebar"));
 
 const Home = React.lazy(() => import("./pages/root/home/Home"));
+const Dashboard = React.lazy(() => import("./pages/dashboard/Dashboard"));
 
 function App() {
 
   return (
     <div className='app'>
       <BrowserRouter>
-      <Sidebar/>
-      <div className="body">
-        <Toolbar/>
+        <Sidebar />
         <Suspense fallback={"Loading..."}>
           <Routes>
+            {/* Redirect from "/" to "/home" */}
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
 
-            {/*============= root ================*/}
-            <Route path="/" element={<Home />} />
-
+            {/* Main routes */}
+            <Route path="/dashboard/:id" element={<Dashboard />} />
           </Routes>
         </Suspense>
-      </div>
-      
       </BrowserRouter>
     </div>
   )
 }
 
-export default App
+export default App;

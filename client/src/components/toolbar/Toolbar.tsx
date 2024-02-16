@@ -2,7 +2,9 @@ import "./toolbar.css";
 
 const Toolbar = () => {
   return (
-    <div className="toolbar">Home</div>
+    <div className="toolbar">
+      <h1>/ Attendance / Add New</h1>
+    </div>
   )
 }
 
