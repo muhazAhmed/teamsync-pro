@@ -10,11 +10,21 @@ import {
   DropdownMenu,
 } from "@nextui-org/react";
 import "./home.css";
+import logo from "../../../assets/images/TS-logo1.png";
 import mainImg from "../../../assets/images/homeImg.jpg";
 import featuresImg from "../../../assets/images/features.jpg";
 import Footer from "../../../components/footer/Footer";
+import { logout, useSessionStorage } from "../../../utils/comonFunctions";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import Loader from "../../../UI-Components/Loader/Loader";
 
 const Home = () => {
+  const user = useSessionStorage("userInfo");
+  const navigate = useNavigate();
+  const [load, setLoad] = useState(false);
+
   const icons = {
     Arrow: <i className="fa-solid fa-angle-down"></i>,
     HR: <i className="fa-solid fa-user-group"></i>,
@@ -26,10 +36,10 @@ const Home = () => {
 
   return (
     <div className="home">
+      {load && <Loader />}
       <Navbar>
         <NavbarBrand>
-          {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit text-primary">TeamSync Pro</p>
+          <img src={logo} />
         </NavbarBrand>
         <NavbarContent className="hidden sm:flex gap-5" justify="center">
           <Dropdown>
@@ -76,26 +86,31 @@ const Home = () => {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          <NavbarItem>
-            <h1 className="cursor:pointer">Pricing</h1>
+          <NavbarItem onClick={() => navigate("/product/pricing")}>
+            <h1>Pricing</h1>
           </NavbarItem>
-          <NavbarItem>
-            <h1>About</h1>
+          <NavbarItem onClick={() => navigate("/product/contact")}>
+            <h1>Contact Us</h1>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
-            <h1>Login</h1>
-          </NavbarItem>
           <NavbarItem>
-            <Button color="primary" className="btn-ghost" variant="flat">
-              Sign Up
+            <Button
+              color="primary"
+              className="btn-ghost"
+              variant="flat"
+              onClick={() => {
+                if (user) logout();
+                else navigate("/user/login");
+              }}
+            >
+              {user ? "Logout" : "Login"}
             </Button>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
       <div className="home-container">
-        <div className="section-1">
+        <div className="section-1 fadeIn">
           <img src={mainImg} alt="Image" />
           <div className="section1-item">
             <h1>
@@ -107,11 +122,19 @@ const Home = () => {
               full-suite HRMS platform for enhanced people management.
             </p>
             <div className="section1-btn">
-              <Button color="primary">Get Started</Button>
+              <Button
+                color="primary"
+                onClick={() =>
+                  navigate(user ? `/dashboard/${user?._id}` : "/user/login")
+                }
+              >
+                Get Started
+              </Button>
               <Button
                 color="secondary"
                 variant="shadow"
                 style={{ color: "#fff !important" }}
+                onClick={() => toast.error("Temporarily Unavailable")}
               >
                 Request Demo
               </Button>
@@ -119,7 +142,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="section-2">
+        <div className="section-2 fadeIn">
           <div className="section2-item">
             <h1>Unleash the power of your people</h1>
             <div className="flex flex-col gap-2">
