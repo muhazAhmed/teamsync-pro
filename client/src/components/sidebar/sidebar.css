@@ -12,6 +12,11 @@
     z-index: 999;
 }
 
+.sidebar #logo {
+    margin-top: -2rem;
+    cursor: pointer;
+}
+
 .sidebar i {
     color: #a3a3a3;
 }
@@ -21,6 +26,7 @@
     align-items: center;
     width: 100%;
     justify-content: space-around;
+    margin-bottom: 2rem;
 }
 
 .sidebar .profile i {
@@ -72,6 +78,7 @@
 }
 
 @media (min-width: 769px) {
+
     .sidebar i.fa-bars,
     .sidebar i.fa-xmark {
         display: none;
@@ -91,7 +98,7 @@
     .sidebar i.fa-bars,
     .sidebar i.fa-xmark {
         position: absolute;
-        right: -45px;
+        right: -40px;
         background-color: rgb(26, 26, 26);
         font-size: 1.5rem;
         padding: 15px;
@@ -107,6 +114,10 @@
         margin-top: 1rem;
         justify-content: center;
         gap: 1rem;
+    }
+
+    .sidebar .profile-container {
+        top: 0 !important;
     }
 
 }
