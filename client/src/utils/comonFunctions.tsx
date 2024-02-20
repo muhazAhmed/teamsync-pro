@@ -25,3 +25,7 @@ export const useLocalStorage = (key: string) => {
   const items = localStorage.getItem(key);
   return items ? JSON.parse(items) : null;
 };
+
+export const logout = () => {
+  deleteSessionStorage("userInfo");
+};
