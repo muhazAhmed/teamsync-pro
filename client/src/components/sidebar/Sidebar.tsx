@@ -4,7 +4,7 @@ import userLogo from "../../assets/images/man.png";
 import logo from "../../assets/images/TS-logo1.png";
 import { Avatar } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-import { useSessionStorage } from "../../utils/comonFunctions";
+import { useSessionStorage } from "../../utils/commonFunctions";
 
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -15,9 +15,11 @@ const Sidebar = () => {
   const closeSidebar = () => setIsSidebarOpen(0);
   const userInfo = useSessionStorage("userInfo");
 
-  const query = location.href.split("/")[3];
   useEffect(() => {
-    if (query === "home") {
+    if (
+      location.href.split("/")[3] === "home" ||
+      location.href.split("/")[4] === "form"
+    ) {
       setIsHomePage(true);
     } else return setIsHomePage(false);
   });

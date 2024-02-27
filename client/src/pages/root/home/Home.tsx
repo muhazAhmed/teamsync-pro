@@ -14,16 +14,13 @@ import logo from "../../../assets/images/TS-logo1.png";
 import mainImg from "../../../assets/images/homeImg.jpg";
 import featuresImg from "../../../assets/images/features.jpg";
 import Footer from "../../../components/footer/Footer";
-import { logout, useSessionStorage } from "../../../utils/comonFunctions";
+import { logout, useSessionStorage } from "../../../utils/commonFunctions";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useState } from "react";
-import Loader from "../../../UI-Components/Loader/Loader";
 
 const Home = () => {
   const user = useSessionStorage("userInfo");
   const navigate = useNavigate();
-  const [load, setLoad] = useState(false);
 
   const icons = {
     Arrow: <i className="fa-solid fa-angle-down"></i>,
@@ -36,7 +33,6 @@ const Home = () => {
 
   return (
     <div className="home">
-      {load && <Loader />}
       <Navbar>
         <NavbarBrand>
           <img src={logo} />
@@ -101,7 +97,7 @@ const Home = () => {
               variant="flat"
               onClick={() => {
                 if (user) logout();
-                else navigate("/user/login");
+                else navigate("/user/form");
               }}
             >
               {user ? "Logout" : "Login"}
@@ -125,7 +121,7 @@ const Home = () => {
               <Button
                 color="primary"
                 onClick={() =>
-                  navigate(user ? `/dashboard/${user?._id}` : "/user/login")
+                  navigate(user ? `/dashboard/${user?._id}` : "/user/form")
                 }
               >
                 Get Started
