@@ -1,3 +1,6 @@
+import toast from "react-hot-toast";
+import { message } from "./Constants";
+
 // Session Storage
 export const newSessionStorage = (key: string, value: any) => {
   sessionStorage.setItem(key, JSON.stringify(value));
@@ -26,6 +29,19 @@ export const useLocalStorage = (key: string) => {
   return items ? JSON.parse(items) : null;
 };
 
-export const logout = () => {
-  deleteSessionStorage("userInfo");
+export const logout = (navigate: any) => {
+  deleteLocalStorage("userInfo");
+  deleteSessionStorage("userTokenID")
+  toast.success(message("").LOGOUT_SUCCESS)
+  return navigate("/user/form");
+};
+
+export const clearInputs = (setInputs: any) => {
+  setInputs((prevInputs: any) => {
+    const inputs: { [key: string]: any } = {};
+    for (const key in prevInputs) {
+      inputs[key] = "";
+    }
+    return inputs;
+  });
 };

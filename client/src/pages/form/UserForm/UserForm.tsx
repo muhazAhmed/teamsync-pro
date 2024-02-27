@@ -18,8 +18,7 @@ import {
   useLocalStorage,
 } from "../../../utils/commonFunctions";
 import Loader from "../../../UI-Components/Loader/Loader";
-import { validations } from "./FormValidation";
-import { validNameString } from "../../../utils/validation";
+import { loginValidation, validations } from "./FormValidation";
 import { useNavigate } from "react-router-dom";
 
 const UserForm = () => {
@@ -94,12 +93,7 @@ const UserForm = () => {
   };
 
   const handleLogin = async () => {
-    if (!validNameString(inputs.role)) {
-      setValidated(false);
-      return toast.error("Please Choose From Login As");
-    } else {
-      setValidated(true);
-    }
+    loginValidation(inputs, setValidated);
     if (validated) {
       const res = await postMethodAPI(
         `${inputs?.role}${serverVariables.LOGIN_USER}`,

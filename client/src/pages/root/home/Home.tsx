@@ -14,12 +14,12 @@ import logo from "../../../assets/images/TS-logo1.png";
 import mainImg from "../../../assets/images/homeImg.jpg";
 import featuresImg from "../../../assets/images/features.jpg";
 import Footer from "../../../components/footer/Footer";
-import { logout, useSessionStorage } from "../../../utils/commonFunctions";
+import { logout, useLocalStorage } from "../../../utils/commonFunctions";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const Home = () => {
-  const user = useSessionStorage("userInfo");
+  const user = useLocalStorage("userInfo");
   const navigate = useNavigate();
 
   const icons = {
@@ -96,7 +96,7 @@ const Home = () => {
               className="btn-ghost"
               variant="flat"
               onClick={() => {
-                if (user) logout();
+                if (user) logout(navigate);
                 else navigate("/user/form");
               }}
             >

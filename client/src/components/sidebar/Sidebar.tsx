@@ -4,16 +4,16 @@ import userLogo from "../../assets/images/man.png";
 import logo from "../../assets/images/TS-logo1.png";
 import { Avatar } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-import { useSessionStorage } from "../../utils/commonFunctions";
+import { useLocalStorage } from "../../utils/commonFunctions";
 
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isHomePage, setIsHomePage] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(0);
   const navigate = useNavigate();
-  const openSidebar = () => setIsSidebarOpen(1);
+  const openSidebar = () =>  setIsSidebarOpen(1);
   const closeSidebar = () => setIsSidebarOpen(0);
-  const userInfo = useSessionStorage("userInfo");
+  const userInfo = useLocalStorage("userInfo");
 
   useEffect(() => {
     if (
@@ -25,7 +25,7 @@ const Sidebar = () => {
   });
 
   const menuItems = [
-    { icon: "fa-solid fa-house", label: "Home", path: "/" },
+    { icon: "fa-solid fa-house", label: "Home", path: `/dashboard/${userInfo?._id}` },
     { icon: "fa-solid fa-bullhorn", label: "Feeds", path: "/feeds" },
     {
       icon: "fa-regular fa-square-check",
@@ -68,7 +68,7 @@ const Sidebar = () => {
     {
       icon: "fa-regular fa-circle-question",
       label: "Help Desk",
-      path: "/help-desk",
+      path: `/help-desk/${userInfo?._id}`,
     },
   ];
 

@@ -46,3 +46,20 @@ export const validations = (inputs: any, setValidated: any) => {
   setValidated(true);
   return null;
 };
+
+export const loginValidation = (inputs: any, setValidated: any) => {
+  if (!validNameString(inputs.role)) {
+    setValidated(false);
+    return toast.error("Please Choose From Login As");
+  }
+  if (!validNameString(inputs.email)) {
+    setValidated(false);
+    return toast.error(message("Email").REQUIRED_FIELD);
+  }
+  if (!validNameString(inputs.password)) {
+    setValidated(false);
+    return toast.error(message("Password").REQUIRED_FIELD);
+  }
+  setValidated(true);
+  return null;
+}
