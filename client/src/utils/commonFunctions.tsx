@@ -29,10 +29,11 @@ export const useLocalStorage = (key: string) => {
   return items ? JSON.parse(items) : null;
 };
 
-export const logout = (navigate: any) => {
+export const logout = (navigate: any, modalState:any ) => {
   deleteLocalStorage("userInfo");
   deleteSessionStorage("userTokenID")
   toast.success(message("").LOGOUT_SUCCESS)
+  modalState ? closeModal(modalState) : "";
   return navigate("/user/form");
 };
 
@@ -45,3 +46,6 @@ export const clearInputs = (setInputs: any) => {
     return inputs;
   });
 };
+
+export const openModal = (setModal:any) => { return setModal(true) };
+export const closeModal = (setModal:any) => { return setModal(false) };

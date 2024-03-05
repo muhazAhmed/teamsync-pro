@@ -3,7 +3,7 @@ export const API_URL = "http://localhost:8800/api/"; // Local Server
 
 // MESSAGES:
 export const message = (name: string) => ({
-  SERVER_ERROR: "Server error",
+  SERVER_ERROR: "Server Under Maintenance",
   REQUIRED_FIELD: `Please Enter ${name}`,
   INVALID_EMAIL: "Please Enter Valid Email Address",
   INVALID_PASSWORD: "Password Must Have At-Least 8 Characters With Minimum 1 Number And Alphabet",

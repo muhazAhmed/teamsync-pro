@@ -13,7 +13,7 @@ const serverError = (error: any) => {
   console.error(error);
   if (error?.response?.status === 404)
     return new Error(toast.error(message("").SERVER_ERROR));
-  return new Error(toast.error(error?.response?.data || error?.message));
+  return new Error(toast.error(error?.response?.data || message("").SERVER_ERROR));
 };
 
 export const postMethodAPI = async (
