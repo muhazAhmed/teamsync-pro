@@ -17,19 +17,34 @@ import Footer from "../../../components/footer/Footer";
 import { logout, useLocalStorage } from "../../../utils/commonFunctions";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
+import { icon } from "../../../UI-Components/Icons/Icons";
 
 const Home = () => {
   const user = useLocalStorage("userInfo");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (user) {
+      navigate(`/dashboard/${user._id}`);
+    }
+  }, []);
+
   const icons = {
     Arrow: <i className="fa-solid fa-angle-down"></i>,
-    HR: <i className="fa-solid fa-user-group"></i>,
-    AttendanceManagement: <i className="fa-regular fa-calendar"></i>,
+    HR: <i className={icon.user}></i>,
+    AttendanceManagement: <i className={icon.calendar}></i>,
     LeaveManagement: <i className="fa-solid fa-umbrella-beach"></i>,
     PayRole: <i className="fa-solid fa-hand-holding-dollar"></i>,
     SelfServe: <i className="fa-brands fa-sellcast"></i>,
   };
+
+  const arrayOfFeatures = [
+    "Attendance Management",
+    "Leave Management",
+    "PayRole Management",
+    "HR Software",
+  ];
 
   return (
     <div className="home">
@@ -96,11 +111,13 @@ const Home = () => {
               className="btn-ghost"
               variant="flat"
               onClick={() => {
-                if (user) logout(navigate);
+                if (user) logout(navigate, "");
                 else navigate("/user/form");
               }}
             >
-              {user ? "Logout" : "Login"}
+              {user
+                ? [<i key="icon" className={icon.logout}></i>, " Logout"]
+                : "Login"}
             </Button>
           </NavbarItem>
         </NavbarContent>
@@ -141,21 +158,13 @@ const Home = () => {
         <div className="section-2 fadeIn">
           <div className="section2-item">
             <h1>Unleash the power of your people</h1>
-            <div className="flex flex-col gap-2">
-              <h2>
-                <i className="fa-solid fa-circle-check"></i> Attendance
-                Management
-              </h2>
-              <h2>
-                <i className="fa-solid fa-circle-check"></i> Leave Management
-              </h2>
-              <h2>
-                <i className="fa-solid fa-circle-check"></i> PayRole Management
-              </h2>
-              <h2>
-                <i className="fa-solid fa-circle-check"></i> HR Software
-              </h2>
-            </div>
+            {arrayOfFeatures.map((item, index) => (
+              <div className="flex flex-col gap-2" key={index}>
+                <h2>
+                  <i className={icon.checkRounded}></i> {item}
+                </h2>
+              </div>
+            ))}
           </div>
           <img src={featuresImg} alt="Image" />
         </div>
