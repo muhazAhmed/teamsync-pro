@@ -5,6 +5,7 @@ import logo from "../../assets/images/TS-logo1.png";
 import { Avatar } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../../utils/commonFunctions";
+import { icon } from "../../UI-Components/Icons/Icons";
 
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -25,10 +26,10 @@ const Sidebar = () => {
   });
 
   const menuItems = [
-    { icon: "fa-solid fa-house", label: "Home", path: `/dashboard/${userInfo?._id}` },
+    { icon: icon.house, label: "Home", path: `/dashboard/${userInfo?._id}` },
     { icon: "fa-solid fa-bullhorn", label: "Feeds", path: "/feeds" },
     {
-      icon: "fa-regular fa-square-check",
+      icon: icon.checkSquare,
       label: "Attendance",
       subItems: [
         { label: "Add New", path: "/attendance/new" },
@@ -36,7 +37,7 @@ const Sidebar = () => {
       ],
     },
     {
-      icon: "fa-solid fa-list-check",
+      icon: icon.checkList,
       label: "To Do",
       subItems: [
         { label: "Tasks", path: "/tasks" },
@@ -44,7 +45,7 @@ const Sidebar = () => {
       ],
     },
     {
-      icon: "fa-regular fa-calendar",
+      icon: icon.calendar,
       label: "Leave",
       subItems: [
         { label: "Apply For Leave", path: "/leave/apply" },
@@ -61,12 +62,12 @@ const Sidebar = () => {
       ],
     },
     {
-      icon: "fa-solid fa-book",
+      icon: icon.book,
       label: "Documentation",
       path: "/documentation",
     },
     {
-      icon: "fa-regular fa-circle-question",
+      icon: icon.help,
       label: "Help Desk",
       path: `/help-desk/${userInfo?._id}`,
     },
