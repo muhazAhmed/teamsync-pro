@@ -1,28 +1,35 @@
 import hrModel from "../../models/HR/hrModel.js";
-import { responseMessage } from "../../utils/constants.js";
-import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { EmployeeID, GenCompanyEmail, GenJWT } from "../../utils/helper.js";
+import { EMAIL_EXISTS, PASSWORD_INCORRECT, REQUIRE_FELID, RESPONSE_MESSAGE } from "../../utils/validations.js";
 
 export const newHr = async (req, res) => {
   try {
     let data = req.body;
-    let { firstName, lastName, email, phone, password, role } = data;
-
+    let { firstName, lastName, email, employeeID, companyEmail, location, phone, password, role } = data;
+ 
     const fetch = await hrModel.findOne({ email });
-    if (fetch) return res.status(400).json("Email Already Exists");
+    if (fetch) return res.status(400).json(EMAIL_EXISTS());
 
+    const fetchLastEmpId = await hrModel.find({});
+    
+      if (fetchLastEmpId.length === 0) {
+        data.employeeID = EmployeeID("new", role);
+      } else {
+        const lastData = await hrModel.findOne().sort({ employeeID: -1 });
+        data.employeeID = EmployeeID("add", role, lastData);
+      }
+
+      const fetchCompanyEmail = await hrModel.findOne({companyEmail});
+      if (!fetchCompanyEmail) data.companyEmail = GenCompanyEmail(firstName, phone)
+      
     const salt = await bcrypt.genSalt(10);
     data.password = await bcrypt.hash(data.password, salt);
 
     const result = await hrModel.create(data);
-    const token = jwt.sign(
-      {
-        userId: result._id.toString(),
-      },
-      process.env.JWT_SECRET
-    );
+    const token = GenJWT(result)
 
-    return res.status(201).json({ result, token, message: responseMessage(role).USER_REGISTER });
+    return res.status(201).json({ result, token, message: RESPONSE_MESSAGE(role).USER_REGISTER });
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -34,35 +41,27 @@ export const loginHr = async (req, res) => {
     let { email, password, role } = data;
 
     if (!email) {
-      return res.status(400).json("Please Enter Email Address");
+      return res.status(400).json(REQUIRE_FELID("Email"));
     }
 
     if (!password) {
-      return res.status(400).json("Please Enter Password");
+      return res.status(400).json(REQUIRE_FELID("Password"));
     }
 
     let getUser = await hrModel.findOne({ email });
     if (!getUser)
-      return res.status(401).json("Email or Password is Incorrect.");
+      return res.status(401).json(PASSWORD_INCORRECT());
 
     let matchPassword = await bcrypt.compare(password, getUser.password);
     if (!matchPassword)
-      return res.status(401).json("Email or Password is Incorrect.");
+      return res.status(401).json(PASSWORD_INCORRECT());
 
-    //token
-    const oneDayInSeconds = 24 * 60 * 60; // 1 day in seconds
-    const token = jwt.sign(
-      {
-        userId: getUser._id.toString(),
-      },
-      process.env.JWT_SECRET,
-      { expiresIn: oneDayInSeconds }
-    );
+    const token = GenJWT(getUser)
 
     const { newPassword, ...other } = getUser;
     let User = getUser;
 
-    return res.status(200).json({ User, token, message: responseMessage(role).USER_LOGIN })
+    return res.status(200).json({ User, token, message: RESPONSE_MESSAGE(role).USER_LOGIN })
   } catch (error) {
     return res.status(500).json(error.message);
   }
