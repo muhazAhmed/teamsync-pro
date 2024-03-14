@@ -2,17 +2,20 @@ import { useEffect, useState } from "react";
 import "./sidebar.css";
 import userLogo from "../../assets/images/man.png";
 import logo from "../../assets/images/TS-logo1.png";
-import { Avatar } from "@nextui-org/react";
+import { Avatar, Tooltip } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-import { useLocalStorage } from "../../utils/commonFunctions";
+import { openModal, useLocalStorage, useSessionStorage } from "../../utils/commonFunctions";
 import { icon } from "../../UI-Components/Icons/Icons";
+import LogoutPopUpModal from "./SubComponents/LogoutPopUpModal";
 
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isHomePage, setIsHomePage] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(0);
+  const [pageName, setPageName] = useState();
+  const [logoutModal, setLogoutModal] = useState<boolean>(false);
   const navigate = useNavigate();
-  const openSidebar = () =>  setIsSidebarOpen(1);
+  const openSidebar = () => setIsSidebarOpen(1);
   const closeSidebar = () => setIsSidebarOpen(0);
   const userInfo = useLocalStorage("userInfo");
 
@@ -24,6 +27,18 @@ const Sidebar = () => {
       setIsHomePage(true);
     } else return setIsHomePage(false);
   });
+  
+  useEffect(() => {
+    const handlePageNameUpdate = () => {
+      const updatedPageName = useSessionStorage("pageName");
+      setPageName(updatedPageName);
+    };
+    handlePageNameUpdate();
+    window.addEventListener("pageNameUpdated", handlePageNameUpdate);
+    return () => {
+      window.removeEventListener("pageNameUpdated", handlePageNameUpdate);
+    };
+  }, []);
 
   const menuItems = [
     { icon: icon.house, label: "Home", path: `/dashboard/${userInfo?._id}` },
@@ -79,6 +94,34 @@ const Sidebar = () => {
 
   return (
     <>
+    {logoutModal && <LogoutPopUpModal modalState={setLogoutModal}/>}
+    {!isHomePage && (
+      <div
+        className="toolbar"
+        style={
+          !isSidebarOpen ? { width: "85%", right: "0px" } : { width: "100%" }
+        }
+      >
+        <h1
+          style={
+            !isSidebarOpen ? { marginLeft: "1rem" } : { marginLeft: "2.5rem" }
+          }
+        >
+          / {pageName}
+        </h1>
+        <div
+          className="flex items-center gap-4"
+          style={{ marginRight: "1rem" }}
+        >
+          <Tooltip content="Notification" color="primary">
+            <i className={icon.notification}></i>
+          </Tooltip>
+          <Tooltip content="Logout" color="danger">
+            <i className={icon.logout}  onClick={() => openModal(setLogoutModal)}></i>
+          </Tooltip>
+        </div>
+      </div>
+      )}
       {!isHomePage && (
         <div
           className="sidebar slideRight"
@@ -105,9 +148,17 @@ const Sidebar = () => {
               className="profile"
               style={isSidebarOpen ? { display: "none" } : {}}
             >
-              <Avatar src={userLogo} size="md" className="cursor-pointer" />
+              <Avatar
+                src={userLogo}
+                size="md"
+                className="cursor-pointer"
+                onClick={() => navigate(`/user-info/${userInfo?._id}`)}
+              />
               <h1 className="text-primary text-lg font-bold">Hi Muhaz</h1>
-              <i className="fa-solid fa-gear cursor-pointer"></i>
+              <i
+                className="fa-solid fa-gear cursor-pointer"
+                onClick={() => navigate(`/user-info/${userInfo?._id}`)}
+              ></i>
             </div>
             <div
               className="menu-items"
@@ -123,9 +174,8 @@ const Sidebar = () => {
                       <div className="items">
                         <i className={item.icon}></i>
                         <button
-                          className={`dropdown-btn ${
-                            activeIndex === index ? "active" : ""
-                          }`}
+                          className={`dropdown-btn ${activeIndex === index ? "active" : ""
+                            }`}
                         >
                           {item.label}
                         </button>

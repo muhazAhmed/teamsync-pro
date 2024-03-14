@@ -11,10 +11,6 @@ export const validations = (inputs: any, setValidated: any) => {
     setValidated(false);
     return toast.error(message("First Name").REQUIRED_FIELD);
   }
-  if (!validNameString(inputs.lastName)) {
-    setValidated(false);
-    return toast.error(message("Last Name").REQUIRED_FIELD);
-  }
   if (!validNameString(inputs.email)) {
     setValidated(false);
     return toast.error(message("Email").REQUIRED_FIELD);
