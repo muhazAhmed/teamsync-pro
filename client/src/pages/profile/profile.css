@@ -1,0 +1,50 @@
+.profile {
+    width: 100%;
+}
+
+.profile-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-body .container {
+    background-color: var(--card);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 90%;
+    padding: 20px;
+    padding-top: 1px;
+    border-radius: 15px;
+    min-height: 30vh;
+}
+
+.profile-body .container .profile-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    row-gap: 1em;
+    padding: 10px;
+    width: 100%;
+}
+
+.profile-body label,
+.profile-body i {
+    color: gray;
+    font-size: 15px;
+}
+
+.profile-section .items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 50%;
+}
+
+.profile-body .header {
+    padding: 10px;
+}
