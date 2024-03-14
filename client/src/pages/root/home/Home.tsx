@@ -168,9 +168,8 @@ const Home = () => {
           </div>
           <img src={featuresImg} alt="Image" />
         </div>
+        <Footer />
       </div>
-
-      <Footer />
     </div>
   );
 };
