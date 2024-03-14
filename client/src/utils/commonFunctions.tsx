@@ -49,3 +49,16 @@ export const clearInputs = (setInputs: any) => {
 
 export const openModal = (setModal:any) => { return setModal(true) };
 export const closeModal = (setModal:any) => { return setModal(false) };
+
+export const usePageName = (name:string) => {
+  newSessionStorage("pageName", name);
+  window.dispatchEvent(new Event("pageNameUpdated"));
+}
+
+export const ResponseInstances = (res:any, statusCode: number, setData:any) => {
+  if (res instanceof Error) {
+    return console.error(res.message);
+  } else if (res.res.status === statusCode) {
+    return setData(res?.res?.data)
+  }
+}

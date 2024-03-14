@@ -37,3 +37,26 @@ export const postMethodAPI = async (
     loading(false);
   }
 };
+
+
+export const getMethodAPI = async (
+  variable: string,
+  inputs: any,
+  loading: (isLoading: boolean) => void
+): Promise<{ res: ApiResponse; successMessage: string } | Error> => {
+  try {
+    loading(true);
+    const res: ApiResponse = await axios.get(API_URL + variable, inputs);
+    if ( res.status === 200) {
+      const successMessage = res?.data?.message || undefined;
+      successMessage != undefined && toast.success(successMessage);
+      return { res, successMessage };
+    } else {
+      return serverError(res); //might have to change later
+    }
+  } catch (error: any) {
+    return serverError(error);
+  } finally {
+    loading(false);
+  }
+}

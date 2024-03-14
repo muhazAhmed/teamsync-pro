@@ -13,4 +13,5 @@ export const message = (name: string) => ({
   GET_FAIL: "Enable To Fetch Data",
   REGISTER_SUCCESS: `${name} Registration Successful`,
   CREATE_SUCCESS: `${name} Created Successfully`,
+  REQUEST_SUBMITTED: "Your Request has been Sent"
 });
