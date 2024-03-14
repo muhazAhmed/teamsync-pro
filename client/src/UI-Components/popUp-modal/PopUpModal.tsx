@@ -1,35 +1,34 @@
-import { closeModal } from "../../utils/commonFunctions";
 import "./modal.css";
+import ReactDOM from "react-dom";
+import { icon } from "../Icons/Icons";
+import { closeModal } from "../../utils/commonFunctions";
+import { Tooltip } from "@nextui-org/react";
 
-interface PopUpModalProps {
-  setModal: any;
-  dimension: string;
+interface ModalProps {
+  setModal: (value: boolean) => void;
+  title: string;
+  children: React.ReactNode;
 }
 
-const PopUpModal: React.FC<PopUpModalProps> = ({
-  setModal,
-  dimension,
-}) => {
-  const height = dimension.toLowerCase().split("x")[0] + "vh";
-  const width = dimension.toLowerCase().split("x")[1] + "vw";
-
-  return (
+const Modal: React.FC<ModalProps> = ({ setModal, title, children }) => {
+  return ReactDOM.createPortal(
     <div className="blur-bg">
-      <div className="modal" style={{ height, width }}>
-        <i
-          className="fa-solid fa-circle-xmark"
-          onClick={() => closeModal(setModal)}
-        ></i>
+      <div className="modal-container fadeIn">
+        <div className="modalHeader">
+          <h1>{title}</h1>
+          <Tooltip content="Close" placement="bottom" color="danger">
+            <i
+              className={icon.closeRounded}
+              onClick={() => closeModal(setModal)}
+            ></i>
+          </Tooltip>
+        </div>
+
+        <div className="modal-content">{children}</div>
       </div>
-      <ModalBody/>
-    </div>
+    </div>,
+    document.body
   );
 };
 
-const ModalBody = () => {
-  return (
-    <div></div>
-  )
-}
-
-export default PopUpModal;
+export default Modal;
