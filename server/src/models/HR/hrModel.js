@@ -28,7 +28,7 @@ const hrSchema = new mongoose.Schema(
       {
         department: {type: String},
         designation: {type: String},
-        location: {type: String},
+        workLocation: {type: String},
         startDate: {type: String},
         reportingManager: {type: String},
         ctc: {type: Number},
