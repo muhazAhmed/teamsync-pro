@@ -2,7 +2,7 @@
 export const DataForProfile = (ResponseData: any) => [
     {
         label: "Name",
-        value: `${ResponseData?.firstName} ${ResponseData?.lastName || ""}`,
+        value: `${ResponseData?.firstName || "-"} ${ResponseData?.lastName || "-"}`,
     },
     { label: "Employee ID", value: ResponseData?.employeeID || "-" },
     { label: "Location", value: ResponseData?.location || "-" },

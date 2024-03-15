@@ -3,13 +3,14 @@ import "./profile.css";
 import userLogo from "../../assets/images/man.png";
 import { icon } from "../../UI-Components/Icons/Icons";
 import { useEffect, useState } from "react";
-import { ResponseInstances, usePageName } from "../../utils/commonFunctions";
+import { ResponseInstances, useLocalStorage, usePageName } from "../../utils/commonFunctions";
 import { getMethodAPI } from "../../utils/apiCallMethods";
 import { serverVariables } from "../../utils/serverVariables";
 import { useParams } from "react-router-dom";
 import Loader from "../../UI-Components/Loader/Loader";
 import toast from "react-hot-toast";
 import EditProfileModal from "./Sub Components/EditProfileModal";
+import { Variables } from "../../utils/Constants";
 import {
   DataForEmployment,
   DataForPersonalDetails,
@@ -28,7 +29,7 @@ const Profile = () => {
   const [ResponseData, setResponseData] = useState<ResponseData | null>(null);
   const personalInformation = ResponseData?.personalInformation || [];
   const employment = ResponseData?.employment || [];
-  const isHr = ResponseData?.isHR;
+  const isHr = useLocalStorage("client-id") == Variables.HR_ROLE;
 
   useEffect(() => {
     usePageName("User Profile");

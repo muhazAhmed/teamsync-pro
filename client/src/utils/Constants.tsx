@@ -13,5 +13,11 @@ export const message = (name: string) => ({
   GET_FAIL: "Enable To Fetch Data",
   REGISTER_SUCCESS: `${name} Registration Successful`,
   CREATE_SUCCESS: `${name} Created Successfully`,
-  REQUEST_SUBMITTED: "Your Request has been Sent"
+  REQUEST_SUBMITTED: "Your Request has been Sent",
 });
+
+export const Variables = {
+  HR_ROLE: "6872",
+  ADMIN_ROLE: "61646D696E",
+  EMPLOYEE_ROLE: "656D706C6F796565",
+}

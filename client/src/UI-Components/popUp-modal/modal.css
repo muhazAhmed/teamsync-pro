@@ -27,8 +27,8 @@
 
 .modalHeader h1 {
     color: #fff;
-    font-size: large;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .modal-container .modal-content {
@@ -44,3 +44,11 @@
 }
 
 .modal-container ::-webkit-scrollbar { width: 8px; }
+
+@media (max-width: 768px) {
+    .modal-container {
+        height: auto;
+        min-width: 90%;
+        max-width: 90%;
+    }
+}

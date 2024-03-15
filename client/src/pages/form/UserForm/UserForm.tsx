@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import {
+  AssignRole,
   newLocalStorage,
   newSessionStorage,
   useLocalStorage,
@@ -63,6 +64,14 @@ const UserForm = () => {
     setInputs({ ...inputs, role: selectedRole });
   };
 
+  const SuccessResponse = (result:any, res:any) => {
+    newLocalStorage("userInfo", result);
+    newLocalStorage("client-id", AssignRole(inputs?.role))
+    newSessionStorage("userTokenID", res?.res?.data?.token);
+    setValidated(false);
+    navigate(`/dashboard/${result?._id}`);
+  }
+
   const handleRegister = async () => {
     validations(inputs, setValidated);
     if (inputs.role === "Employee") {
@@ -82,10 +91,7 @@ const UserForm = () => {
         console.error(res.message);
       } else if (res.res.status === 201) {
         const result = res?.res?.data?.result;
-        newLocalStorage("userInfo", result);
-        newSessionStorage("userTokenID", res?.res?.data?.token);
-        setValidated(false);
-        navigate(`/dashboard/${result?._id}`);
+        SuccessResponse(result, res);
       }
     } else {
       return;
@@ -104,10 +110,7 @@ const UserForm = () => {
         console.error(res.message);
       } else if (res.res.status === 200) {
         const result = res?.res?.data?.User;
-        newLocalStorage("userInfo", result);
-        newSessionStorage("userTokenID", res?.res?.data?.token);
-        setValidated(false);
-        navigate(`/dashboard/${result?._id}`);
+        SuccessResponse(result, res);
       }
     } else {
       return;

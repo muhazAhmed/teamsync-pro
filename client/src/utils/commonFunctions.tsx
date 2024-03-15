@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { message } from "./Constants";
+import { Variables, message } from "./Constants";
 
 // Session Storage
 export const newSessionStorage = (key: string, value: any) => {
@@ -31,6 +31,7 @@ export const useLocalStorage = (key: string) => {
 
 export const logout = (navigate: any, modalState:any ) => {
   deleteLocalStorage("userInfo");
+  deleteLocalStorage("client-id")
   deleteSessionStorage("userTokenID")
   toast.success(message("").LOGOUT_SUCCESS)
   modalState ? closeModal(modalState) : "";
@@ -61,4 +62,11 @@ export const ResponseInstances = (res:any, statusCode: number, setData:any) => {
   } else if (res.res.status === statusCode) {
     return setData(res?.res?.data)
   }
+}
+
+export const AssignRole = (role:string) => {
+  role.toLowerCase();
+  if (role === "hr") return role = Variables.HR_ROLE;
+  if (role === "admin") return role = Variables.ADMIN_ROLE;
+  if (role === "employee") return role = Variables.EMPLOYEE_ROLE;
 }
