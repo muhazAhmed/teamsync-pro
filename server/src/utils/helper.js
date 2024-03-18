@@ -68,3 +68,14 @@ export const GenJWT = (result) => {
   );
   return token;
 };
+
+export const LastLoginWithIP = (req) => {
+    let ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    if (ipAddress && ipAddress.includes(',')) {
+        ipAddress = ipAddress.split(',')[0].trim();
+    }
+    if (ipAddress === '::1') {
+        ipAddress = '127.0.0.1'; // Convert to IPv4 equivalent
+    }
+    return `${fetchDateTime("date")} @ ${fetchDateTime("time")} && ${ipAddress}`;
+}
