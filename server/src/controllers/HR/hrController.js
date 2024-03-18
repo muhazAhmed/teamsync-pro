@@ -1,12 +1,12 @@
 import hrModel from "../../models/HR/hrModel.js";
 import bcrypt from "bcrypt";
-import { EmployeeID, GenCompanyEmail, GenJWT } from "../../utils/helper.js";
+import { EmployeeID, GenCompanyEmail, GenJWT, LastLoginWithIP, fetchDateTime } from "../../utils/helper.js";
 import { EMAIL_EXISTS, PASSWORD_INCORRECT, REQUIRE_FELID, RESPONSE_MESSAGE } from "../../utils/validations.js";
 
 export const newHr = async (req, res) => {
   try {
     let data = req.body;
-    let { firstName, lastName, email, employeeID, companyEmail, location, phone, password, role } = data;
+    let { firstName, lastName, email, employeeID, companyEmail, location, phone, password, role, lastLogin } = data;
  
     const fetch = await hrModel.findOne({ email });
     if (fetch) return res.status(400).json(EMAIL_EXISTS());
@@ -26,8 +26,11 @@ export const newHr = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     data.password = await bcrypt.hash(data.password, salt);
 
+    data.lastLogin = LastLoginWithIP(req);
+
     const result = await hrModel.create(data);
     const token = GenJWT(result)
+    
 
     return res.status(201).json({ result, token, message: RESPONSE_MESSAGE(role).USER_REGISTER });
   } catch (error) {
@@ -38,7 +41,7 @@ export const newHr = async (req, res) => {
 export const loginHr = async (req, res) => {
   try {
     let data = req.body;
-    let { email, password, role } = data;
+    let { email, password, role, lastLogin } = data;
 
     if (!email) {
       return res.status(400).json(REQUIRE_FELID("Email"));
@@ -56,7 +59,13 @@ export const loginHr = async (req, res) => {
     if (!matchPassword)
       return res.status(401).json(PASSWORD_INCORRECT());
 
-    const token = GenJWT(getUser)
+    const token = GenJWT(getUser);
+    data.lastLogin = LastLoginWithIP(req);
+    await hrModel.findOneAndUpdate(
+      { email: email },
+      { $set: { lastLogin: data.lastLogin } },
+      { new: true }
+    );
 
     const { newPassword, ...other } = getUser;
     let User = getUser;
