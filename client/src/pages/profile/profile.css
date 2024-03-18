@@ -48,3 +48,26 @@
 .profile-body .header {
     padding: 10px;
 }
+
+@media (max-width: 768px) {
+    .profile {
+        height: auto;
+        width: 100%;
+    }
+
+    .profile .container {
+        width: 95%;
+    }
+
+    .profile-body .header {
+        width: 100%;
+    }
+
+    .profile-section {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+
+    .profile-section .outline-none {
+        width: 50% !important;
+    }
+}

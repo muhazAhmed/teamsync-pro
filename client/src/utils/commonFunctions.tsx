@@ -65,8 +65,7 @@ export const ResponseInstances = (res:any, statusCode: number, setData:any) => {
 }
 
 export const AssignRole = (role:string) => {
-  role.toLowerCase();
-  if (role === "hr") return role = Variables.HR_ROLE;
-  if (role === "admin") return role = Variables.ADMIN_ROLE;
-  if (role === "employee") return role = Variables.EMPLOYEE_ROLE;
+  if (role === "HR") return role = Variables.HR_ROLE;
+  if (role === "Admin") return role = Variables.ADMIN_ROLE;
+  if (role === "Employee") return role = Variables.EMPLOYEE_ROLE;
 }

@@ -3,7 +3,11 @@ import "./profile.css";
 import userLogo from "../../assets/images/man.png";
 import { icon } from "../../UI-Components/Icons/Icons";
 import { useEffect, useState } from "react";
-import { ResponseInstances, useLocalStorage, usePageName } from "../../utils/commonFunctions";
+import {
+  ResponseInstances,
+  useLocalStorage,
+  usePageName,
+} from "../../utils/commonFunctions";
 import { getMethodAPI } from "../../utils/apiCallMethods";
 import { serverVariables } from "../../utils/serverVariables";
 import { useParams } from "react-router-dom";
@@ -48,6 +52,20 @@ const Profile = () => {
   const onToggle = (name: string) => {
     if (name === "Employment" && !isHr)
       return toast.error("Only Hr can Edit this Details");
+    if (name === "Profile") {
+      const newObj = {
+        companyEmail: ResponseData?.companyEmail || "",
+        firstName:ResponseData?.firstName || "",
+        lastName:ResponseData?.lastName || "",
+        location:ResponseData?.location || "",
+        phone:ResponseData?.phone || "",
+      }
+      setResponseData(newObj);
+    } else if (name === "Personal Information") {
+      setResponseData(ResponseData?.PersonalInformation || [])
+    } else if (name === "Employment") {
+      setResponseData(ResponseData?.Employment || [])
+    }
     setModalTitle(name);
     setEditModal(true);
   };
@@ -139,6 +157,7 @@ const Profile = () => {
         <EditProfileModal
           setEditModal={setEditModal}
           title={modalTitle || "Personal Info"}
+          ResponseData={ResponseData}
         />
       )}
     </>
