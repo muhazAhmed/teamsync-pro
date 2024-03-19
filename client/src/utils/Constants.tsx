@@ -1,5 +1,5 @@
-export const API_URL = "http://localhost:8800/api/"; // Local Server
-// export const API_URL = "http://localhost:8800/api/";    // Demo, Testing
+// export const API_URL = "http://localhost:8800/api/"; // Local Server
+export const API_URL = "https://teamsync.onrender.com/api/";    // Demo, Testing
 
 // MESSAGES:
 export const message = (name: string) => ({
