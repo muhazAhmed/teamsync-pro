@@ -1,12 +1,21 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import "./modal.css";
-import { Button, Input } from "@nextui-org/react";
+import {
+  Button,
+  Input,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+} from "@nextui-org/react";
+import { clearInputs } from "../../../utils/commonFunctions";
+import { maritalStatus, physicallyChallenged } from "./ArrayOfInputs";
 
 interface ModalProps {
   setEditModal: (value: boolean) => void;
   title: string;
-  ResponseData: any[];
+  ResponseData: { [key: string]: any } | undefined;
 }
 
 type Inputs = {
@@ -18,22 +27,20 @@ const EditProfileModal: React.FC<ModalProps> = ({
   title,
   ResponseData,
 }) => {
-  const [profileInputs, setProfileInputs] = useState<Inputs>({
-    firstName: "",
-    lastName: "",
-    companyEmail: "",
-    location: "",
-    phone: "",
-  });
+  const [inputs, setInputs] = useState<Inputs>({});
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setProfileInputs((prev) => ({ ...prev, [name]: value }));
+  const handleChange = (name: string, value: any) => {
+    setInputs((prev) => ({ ...prev, [name]: value }));
   };
 
   useEffect(() => {
     if (ResponseData) {
-      setProfileInputs((prev) => ({ ...prev, ...ResponseData }));
+      const keys = Object.keys(ResponseData);
+      const initialInputs: Inputs = {};
+      keys.forEach((key: any) => {
+        initialInputs[key] = ResponseData[key] || "";
+      });
+      setInputs(initialInputs);
     }
   }, [ResponseData]);
 
@@ -41,20 +48,66 @@ const EditProfileModal: React.FC<ModalProps> = ({
     <>
       <Modal setModal={setEditModal} title={title}>
         <div className="modal-body">
-          {Object.keys(profileInputs).map((key) => (
-            <Input
-              key={key}
-              name={key}
-              value={profileInputs[key]}
-              label={key}
-              onChange={handleChange}
-              variant="underlined"
-            />
-          ))}
+          {Object.keys(inputs).map((key) => {
+            if (key === "maritalStatus") {
+              return (
+                <Dropdown key={key}>
+                  <DropdownTrigger>
+                    <Button variant="shadow" fullWidth>
+                      {inputs[key] || "Marital Status"}
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu>
+                    {maritalStatus.map((option) => (
+                      <DropdownItem
+                        key={option.value}
+                        onClick={() => handleChange(key, option.value)}
+                      >
+                        {option.label}
+                      </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </Dropdown>
+              );
+            } else if (key === "physicallyChallenged") {
+              return (
+                <Dropdown key={key}>
+                  <DropdownTrigger>
+                    <Button variant="shadow">
+                      {inputs[key] || "Physically Challenged"}
+                    </Button>
+                  </DropdownTrigger>
+                  <DropdownMenu>
+                    {physicallyChallenged.map((option) => (
+                      <DropdownItem
+                        key={option.value}
+                        onClick={() => handleChange(key, option.value)}
+                      >
+                        {option.label}
+                      </DropdownItem>
+                    ))}
+                  </DropdownMenu>
+                </Dropdown>
+              );
+            } else {
+              return (
+                <Input
+                  key={key}
+                  name={key}
+                  value={inputs[key]}
+                  label={key}
+                  onChange={(e) => handleChange(key, e.target.value)}
+                  variant="underlined"
+                />
+              );
+            }
+          })}
         </div>
         <div className="modal-footer">
           <Button className="btn-primary text-white">Save</Button>
-          <Button className="btn-ghost">Clear</Button>
+          <Button className="btn-ghost" onClick={() => clearInputs(setInputs)}>
+            Clear
+          </Button>
         </div>
       </Modal>
     </>

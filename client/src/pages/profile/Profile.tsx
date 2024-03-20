@@ -29,6 +29,7 @@ const Profile = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [editModal, setEditModal] = useState<boolean>(false);
   const [modalTitle, setModalTitle] = useState<string>();
+  const [dataForModal, setDataForModal] = useState<{ [key: string]: any } | undefined>();
   const userID = useParams();
   const [ResponseData, setResponseData] = useState<ResponseData | null>(null);
   const personalInformation = ResponseData?.personalInformation || [];
@@ -60,11 +61,11 @@ const Profile = () => {
         location:ResponseData?.location || "",
         phone:ResponseData?.phone || "",
       }
-      setResponseData(newObj);
+      setDataForModal(newObj);
     } else if (name === "Personal Information") {
-      setResponseData(ResponseData?.PersonalInformation || [])
+      setDataForModal(personalInformation)
     } else if (name === "Employment") {
-      setResponseData(ResponseData?.Employment || [])
+      setDataForModal(employment)
     }
     setModalTitle(name);
     setEditModal(true);
@@ -157,7 +158,7 @@ const Profile = () => {
         <EditProfileModal
           setEditModal={setEditModal}
           title={modalTitle || "Personal Info"}
-          ResponseData={ResponseData}
+          ResponseData={dataForModal}
         />
       )}
     </>

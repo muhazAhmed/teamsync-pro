@@ -26,7 +26,7 @@ export const DataForPersonalDetails = (personalInformation: any) => [
     { label: "Religion", value: personalInformation?.religion || "-" },
     {
         label: "Physically Challenged",
-        value: personalInformation?.physicallyChallenged || "-",
+        value: personalInformation?.physicallyChallenged === true? "Yes" : "No",
     },
 ];
 
@@ -36,5 +36,5 @@ export const DataForEmployment = (employment: any) => [
     { label: "Location", value: employment?.workLocation || "-" },
     { label: "Reporting Manager", value: employment?.reportingManager || "-" },
     { label: "Start Date", value: employment?.startDate || "-" },
-    { label: "Annual CTC", value: employment?.ctc || "-" },
+    { label: "Annual CTC", value: employment?.ctc },
 ];
