@@ -12,29 +12,25 @@ const hrSchema = new mongoose.Schema(
     employeeID: { type: String },
     isHR: { type: Boolean, default: true },
     lastLogin: { type: String},
-    personalInformation: [
-      {
-        dob: {type: String},
-        nationality: {type: String},
-        maritalStatus: {type: String},
-        bloodGroup: {type: String},
-        fatherName: {type: String},
-        placeOfBirth: {type: String},
-        religion: {type: String},
-        physicallyChallenged: {type: Boolean},
+    personalInformation: {
+        dob: {type: String, default: ""},
+        nationality: {type: String, default: ""},
+        maritalStatus: {type: String, default: ""},
+        bloodGroup: {type: String, default: ""},
+        fatherName: {type: String, default: ""},
+        placeOfBirth: {type: String, default: ""},
+        religion: {type: String, default: ""},
+        physicallyChallenged: {type: Boolean, default: false},
+      },
+    employment: {
+        department: {type: String, default: ""},
+        designation: {type: String, default: ""},
+        workLocation: {type: String, default: ""},
+        startDate: {type: String, default: ""},
+        reportingManager: {type: String, default: ""},
+        ctc: {type: Number, default: 0},
+        status: {type: Boolean, default: true}
       }
-    ],
-    employment: [
-      {
-        department: {type: String},
-        designation: {type: String},
-        workLocation: {type: String},
-        startDate: {type: String},
-        reportingManager: {type: String},
-        ctc: {type: Number},
-        status: {type: Boolean}
-      }
-    ]
   },
   { timestamps: true }
 );
