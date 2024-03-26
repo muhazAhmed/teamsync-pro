@@ -10,7 +10,13 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 import { clearInputs } from "../../../utils/commonFunctions";
-import { maritalStatus, physicallyChallenged } from "./ArrayOfInputs";
+import {
+  maritalStatus,
+  physicallyChallenged,
+  profileLabels,
+} from "./ArrayOfInputs";
+import toast from "react-hot-toast";
+import { message } from "../../../utils/Constants";
 
 interface ModalProps {
   setEditModal: (value: boolean) => void;
@@ -28,6 +34,8 @@ const EditProfileModal: React.FC<ModalProps> = ({
   ResponseData,
 }) => {
   const [inputs, setInputs] = useState<Inputs>({});
+  let CompanyEmail = ResponseData?.companyEmail;
+  const labels = profileLabels(title)?.split(",") || [];
 
   const handleChange = (name: string, value: any) => {
     setInputs((prev) => ({ ...prev, [name]: value }));
@@ -44,11 +52,18 @@ const EditProfileModal: React.FC<ModalProps> = ({
     }
   }, [ResponseData]);
 
+  const handleUpdate = () => {
+    if (inputs?.companyEmail != CompanyEmail)
+      return toast.error(message("Company Email").UNAUTHORIZED_USER);
+  };
+
   return (
     <>
       <Modal setModal={setEditModal} title={title}>
         <div className="modal-body">
           {Object.keys(inputs).map((key) => {
+            const labelIndex = Object.keys(inputs).indexOf(key);
+            const label = labels[labelIndex];
             if (key === "maritalStatus") {
               return (
                 <Dropdown key={key}>
@@ -95,7 +110,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
                   key={key}
                   name={key}
                   value={inputs[key]}
-                  label={key}
+                  label={label}
                   onChange={(e) => handleChange(key, e.target.value)}
                   variant="underlined"
                 />
@@ -104,7 +119,9 @@ const EditProfileModal: React.FC<ModalProps> = ({
           })}
         </div>
         <div className="modal-footer">
-          <Button className="btn-primary text-white">Save</Button>
+          <Button className="btn-primary text-white" onClick={handleUpdate}>
+            Save
+          </Button>
           <Button className="btn-ghost" onClick={() => clearInputs(setInputs)}>
             Clear
           </Button>

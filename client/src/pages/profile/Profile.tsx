@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 import Loader from "../../UI-Components/Loader/Loader";
 import toast from "react-hot-toast";
 import EditProfileModal from "./Sub Components/EditProfileModal";
-import { Variables } from "../../utils/Constants";
+import { Variables, message } from "../../utils/Constants";
 import {
   DataForEmployment,
   DataForPersonalDetails,
@@ -52,14 +52,14 @@ const Profile = () => {
 
   const onToggle = (name: string) => {
     if (name === "Employment" && !isHr)
-      return toast.error("Only Hr can Edit this Details");
+      return toast.error(message("HR").USER_ERROR);
     if (name === "Profile") {
       const newObj = {
         companyEmail: ResponseData?.companyEmail || "",
         firstName:ResponseData?.firstName || "",
         lastName:ResponseData?.lastName || "",
-        location:ResponseData?.location || "",
-        phone:ResponseData?.phone || "",
+        Location:ResponseData?.location || "",
+        Phone:ResponseData?.phone || "",
       }
       setDataForModal(newObj);
     } else if (name === "Personal Information") {
