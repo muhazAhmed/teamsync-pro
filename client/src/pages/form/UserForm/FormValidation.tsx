@@ -48,9 +48,9 @@ export const loginValidation = (inputs: any, setValidated: any) => {
     setValidated(false);
     return toast.error("Please Choose From Login As");
   }
-  if (!validNameString(inputs.email)) {
+  if (!validNameString(inputs.companyEmail)) {
     setValidated(false);
-    return toast.error(message("Email").REQUIRED_FIELD);
+    return toast.error(message("Company Email").REQUIRED_FIELD);
   }
   if (!validNameString(inputs.password)) {
     setValidated(false);

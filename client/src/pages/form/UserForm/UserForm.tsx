@@ -37,6 +37,7 @@ const UserForm = () => {
     password: string;
     confirmPassword: string;
     role: string;
+    companyEmail: string;
     [key: string]: string;
   };
 
@@ -47,6 +48,7 @@ const UserForm = () => {
     password: "",
     confirmPassword: "",
     role: "",
+    companyEmail: "",
   });
 
   const toggleVisibility = () => setIsVisible(!isVisible);
@@ -170,10 +172,10 @@ const UserForm = () => {
               </Dropdown>
               <Input
                 type="email"
-                label="Email"
-                name="email"
+                label="Company Email"
+                name="companyEmail"
                 onChange={handleInputChange}
-                value={inputs.email || ""}
+                value={inputs.companyEmail || ""}
               />
               <Input
                 endContent={
