@@ -41,9 +41,9 @@ export const newHr = async (req, res) => {
 export const loginHr = async (req, res) => {
   try {
     let data = req.body;
-    let { email, password, role, lastLogin } = data;
+    let { companyEmail, password, role, lastLogin } = data;
 
-    if (!email) {
+    if (!companyEmail) {
       return res.status(400).json(REQUIRE_FELID("Email"));
     }
 
@@ -51,7 +51,7 @@ export const loginHr = async (req, res) => {
       return res.status(400).json(REQUIRE_FELID("Password"));
     }
 
-    let getUser = await hrModel.findOne({ email });
+    let getUser = await hrModel.findOne({ companyEmail });
     if (!getUser)
       return res.status(401).json(PASSWORD_INCORRECT());
 
@@ -62,7 +62,7 @@ export const loginHr = async (req, res) => {
     const token = GenJWT(getUser);
     data.lastLogin = LastLoginWithIP(req);
     await hrModel.findOneAndUpdate(
-      { email: email },
+      { companyEmail },
       { $set: { lastLogin: data.lastLogin } },
       { new: true }
     );
