@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 import { icon } from "../../../UI-Components/Icons/Icons";
+import { message } from "../../../utils/Constants";
 
 const Home = () => {
   const user = useLocalStorage("userInfo");
@@ -147,7 +148,7 @@ const Home = () => {
                 color="secondary"
                 variant="shadow"
                 style={{ color: "#fff !important" }}
-                onClick={() => toast.error("Temporarily Unavailable")}
+                onClick={() => toast.error(message("").UNAVAILABLE)}
               >
                 Request Demo
               </Button>
