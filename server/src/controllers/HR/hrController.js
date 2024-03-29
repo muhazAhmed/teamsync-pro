@@ -1,6 +1,7 @@
 import hrModel from "../../models/HR/hrModel.js";
+import employeeModal from "../../models/Employee/employeeModal.js"
 import bcrypt from "bcrypt";
-import { EmployeeID, GenCompanyEmail, GenJWT, LastLoginWithIP, fetchDateTime } from "../../utils/helper.js";
+import { EmployeeID, GenCompanyEmail, GenJWT, LastLoginWithIP } from "../../utils/helper.js";
 import { EMAIL_EXISTS, PASSWORD_INCORRECT, REQUIRE_FELID, RESPONSE_MESSAGE } from "../../utils/validations.js";
 
 export const newHr = async (req, res) => {
@@ -89,12 +90,14 @@ export const fetchOneHr = async (req, res) => {
 export const updateHr = async (req, res) => {
   try {
     const id = req.params.id;
-    const data = await hrModel.findByIdAndUpdate(
+    let data = req.body;
+
+    const updatedData = await hrModel.findByIdAndUpdate(
       { _id: id },
-      { $set: req.body },
+      { $set: data },
       { new: true }
     );
-    return res.status(200).json(data);
+    return res.status(200).json({updatedData,  message: RESPONSE_MESSAGE("HR").USER_UPDATE});
   } catch (error) {
     return res.status(500).json(error.message);
   }

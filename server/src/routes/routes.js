@@ -5,7 +5,7 @@ import { deleteClientData, getAllClientData, getOneClientData, newClientData, up
 
 routes.post("/hr/register", newHr)
 routes.post("/hr/login", loginHr)
-routes.put("/hr/update/:id", updateHr)
+routes.patch("/hr/update/:id", updateHr)
 routes.get("/hr/fetch/:id", fetchOneHr)
 
 routes.post("/client/new-request", newClientData)
