@@ -5,8 +5,9 @@ import { icon } from "../../UI-Components/Icons/Icons";
 import { useEffect, useState } from "react";
 import {
   ResponseInstances,
-  useLocalStorage,
+  useSessionStorage,
   usePageName,
+  FetchRole,
 } from "../../utils/commonFunctions";
 import { getMethodAPI } from "../../utils/apiCallMethods";
 import { serverVariables } from "../../utils/serverVariables";
@@ -34,7 +35,7 @@ const Profile = () => {
   const [ResponseData, setResponseData] = useState<ResponseData | null>(null);
   const personalInformation = ResponseData?.personalInformation || [];
   const employment = ResponseData?.employment || [];
-  const isHr = useLocalStorage("client-id") == Variables.HR_ROLE;
+  const isHr = useSessionStorage("client-id") == Variables.HR_ROLE;
 
   useEffect(() => {
     usePageName("User Profile");
@@ -43,8 +44,8 @@ const Profile = () => {
 
   const fetchData = async () => {
     const res = await getMethodAPI(
-      `hr${serverVariables.FETCH_ONE_USER}${userID.id}`,
-      "",
+      `${serverVariables.FETCH_ONE_USER}${userID.id}`,
+      {role: FetchRole(useSessionStorage("client-id"))},
       setLoading
     );
     ResponseInstances(res, 200, setResponseData);
@@ -58,8 +59,8 @@ const Profile = () => {
         companyEmail: ResponseData?.companyEmail || "",
         firstName:ResponseData?.firstName || "",
         lastName:ResponseData?.lastName || "",
-        Location:ResponseData?.location || "",
-        Phone:ResponseData?.phone || "",
+        location:ResponseData?.location || "",
+        phone:ResponseData?.phone || "",
       }
       setDataForModal(newObj);
     } else if (name === "Personal Information") {
@@ -159,6 +160,9 @@ const Profile = () => {
           setEditModal={setEditModal}
           title={modalTitle || "Personal Info"}
           ResponseData={dataForModal}
+          setLoading={setLoading}
+          userID={userID.id}
+          fetchData={fetchData}
         />
       )}
     </>

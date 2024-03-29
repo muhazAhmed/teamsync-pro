@@ -9,7 +9,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
-import { clearInputs } from "../../../utils/commonFunctions";
+import { clearInputs, closeModal, filterEmptyObj } from "../../../utils/commonFunctions";
 import {
   maritalStatus,
   physicallyChallenged,
@@ -17,11 +17,16 @@ import {
 } from "./ArrayOfInputs";
 import toast from "react-hot-toast";
 import { message } from "../../../utils/Constants";
+import { patchMethodAPI } from "../../../utils/apiCallMethods";
+import { serverVariables } from "../../../utils/serverVariables";
 
 interface ModalProps {
   setEditModal: (value: boolean) => void;
   title: string;
   ResponseData: { [key: string]: any } | undefined;
+  setLoading: (value: boolean) => void;
+  userID:any;
+  fetchData:any
 }
 
 type Inputs = {
@@ -32,6 +37,9 @@ const EditProfileModal: React.FC<ModalProps> = ({
   setEditModal,
   title,
   ResponseData,
+  setLoading,
+  userID,
+  fetchData
 }) => {
   const [inputs, setInputs] = useState<Inputs>({});
   let CompanyEmail = ResponseData?.companyEmail;
@@ -52,9 +60,16 @@ const EditProfileModal: React.FC<ModalProps> = ({
     }
   }, [ResponseData]);
 
-  const handleUpdate = () => {
+  const handleUpdate = async() => {
     if (inputs?.companyEmail != CompanyEmail)
       return toast.error(message("Company Email").UNAUTHORIZED_USER);
+    const res = await patchMethodAPI( `${serverVariables.UPDATE_USER}${userID}`,
+    filterEmptyObj(inputs),
+    setLoading)
+    if (res) {
+      closeModal(setEditModal)
+      fetchData();
+    }
   };
 
   return (

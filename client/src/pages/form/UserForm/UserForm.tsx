@@ -14,9 +14,8 @@ import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import {
   AssignRole,
-  newLocalStorage,
   newSessionStorage,
-  useLocalStorage,
+  useSessionStorage,
 } from "../../../utils/commonFunctions";
 import Loader from "../../../UI-Components/Loader/Loader";
 import { loginValidation, validations } from "./FormValidation";
@@ -67,8 +66,8 @@ const UserForm = () => {
   };
 
   const SuccessResponse = (result:any, res:any) => {
-    newLocalStorage("userInfo", result);
-    newLocalStorage("client-id", AssignRole(inputs?.role))
+    newSessionStorage("userInfo", result);
+    newSessionStorage("client-id", AssignRole(inputs?.role))
     newSessionStorage("userTokenID", res?.res?.data?.token);
     setValidated(false);
     navigate(`/dashboard/${result?._id}`);
@@ -77,7 +76,7 @@ const UserForm = () => {
   const handleRegister = async () => {
     validations(inputs, setValidated);
     if (inputs.role === "Employee") {
-      const findHR = useLocalStorage("userInfo");
+      const findHR = useSessionStorage("userInfo");
       if (!findHR?.isHR) {
         setIsRegister(false);
         return toast.error("Please Login As HR To Register New Employee");

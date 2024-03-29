@@ -14,7 +14,7 @@ import logo from "../../../assets/images/TS-logo1.png";
 import mainImg from "../../../assets/images/homeImg.jpg";
 import featuresImg from "../../../assets/images/features.jpg";
 import Footer from "../../../components/footer/Footer";
-import { logout, useLocalStorage } from "../../../utils/commonFunctions";
+import { logout, useSessionStorage } from "../../../utils/commonFunctions";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
@@ -22,7 +22,7 @@ import { icon } from "../../../UI-Components/Icons/Icons";
 import { message } from "../../../utils/Constants";
 
 const Home = () => {
-  const user = useLocalStorage("userInfo");
+  const user = useSessionStorage("userInfo");
   const navigate = useNavigate();
 
   useEffect(() => {

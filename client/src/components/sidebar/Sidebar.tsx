@@ -4,7 +4,7 @@ import userLogo from "../../assets/images/man.png";
 import logo from "../../assets/images/TS-logo1.png";
 import { Avatar, Tooltip } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-import { openModal, useLocalStorage, useSessionStorage } from "../../utils/commonFunctions";
+import { openModal, useSessionStorage } from "../../utils/commonFunctions";
 import { icon } from "../../UI-Components/Icons/Icons";
 import LogoutPopUpModal from "./SubComponents/LogoutPopUpModal";
 
@@ -17,7 +17,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const openSidebar = () => setIsSidebarOpen(1);
   const closeSidebar = () => setIsSidebarOpen(0);
-  const userInfo = useLocalStorage("userInfo");
+  const userInfo = useSessionStorage("userInfo");
 
   useEffect(() => {
     if (

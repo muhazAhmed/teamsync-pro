@@ -1,12 +1,12 @@
 import { Navigate } from "react-router-dom";
-import { newSessionStorage, useLocalStorage } from "./commonFunctions";
+import { newSessionStorage, useSessionStorage } from "./commonFunctions";
 
 interface AuthGuardProps {
   children: React.ReactNode;
 }
 
 const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
-  const isLoggedIn = useLocalStorage("userInfo");
+  const isLoggedIn = useSessionStorage("userInfo");
 
   if (!isLoggedIn) {
     const redirect: Record<string, boolean> = { redirected: true };
