@@ -1,6 +1,10 @@
 import toast from "react-hot-toast";
 import { Variables, message } from "./Constants";
 
+interface Item {
+  [key: string]: any;
+}
+
 // Session Storage
 export const newSessionStorage = (key: string, value: any) => {
   sessionStorage.setItem(key, JSON.stringify(value));
@@ -30,8 +34,8 @@ export const useLocalStorage = (key: string) => {
 };
 
 export const logout = (navigate: any, modalState:any ) => {
-  deleteLocalStorage("userInfo");
-  deleteLocalStorage("client-id")
+  deleteSessionStorage("userInfo");
+  deleteSessionStorage("client-id")
   deleteSessionStorage("userTokenID")
   toast.success(message("").LOGOUT_SUCCESS)
   modalState ? closeModal(modalState) : "";
@@ -59,8 +63,10 @@ export const usePageName = (name:string) => {
 export const ResponseInstances = (res:any, statusCode: number, setData:any) => {
   if (res instanceof Error) {
     return console.error(res.message);
-  } else if (res.res.status === statusCode) {
+  } else if (setData != "" && res?.res?.status === statusCode) {
     return setData(res?.res?.data)
+  } else {
+    return 
   }
 }
 
@@ -69,3 +75,18 @@ export const AssignRole = (role:string) => {
   if (role === "Admin") return role = Variables.ADMIN_ROLE;
   if (role === "Employee") return role = Variables.EMPLOYEE_ROLE;
 }
+
+export const FetchRole = (role:any) => {
+  if (role === "6872") return role = "hr";
+  if (role === "61646D696E") return role = "admin";
+  if (role === "656D706C6F796565") return role = "employee";
+}
+
+export const filterEmptyObj = (item: Item): Item => {
+  return Object.keys(item)
+    .filter((key) => item[key] !== "")
+    .reduce((obj, key) => {
+      obj[key] = item[key];
+      return obj;
+    }, {} as Item);
+};
