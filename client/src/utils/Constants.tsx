@@ -12,6 +12,7 @@ export const message = (name: string) => ({
 // ============ Form ==========
   REQUIRED_FIELD: `Please Enter ${name}`,
   INVALID_EMAIL: "Please Enter Valid Email Address",
+  INVALID_PHONE: "Please Enter Valid Phone Number",
   INVALID_PASSWORD: "Password Must Have At-Least 8 Characters With Minimum 1 Number And Alphabet",
   PASSWORD_NOT_MATCHING: "Passwords Not Matching",
   LOGIN_SUCCESS: "You Have Been LoggedIn",
