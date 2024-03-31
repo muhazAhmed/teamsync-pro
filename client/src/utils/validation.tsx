@@ -13,6 +13,11 @@ export const validEmail = (email: string) => {
     return false;
 };
 
+export const validPhone = (phone:string) => {
+    if (typeof phone !== "undefined" && !/^\d{10}$/.test(phone)) return true;
+    return false;
+}
+
 export const validPassword = (password: string) => {
     if (password != "undefined" && !/^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(password)) return true;
     return false;

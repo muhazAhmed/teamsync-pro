@@ -54,6 +54,7 @@ export const clearInputs = (setInputs: any) => {
 
 export const openModal = (setModal:any) => { return setModal(true) };
 export const closeModal = (setModal:any) => { return setModal(false) };
+export const goBack = () => { return history.back() };
 
 export const usePageName = (name:string) => {
   newSessionStorage("pageName", name);
@@ -77,9 +78,9 @@ export const AssignRole = (role:string) => {
 }
 
 export const FetchRole = (role:any) => {
-  if (role === "6872") return role = "hr";
-  if (role === "61646D696E") return role = "admin";
-  if (role === "656D706C6F796565") return role = "employee";
+  if (role === Variables.HR_ROLE) return role = "hr";
+  if (role === Variables.ADMIN_ROLE) return role = "admin";
+  if (role === Variables.EMPLOYEE_ROLE) return role = "employee";
 }
 
 export const filterEmptyObj = (item: Item): Item => {

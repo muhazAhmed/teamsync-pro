@@ -1,7 +1,7 @@
 import axios from "axios";
-import { API_URL, Variables, message } from "./Constants";
+import { API_URL, message } from "./Constants";
 import toast from "react-hot-toast";
-import { useSessionStorage } from "./commonFunctions";
+import { FetchRole, useSessionStorage } from "./commonFunctions";
 
 interface ApiResponse {
   response: any;
@@ -9,12 +9,6 @@ interface ApiResponse {
   message: string;
   data: any;
 }
-
-let role:string | "";
-const clientID = useSessionStorage("client-id")
-if (clientID == Variables.HR_ROLE) role = "hr";
-else if (clientID == Variables.ADMIN_ROLE) role = "admin";
-else if (clientID == Variables.EMPLOYEE_ROLE) role = "employee";
 
 
 const serverError = (error: any) => {
@@ -54,7 +48,7 @@ export const getMethodAPI = async (
 ): Promise<{ res: ApiResponse; successMessage: string } | Error> => {
   try {
     loading(true);
-    const res: ApiResponse = await axios.get(API_URL + `${role}${variable}`, inputs);
+    const res: ApiResponse = await axios.get(API_URL + variable, { params: inputs });
     if ( res.status === 200) {
       const successMessage = res?.data?.message || undefined;
       successMessage != undefined && toast.success(successMessage);
@@ -77,6 +71,7 @@ export const patchMethodAPI = async (
 
   try {
     loading(true);
+    const role = FetchRole(useSessionStorage("client-id"))
     const res: ApiResponse = await axios.patch(API_URL + `${role}${variable}`, inputs);
     if ( res.status === 200) {
       const successMessage = res?.data?.message || undefined;

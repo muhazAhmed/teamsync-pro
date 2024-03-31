@@ -1,8 +1,8 @@
 export const serverVariables = {
-    REGISTER_NEW_USER : "/register",
-    LOGIN_USER: "/login",
-    UPDATE_USER: "/update/",
-    FETCH_ONE_USER: "/fetch/",
+    REGISTER_NEW_USER : "/user/register",
+    LOGIN_USER: "/user/login",
+    UPDATE_USER: "/user/update/",
+    FETCH_ONE_USER: "/user/fetch/",
 
     NEW_CLIENT_REQUEST: "/client/new-request",
     FETCH_ONE_CLIENT_REQUEST: "/client/fetch-request/",
