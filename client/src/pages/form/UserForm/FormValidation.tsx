@@ -3,6 +3,7 @@ import {
   validEmail,
   validNameString,
   validPassword,
+  validPhone,
 } from "../../../utils/validation";
 import { message } from "../../../utils/Constants";
 
@@ -15,9 +16,17 @@ export const validations = (inputs: any, setValidated: any) => {
     setValidated(false);
     return toast.error(message("Email").REQUIRED_FIELD);
   }
+  if (!validNameString(inputs.phone)) {
+    setValidated(false);
+    return toast.error(message("Phone Number").REQUIRED_FIELD);
+  }
   if (validEmail(inputs.email)) {
     setValidated(false);
     return toast.error(message("").INVALID_EMAIL);
+  }
+  if (validPhone(inputs.phone)) {
+    setValidated(false);
+    return toast.error(message("").INVALID_PHONE);
   }
   if (!validNameString(inputs.role)) {
     setValidated(false);

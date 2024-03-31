@@ -8,7 +8,7 @@ import {
   DropdownTrigger,
   Input,
 } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
@@ -27,12 +27,14 @@ const UserForm = () => {
   const [isRegister, setIsRegister] = useState<boolean>(false);
   const [sectionID, setSectionID] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
+  const [newEmp, setNewEmp] = useState<boolean>(false);
   const navigate = useNavigate();
 
   type FormInputs = {
     firstName: string;
     lastName: string;
     email: string;
+    phone: string;
     password: string;
     confirmPassword: string;
     role: string;
@@ -44,6 +46,7 @@ const UserForm = () => {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     password: "",
     confirmPassword: "",
     role: "",
@@ -51,6 +54,12 @@ const UserForm = () => {
   });
 
   const toggleVisibility = () => setIsVisible(!isVisible);
+
+  useEffect(() => {
+    if (useSessionStorage("userInfo")) {
+      setNewEmp(true);
+    }
+  }, [newEmp])
 
   const handleSection = (type: string) => {
     if (type === "next") return setSectionID(sectionID + 1);
@@ -73,6 +82,8 @@ const UserForm = () => {
     navigate(`/dashboard/${result?._id}`);
   }
 
+  const NewEmployee = () => navigate(`/dashboard/${useSessionStorage("userInfo")._id}`);
+
   const handleRegister = async () => {
     validations(inputs, setValidated);
     if (inputs.role === "Employee") {
@@ -84,7 +95,7 @@ const UserForm = () => {
     }
     if (validated) {
       const res = await postMethodAPI(
-        `${inputs?.role}${serverVariables.REGISTER_NEW_USER}`,
+        `${serverVariables.REGISTER_NEW_USER}`,
         inputs,
         setLoading
       );
@@ -92,7 +103,7 @@ const UserForm = () => {
         console.error(res.message);
       } else if (res.res.status === 201) {
         const result = res?.res?.data?.result;
-        SuccessResponse(result, res);
+        return newEmp ? NewEmployee() : SuccessResponse(result, res);
       }
     } else {
       return;
@@ -103,14 +114,14 @@ const UserForm = () => {
     loginValidation(inputs, setValidated);
     if (validated) {
       const res = await postMethodAPI(
-        `${inputs?.role}${serverVariables.LOGIN_USER}`,
+        `${serverVariables.LOGIN_USER}`,
         inputs,
         setLoading
       );
       if (res instanceof Error) {
         console.error(res.message);
       } else if (res.res.status === 200) {
-        const result = res?.res?.data?.User;
+        const result = res?.res?.data?.user;
         SuccessResponse(result, res);
       }
     } else {
@@ -262,6 +273,12 @@ const UserForm = () => {
                   )}
                 </DropdownMenu>
               </Dropdown>
+              <Input
+                type="email"
+                name="phone"
+                label="Phone"
+                onChange={handleInputChange}
+              />
               <Input
                 endContent={
                   <button
