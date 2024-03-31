@@ -83,7 +83,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
               return (
                 <Dropdown key={key}>
                   <DropdownTrigger>
-                    <Button variant="shadow" fullWidth>
+                    <Button variant="shadow" className="btn-ghost" fullWidth>
                       {inputs[key] || "Marital Status"}
                     </Button>
                   </DropdownTrigger>
@@ -103,7 +103,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
               return (
                 <Dropdown key={key}>
                   <DropdownTrigger>
-                    <Button variant="shadow">
+                    <Button variant="shadow" className="btn-ghost">
                       {inputs[key] || "Physically Challenged"}
                     </Button>
                   </DropdownTrigger>
