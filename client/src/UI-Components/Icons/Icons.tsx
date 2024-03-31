@@ -44,5 +44,6 @@ export const icon = {
   url: "fa-solid fa-link",
   hotSpot: "fa-solid fa-tower-broadcast",
   luggage: "fa-solid fa-suitcase-rolling",
-  bookmark: "fa-solid fa-bookmark"
+  bookmark: "fa-solid fa-bookmark",
+  filter: "fa-solid fa-filter"
 };
