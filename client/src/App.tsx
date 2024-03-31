@@ -6,11 +6,13 @@ import Loader from "./UI-Components/Loader/Loader";
 import AuthGuard from "./utils/AuthGuard";
 
 const Sidebar = React.lazy(() => import("./components/sidebar/Sidebar"));
+const PageNotFound = React.lazy(() => import("./pages/PageNotFound/PageNotFound"));
 
 const Home = React.lazy(() => import("./pages/root/home/Home"));
 const UserForm = React.lazy(() => import("./pages/form/UserForm/UserForm"));
 const Dashboard = React.lazy(() => import("./pages/dashboard/Dashboard"));
 const Profile = React.lazy(() => import("./pages/profile/Profile"));
+const People = React.lazy(() => import("./pages/people/People"));
 const HelpDesk = React.lazy(() => import("./pages/help-desk/HelpDesk"));
 
 function App() {
@@ -32,6 +34,10 @@ function App() {
             <Route path="/dashboard/:id" element={<AuthGuard><Dashboard /></AuthGuard>} />
             <Route path="/help-desk/:id" element={<AuthGuard><HelpDesk /></AuthGuard>} />
             <Route path="/user-info/:id" element={<AuthGuard><Profile /></AuthGuard>} />
+            <Route path="/people" element={<AuthGuard><People /></AuthGuard>} />
+
+
+            <Route path="/*" element={<PageNotFound />} />
           </Routes>
         </Suspense>
         </div>
