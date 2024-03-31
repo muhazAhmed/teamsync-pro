@@ -55,8 +55,9 @@ export const EmployeeID = (type, role, lastData) => {
 
 export const CompanyMail = () => "@teamsync.com";
 
-export const GenCompanyEmail = (firstName) => {
-  return firstName + CompanyMail();
+export const GenCompanyEmail = (firstName, phone) => {
+    console.log(typeof phone)
+  return `${firstName.toLowerCase()}.${phone.split("").slice(7,10).join("")}${CompanyMail()}`;
 };
 
 export const GenJWT = (result) => {

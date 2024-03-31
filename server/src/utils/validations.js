@@ -1,4 +1,4 @@
-export const REQUIRE_FELID = (name) => {
+export const REQUIRE_FIELD = (name) => {
     if ( name === undefined ) return `${name} is Required`; 
 }
 
