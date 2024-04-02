@@ -1,7 +1,7 @@
-
 import { useEffect } from "react";
 import "./helpDesk.css";
 import { usePageName } from "../../utils/commonFunctions";
+import Maintenance from "../../components/UnderMaintenance/Maintenance";
 
 const HelpDesk = () => {
 
@@ -11,6 +11,7 @@ const HelpDesk = () => {
 
   return (
     <div className="help-desk">
+      <Maintenance/>
     </div>
   );
 };
