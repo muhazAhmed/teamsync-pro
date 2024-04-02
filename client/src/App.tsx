@@ -6,7 +6,7 @@ import Loader from "./UI-Components/Loader/Loader";
 import AuthGuard from "./utils/AuthGuard";
 
 const Sidebar = React.lazy(() => import("./components/sidebar/Sidebar"));
-const PageNotFound = React.lazy(() => import("./pages/PageNotFound/PageNotFound"));
+const PageNotFound = React.lazy(() => import("./components/PageNotFound/PageNotFound"));
 
 const Home = React.lazy(() => import("./pages/root/home/Home"));
 const UserForm = React.lazy(() => import("./pages/form/UserForm/UserForm"));
