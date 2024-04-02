@@ -71,8 +71,8 @@ export const patchMethodAPI = async (
 
   try {
     loading(true);
-    const role = FetchRole(useSessionStorage("client-id"))
-    const res: ApiResponse = await axios.patch(API_URL + `${role}${variable}`, inputs);
+    // const role = FetchRole(useSessionStorage("client-id"))
+    const res: ApiResponse = await axios.patch(API_URL + variable, inputs);
     if ( res.status === 200) {
       const successMessage = res?.data?.message || undefined;
       successMessage != undefined && toast.success(successMessage);
