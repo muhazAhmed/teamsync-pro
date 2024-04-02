@@ -3,6 +3,10 @@
     /* height: 100%; */
 }
 
+.app-container {
+    margin-top: 80px !important;
+}
+
 .dashboard-container {
     display: flex;
     flex-direction: column;

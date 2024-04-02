@@ -4,6 +4,10 @@
     position: relative;
 }
 
+.app-container {
+    margin-top: 0px !important;
+}
+
 .form-main::before {
     content: "";
     position: absolute;
