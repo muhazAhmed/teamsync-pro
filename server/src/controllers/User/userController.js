@@ -112,7 +112,7 @@ export const loginUser = async (req, res) => {
   }
 };
 
-export const fetchOneHr = async (req, res) => {
+export const fetchOneUser = async (req, res) => {
   try {
     const id = req.params.id;
     const role = req.query.role;
