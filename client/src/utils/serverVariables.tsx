@@ -4,6 +4,8 @@ export const serverVariables = {
     UPDATE_USER: "/user/update/",
     FETCH_ONE_USER: "/user/fetch/",
 
+    ADMIN_FETCH_USERS: "/users/fetch-all",
+
     NEW_CLIENT_REQUEST: "/client/new-request",
     FETCH_ONE_CLIENT_REQUEST: "/client/fetch-request/",
     FETCH_ALL_CLIENT_REQUESTS: "/client/fetch-all-request/",
