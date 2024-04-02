@@ -9,10 +9,14 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
-import { clearInputs, closeModal, filterEmptyObj } from "../../../utils/commonFunctions";
 import {
-  maritalStatus,
-  physicallyChallenged,
+  clearInputs,
+  closeModal,
+  filterEmptyObj,
+} from "../../../utils/commonFunctions";
+import {
+  dropdownKeys,
+  getOptionsByKey,
   profileLabels,
 } from "./ArrayOfInputs";
 import toast from "react-hot-toast";
@@ -25,12 +29,39 @@ interface ModalProps {
   title: string;
   ResponseData: { [key: string]: any } | undefined;
   setLoading: (value: boolean) => void;
-  userID:any;
-  fetchData:any
+  userID: any;
+  fetchData: any;
 }
 
 type Inputs = {
   [key: string]: any;
+};
+
+const DropdownInput: React.FC<{
+  label: string;
+  value: any;
+  options: { label: string; value: any }[];
+  onChange: (value: any) => void;
+}> = ({ label, value, options, onChange }) => {
+  return (
+    <Dropdown>
+      <DropdownTrigger>
+        <Button variant="shadow" className="btn-ghost" fullWidth>
+          {value || label}
+        </Button>
+      </DropdownTrigger>
+      <DropdownMenu aria-label="Dropdown Menu">
+        {options.map((option) => (
+          <DropdownItem
+            key={option.value}
+            onClick={() => onChange(option.value)}
+          >
+            {option.label}
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
+  );
 };
 
 const EditProfileModal: React.FC<ModalProps> = ({
@@ -39,7 +70,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
   ResponseData,
   setLoading,
   userID,
-  fetchData
+  fetchData,
 }) => {
   const [inputs, setInputs] = useState<Inputs>({});
   let CompanyEmail = ResponseData?.companyEmail;
@@ -60,14 +91,16 @@ const EditProfileModal: React.FC<ModalProps> = ({
     }
   }, [ResponseData]);
 
-  const handleUpdate = async() => {
+  const handleUpdate = async () => {
     if (inputs?.companyEmail != CompanyEmail)
       return toast.error(message("Company Email").UNAUTHORIZED_USER);
-    const res = await patchMethodAPI( `${serverVariables.UPDATE_USER}${userID}`,
-    filterEmptyObj(inputs),
-    setLoading)
+    const res = await patchMethodAPI(
+      `${serverVariables.UPDATE_USER}${userID}`,
+      filterEmptyObj(inputs),
+      setLoading
+    );
     if (res) {
-      closeModal(setEditModal)
+      closeModal(setEditModal);
       fetchData();
     }
   };
@@ -79,45 +112,15 @@ const EditProfileModal: React.FC<ModalProps> = ({
           {Object.keys(inputs).map((key) => {
             const labelIndex = Object.keys(inputs).indexOf(key);
             const label = labels[labelIndex];
-            if (key === "maritalStatus") {
+            if (dropdownKeys.includes(key)) {
               return (
-                <Dropdown key={key}>
-                  <DropdownTrigger>
-                    <Button variant="shadow" className="btn-ghost" fullWidth>
-                      {inputs[key] || "Marital Status"}
-                    </Button>
-                  </DropdownTrigger>
-                  <DropdownMenu>
-                    {maritalStatus.map((option) => (
-                      <DropdownItem
-                        key={option.value}
-                        onClick={() => handleChange(key, option.value)}
-                      >
-                        {option.label}
-                      </DropdownItem>
-                    ))}
-                  </DropdownMenu>
-                </Dropdown>
-              );
-            } else if (key === "physicallyChallenged") {
-              return (
-                <Dropdown key={key}>
-                  <DropdownTrigger>
-                    <Button variant="shadow" className="btn-ghost">
-                      {inputs[key] || "Physically Challenged"}
-                    </Button>
-                  </DropdownTrigger>
-                  <DropdownMenu>
-                    {physicallyChallenged.map((option) => (
-                      <DropdownItem
-                        key={option.value}
-                        onClick={() => handleChange(key, option.value)}
-                      >
-                        {option.label}
-                      </DropdownItem>
-                    ))}
-                  </DropdownMenu>
-                </Dropdown>
+                <DropdownInput
+                  key={key}
+                  label={label}
+                  value={inputs[key]}
+                  options={getOptionsByKey(key)}
+                  onChange={(value) => handleChange(key, value)}
+                />
               );
             } else {
               return (
