@@ -46,5 +46,6 @@ export const icon = {
   luggage: "fa-solid fa-suitcase-rolling",
   bookmark: "fa-solid fa-bookmark",
   filter: "fa-solid fa-filter",
-  work: "fa-solid fa-briefcase"
+  work: "fa-solid fa-briefcase",
+  search: "fa-solid fa-magnifying-glass",
 };
