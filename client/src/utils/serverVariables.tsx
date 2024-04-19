@@ -5,6 +5,7 @@ export const serverVariables = {
     FETCH_ONE_USER: "/user/fetch/",
 
     ADMIN_FETCH_USERS: "/users/fetch-all",
+    ADMIN_FETCH_USERS_BY_NAME: "/users/fetch-by-name?name=",
 
     NEW_CLIENT_REQUEST: "/client/new-request",
     FETCH_ONE_CLIENT_REQUEST: "/client/fetch-request/",
