@@ -19,13 +19,13 @@
     justify-content: center;
 }
 
-.people .autoComplete {
+.people .search .group {
     width: 50%;
-    
 }
-
-.people .autoComplete .rounded-medium {
-    border-radius: 50px;
+.people .search i {
+    position: absolute;
+    right: 20px;
+    top: 15px;
 }
 
 .people .body {
@@ -36,12 +36,7 @@
 }
 
 .people .body h1 {
-    text-align: end;
-    padding-right: 20px;
     cursor: pointer;
-    position: sticky;
-    top: 20px;
-    z-index: 1;
 }
 
 .people .cards {
@@ -80,4 +75,5 @@
 .people .cards .card .card-body .user-info h6{
     color: gray;
     font-size: 13px;
+    width: fit-content;
 }
