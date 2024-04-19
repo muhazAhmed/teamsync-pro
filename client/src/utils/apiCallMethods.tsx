@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL, message } from "./Constants";
 import toast from "react-hot-toast";
-import { FetchRole, useSessionStorage } from "./commonFunctions";
+// import { FetchRole, useSessionStorage } from "./commonFunctions";
 
 interface ApiResponse {
   response: any;
