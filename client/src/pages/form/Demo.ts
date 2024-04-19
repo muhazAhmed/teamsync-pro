@@ -1,0 +1,78 @@
+export const hrDemoData = {
+    _id: "550955a76c2c47dc4ba1d4fd",
+    firstName: "HR",
+    lastName: "demo",
+    email: "hrdemo@gmail.com",
+    phone: "0000000000",
+    password: "demo",
+    companyEmail: "hrdemo@teamsync.com",
+    employeeID: "DEMO202400",
+    isHR: true,
+    lastLogin: "2024-04-18 @ 02:10:50 PM && 127.0.0.1",
+    personalInformation: {
+        dob: "01-01-2000",
+        nationality: "Indian",
+        maritalStatus: "Single",
+        bloodGroup: "A+",
+        fatherName: "",
+        placeOfBirth: "",
+        religion: "",
+        physicallyChallenged: false,
+    },
+    employment: {
+        department: "Demo Department",
+        designation: "Demo Designation",
+        workLocation: "Demo Location",
+        startDate: "01-01-2001",
+        reportingManager: "Demo Manager",
+        ctc: 0,
+        status: true,
+    },
+    createdAt: {
+        $date: "2024-03-29T14:06:03.765Z",
+    },
+    updatedAt: {
+        $date: "2024-04-18T08:40:50.462Z",
+    },
+    __v: 0,
+};
+
+
+export const empDemoData = {
+    _id: "660530a76c2c47dc4ba1d4fd",
+    firstName: "emp",
+    lastName: "Demo",
+    email: "empdemo@gmail.com",
+    phone: "0000000000",
+    password: "demo",
+    companyEmail: "empdemo@teamsync.com",
+    employeeID: "DEMO202400",
+    isHR: false,
+    lastLogin: "2024-03-31 @ 06:30:10 PM && 127.0.0.1",
+    personalInformation: {
+        dob: "01-01-2000",
+        nationality: "Indian",
+        maritalStatus: "Single",
+        bloodGroup: "A+",
+        fatherName: "",
+        placeOfBirth: "",
+        religion: "",
+        physicallyChallenged: false,
+    },
+    employment: {
+        department: "Demo Department",
+        designation: "Demo Designation",
+        workLocation: "Demo Location",
+        startDate: "01-01-2001",
+        reportingManager: "Demo Manager",
+        ctc: 0,
+        status: true,
+    },
+    createdAt: {
+        $date: "2024-03-31T12:23:03.638Z",
+    },
+    updatedAt: {
+        $date: "2024-03-31T13:00:10.526Z",
+    },
+    __v: 0,
+};

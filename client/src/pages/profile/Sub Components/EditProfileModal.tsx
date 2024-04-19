@@ -13,6 +13,7 @@ import {
   clearInputs,
   closeModal,
   filterEmptyObj,
+  useSessionStorage,
 } from "../../../utils/commonFunctions";
 import {
   dropdownKeys,
@@ -75,6 +76,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
   const [inputs, setInputs] = useState<Inputs>({});
   let CompanyEmail = ResponseData?.companyEmail;
   const labels = profileLabels(title)?.split(",") || [];
+  const isDemoAccount = useSessionStorage("isDemoAccount");
 
   const handleChange = (name: string, value: any) => {
     setInputs((prev) => ({ ...prev, [name]: value }));
@@ -92,6 +94,10 @@ const EditProfileModal: React.FC<ModalProps> = ({
   }, [ResponseData]);
 
   const handleUpdate = async () => {
+    if (isDemoAccount) {
+      toast.success("Updated Successfully")
+      return closeModal(setEditModal)
+    };
     if (inputs?.companyEmail != CompanyEmail)
       return toast.error(message("Company Email").UNAUTHORIZED_USER);
     const res = await patchMethodAPI(

@@ -7,6 +7,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Input,
+  Tooltip,
 } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -20,6 +21,7 @@ import {
 import Loader from "../../../UI-Components/Loader/Loader";
 import { loginValidation, validations } from "./FormValidation";
 import { useNavigate } from "react-router-dom";
+import { icon } from "../../../UI-Components/Icons/Icons";
 
 const UserForm = () => {
   const [validated, setValidated] = useState<boolean>(false);
@@ -59,7 +61,7 @@ const UserForm = () => {
     if (useSessionStorage("userInfo")) {
       setNewEmp(true);
     }
-  }, [newEmp])
+  }, [newEmp]);
 
   const handleSection = (type: string) => {
     if (type === "next") return setSectionID(sectionID + 1);
@@ -74,15 +76,16 @@ const UserForm = () => {
     setInputs({ ...inputs, role: selectedRole });
   };
 
-  const SuccessResponse = (result:any, res:any) => {
+  const SuccessResponse = (result: any, res: any) => {
     newSessionStorage("userInfo", result);
-    newSessionStorage("client-id", AssignRole(inputs?.role))
+    newSessionStorage("client-id", AssignRole(inputs?.role));
     newSessionStorage("userTokenID", res?.res?.data?.token);
     setValidated(false);
     navigate(`/dashboard/${result?._id}`);
-  }
+  };
 
-  const NewEmployee = () => navigate(`/dashboard/${useSessionStorage("userInfo")._id}`);
+  const NewEmployee = () =>
+    navigate(`/dashboard/${useSessionStorage("userInfo")._id}`);
 
   const handleRegister = async () => {
     validations(inputs, setValidated);
@@ -146,6 +149,10 @@ const UserForm = () => {
 
   return (
     <div className="form-main">
+      <Tooltip content="Back to Home" placement="left" color="primary">
+        <i className={icon.house} id="home-icon" onClick={() => navigate("/home")}></i>
+      </Tooltip>
+
       {loading && <Loader />}
       <div className="form-body">
         <div className="form-leftSide">

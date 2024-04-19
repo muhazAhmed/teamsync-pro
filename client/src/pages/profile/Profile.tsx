@@ -36,10 +36,16 @@ const Profile = () => {
   const personalInformation = ResponseData?.personalInformation || [];
   const employment = ResponseData?.employment || [];
   const isHr = useSessionStorage("client-id") == Variables.HR_ROLE;
+  const isDemoAccount = useSessionStorage("isDemoAccount");
 
   useEffect(() => {
     usePageName("User Profile");
-    fetchData();
+    if (!isDemoAccount) {
+      fetchData();
+    } else {
+      return setResponseData(useSessionStorage("userInfo"))
+    }
+    
   }, []);
 
   const fetchData = async () => {

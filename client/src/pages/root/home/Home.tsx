@@ -14,14 +14,16 @@ import logo from "../../../assets/images/TS-logo1.png";
 import mainImg from "../../../assets/images/homeImg.jpg";
 import featuresImg from "../../../assets/images/features.jpg";
 import Footer from "../../../components/footer/Footer";
-import { logout, useSessionStorage } from "../../../utils/commonFunctions";
+import { logout, openModal, useSessionStorage } from "../../../utils/commonFunctions";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { icon } from "../../../UI-Components/Icons/Icons";
 import { message } from "../../../utils/Constants";
+import PopupModal from "./PopupModal";
 
 const Home = () => {
+  const [modal, setModal] = useState<boolean>(false);
   const user = useSessionStorage("userInfo");
   const navigate = useNavigate();
 
@@ -49,6 +51,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      {modal && <PopupModal setModal={setModal} navigate={navigate}/>}
       <Navbar>
         <NavbarBrand>
           <img src={logo} />
@@ -148,7 +151,7 @@ const Home = () => {
                 color="secondary"
                 variant="shadow"
                 style={{ color: "#fff !important" }}
-                onClick={() => toast.error(message("").UNAVAILABLE)}
+                onClick={() => openModal(setModal)}
               >
                 Request Demo
               </Button>
