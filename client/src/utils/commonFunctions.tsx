@@ -37,6 +37,9 @@ export const logout = (navigate: any, modalState:any ) => {
   deleteSessionStorage("userInfo");
   deleteSessionStorage("client-id")
   deleteSessionStorage("userTokenID")
+  deleteSessionStorage("isDemoAccount")
+  deleteSessionStorage("pageName")
+  deleteSessionStorage("auth")
   toast.success(message("").LOGOUT_SUCCESS)
   modalState ? closeModal(modalState) : "";
   return navigate("/user/form");
