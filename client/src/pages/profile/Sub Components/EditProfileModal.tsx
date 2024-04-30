@@ -15,14 +15,10 @@ import {
   filterEmptyObj,
   useSessionStorage,
 } from "../../../utils/commonFunctions";
-import {
-  dropdownKeys,
-  getOptionsByKey,
-  profileLabels,
-} from "./ArrayOfInputs";
+import { dropdownKeys, getOptionsByKey, profileLabels } from "./ArrayOfInputs";
 import toast from "react-hot-toast";
 import { message } from "../../../utils/Constants";
-import { patchMethodAPI } from "../../../utils/apiCallMethods";
+import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 
 interface ModalProps {
@@ -32,6 +28,7 @@ interface ModalProps {
   setLoading: (value: boolean) => void;
   userID: any;
   fetchData: any;
+  updateTitle: string;
 }
 
 type Inputs = {
@@ -72,10 +69,10 @@ const EditProfileModal: React.FC<ModalProps> = ({
   setLoading,
   userID,
   fetchData,
+  updateTitle,
 }) => {
   const [inputs, setInputs] = useState<Inputs>({});
   let CompanyEmail = ResponseData?.companyEmail;
-  const labels = profileLabels(title)?.split(",") || [];
   const isDemoAccount = useSessionStorage("isDemoAccount");
 
   const handleChange = (name: string, value: any) => {
@@ -84,25 +81,29 @@ const EditProfileModal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     if (ResponseData) {
-      const keys = Object.keys(ResponseData);
-      const initialInputs: Inputs = {};
-      keys.forEach((key: any) => {
-        initialInputs[key] = ResponseData[key] || "";
-      });
+      const initialInputs: Inputs = { ...ResponseData };
       setInputs(initialInputs);
     }
   }, [ResponseData]);
 
   const handleUpdate = async () => {
     if (isDemoAccount) {
-      toast.success("Updated Successfully")
-      return closeModal(setEditModal)
-    };
-    if (inputs?.companyEmail != CompanyEmail)
+      toast.success("Updated Successfully");
+      return closeModal(setEditModal);
+    }
+    if (inputs?.companyEmail !== CompanyEmail)
       return toast.error(message("Company Email").UNAUTHORIZED_USER);
-    const res = await patchMethodAPI(
-      `${serverVariables.UPDATE_USER}${userID}`,
-      filterEmptyObj(inputs),
+    let data;
+    if (title === "Personal Information") {
+      data = { personalInformation: filterEmptyObj(inputs) };
+    } else if (title === "Employment") {
+      data = { employment: filterEmptyObj(inputs) };
+    } else {
+      data = filterEmptyObj(inputs);
+    }
+    const res = await postMethodAPI(
+      `${serverVariables.UPDATE_REQUEST_USER}${userID}`,
+      data,
       setLoading
     );
     if (res) {
@@ -116,8 +117,8 @@ const EditProfileModal: React.FC<ModalProps> = ({
       <Modal setModal={setEditModal} title={title}>
         <div className="modal-body">
           {Object.keys(inputs).map((key) => {
-            const labelIndex = Object.keys(inputs).indexOf(key);
-            const label = labels[labelIndex];
+            const label = (profileLabels(title) as Record<string, string>)[key];
+            if (!label) return null;
             if (dropdownKeys.includes(key)) {
               return (
                 <DropdownInput
