@@ -1,4 +1,5 @@
 import hrModel from "../../models/HR/hrModel.js";
+import updateRequestModal from "../../models/HR/updateRequest.js";
 import employeeModel from "../../models/Employee/employeeModel.js"
 import bcrypt from "bcrypt";
 import { EmployeeID, GenCompanyEmail, GenJWT, LastLoginWithIP } from "../../utils/helper.js";
@@ -137,23 +138,76 @@ export const fetchOneUser = async (req, res) => {
   }
 };
 
-export const updateHr = async (req, res) => {
+export const updateRequest = async (req, res) => {
   try {
-    const id = req.params.id;
-    let data = req.body;
+    const data = req.body;
+    data.userId = req.params.id;
+    const existingRequests = await updateRequestModal.findOne({ userId: req.params.id });
 
-    const updatedData = await hrModel.findByIdAndUpdate(
-      { _id: id },
-      { $set: data },
-      { new: true }
-    );
+    if (existingRequests === null) {
+      const updateData = await updateRequestModal.create(data)
+      return res.status(201).json({ updateData, message: RESPONSE_MESSAGE("").USER_UPDATE })
+    } else {
+      if (Object.keys(req.body).includes("personalInformation")) {
+        existingRequests.personalInformation = Object.assign({},
+          existingRequests.personalInformation, req.body.personalInformation);
+        const updatedRequest = await updateRequestModal.findOneAndUpdate(
+          { userId: req.params.id },
+          { $set: existingRequests },
+          { new: true }
+        );
+        return res.status(200).json({ updatedRequest, message: RESPONSE_MESSAGE("").USER_UPDATE });
+      } else {
+        const updatedRequest = await updateRequestModal.findOneAndUpdate(
+          { userId: req.params.id },
+          { $set: data },
+          { new: true }
+        );
+        return res.status(200).json({ updatedRequest, message: RESPONSE_MESSAGE("").USER_UPDATE });
+      }
+
+    }
+
+  } catch (error) {
+    return res.status(500).json(error.message);
+  }
+}
+
+export const updateUser = async (req, res) => {
+  try {
+    let data = req.body;
+    const { name } = req.params;
+    const id = req.params.id;
+    let updatedData;
+
+    if (name.name === "personalInformation") {
+      updatedData = await hrModel.findByIdAndUpdate(
+        { _id: id },
+        { $set: { "personalInformation": data } },
+        { new: true }
+      )
+    }
+    else if (name.name === "employment") {
+      updatedData = await hrModel.findByIdAndUpdate(
+        { _id: id },
+        { $set: { "employment": data } },
+        { new: true }
+      )
+    } else {
+      updatedData = await hrModel.findByIdAndUpdate(
+        { _id: id },
+        { $set: data },
+        { new: true }
+      )
+    }
+
     return res.status(200).json({ updatedData, message: RESPONSE_MESSAGE("HR").USER_UPDATE });
   } catch (error) {
     return res.status(500).json(error.message);
   }
 };
 
-export const deleteHr = async (req, res) => {
+export const deleteUser = async (req, res) => {
   try {
   } catch (error) {
     return res.status(500).json(error.message);
