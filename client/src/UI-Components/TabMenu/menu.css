@@ -1,0 +1,62 @@
+.tab-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    min-width: 30vw;
+    position: relative;
+}
+
+.tab-menu .fa-circle-xmark {
+    position: absolute;
+    z-index: 3;
+    background-color: red;
+    border-radius: 25px;
+    font-size: 1.3rem;
+    top: -30px;
+    right: -10px;
+}
+
+.tab-menu .tab-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top: -23px;
+    border-radius: 5px;
+}
+
+.tab-menu .tab-item button {
+    border-radius: 0px;
+    box-shadow: none;
+    width: 100%;
+}
+
+.tab-menu .tab-item button:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: none !important;
+}
+
+.tab-menu .tab-item button:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: none !important;
+}
+
+.tab-menu .menu-body {
+    background-color: #fff;
+    width: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    min-height: 30vh;
+    padding: 10px;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.tab-menu .menu-body .group[data-has-value=true] .group-data-\[has-value\=true\]\:text-foreground {
+    color: black;
+}
