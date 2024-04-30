@@ -25,6 +25,9 @@ export const message = (name: string) => ({
   REGISTER_SUCCESS: `${name} Registration Successful`,
   REQUEST_SUBMITTED: "Your Request has been Sent",
   USER_ERROR: `Only ${name} can perform this Action`,
+
+  // =========== Tab Menu =============
+  EMPTY_OPTIONS: "Please Add At-least 2 Menu Options"
 });
 
 export const Variables = {
