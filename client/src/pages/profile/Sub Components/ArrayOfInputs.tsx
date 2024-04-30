@@ -14,13 +14,37 @@ export const physicallyChallenged = [
   { label: "No", value: "No" },
 ];
 
-export const profileLabels = (pageName: string) => {
+type ProfileLabels = Record<string, string>;
+
+export const profileLabels = (pageName: string): ProfileLabels | undefined => {
   if (pageName === "Profile")
-    return "Company Email,First Name,Last Name,Location,Phone";
+    return {
+      companyEmail: "Company Email",
+      firstName: "First Name",
+      lastName: "Last Name",
+      location: "Location",
+      phone: "Phone",
+    };
   else if (pageName === "Personal Information")
-    return "Date Of Birth,Nationality,Marital Status,Blood Group,Father Name,Place Of Birth,Religion,Physically Challenged";
+    return {
+      dob: "Date Of Birth",
+      maritalStatus: "Marital Status",
+      bloodGroup: "Blood Group",
+      fatherName: "Father Name",
+      placeOfBirth: "Place Of Birth",
+      religion: "Religion",
+      physicallyChallenged: "Physically Challenged",
+      nationality: "Nationality",
+    };
   else if (pageName === "Employment")
-    return "Department,Designation,Work Location,Start Date,Reporting Manager,CTC";
+    return {
+      department: "Department",
+      designation: "Designation",
+      workLocation: "Work Location",
+      startDate: "Start Date",
+      reportingManager: "Reporting Manager",
+      ctc: "CTC",
+    };
 };
 
 export const dropdownKeys = ["maritalStatus", "physicallyChallenged"];
