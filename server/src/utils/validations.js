@@ -13,5 +13,5 @@ export const EMAIL_EXISTS = () => {
 export const RESPONSE_MESSAGE = (name) => ({
     USER_REGISTER: `${name} Registration Success`,
     USER_LOGIN: `${name} Login Success`,
-    USER_UPDATE: name === "HR" ? `User Details Updated Successfully` : "Update Request has Been Submitted to HR",
+    USER_UPDATE: "Update Request has Been Submitted to HR",
 })
