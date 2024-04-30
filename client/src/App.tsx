@@ -15,6 +15,9 @@ const Profile = React.lazy(() => import("./pages/profile/Profile"));
 const People = React.lazy(() => import("./pages/people/People"));
 const HelpDesk = React.lazy(() => import("./pages/help-desk/HelpDesk"));
 
+// ============================ HR Routes ===================
+const UpdateRequest = React.lazy(() => import("./pages/HR/UpdateRequest/UpdateRequest"));
+
 function App() {
   const flag = location.href.includes("home") || location.href.includes("user/form");
 
@@ -35,6 +38,7 @@ function App() {
             <Route path="/help-desk/:id" element={<AuthGuard><HelpDesk /></AuthGuard>} />
             <Route path="/user-info/:id" element={<AuthGuard><Profile /></AuthGuard>} />
             <Route path="/people" element={<AuthGuard><People /></AuthGuard>} />
+            <Route path="/hr/update-request" element={<AuthGuard><UpdateRequest /></AuthGuard>} />
 
 
             <Route path="/*" element={<PageNotFound />} />
