@@ -31,6 +31,7 @@ const Profile = () => {
   const [editModal, setEditModal] = useState<boolean>(false);
   const [modalTitle, setModalTitle] = useState<string>();
   const [dataForModal, setDataForModal] = useState<{ [key: string]: any } | undefined>();
+  const [updateTitle, setUpdateTitle] = useState<string>("");
   const userID = useParams();
   const [ResponseData, setResponseData] = useState<ResponseData | null>(null);
   const personalInformation = ResponseData?.personalInformation || [];
@@ -61,6 +62,7 @@ const Profile = () => {
     if (name === "Employment" && !isHr)
       return toast.error(message("HR").USER_ERROR);
     if (name === "Profile") {
+      setUpdateTitle("profile")
       const newObj = {
         companyEmail: ResponseData?.companyEmail || "",
         firstName:ResponseData?.firstName || "",
@@ -70,8 +72,10 @@ const Profile = () => {
       }
       setDataForModal(newObj);
     } else if (name === "Personal Information") {
+      setUpdateTitle("personalInformation")
       setDataForModal(personalInformation)
     } else if (name === "Employment") {
+      setUpdateTitle("employment")
       setDataForModal(employment)
     }
     setModalTitle(name);
@@ -169,6 +173,7 @@ const Profile = () => {
           setLoading={setLoading}
           userID={userID.id}
           fetchData={fetchData}
+          updateTitle={updateTitle}
         />
       )}
     </>
