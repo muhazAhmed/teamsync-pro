@@ -184,7 +184,7 @@ const People = () => {
                 Filter <i className={icon.filter}></i>
               </Button>
             </DropdownTrigger>
-            <DropdownMenu onAction={(key) => handleFilterChange(key)}>
+            <DropdownMenu onAction={(key) => handleFilterChange(key)} aria-label="Action event">
               <DropdownItem key="all">All</DropdownItem>
               <DropdownItem key="hr">HR</DropdownItem>
               <DropdownItem key="employee">Employee</DropdownItem>
