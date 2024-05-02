@@ -4,14 +4,15 @@ import { message } from "../../utils/Constants";
 
 interface InputProps {
   type?: string;
-  placeholder: string;
+  placeholder?: string;
   value: any;
   name: any;
   label?: string;
   setInputs: (value: any) => void;
+  variant?: "primary" | "underline" | "ghost";
 }
 
-const commonStyle = {
+const commonStyle: React.CSSProperties = {
   border: "none",
   outline: "none",
   width: "100%",
@@ -19,12 +20,38 @@ const commonStyle = {
   fontSize: "14px",
 };
 
+const inputDivStyle: React.CSSProperties = {
+  display: "flex",
+  alignItems: "flex-start",
+  flexDirection: "column",
+  justifyContent: "center",
+  height: "55px",
+  padding: "10px",
+};
+
+const primaryStyle: React.CSSProperties = {
+  backgroundColor: "#3F3F46",
+  borderRadius: "10px",
+};
+const ghostStyle: React.CSSProperties = {
+  color: "black",
+  border: "2px solid #00C3E3",
+  backgroundColor: "transparent",
+  borderRadius: "10px",
+};
+const underlineStyle: React.CSSProperties = {
+  backgroundColor: "transparent",
+  color: "black",
+  borderBottom: "2px solid #D4D4D8",
+};
+
 const CustomInput: React.FC<InputProps> = ({
   type = "text",
-  placeholder,
   value,
   name,
   label = name,
+  placeholder = label,
+  variant = "primary",
   setInputs,
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -46,14 +73,10 @@ const CustomInput: React.FC<InputProps> = ({
     <div
       className="custom-input"
       style={{
-        display: "flex",
-        alignItems: "flex-start",
-        flexDirection: "column",
-        justifyContent: "center",
-        backgroundColor: "#3F3F46",
-        borderRadius: "10px",
-        height: "55px",
-        padding: "10px",
+        ...inputDivStyle,
+        ...(variant === "primary" && primaryStyle),
+        ...(variant === "ghost" && ghostStyle),
+        ...(variant === "underline" && underlineStyle),
       }}
     >
       <label
