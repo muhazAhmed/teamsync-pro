@@ -28,7 +28,6 @@ interface ModalProps {
   setLoading: (value: boolean) => void;
   userID: any;
   fetchData: any;
-  updateTitle: string;
 }
 
 type Inputs = {
@@ -68,8 +67,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
   ResponseData,
   setLoading,
   userID,
-  fetchData,
-  updateTitle,
+  fetchData
 }) => {
   const [inputs, setInputs] = useState<Inputs>({});
   let CompanyEmail = ResponseData?.companyEmail;
