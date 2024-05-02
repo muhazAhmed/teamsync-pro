@@ -7,6 +7,7 @@ import {
   ResponseInstances,
   useSessionStorage,
 } from "../../../utils/commonFunctions";
+import CustomInput from "../../../UI-Components/Inputs/Input";
 
 interface ModalProps {
   openEditModal: boolean;
@@ -74,6 +75,14 @@ const EditModal: React.FC<ModalProps> = ({
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const profileConfigs = [
+    { type: "text", name: "firstName", value: inputs.firstName || "", label: "First Name", },
+    { type: "text", name: "lastName", value: inputs.lastName || "", label: "Last Name", },
+    { type: "text", name: "location", value: inputs.location || "", label: "Location", },
+    { type: "email", name: "companyEmail", value: inputs.companyEmail || "", label: "Company Email", },
+    { type: "number", name: "phone", value: inputs.phone || "", label: "Phone" },
+  ];
+
   return (
     <>
       {openEditModal && (
@@ -82,99 +91,17 @@ const EditModal: React.FC<ModalProps> = ({
           menuOptions={["Profile", "Personal Info", "Employment"]}
         >
           <div style={commonStyle}>
-            <Input
-              name="companyEmail"
-              value={inputs.companyEmail || ""}
-              label="Company Email"
-              onChange={handleChange}
-              variant="underlined"
-            />
-            <Input
-              name="firstName"
-              value={inputs.firstName || ""}
-              label="First Name"
-              onChange={handleChange}
-              variant="underlined"
-            />
-            <Input
-              name="lastName"
-              value={inputs.lastName || ""}
-              label="Last Name"
-              onChange={handleChange}
-              variant="underlined"
-            />
-            <Input
-              name="location"
-              value={inputs.location || ""}
-              label="Location"
-              onChange={handleChange}
-              variant="underlined"
-            />
-            <Input
-              name="phone"
-              value={inputs.phone || ""}
-              label="Phone"
-              onChange={handleChange}
-              variant="underlined"
-            />
-          </div>
-          <div style={commonStyle}>
-          <Input
-              name="Date Of Birth"
-              value={inputs.personalInformation?.dob || ""}
-              label="Date Of Birth"
-              onChange={handleChange}
-              variant="underlined"
-            />
-          <Input
-              name="nationality"
-              value={inputs.personalInformation?.nationality || ""}
-              label="Nationality"
-              onChange={handleChange}
-              variant="underlined"
-            />
-          <Input
-              name="maritalStatus"
-              value={inputs.personalInformation?.maritalStatus || ""}
-              label="Marital Status"
-              onChange={handleChange}
-              variant="underlined"
-            />
-          <Input
-              name="bloodGroup"
-              value={inputs.personalInformation?.bloodGroup || ""}
-              label="Blood Group"
-              onChange={handleChange}
-              variant="underlined"
-            />
-          <Input
-              name="companyEmail"
-              value={inputs.personalInformation?.dob || ""}
-              label="Company Email"
-              onChange={handleChange}
-              variant="underlined"
-            />
-          <Input
-              name="companyEmail"
-              value={inputs.personalInformation?.dob || ""}
-              label="Company Email"
-              onChange={handleChange}
-              variant="underlined"
-            />
-          <Input
-              name="companyEmail"
-              value={inputs.personalInformation?.dob || ""}
-              label="Company Email"
-              onChange={handleChange}
-              variant="underlined"
-            />
-          <Input
-              name="companyEmail"
-              value={inputs.personalInformation?.dob || ""}
-              label="Company Email"
-              onChange={handleChange}
-              variant="underlined"
-            />
+            {profileConfigs.map((inputConfig: any) => (
+              <CustomInput
+                key={inputConfig.name}
+                type={inputConfig.type}
+                name={inputConfig.name}
+                value={inputs[inputConfig.name] || ""}
+                label={inputConfig.label}
+                setInputs={setInputs}
+                variant="ghost"
+              />
+            ))}
           </div>
           <div style={commonStyle}>For Employment Menu</div>
         </TabMenu>
