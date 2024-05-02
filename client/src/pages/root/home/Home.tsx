@@ -16,10 +16,8 @@ import featuresImg from "../../../assets/images/features.jpg";
 import Footer from "../../../components/footer/Footer";
 import { logout, openModal, useSessionStorage } from "../../../utils/commonFunctions";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { icon } from "../../../UI-Components/Icons/Icons";
-import { message } from "../../../utils/Constants";
 import PopupModal from "./PopupModal";
 
 const Home = () => {
