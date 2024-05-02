@@ -1,5 +1,5 @@
 export const validNameString = (name: string) => {
-    if (name.length < 1) return false;
+    if (name.length < 1 && name !== typeof String) return false;
     return true;
 };
 
@@ -22,3 +22,8 @@ export const validPassword = (password: string) => {
     if (password != "undefined" && !/^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(password)) return true;
     return false;
 };
+
+export const validLength = (item: any, length: number) => {
+    if (item.length < length) return false;
+    return true;
+}
