@@ -4,7 +4,7 @@
     align-items: center;
     padding: 10px;
     border-radius: 8px;
-    min-width: 30vw;
+    min-width: 40vw;
     position: relative;
 }
 
@@ -51,12 +51,25 @@
     width: 100%;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    min-height: 30vh;
+    min-height: 35vh;
     padding: 10px;
     max-height: 50vh;
     overflow-y: auto;
+    padding-top: 30px;
 }
 
 .tab-menu .menu-body .group[data-has-value=true] .group-data-\[has-value\=true\]\:text-foreground {
     color: black;
+}
+
+.tab-menu .menu-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    min-height: 10vh;
+}
+
+.tab-menu .menu-footer button {
+    min-width: 7vw;
 }

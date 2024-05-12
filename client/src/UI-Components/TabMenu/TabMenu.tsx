@@ -15,21 +15,21 @@ interface MenuItem {
 interface MenuProps {
   setTabMenu: (value: boolean) => void;
   menuOptions: string[];
+  menuItems: any[]
   isParent?: boolean;
   closeIcon?: boolean;
-  children: React.ReactNode;
 }
 
 const TabMenu: React.FC<MenuProps> = ({
   setTabMenu,
   menuOptions,
+  menuItems,
   isParent = true,
-  closeIcon = false,
-  children,
+  closeIcon = false
 }) => {
   const [selectedMenu, setSelectedMenu] = useState(0);
 
-  const menuItems: MenuItem[] = useMemo(() => {
+  const menuButtons: MenuItem[] = useMemo(() => {
     return menuOptions.map((item, index) => ({
       id: index,
       label: item,
@@ -60,7 +60,7 @@ const TabMenu: React.FC<MenuProps> = ({
           </Tooltip>
         )}
         <div className="tab-item">
-          {menuItems.map((menuItem) => (
+          {menuButtons.map((menuItem) => (
             <Button
               key={menuItem.id}
               variant="shadow"
@@ -71,8 +71,8 @@ const TabMenu: React.FC<MenuProps> = ({
             </Button>
           ))}
         </div>
-        <div className="menu-body">
-          {children && React.Children.toArray(children)[selectedMenu]}
+         <div className="menu-body">
+         {menuItems[selectedMenu]}
         </div>
       </div>
     </div>
