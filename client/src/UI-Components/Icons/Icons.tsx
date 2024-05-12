@@ -48,4 +48,7 @@ export const icon = {
   filter: "fa-solid fa-filter",
   work: "fa-solid fa-briefcase",
   search: "fa-solid fa-magnifying-glass",
+  threeBars: "fa-solid fa-bars",
+  twoBars: "fa-solid fa-grip-lines",
+  bar: "fa-solid fa-minus"
 };
