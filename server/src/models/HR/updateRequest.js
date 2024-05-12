@@ -7,6 +7,10 @@ const updateReqSchema = new mongoose.Schema(
       type: ObjectId,
       required: true,
     },
+    priority: {
+      type: String,
+      default: "medium",
+    },
     firstName: { type: String },
     lastName: { type: String },
     email: { type: String },
@@ -17,6 +21,7 @@ const updateReqSchema = new mongoose.Schema(
     employeeID: { type: String },
     isHR: { type: Boolean, default: false },
     lastLogin: { type: String },
+    department: { type: String },
     personalInformation: {
       dob: { type: String, default: "" },
       nationality: { type: String, default: "" },
