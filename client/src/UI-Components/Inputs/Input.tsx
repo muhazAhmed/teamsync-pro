@@ -81,10 +81,10 @@ const CustomInput: React.FC<InputProps> = ({
     >
       <label
         style={{
-          visibility: isInputEmpty && !isFocused ? "hidden" : "visible",
+          visibility: isInputEmpty && !isFocused && !value ? "hidden" : "visible",
           fontSize: "12px",
         }}
-        className={isInputEmpty && isFocused ? "slideUp" : ""}
+        className={isInputEmpty && isFocused && !value ? "slideUp" : ""}
       >
         {label}
       </label>
