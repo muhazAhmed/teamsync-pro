@@ -50,5 +50,6 @@ export const icon = {
   search: "fa-solid fa-magnifying-glass",
   threeBars: "fa-solid fa-bars",
   twoBars: "fa-solid fa-grip-lines",
-  bar: "fa-solid fa-minus"
+  bar: "fa-solid fa-minus",
+  eye: "fa-solid fa-eye"
 };
