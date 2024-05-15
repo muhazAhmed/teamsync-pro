@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import { ResponseInstances, usePageName } from "../../../utils/commonFunctions";
+import {
+  ResponseInstances,
+  openModal,
+  usePageName,
+  useSessionStorage,
+} from "../../../utils/commonFunctions";
 import { icon } from "../../../UI-Components/Icons/Icons";
 import {
   Button,
@@ -13,6 +18,12 @@ import {
 import { getMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import Loader from "../../../UI-Components/Loader/Loader";
+import toast from "react-hot-toast";
+import { message } from "../../../utils/Constants";
+import Pagination from "../../../UI-Components/Pagination/Pagination";
+import usePagination from "../../../utils/custom-hooks/usePagination";
+import { UpdateRequestDemo } from "../../form/Demo";
+import DeleteModal from "../SubComponents/DeleteModal";
 
 type ResponseCountData = {
   high: number;
@@ -28,11 +39,21 @@ const UpdateRequest = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [countData, setCountData] = useState<ResponseCountData>();
   const [listData, setListData] = useState<ResponseListData[]>([]);
+  const isDemoAccount = useSessionStorage("isDemoAccount");
   const [priorityFilter, setPriorityFilter] = useState<string>("all");
+  const [itemsPerPage] = useState<number>(1);
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
+  const [selectedUser, setSelectedUser] = useState<string>("");
+
   useEffect(() => {
     usePageName("HR / Update Requests");
-    fetchPriorityCounts();
-    fetchAllRequests();
+    if (!isDemoAccount) {
+      fetchPriorityCounts();
+      fetchAllRequests();
+    } else {
+      setListData(UpdateRequestDemo);
+      setCountData({ high: 1, medium: 1, normal: 0 });
+    }
   }, []);
 
   const fetchPriorityCounts = async () => {
@@ -48,6 +69,7 @@ const UpdateRequest = () => {
 
   const handleFilterChange = (priority: string) => {
     setPriorityFilter(priority);
+    toast.success(message("Priority").FILTER_APPLIED);
   };
 
   const fetchAllRequests = async () => {
@@ -66,9 +88,15 @@ const UpdateRequest = () => {
     return item.priority === priorityFilter;
   });
 
+  const { currentData, currentPage, totalPages, nextPage, prevPage, goToPage } =
+    usePagination({ data: filteredListData, itemsPerPage });
+
   return (
     <div className="update-req">
       {loading && <Loader />}
+      {deleteModal && (
+        <DeleteModal setModal={setDeleteModal} userData={selectedUser} />
+      )}
       <h1 style={{ paddingLeft: "15px" }}>Overviews</h1>
       <div className="header">
         <div className="overview">
@@ -85,7 +113,7 @@ const UpdateRequest = () => {
           <div className="items">
             <h3>Normal Priority</h3>
             <h2>{countData?.normal}</h2>
-            <i className={icon.bar} style={{ color: "green" }}></i>
+            <i className={icon.bar} style={{ color: "#00ba00" }}></i>
           </div>
         </div>
       </div>
@@ -130,12 +158,12 @@ const UpdateRequest = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredListData.length === 0 ? (
+                {currentData.length === 0 ? (
                   <tr style={{ width: "100%" }}>
                     <td colSpan={5}>No records found</td>
                   </tr>
                 ) : (
-                  filteredListData.map((item: any, index: number) => (
+                  currentData.map((item: any, index: number) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
                       <td>
@@ -143,16 +171,41 @@ const UpdateRequest = () => {
                       </td>
                       <td>{item?.department}</td>
                       <td>
-                        <i
-                          className={icon.threeBars}
-                          style={{ color: "red" }}
-                        ></i>
+                        <Tooltip
+                          content={item?.priority.toUpperCase()}
+                          color="primary"
+                          placement="left"
+                        >
+                          <i
+                            className={
+                              item?.priority === "high"
+                                ? icon.threeBars
+                                : item.priority === "medium"
+                                ? icon?.twoBars
+                                : icon?.bar
+                            }
+                            style={
+                              item?.priority === "high"
+                                ? { color: "red" }
+                                : item?.priority === "medium"
+                                ? { color: "yellow" }
+                                : { color: "#00ba00" }
+                            }
+                          ></i>
+                        </Tooltip>
                       </td>
                       <td>
                         <Tooltip
-                          content="Update"
+                          content="View"
                           color="primary"
                           placement="left"
+                        >
+                          <i className={icon.eye}></i>
+                        </Tooltip>
+                        <Tooltip
+                          content="Update"
+                          color="primary"
+                          placement="top"
                         >
                           <i className={icon.pencil}></i>
                         </Tooltip>
@@ -161,7 +214,12 @@ const UpdateRequest = () => {
                           color="danger"
                           placement="right"
                         >
-                          <i className={icon.trash}></i>
+                          <i
+                            className={icon.trash}
+                            onClick={() => {
+                              openModal(setDeleteModal), setSelectedUser(item);
+                            }}
+                          ></i>
                         </Tooltip>
                       </td>
                     </tr>
@@ -171,6 +229,15 @@ const UpdateRequest = () => {
             </table>
           </div>
         </div>
+        {listData.length > itemsPerPage && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            goToPage={goToPage}
+            prevPage={prevPage}
+            nextPage={nextPage}
+          />
+        )}
       </div>
     </div>
   );
