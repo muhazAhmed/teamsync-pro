@@ -14,6 +14,11 @@ export const physicallyChallenged = [
   { label: "No", value: "No" },
 ];
 
+export const status = [
+  { label: "Yes", value: true },
+  { label: "No", value: false },
+];
+
 type ProfileLabels = Record<string, string>;
 
 export const profileLabels = (pageName: string): ProfileLabels | undefined => {
