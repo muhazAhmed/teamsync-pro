@@ -37,7 +37,6 @@ export const hrDemoData = {
     __v: 0,
 };
 
-
 export const empDemoData = {
     _id: "660530a76c2c47dc4ba1d4fd",
     firstName: "emp",
@@ -76,3 +75,52 @@ export const empDemoData = {
     },
     __v: 0,
 };
+
+export const UpdateRequestDemo = [
+    {
+        personalInformation: {
+            dob: "",
+            nationality: "Indian",
+            maritalStatus: "",
+            bloodGroup: "",
+            fatherName: "",
+            placeOfBirth: "Mangalore",
+            religion: "",
+            physicallyChallenged: false,
+        },
+        _id: "66310562af4910641a6736c3",
+        userId: "6630f10531a88e7f27ac2670",
+        firstName: "HR",
+        phone: "7123548963",
+        location: "Bangalore",
+        isHR: false,
+        createdAt: "2024-04-30T14:51:14.458Z",
+        updatedAt: "2024-05-07T12:50:32.999Z",
+        __v: 0,
+        priority: "medium",
+        department: "developer",
+    },
+    {
+        personalInformation: {
+            dob: "",
+            nationality: "Indian",
+            maritalStatus: "",
+            bloodGroup: "",
+            fatherName: "",
+            placeOfBirth: "Mangalore",
+            religion: "",
+            physicallyChallenged: false,
+        },
+        _id: "66436f58cb5369572dac72bd",
+        userId: "6630f10531a88e7f27ac2852",
+        firstName: "Muhaz",
+        phone: "7123558963",
+        location: "Mangalore",
+        isHR: false,
+        createdAt: "2024-04-30T14:51:14.458Z",
+        updatedAt: "2024-05-07T12:50:32.999Z",
+        __v: 0,
+        priority: "high",
+        department: "developer",
+    },
+]
