@@ -3,7 +3,7 @@ import './App.css';
 import "./animation.css";
 import React, { Suspense } from 'react';
 import Loader from "./UI-Components/Loader/Loader";
-import AuthGuard from "./utils/AuthGuard";
+import AuthGuard, { HRAuthGuard } from "./utils/AuthGuard";
 
 const Sidebar = React.lazy(() => import("./components/sidebar/Sidebar"));
 const PageNotFound = React.lazy(() => import("./components/PageNotFound/PageNotFound"));
@@ -38,7 +38,7 @@ function App() {
             <Route path="/help-desk/:id" element={<AuthGuard><HelpDesk /></AuthGuard>} />
             <Route path="/user-info/:id" element={<AuthGuard><Profile /></AuthGuard>} />
             <Route path="/people" element={<AuthGuard><People /></AuthGuard>} />
-            <Route path="/hr/update-request" element={<AuthGuard><UpdateRequest /></AuthGuard>} />
+            <Route path="/hr/update-request" element={<HRAuthGuard><UpdateRequest /></HRAuthGuard>} />
 
 
             <Route path="/*" element={<PageNotFound />} />
