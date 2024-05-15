@@ -8,6 +8,7 @@ export const message = (name: string) => ({
   SERVER_ERROR: "Server Under Maintenance",
   UNAVAILABLE:"Temporarily Unavailable",
   TRY_AGAIN: "Please Try Again After Some Time",
+  FILTER_APPLIED: `${name} Filter Applied`,
 
 // ============ Form ==========
   REQUIRED_FIELD: `Please Enter ${name}`,
