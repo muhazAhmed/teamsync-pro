@@ -67,7 +67,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
   ResponseData,
   setLoading,
   userID,
-  fetchData
+  fetchData,
 }) => {
   const [inputs, setInputs] = useState<Inputs>({});
   let CompanyEmail = ResponseData?.companyEmail;
@@ -112,7 +112,18 @@ const EditProfileModal: React.FC<ModalProps> = ({
 
   return (
     <>
-      <Modal setModal={setEditModal} title={title}>
+      <Modal
+        setModal={setEditModal}
+        title={title}
+        footer={[
+          { label: "Save", color: "primary", action: handleUpdate },
+          {
+            label: "Clear",
+            color: "danger",
+            action: () => clearInputs(setInputs),
+          },
+        ]}
+      >
         <div className="modal-body">
           {Object.keys(inputs).map((key) => {
             const label = (profileLabels(title) as Record<string, string>)[key];
@@ -140,14 +151,6 @@ const EditProfileModal: React.FC<ModalProps> = ({
               );
             }
           })}
-        </div>
-        <div className="modal-footer">
-          <Button className="btn-primary text-white" onClick={handleUpdate}>
-            Save
-          </Button>
-          <Button className="btn-ghost" onClick={() => clearInputs(setInputs)}>
-            Clear
-          </Button>
         </div>
       </Modal>
     </>
