@@ -16,12 +16,14 @@ import { serverVariables } from "../../../utils/serverVariables";
 import {
   AssignRole,
   newSessionStorage,
+  openModal,
   useSessionStorage,
 } from "../../../utils/commonFunctions";
 import Loader from "../../../UI-Components/Loader/Loader";
 import { loginValidation, validations } from "./FormValidation";
 import { useNavigate } from "react-router-dom";
 import { icon } from "../../../UI-Components/Icons/Icons";
+import PopupModal from "../../root/home/PopupModal";
 
 const UserForm = () => {
   const [validated, setValidated] = useState<boolean>(false);
@@ -30,6 +32,7 @@ const UserForm = () => {
   const [sectionID, setSectionID] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(false);
   const [newEmp, setNewEmp] = useState<boolean>(false);
+  const [demoModal, setDemoModal] = useState<boolean>(false);
   const navigate = useNavigate();
 
   type FormInputs = {
@@ -149,11 +152,24 @@ const UserForm = () => {
 
   return (
     <div className="form-main">
-      <Tooltip content="Back to Home" placement="left" color="primary">
-        <i className={icon.house} id="home-icon" onClick={() => navigate("/home")}></i>
+      <Button
+        className="btn-ghost"
+        id="header-btn"
+        variant="shadow"
+        onClick={() => openModal(setDemoModal)}
+      >
+        Try Demo
+      </Button>
+      <Tooltip content="Back to Home" placement="bottom" color="primary">
+        <i
+          className={icon.house}
+          id="home-icon"
+          onClick={() => navigate("/home")}
+        ></i>
       </Tooltip>
 
       {loading && <Loader />}
+      {demoModal && <PopupModal navigate={navigate} setModal={setDemoModal} />}
       <div className="form-body">
         <div className="form-leftSide">
           <img src={formSVG} alt="svg" />
