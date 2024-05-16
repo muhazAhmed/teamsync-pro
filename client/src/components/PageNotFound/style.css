@@ -16,3 +16,21 @@
 .pageNF button {
     width: 10vw;
 }
+
+@media (max-width: 768px) {
+    .pageNF {
+        height: auto;
+        width: 100%;
+    }
+    .pageNF img {
+         width: 50vw;
+    }
+
+    .pageNF h1 {
+        text-align: center;
+    }
+
+    .pageNF button {
+        width: 50vw;
+    }
+}
