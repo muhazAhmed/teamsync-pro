@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import "./style.css";
 import {
+  CheckAccess,
   ResponseInstances,
   openModal,
   usePageName,
-  useSessionStorage,
 } from "../../../utils/commonFunctions";
 import { icon } from "../../../UI-Components/Icons/Icons";
 import {
@@ -39,7 +39,6 @@ const UpdateRequest = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [countData, setCountData] = useState<ResponseCountData>();
   const [listData, setListData] = useState<ResponseListData[]>([]);
-  const isDemoAccount = useSessionStorage("isDemoAccount");
   const [priorityFilter, setPriorityFilter] = useState<string>("all");
   const [itemsPerPage] = useState<number>(1);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
@@ -47,7 +46,7 @@ const UpdateRequest = () => {
 
   useEffect(() => {
     usePageName("HR / Update Requests");
-    if (!isDemoAccount) {
+    if (!CheckAccess.isDemoAccount) {
       fetchPriorityCounts();
       fetchAllRequests();
     } else {

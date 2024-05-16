@@ -94,3 +94,9 @@ export const filterEmptyObj = (item: Item): Item => {
       return obj;
     }, {} as Item);
 };
+
+export const CheckAccess = {
+  isHr : useSessionStorage("client-id") == Variables.HR_ROLE,
+  isLoggedIn : useSessionStorage("userInfo"),
+  isDemoAccount : useSessionStorage("isDemoAccount"),
+}
