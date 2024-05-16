@@ -22,6 +22,7 @@
 .people .search .group {
     width: 50%;
 }
+
 .people .search i {
     position: absolute;
     right: 20px;
@@ -81,8 +82,39 @@
     width: 100%;
 }
 
-.people .cards .card .card-body .user-info h6{
+.people .cards .card .card-body .user-info h6 {
     color: gray;
     font-size: 13px;
     width: fit-content;
+}
+
+@media (max-width: 768px) {
+    .people {
+        height: auto;
+        width: 100%;
+    }
+
+    .people .body-header {
+        flex-direction: column;
+        gap: 1rem;
+        position: static !important;
+        z-index: 0 !important;
+    }
+
+    .people .body .body-header button {
+        width: fit-content;
+    }
+
+    .people .cards {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .people .cards .card {
+        width: 100%;
+    }
+
+    .people .cards .card .card-body img {
+        width: 10vw;
+    }
 }
