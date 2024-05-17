@@ -5,7 +5,7 @@ import { goBack } from "../../utils/commonFunctions";
 
 const PageNotFound = () => {
   return (
-    <div className="pageNF">
+    <div className="pageNF fadeIn">
         <img src={SVG} />
         <Button className="btn-ghost" onClick={goBack}>Back</Button>
     </div>
