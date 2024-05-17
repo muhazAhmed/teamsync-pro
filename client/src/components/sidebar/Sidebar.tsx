@@ -48,7 +48,7 @@ const Sidebar = () => {
       icon: icon.checkSquare,
       label: "Attendance",
       subItems: [
-        { label: "Add New", path: "/attendance/new" },
+        { label: "Add New", path: `/attendance/new/${userInfo?._id}` },
         { label: "Manage", path: "/attendance/manage" },
       ],
     },

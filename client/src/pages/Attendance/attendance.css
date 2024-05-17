@@ -1,0 +1,88 @@
+.attendance {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.attendance img {
+    max-width: 25vw;
+    min-width: 15vw;
+}
+
+.attendance .modal {
+    background-color: #fff;
+    color: black;
+    padding: 20px 10px 20px 20px;
+    height: 35vh;
+    width: 30vw;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.attendance .modal h2 {
+    font-size: 15px;
+}
+
+.attendance .modal label {
+    font-size: 13px;
+}
+
+.attendance .modal .custom-input {
+    width: 100%;
+}
+
+.attendance .modal h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    height: 8vh;
+}
+
+.attendance .modal h1 span {
+    font-size: 0.6rem;
+    color: gray;
+}
+
+@media (max-width: 768px) {
+    .attendance {
+        width: 100%;
+    }
+
+    .attendance img {
+        position: absolute;
+        top: 340px;
+    }
+
+    .attendance .modal {
+        width: 95%;
+        flex-direction: column-reverse;
+        height: 50vh;
+    }
+
+    .attendance .modal .hours {
+        flex-direction: row !important;
+        height: 20% !important;
+    }
+
+    .attendance .modal .inputField .note {
+        height: 80%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+
+    .attendance .modal .inputField .widthFull {
+        width: 100%;
+    }
+
+    .attendance .modal .inputField {
+        width: 100% !important;
+    }
+}
