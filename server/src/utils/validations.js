@@ -17,5 +17,7 @@ export const RESPONSE_MESSAGE = (name) => ({
     USER_UPDATE: "Updated Successfully",
     NO_USER_FOUND: "No User Found",
     NO_REQUEST_FOUND: "0 Update Requests",
-    NEW_REQUESTS: `${name} Requests Found`
+    NEW_REQUESTS: `${name} Requests Found`,
+    ATTENDANCE_ADDED: "Attendance Added Successfully",
+    ATTENDANCE_NOT_FOUND: "No Attendance Found With This UserID",
 })
