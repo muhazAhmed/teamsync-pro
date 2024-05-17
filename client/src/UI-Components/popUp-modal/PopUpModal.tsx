@@ -6,7 +6,8 @@ import { Button, Tooltip } from "@nextui-org/react";
 
 interface ModalProps {
   setModal: (value: boolean) => void;
-  title: string;
+  title?: string;
+  header?: boolean;
   children: React.ReactNode;
   footer?: FooterItem[];
 }
@@ -17,19 +18,27 @@ interface FooterItem {
   action: () => void;
 }
 
-const Modal: React.FC<ModalProps> = ({ setModal, title, children, footer }) => {
+const Modal: React.FC<ModalProps> = ({
+  setModal,
+  title,
+  header = true,
+  children,
+  footer,
+}) => {
   return ReactDOM.createPortal(
     <div className="blur-bg">
       <div className="modal-container fadeIn">
-        <div className="modalHeader">
-          <h1>{title}</h1>
-          <Tooltip content="Close" placement="bottom" color="danger">
-            <i
-              className={icon.closeRounded}
-              onClick={() => closeModal(setModal)}
-            ></i>
-          </Tooltip>
-        </div>
+        {header && (
+          <div className="modalHeader">
+            <h1>{title}</h1>
+            <Tooltip content="Close" placement="bottom" color="danger">
+              <i
+                className={icon.closeRounded}
+                onClick={() => closeModal(setModal)}
+              ></i>
+            </Tooltip>
+          </div>
+        )}
 
         <div className="modal-content">{children}</div>
         {footer && (
