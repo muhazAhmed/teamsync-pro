@@ -6,8 +6,9 @@ interface InputProps {
   type?: string;
   placeholder?: string;
   value: any;
-  name: any;
+  name: string;
   label?: string;
+  required?: boolean;
   setInputs: (value: any) => void;
   variant?: "primary" | "underline" | "ghost";
 }
@@ -49,7 +50,8 @@ const CustomInput: React.FC<InputProps> = ({
   type = "text",
   value,
   name,
-  label = name,
+  label = "",
+  required = false,
   placeholder = label,
   variant = "primary",
   setInputs,
@@ -58,12 +60,12 @@ const CustomInput: React.FC<InputProps> = ({
   const [isInputEmpty, setIsInputEmpty] = useState<boolean>(true);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputs((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
+    setInputs(e.target.value);
     setIsInputEmpty(e.target.value === "");
   };
 
   const handleBlur = () => {
-    if (value === "") {
+    if (value === "" && required) {
       toast.error(message(label).REQUIRED_FIELD);
     }
     setIsFocused(false);
