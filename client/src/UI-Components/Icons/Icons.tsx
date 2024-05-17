@@ -51,5 +51,6 @@ export const icon = {
   threeBars: "fa-solid fa-bars",
   twoBars: "fa-solid fa-grip-lines",
   bar: "fa-solid fa-minus",
-  eye: "fa-solid fa-eye"
+  eye: "fa-solid fa-eye",
+  clock: "fa-solid fa-clock"
 };
