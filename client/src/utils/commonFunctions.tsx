@@ -100,3 +100,8 @@ export const CheckAccess = {
   isLoggedIn : useSessionStorage("userInfo"),
   isDemoAccount : useSessionStorage("isDemoAccount"),
 }
+
+export const fetchUserId = () => {
+  const id = useSessionStorage("userInfo");
+  return id?._id
+}
