@@ -16,4 +16,8 @@ export const serverVariables = {
     FETCH_ALL_CLIENT_REQUESTS: "/client/fetch-all-request/",
     UPDATE_CLIENT_REQUEST: "/client/update-request/",
     DELETE_CLIENT_REQUEST: "/client/delete-request/",
+
+    NEW_ATTENDANCE: "/user/add/attendance/",
+    FETCH_ONE_ATTENDANCE: "/user/fetch-one/attendance/",
+    UPDATE_ATTENDANCE: "/user/update/attendance/",
 }
