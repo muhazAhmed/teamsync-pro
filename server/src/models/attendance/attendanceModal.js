@@ -13,6 +13,7 @@ const attendanceSchema = new mongoose.Schema(
     secondSwipe: { type: String, default: "" },
     thirdSwipe: { type: String, default: "" },
     fourthSwipe: { type: String, default: "" },
+    status: { type: Boolean, default: false},
   },
   { timestamps: true }
 );
