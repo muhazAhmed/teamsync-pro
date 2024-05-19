@@ -22,7 +22,7 @@ export const fetchDateTime = (type) => {
     }
     else if (type === "time" || type === "hour" || type === "minute" || type === "second") {
         date = date.toLocaleString('en-US', options);
-        
+
         if (type === "time") {
             return date.split(",")[1].trim()
         }
@@ -57,17 +57,17 @@ export const CompanyMail = () => "@teamsync.com";
 
 export const GenCompanyEmail = (firstName, phone) => {
     console.log(typeof phone)
-  return `${firstName.toLowerCase()}.${phone.split("").slice(7,10).join("")}${CompanyMail()}`;
+    return `${firstName.toLowerCase()}.${phone.split("").slice(7, 10).join("")}${CompanyMail()}`;
 };
 
 export const GenJWT = (result) => {
-  const token = jwt.sign(
-    {
-      userId: result._id.toString(),
-    },
-    process.env.JWT_SECRET
-  );
-  return token;
+    const token = jwt.sign(
+        {
+            userId: result._id.toString(),
+        },
+        process.env.JWT_SECRET
+    );
+    return token;
 };
 
 export const LastLoginWithIP = (req) => {
@@ -80,3 +80,31 @@ export const LastLoginWithIP = (req) => {
     }
     return `${fetchDateTime("date")} @ ${fetchDateTime("time")} && ${ipAddress}`;
 }
+
+export const sumTimes = (time1, time2) => {
+    function timeToMinutes(time) {
+        const [hours, minutes] = time.split(":").map(Number);
+        return hours * 60 + minutes;
+    }
+
+    function minutesToTime(minutes) {
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        return `${String(hours).padStart(2, '0')}:${String(mins).padStart(2, '0')}`;
+    }
+
+    const totalMinutes = timeToMinutes(time1) + timeToMinutes(time2);
+    return minutesToTime(totalMinutes);
+};
+
+export const timeDifferenceInMinutes = (time1, time2) => {
+    function timeToMinutes(time) {
+        const [hours, minutes] = time.split(":").map(Number);
+        return hours * 60 + minutes;
+    }
+
+    const minutes1 = timeToMinutes(time1);
+    const minutes2 = timeToMinutes(time2);
+
+    return Math.abs(minutes2 - minutes1);
+};
