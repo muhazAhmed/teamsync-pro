@@ -14,7 +14,8 @@ const Dashboard = React.lazy(() => import("./pages/dashboard/Dashboard"));
 const Profile = React.lazy(() => import("./pages/profile/Profile"));
 const People = React.lazy(() => import("./pages/people/People"));
 const HelpDesk = React.lazy(() => import("./pages/help-desk/HelpDesk"));
-const Attendance = React.lazy(() => import("./pages/Attendance/Attendance"));
+const Attendance = React.lazy(() => import("./pages/Attendance/AddAttendance/Attendance"));
+const ManageAttendance = React.lazy(() => import("./pages/Attendance/ManageAttendance/ManageAttendance"));
 
 // ============================ HR Routes ===================
 const UpdateRequest = React.lazy(() => import("./pages/HR/UpdateRequest/UpdateRequest"));
@@ -40,6 +41,7 @@ function App() {
             <Route path="/user-info/:id" element={<AuthGuard><Profile /></AuthGuard>} />
             <Route path="/people" element={<AuthGuard><People /></AuthGuard>} />
             <Route path="/attendance/new/:id" element={<AuthGuard><Attendance /></AuthGuard>} />
+            <Route path="/attendance/manage/:id" element={<AuthGuard><ManageAttendance /></AuthGuard>} />
 
             {/* HR routes */}
             <Route path="/hr/update-request" element={<HRAuthGuard><UpdateRequest /></HRAuthGuard>} />
