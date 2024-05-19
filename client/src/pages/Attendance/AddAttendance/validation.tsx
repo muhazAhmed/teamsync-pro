@@ -1,6 +1,6 @@
 import moment from "moment";
 import toast from "react-hot-toast";
-import { message } from "../../utils/Constants";
+import { message } from "../../../utils/Constants";
 
 const time = moment().format("HH:mm");
 
@@ -15,11 +15,11 @@ export const validateLogin = (data: any) => {
 };
 
 export const determineButtonLabel = (data: any) => {
-    if (!data.firstSwipe) return "Sign In";
-    if (data.firstSwipe && !data.secondSwipe) return "Sign Out";
-    if (data.firstSwipe && data.secondSwipe && !data.thirdSwipe) return "Sign In";
-    if (data.firstSwipe && data.secondSwipe && data.thirdSwipe && !data.fourthSwipe) return "Sign Out";
-    return "Sign In";
+    if (!data.firstSwipe) return "Check In";
+    if (data.firstSwipe && !data.secondSwipe) return "Check Out";
+    if (data.firstSwipe && data.secondSwipe && !data.thirdSwipe) return "Check In";
+    if (data.firstSwipe && data.secondSwipe && data.thirdSwipe && !data.fourthSwipe) return "Check Out";
+    return "Check In";
 };
 
 export const MaxSwipeError = (data: any) => {

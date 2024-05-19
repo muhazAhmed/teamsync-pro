@@ -1,24 +1,24 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
-import CustomInput from "../../UI-Components/Inputs/Input";
+import CustomInput from "../../../UI-Components/Inputs/Input";
 import "./attendance.css";
 import { Button } from "@nextui-org/react";
-import SVG from "../../assets/svg/time.svg";
+import SVG from "../../../assets/svg/time.svg";
 import moment from "moment";
 import {
   getMethodAPI,
   patchMethodAPI,
   postMethodAPI,
-} from "../../utils/apiCallMethods";
-import { serverVariables } from "../../utils/serverVariables";
+} from "../../../utils/apiCallMethods";
+import { serverVariables } from "../../../utils/serverVariables";
 import {
   CheckAccess,
   ResponseInstances,
   fetchUserId,
   usePageName,
-} from "../../utils/commonFunctions";
-import Loader from "../../UI-Components/Loader/Loader";
+} from "../../../utils/commonFunctions";
+import Loader from "../../../UI-Components/Loader/Loader";
 import toast from "react-hot-toast";
-import { message } from "../../utils/Constants";
+import { message } from "../../../utils/Constants";
 import {
   MaxSwipeError,
   determineButtonLabel,
@@ -80,7 +80,8 @@ const Attendance = () => {
         setLoading
       );
       await fetchOneData();
-    }
+    } 
+    setNoteInput("")
   }, [data, noteInput, fetchOneData]);
 
   const buttonLabel = useMemo(() => determineButtonLabel(data), [data]);
@@ -119,6 +120,7 @@ const Attendance = () => {
                 value={noteInput}
                 setInputs={setNoteInput}
               />
+              <h3>Work Hours: 09:00</h3>
             </div>
           </div>
 

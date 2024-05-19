@@ -48,6 +48,11 @@
     color: gray;
 }
 
+.modal .widthFull h3 {
+    font-size: 12px;
+    color: gray;
+}
+
 @media (max-width: 768px) {
     .attendance {
         width: 100%;
@@ -55,7 +60,7 @@
 
     .attendance img {
         position: absolute;
-        top: 340px;
+        top: 320px;
     }
 
     .attendance .modal {
