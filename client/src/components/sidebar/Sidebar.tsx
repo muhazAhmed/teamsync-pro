@@ -2,7 +2,16 @@ import { useEffect, useState } from "react";
 import "./sidebar.css";
 import userLogo from "../../assets/images/man.png";
 import logo from "../../assets/images/TS-logo1.png";
-import { Avatar, Tooltip } from "@nextui-org/react";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Tooltip,
+} from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import { openModal, useSessionStorage } from "../../utils/commonFunctions";
 import { icon } from "../../UI-Components/Icons/Icons";
@@ -27,7 +36,7 @@ const Sidebar = () => {
       setIsHomePage(true);
     } else return setIsHomePage(false);
   });
-  
+
   useEffect(() => {
     const handlePageNameUpdate = () => {
       const updatedPageName = useSessionStorage("pageName");
@@ -49,7 +58,9 @@ const Sidebar = () => {
       label: "Attendance",
       subItems: [
         { label: "Add New", path: `/attendance/new/${userInfo?._id}` },
-        { label: "Manage", path: "/attendance/manage" },
+        { label: "Manage", path: `/attendance/manage/${userInfo?._id}` },
+        { label: "Apply For Leave", path: `/leave/apply/${userInfo?._id}` },
+        { label: "Leave Balances", path: `/leave/manage/${userInfo?._id}` },
       ],
     },
     {
@@ -58,14 +69,6 @@ const Sidebar = () => {
       subItems: [
         { label: "Tasks", path: "/tasks" },
         { label: "Review", path: "/tasks/manage" },
-      ],
-    },
-    {
-      icon: icon.calendar,
-      label: "Leave",
-      subItems: [
-        { label: "Apply For Leave", path: "/leave/apply" },
-        { label: "Leave Balances", path: "/leave/manage" },
       ],
     },
     {
@@ -95,33 +98,71 @@ const Sidebar = () => {
 
   return (
     <>
-    {logoutModal && <LogoutPopUpModal modalState={setLogoutModal}/>}
-    {!isHomePage && (
-      <div
-        className="toolbar"
-        style={
-          !isSidebarOpen ? { width: "85%", right: "0px" } : { width: "100%" }
-        }
-      >
-        <h1
+      {logoutModal && <LogoutPopUpModal modalState={setLogoutModal} />}
+      {!isHomePage && (
+        <div
+          className="toolbar"
           style={
-            !isSidebarOpen ? { marginLeft: "1rem" } : { marginLeft: "2.5rem" }
+            !isSidebarOpen
+              ? { width: "85%", right: "0px", paddingRight: "1rem" }
+              : { width: "100%", paddingRight: "1rem" }
           }
         >
-          / {pageName}
-        </h1>
-        <div
-          className="flex items-center gap-4"
-          style={{ marginRight: "1rem" }}
-        >
-          <Tooltip content="Notification" color="primary">
-            <i className={icon.notification}></i>
-          </Tooltip>
-          <Tooltip content="Logout" color="danger">
-            <i className={icon.logout}  onClick={() => openModal(setLogoutModal)}></i>
-          </Tooltip>
+          <h1
+            style={
+              !isSidebarOpen ? { marginLeft: "1rem" } : { marginLeft: "2.5rem" }
+            }
+          >
+            / {pageName}
+          </h1>
+          <div
+            className="flex items-center gap-8"
+            // style={{ marginRight: "1rem" }}
+          >
+            <Badge
+              content="99+"
+              shape="circle"
+              color="danger"
+              id="notification-count"
+            >
+              <Tooltip content="Notifications" color="primary">
+                <Button
+                  radius="full"
+                  isIconOnly
+                  aria-label="more than 99 notifications"
+                  variant="light"
+                >
+                  <i className={icon.notification}></i>
+                </Button>
+              </Tooltip>
+            </Badge>
+            <Dropdown placement="bottom-end">
+              <DropdownTrigger>
+                <Avatar src={userLogo} size="md" className="cursor-pointer" />
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Profile Actions" variant="flat">
+                <DropdownItem
+                  key="profile"
+                  className="h-14 gap-2"
+                  onClick={() => navigate(`/user-info/${userInfo?._id}`)}
+                >
+                  <h1 className="text-lg font-medium">
+                    <i className={icon.user}></i>&nbsp; Profile
+                  </h1>
+                </DropdownItem>
+                <DropdownItem
+                  key="logout"
+                  color="danger"
+                  onClick={() => openModal(setLogoutModal)}
+                >
+                  <h1 className="text-lg font-medium">
+                    <i className={icon.logout}></i>&nbsp; Logout
+                  </h1>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          </div>
         </div>
-      </div>
       )}
       {!isHomePage && (
         <div
@@ -143,24 +184,8 @@ const Sidebar = () => {
           />
           <div
             className="profile-container"
-            style={{ position: "absolute", top: "110px", width: "100%" }}
+            style={{ position: "absolute", top: "100px", width: "100%" }}
           >
-            <div
-              className="profile"
-              style={isSidebarOpen ? { display: "none" } : {}}
-            >
-              <Avatar
-                src={userLogo}
-                size="md"
-                className="cursor-pointer"
-                onClick={() => navigate(`/user-info/${userInfo?._id}`)}
-              />
-              <h1 className="text-primary text-lg font-bold">Hi Muhaz</h1>
-              <i
-                className="fa-solid fa-gear cursor-pointer"
-                onClick={() => navigate(`/user-info/${userInfo?._id}`)}
-              ></i>
-            </div>
             <div
               className="menu-items"
               style={isSidebarOpen ? { display: "none" } : {}}
@@ -175,8 +200,9 @@ const Sidebar = () => {
                       <div className="items">
                         <i className={item.icon}></i>
                         <button
-                          className={`dropdown-btn ${activeIndex === index ? "active" : ""
-                            }`}
+                          className={`dropdown-btn ${
+                            activeIndex === index ? "active" : ""
+                          }`}
                         >
                           {item.label}
                         </button>
@@ -214,6 +240,13 @@ const Sidebar = () => {
               ))}
             </div>
           </div>
+          <Button id="add-btn" className="btn-primary">
+            New Task
+            <i
+              className={icon.plus}
+              style={{ color: "#fff", fontWeight: "bold" }}
+            ></i>
+          </Button>
         </div>
       )}
     </>
