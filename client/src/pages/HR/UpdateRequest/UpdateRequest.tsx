@@ -149,7 +149,7 @@ const UpdateRequest = () => {
             <table>
               <thead>
                 <tr>
-                  <th>No.</th>
+                  <th>Employee ID</th>
                   <th>Name</th>
                   <th>Department</th>
                   <th>Priority</th>
@@ -164,7 +164,7 @@ const UpdateRequest = () => {
                 ) : (
                   currentData.map((item: any, index: number) => (
                     <tr key={index}>
-                      <td>{index + 1}</td>
+                      <td>{item?.employeeID}</td>
                       <td>
                         {item?.firstName} {item?.lastName}
                       </td>
