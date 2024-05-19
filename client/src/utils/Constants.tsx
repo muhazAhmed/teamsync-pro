@@ -26,7 +26,7 @@ export const message = (name: string) => ({
   REGISTER_SUCCESS: `${name} Registration Successful`,
   REQUEST_SUBMITTED: "Your Request has been Sent",
   USER_ERROR: `Only ${name} can perform this Action`,
-  SWIPE_ERROR: `You Have Used Your Daily Swipe Limit`,
+  SWIPE_ERROR: `Maximum Daily Swipes Reached`,
 
   // =========== Tab Menu =============
   EMPTY_OPTIONS: "Please Add At-least 2 Menu Options"
