@@ -32,7 +32,11 @@ const Attendance = () => {
 
   useEffect(() => {
     usePageName("Attendance");
-    fetchOneData();
+    if (!CheckAccess.isDemoAccount) {
+      fetchOneData();
+    } else {
+      setData("");
+    }
   }, []);
 
   const fetchOneData = useCallback(async () => {
