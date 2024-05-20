@@ -1,4 +1,5 @@
 import updateRequestModal from "../../models/HR/updateRequest.js"
+import { getUserModelByRole } from "../../utils/helper.js";
 import { RESPONSE_MESSAGE } from "../../utils/validations.js";
 
 export const updateRequest = async (req, res) => {
@@ -6,6 +7,11 @@ export const updateRequest = async (req, res) => {
         const data = req.body;
         data.userId = req.params.id;
         const existingRequests = await updateRequestModal.findOne({ userId: req.params.id });
+        const role = data.isHr ? "hr" : "employee"
+        const userModel = getUserModelByRole(role);
+        const fetchUser = await userModel.findOne({ _id: data.userId})
+        data.employeeID = fetchUser.employeeID;
+        data.firstName = req.body.firstName ? req.body.firstName : fetchUser.firstName
 
         if (existingRequests === null) {
             const updateData = await updateRequestModal.create(data)

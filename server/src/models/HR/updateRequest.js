@@ -7,6 +7,7 @@ const updateReqSchema = new mongoose.Schema(
       type: ObjectId,
       required: true,
     },
+    employeeID: {type: String},
     priority: {
       type: String,
       default: "medium",
