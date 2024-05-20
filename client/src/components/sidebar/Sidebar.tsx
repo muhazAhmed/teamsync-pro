@@ -240,7 +240,11 @@ const Sidebar = () => {
               ))}
             </div>
           </div>
-          <Button id="add-btn" className="btn-primary">
+          <Button
+            id="add-btn"
+            className="btn-primary"
+            style={isSidebarOpen ? { display: "none" } : {}}
+          >
             New Task
             <i
               className={icon.plus}
