@@ -87,6 +87,7 @@ export const UpdateRequestDemo = [
             placeOfBirth: "Mangalore",
             religion: "",
             physicallyChallenged: false,
+            employeeID: "DEMO202401"
         },
         _id: "66310562af4910641a6736c3",
         userId: "6630f10531a88e7f27ac2670",
