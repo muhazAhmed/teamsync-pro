@@ -1,3 +1,6 @@
+import hrModel from "../models/HR/hrModel.js";
+import employeeModel from "../models/Employee/employeeModel.js";
+
 import jwt from "jsonwebtoken";
 
 export const fetchDateTime = (type) => {
@@ -108,3 +111,16 @@ export const timeDifferenceInMinutes = (time1, time2) => {
 
     return Math.abs(minutes2 - minutes1);
 };
+
+export const getUserModelByRole = (role) => {
+    switch (role) {
+      case 'hr':
+        return hrModel;
+      case 'admin':
+        return adminModel;
+      case 'employee':
+        return employeeModel;
+      default:
+        return null;
+    }
+  };

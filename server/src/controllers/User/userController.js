@@ -1,7 +1,7 @@
 import hrModel from "../../models/HR/hrModel.js";
 import employeeModel from "../../models/Employee/employeeModel.js"
 import bcrypt from "bcrypt";
-import { EmployeeID, GenCompanyEmail, GenJWT, LastLoginWithIP } from "../../utils/helper.js";
+import { EmployeeID, GenCompanyEmail, GenJWT, LastLoginWithIP, getUserModelByRole } from "../../utils/helper.js";
 import { EMAIL_EXISTS, PASSWORD_INCORRECT, REQUIRE_FIELD, RESPONSE_MESSAGE } from "../../utils/validations.js";
 
 const createUser = async (req, res, userModel) => {
@@ -116,20 +116,7 @@ export const fetchOneUser = async (req, res) => {
   try {
     const id = req.params.id;
     const role = req.query.role;
-    let userModel;
-    switch (role) {
-      case 'hr':
-        userModel = hrModel;
-        break;
-      case 'admin':
-        userModel = adminModel;
-        break;
-      case 'employee':
-        userModel = employeeModel;
-        break;
-      default:
-        return res.status(400).json({ message: 'Invalid role specified' });
-    }
+    const userModel = getUserModelByRole(role);
     const data = await userModel.findById(id);
     return res.status(200).json(data);
   } catch (error) {
