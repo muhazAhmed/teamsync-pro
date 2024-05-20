@@ -40,7 +40,7 @@ const UpdateRequest = () => {
   const [countData, setCountData] = useState<ResponseCountData>();
   const [listData, setListData] = useState<ResponseListData[]>([]);
   const [priorityFilter, setPriorityFilter] = useState<string>("all");
-  const [itemsPerPage] = useState<number>(1);
+  const [itemsPerPage] = useState<number>(2);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [selectedUser, setSelectedUser] = useState<string>("");
 
