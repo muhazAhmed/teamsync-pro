@@ -52,5 +52,14 @@ export const icon = {
   twoBars: "fa-solid fa-grip-lines",
   bar: "fa-solid fa-minus",
   eye: "fa-solid fa-eye",
-  clock: "fa-solid fa-clock"
+  clock: "fa-solid fa-clock",
+  facebook: "fa-brands fa-facebook",
+  twitter: "fa-brands fa-x-twitter",
+  instagram: "fa-brands fa-instagram",
+  linkedin: "fa-brands fa-linkedin",
+  youtube: "fa-brands fa-youtube",
+  google: "fa-brands fa-google",
+  react: "fa-brands fa-react",
+  node: "fa-brands fa-node",
+  gitHub: "fa-brands fa-github",
 };
