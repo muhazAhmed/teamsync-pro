@@ -1,0 +1,162 @@
+.manage-attendance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.manage-attendance .stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
+}
+
+.manage-attendance .detailed-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.manage-attendance .stats .current-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border: 2px solid #343434;
+  border-radius: 15px;
+  padding: 15px;
+  width: 25vw;
+  height: 60vh;
+}
+
+.manage-attendance .stats .current-stat .time-sheet {
+  width: 100%;
+  color: var(--secondary);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.manage-attendance .stats .current-stat .time-sheet span {
+  font-size: 13px;
+  color: gray;
+  font-weight: 600;
+}
+
+.manage-attendance .stats .current-stat .punch-in {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  flex-direction: column;
+  gap: 0.3rem;
+  border: 2px solid #343434;
+  width: 95%;
+  border-radius: 15px;
+}
+
+.manage-attendance .stats .current-stat .punch-in h3 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.manage-attendance .stats .current-stat .punch-in p {
+  font-size: 13px;
+  font-weight: 600;
+  color: gray;
+}
+
+.manage-attendance .current-stat button {
+  width: 40%;
+  padding: 15px;
+}
+
+.manage-attendance .current-stat .stat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 2px solid #343434;
+}
+
+.manage-attendance .current-stat .stat-footer h3 {
+  font-size: 15px;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manage-attendance .current-stat .progress-bar {
+  min-height: 15vh;
+  display: flex;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+  font-size: 15px !important;
+}
+
+.manage-attendance .stats .overall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 1rem;
+  border: 2px solid #343434;
+  border-radius: 15px;
+  padding: 15px;
+  width: 25vw;
+  height: 60vh;
+}
+
+.manage-attendance .stats .overall h1 {
+  width: 100%;
+  color: var(--secondary);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.manage-attendance .stats .activity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 1rem;
+  border: 2px solid #343434;
+  border-radius: 15px;
+  padding: 15px;
+  width: 25vw;
+  height: 60vh;
+}
+
+.manage-attendance .stats .activity h1 {
+  width: 100%;
+  color: var(--secondary);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.manage-attendance .stats .overall .progress {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #343434;
+  width: 95%;
+  border-radius: 15px;
+  padding: 10px;
+  gap: 0.5rem;
+}
+
+.manage-attendance .stats .overall .progress-date {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #b9b9b9;
+}
