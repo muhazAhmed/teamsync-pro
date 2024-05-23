@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import { usePageName } from "../../../utils/commonFunctions";
+import { openModal, usePageName } from "../../../utils/commonFunctions";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import moment from "moment";
 import { Button, Progress } from "@nextui-org/react";
+import DailyRecordChart from "./SubComponents/BarChart";
+import AllAttendanceModal from "./SubComponents/AllAttendanceModal/AllAttendanceModal";
+import Loader from "../../../UI-Components/Loader/Loader";
 
 const ManageAttendance = () => {
   const [todayTotalHours, setTodayTotalHours] = useState(3.55);
+  const [attendanceModal, setAttendanceModal] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const percentage = (todayTotalHours / 9) * 100;
   useEffect(() => {
     usePageName("Attendance / Dashboard");
@@ -25,8 +30,29 @@ const ManageAttendance = () => {
     { label: "Overtime", hours: `5 hrs`, color: "success", value: 20 },
   ];
 
+  const attendanceList = [
+    {
+      date: "10-03-2024",
+      firstSwipe: "10:00 AM",
+      secondSwipe: "01:00 PM",
+      thirdSwipe: "02:00 PM",
+      fourthSwipe: "06:00 PM",
+      total: "7 hrs",
+    },
+    {
+      date: "10-03-2024",
+      firstSwipe: "10:00 AM",
+      secondSwipe: "01:00 PM",
+      thirdSwipe: "02:00 PM",
+      fourthSwipe: "06:00 PM",
+      total: "7 hrs",
+    },
+  ];
+
   return (
     <div className="manage-attendance">
+      {loading && <Loader />}
+      {attendanceModal && <AllAttendanceModal setModal={setAttendanceModal} loading={loading} />}
       <div className="stats">
         <div className="current-stat">
           <div className="time-sheet">
@@ -46,14 +72,6 @@ const ManageAttendance = () => {
           </div>
 
           <Button className="btn-primary">Check Out</Button>
-          <div className="stat-footer">
-            <h3>
-              Break <span>1.21 hrs</span>
-            </h3>
-            <h3>
-              Overtime <span>2 hrs</span>
-            </h3>
-          </div>
         </div>
         <div className="overall">
           <h1>Statistics</h1>
@@ -74,12 +92,55 @@ const ManageAttendance = () => {
           ))}
         </div>
         <div className="activity">
-          <h1>Today Activity</h1>
+          <h1>Daily Records</h1>
+          <DailyRecordChart />
         </div>
       </div>
       <div className="detailed-stat">
-        <div className="table"></div>
-        <div className="daily-graph"></div>
+        <div className="table">
+          <div className="table-wrapper">
+            <div className="header">
+              <h1>Attendance List</h1>
+              <Button
+                variant="shadow"
+                color="secondary"
+                onClick={() => openModal(setAttendanceModal)}
+              >
+                View More
+              </Button>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>S. No</th>
+                  <th>Date</th>
+                  <th>First Swipe</th>
+                  <th>Second Swipe</th>
+                  <th>Third Swipe</th>
+                  <th>Fourth Swipe</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {attendanceList.map((item: any, index: number) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{item?.date}</td>
+                    <td>{item?.firstSwipe}</td>
+                    <td>{item?.secondSwipe}</td>
+                    <td>{item?.thirdSwipe}</td>
+                    <td>{item?.fourthSwipe}</td>
+                    <td>{item?.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div className="daily-graph">
+          <h1>Today Activity</h1>
+        </div>
       </div>
     </div>
   );
