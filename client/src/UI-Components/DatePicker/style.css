@@ -1,0 +1,94 @@
+.date-range-picker {
+    display: flex;
+    gap: 10px;
+    background-color: var(--card);
+    border-radius: 15px;
+    padding: 10px;
+    flex-direction: row-reverse;
+    position: relative;
+    box-shadow: 5px 5px var(--primary);
+}
+
+.pre-defined {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pre-defined .btn-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.pre-defined .btn-select button {
+    width: 100%;
+    color: #fff;
+}
+
+.calendar-action-btn {
+    display: flex;
+    gap: 5px;
+}
+
+.Calendar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #fff;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day-name,
+.calendar-day {
+    text-align: center;
+    padding: 10px;
+}
+
+.calendar-day {
+    cursor: pointer;
+}
+
+.calendar-day.selected {
+    background-color: #0070f3;
+    color: white;
+    border-radius: 50%;
+}
+
+.Calendar-wrapper .selected-date {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.calendar-day.disabled {
+    cursor: not-allowed;
+    color: gray;
+}
+
+.group[data-filled-within=true] .group-data-\[filled-within\=true\]\:text-default-600 {
+    color: gray;
+}
