@@ -43,7 +43,7 @@
     margin-top: 1rem;
 }
 
-.table {
+.update-req .table {
     width: 100%;
     display: flex;
     align-items: center;
@@ -51,55 +51,55 @@
     margin-top: 1rem;
 }
 
-.table .table-wrapper {
+.update-req .table .table-wrapper {
     width: 90%;
     border: 2px solid var(--secondary);
     border-radius: 15px;
 }
 
-table {
+.update-req table {
     border-collapse: collapse;
     width: 100%;
 }
 
-td {
+.update-req td {
     text-align: left;
     padding: 8px;
 }
 
-tbody tr:hover {
+.update-req tbody tr:hover {
     background-color: var(--card);
 }
 
-tbody td {
+.update-req tbody td {
     min-width: 5vw;
 }
 
-tbody tr td:last-child {
+.update-req tbody tr td:last-child {
     display: flex;
     align-items: center;
     gap: 2rem;
     position: relative;
 }
 
-tbody tr td i:nth-child(2) {
+.update-req tbody tr td i:nth-child(2) {
     color: #00ba00;
 }
 
-tbody tr td i:last-child {
+.update-req tbody tr td i:last-child {
     color: red;
 }
 
-th {
+.update-req th {
     background-color: var(--secondary);
     text-align: left;
     padding: 8px;
 }
 
-th:first-child {
+.update-req th:first-child {
     border-top-left-radius: 13px;
 }
 
-th:last-child {
+.update-req th:last-child {
     border-top-right-radius: 13px;
 }
