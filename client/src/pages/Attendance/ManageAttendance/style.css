@@ -8,7 +8,7 @@
 
 .manage-attendance .stats {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   flex-wrap: wrap;
   padding-left: 15px;
@@ -18,10 +18,11 @@
 
 .manage-attendance .detailed-stat {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
+  margin-top: 1rem;
 }
 
 .manage-attendance .stats .current-stat {
@@ -34,7 +35,7 @@
   border-radius: 15px;
   padding: 15px;
   width: 25vw;
-  height: 60vh;
+  height: 55vh;
 }
 
 .manage-attendance .stats .current-stat .time-sheet {
@@ -112,7 +113,7 @@
   border-radius: 15px;
   padding: 15px;
   width: 25vw;
-  height: 60vh;
+  height: 55vh;
 }
 
 .manage-attendance .stats .overall h1 {
@@ -125,14 +126,14 @@
 .manage-attendance .stats .activity {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   /* justify-content: center; */
   gap: 1rem;
   border: 2px solid #343434;
   border-radius: 15px;
   padding: 15px;
   width: 25vw;
-  height: 60vh;
+  height: 55vh;
 }
 
 .manage-attendance .stats .activity h1 {
@@ -159,4 +160,97 @@
     justify-content: space-between;
     font-size: 13px;
     color: #b9b9b9;
+}
+
+.detailed-stat .daily-graph {
+  width: 36%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid #343434;
+  border-radius: 15px;
+  padding: 15px;
+  height: 30vh;
+}
+
+.detailed-stat .daily-graph h1 {
+  width: 100%;
+  color: var(--secondary);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.manage-attendance .table h1{
+  width: 100%;
+  color: var(--secondary);
+  font-size: 16px;
+  font-weight: bold;
+  /* padding: 5px; */
+}
+
+.manage-attendance .table {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.manage-attendance .table .table-wrapper {
+  width: 100%;
+  border: 2px solid var(--secondary);
+  border-radius: 15px;
+}
+
+.manage-attendance table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.manage-attendance td {
+  text-align: left;
+  padding: 8px;
+}
+
+.manage-attendance tbody tr:hover {
+  background-color: var(--card);
+}
+
+.manage-attendance tbody td {
+  min-width: 5vw;
+}
+
+.manage-attendance tbody tr td:last-child {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+}
+
+.manage-attendance tbody tr td i:nth-child(2) {
+  color: #00ba00;
+}
+
+.manage-attendance tbody tr td i:last-child {
+  color: red;
+}
+
+.manage-attendance th {
+  background-color: var(--secondary);
+  text-align: left;
+  padding: 8px;
+}
+
+.manage-attendance .table-wrapper .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  position: relative;
+}
+
+.manage-attendance .table-wrapper .header button {
+  width: 10vw;
+  height: 5vh;
 }
