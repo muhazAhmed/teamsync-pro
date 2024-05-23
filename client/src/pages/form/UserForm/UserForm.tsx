@@ -117,8 +117,9 @@ const UserForm = () => {
   };
 
   const handleLogin = async () => {
-    loginValidation(inputs, setValidated);
-    if (validated) {
+    const isValid = loginValidation(inputs);
+    setValidated(isValid);
+    if (isValid) {
       const res = await postMethodAPI(
         `${serverVariables.LOGIN_USER}`,
         inputs,

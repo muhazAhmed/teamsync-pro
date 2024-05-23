@@ -52,19 +52,18 @@ export const validations = (inputs: any, setValidated: any) => {
   return null;
 };
 
-export const loginValidation = (inputs: any, setValidated: any) => {
+export const loginValidation = (inputs: any) => {
   if (!validNameString(inputs.role)) {
-    setValidated(false);
-    return toast.error("Please Choose From Login As");
+    toast.error("Please Choose From Login As");
+    return false;
   }
   if (!validNameString(inputs.companyEmail)) {
-    setValidated(false);
-    return toast.error(message("Company Email").REQUIRED_FIELD);
+    toast.error(message("Company Email").REQUIRED_FIELD);
+    return false;
   }
   if (!validNameString(inputs.password)) {
-    setValidated(false);
-    return toast.error(message("Password").REQUIRED_FIELD);
+    toast.error(message("Password").REQUIRED_FIELD);
+    return false;
   }
-  setValidated(true);
-  return null;
+  return true;
 }
