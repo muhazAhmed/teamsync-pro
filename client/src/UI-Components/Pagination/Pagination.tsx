@@ -1,5 +1,5 @@
 import { Tooltip } from "@nextui-org/react";
-import { FC, useState } from "react";
+import { FC } from "react";
 import "./style.css";
 
 interface PaginationProp {
