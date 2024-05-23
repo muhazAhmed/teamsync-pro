@@ -1,5 +1,6 @@
 import toast from "react-hot-toast";
 import { Variables, message } from "./Constants";
+import moment, { Moment } from "moment";
 
 interface Item {
   [key: string]: any;
@@ -104,4 +105,16 @@ export const CheckAccess = {
 export const fetchUserId = () => {
   const id = useSessionStorage("userInfo");
   return id?._id
+}
+
+export const formatDate = (date:any) => {
+  return date ? date.format("DD-MM-YYYY") : null
+}
+
+export const disableSundays = (date: Moment) => {
+  return date.day() === 0;
+};
+
+export const disableFutureDays = (date: any) => {
+  return date.isAfter(moment(), "day");
 }
