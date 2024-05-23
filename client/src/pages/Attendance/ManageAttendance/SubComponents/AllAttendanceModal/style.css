@@ -1,0 +1,92 @@
+.all-attendance {
+    position: relative;
+}
+
+.all-attendance .rdrDefinedRangesWrapper,
+.rdrStaticRange,
+.rdrDateDisplayWrapper,
+.rdrMonthAndYearWrapper,
+.all-attendance .rdrMonth {
+    background-color: var(--card) !important;
+}
+
+.all-attendance .rdrDateDisplayItem input {
+    background-color: var(--secondary);
+    color: #fff;
+    border: none;
+}
+
+.all-attendance .rdrMonthAndYearWrapper select {
+    color: #fff;
+}
+
+.all-attendance .rdrMonthAndYearWrapper option {
+    background-color: var(--card);
+}
+
+.all-attendance .rdrMonth {
+    border-top: 1px solid gray;
+}
+
+.all-attendance .table h1 {
+    width: 100%;
+    color: var(--secondary);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.table .table-wrapper {
+    width: 100%;
+    border: 2px solid var(--secondary);
+    border-radius: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td {
+    text-align: left;
+    padding: 8px;
+    font-size: 12px;
+}
+
+tbody td {
+    min-width: 5vw;
+}
+
+tbody tr td:last-child {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+}
+
+tbody tr td i:nth-child(2) {
+    color: #00ba00;
+}
+
+tbody tr td i:last-child {
+    color: red;
+}
+
+th {
+    background-color: var(--secondary);
+    text-align: left;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.table-wrapper .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+}
+
+.table-wrapper .header button {
+    width: 10vw;
+    height: 5vh;
+}
