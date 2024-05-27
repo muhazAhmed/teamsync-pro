@@ -62,4 +62,6 @@ export const icon = {
   react: "fa-brands fa-react",
   node: "fa-brands fa-node",
   gitHub: "fa-brands fa-github",
+  alphabetP: "fa-solid fa-p",
+  alphabetA: "fa-solid fa-a",
 };
