@@ -14,6 +14,7 @@ const attendanceSchema = new mongoose.Schema(
     thirdSwipe: { type: String, default: "" },
     fourthSwipe: { type: String, default: "" },
     status: { type: Boolean, default: false},
+    halfDay: { type: Boolean, default: false},
   },
   { timestamps: true }
 );
