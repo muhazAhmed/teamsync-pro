@@ -3,7 +3,7 @@ const testingRoute = express.Router();
 import testingModel from "../models/services/testingModel.js";
 
 testingRoute.get("/", (req, res) => {
-  return res.status(200).json("API is Working...");
+  return res.status(200).json("API is Active...");
 });
 
 testingRoute.get("/database", async (req, res) => {
@@ -11,7 +11,7 @@ testingRoute.get("/database", async (req, res) => {
     const response = await testingModel.findOne();
     return res.status(200).json(response.message);
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 });
 
