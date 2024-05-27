@@ -38,7 +38,7 @@ export const updateRequest = async (req, res) => {
         }
 
     } catch (error) {
-        return res.status(500).json(error.message);
+        return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
     }
 }
 
@@ -51,7 +51,7 @@ export const fetchAllRequests = async (req, res) => {
         const totalCount = fetchData.length;
         return res.status(200).json({ fetchData, message: RESPONSE_MESSAGE(totalCount).NEW_REQUESTS });
     } catch (error) {
-        return res.status(500).json(error.message);
+        return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
     }
 }
 
@@ -69,6 +69,6 @@ export const fetchPriorityCounts = async (req, res) => {
 
         return res.status(200).json(data);
     } catch (error) {
-        return res.status(500).json(error.message);
+        return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
     }
 }
