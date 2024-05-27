@@ -22,7 +22,7 @@ export const newClientData = async (req, res) => {
     const response = await clientModal.create(data);
     return res.status(201).json(response);
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
 
@@ -33,7 +33,7 @@ export const getOneClientData = async (req, res) => {
     if (!fetchData) return res.status(400).json("Page Name Not Found");
     return res.status(200).json(fetchData);
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
 
@@ -42,20 +42,20 @@ export const getAllClientData = async (req, res) => {
     const fetchData = await clientModal.find();
     return res.status(200).json(fetchData);
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
 
 export const updateClientData = async (req, res) => {
   try {
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
 
 export const deleteClientData = async (req, res) => {
   try {
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
