@@ -8,6 +8,8 @@ import { Button, Progress } from "@nextui-org/react";
 import DailyRecordChart from "./SubComponents/BarChart";
 import AllAttendanceModal from "./SubComponents/AllAttendanceModal/AllAttendanceModal";
 import Loader from "../../../UI-Components/Loader/Loader";
+import LeaveStat from "./SubComponents/DonutChart";
+import CheckInButton from "../AddAttendance/Button";
 
 const ManageAttendance = () => {
   const [todayTotalHours, setTodayTotalHours] = useState(3.55);
@@ -52,7 +54,9 @@ const ManageAttendance = () => {
   return (
     <div className="manage-attendance">
       {loading && <Loader />}
-      {attendanceModal && <AllAttendanceModal setModal={setAttendanceModal} loading={loading} />}
+      {attendanceModal && (
+        <AllAttendanceModal setModal={setAttendanceModal} loading={loading} />
+      )}
       <div className="stats">
         <div className="current-stat">
           <div className="time-sheet">
@@ -71,7 +75,7 @@ const ManageAttendance = () => {
             />
           </div>
 
-          <Button className="btn-primary">Check Out</Button>
+          <CheckInButton setLoading={setLoading}/>
         </div>
         <div className="overall">
           <h1>Statistics</h1>
@@ -139,7 +143,8 @@ const ManageAttendance = () => {
           </div>
         </div>
         <div className="daily-graph">
-          <h1>Today Activity</h1>
+          <h1>Leave Management</h1>
+          <LeaveStat />
         </div>
       </div>
     </div>

@@ -7,8 +7,9 @@ import {
   formatDate,
 } from "../../../../../utils/commonFunctions";
 import Modal from "../../../../../UI-Components/popUp-modal/PopUpModal";
-import { Button } from "@nextui-org/react";
+import { Button, Tooltip } from "@nextui-org/react";
 import Loader from "../../../../../UI-Components/Loader/Loader";
+import { icon } from "../../../../../UI-Components/Icons/Icons";
 
 interface ModalProps {
   setModal: (value: boolean) => void;
@@ -31,6 +32,7 @@ const AllAttendanceModal: FC<ModalProps> = ({ setModal, loading }) => {
   const attendanceList = [
     {
       date: "10-03-2024",
+      status: true,
       firstSwipe: "10:00 AM",
       secondSwipe: "01:00 PM",
       thirdSwipe: "02:00 PM",
@@ -39,13 +41,14 @@ const AllAttendanceModal: FC<ModalProps> = ({ setModal, loading }) => {
       overtime: "0 hrs",
     },
     {
-        date: "10-03-2024",
-        firstSwipe: "10:00 AM",
-        secondSwipe: "01:00 PM",
-        thirdSwipe: "02:00 PM",
-        fourthSwipe: "06:00 PM",
-        total: "7 hrs",
-        overtime: "1 hrs",
+      date: "10-03-2024",
+      status: false,
+      firstSwipe: "10:00 AM",
+      secondSwipe: "01:00 PM",
+      thirdSwipe: "02:00 PM",
+      fourthSwipe: "06:00 PM",
+      total: "7 hrs",
+      overtime: "1 hrs",
     },
   ];
 
@@ -92,9 +95,10 @@ const AllAttendanceModal: FC<ModalProps> = ({ setModal, loading }) => {
 
             <table>
               <thead>
-                <tr style={{color: "#fff"}}>
+                <tr style={{ color: "#fff" }}>
                   <th>S. No</th>
                   <th>Date</th>
+                  <th>Status</th>
                   <th>First Swipe</th>
                   <th>Second Swipe</th>
                   <th>Third Swipe</th>
@@ -108,6 +112,7 @@ const AllAttendanceModal: FC<ModalProps> = ({ setModal, loading }) => {
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{item?.date}</td>
+                    <td>{item?.status ? <PresentIcon /> : <AbsentIcon />}</td>
                     <td>{item?.firstSwipe}</td>
                     <td>{item?.secondSwipe}</td>
                     <td>{item?.thirdSwipe}</td>
@@ -126,3 +131,37 @@ const AllAttendanceModal: FC<ModalProps> = ({ setModal, loading }) => {
 };
 
 export default AllAttendanceModal;
+
+const PresentIcon = () => {
+  return (
+    <Tooltip content="Present" placement="left" color="primary">
+      <i
+        className={icon?.alphabetP}
+        style={{
+          color: "#fff",
+          backgroundColor: "#18C964",
+          padding: "6px 7px",
+          borderRadius: "50%",
+          fontWeight: "bold",
+        }}
+      ></i>
+    </Tooltip>
+  );
+};
+
+const AbsentIcon = () => {
+  return (
+    <Tooltip content="Absent" placement="left" color="primary">
+      <i
+        className={icon?.alphabetA}
+        style={{
+          color: "#fff",
+          backgroundColor: "#F31260",
+          padding: "6px 7px",
+          borderRadius: "50%",
+          fontWeight: "bold",
+        }}
+      ></i>
+    </Tooltip>
+  );
+};
