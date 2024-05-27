@@ -29,7 +29,8 @@ const createUser = async (req, res, userModel) => {
 
     return res.status(201).json({ result, token, message: RESPONSE_MESSAGE(role).USER_REGISTER });
   } catch (error) {
-    return res.status(500).json(error.message);
+    console.log(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
 
@@ -54,7 +55,8 @@ export const newUser = async (req, res) => {
 
     await createUser(req, res, userModel);
   } catch (error) {
-    return res.status(500).json(error.message);
+    console.log(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
 
@@ -108,7 +110,8 @@ export const loginUser = async (req, res) => {
 
     return res.status(200).json({ user, token, message: RESPONSE_MESSAGE(role).USER_LOGIN })
   } catch (error) {
-    return res.status(500).json(error.message);
+    console.log(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
 
@@ -120,7 +123,7 @@ export const fetchOneUser = async (req, res) => {
     const data = await userModel.findById(id);
     return res.status(200).json(data);
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
 
@@ -150,7 +153,7 @@ export const updateUser = async (req, res) => {
       );
       return res.status(200).json({ updatedRequest, message: RESPONSE_MESSAGE("").USER_UPDATE });
     }
-    
+
     if (Object.keys(req.body).includes("profile")) {
       const updatedRequest = await hrModel.findOneAndUpdate(
         { userId: req.params.id },
@@ -162,13 +165,27 @@ export const updateUser = async (req, res) => {
 
 
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
 
 export const deleteUser = async (req, res) => {
   try {
   } catch (error) {
-    return res.status(500).json(error.message);
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
+
+export const fetchAllUsersId = async (req, res) => {
+  try {
+    const fetchHrs = await hrModel.find({}, '_id')
+    const fetchEmployees = await employeeModel.find({}, '_id')
+    const hrIds = fetchHrs.map(item => item._id);
+    const employeeIds = fetchEmployees.map(item => item._id);
+    const AllIds = [...hrIds, ...employeeIds];
+    return res.status(200).json(AllIds);
+  } catch (error) {
+    console.log(error)
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
+  }
+}
