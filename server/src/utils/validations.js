@@ -20,5 +20,6 @@ export const RESPONSE_MESSAGE = (name) => ({
     NEW_REQUESTS: `${name} Requests Found`,
     ATTENDANCE_ADDED: "Attendance Added Successfully",
     ATTENDANCE_NOT_FOUND: "No Attendance Found With This UserID",
-    MAX_SWIPE: "Maximum daily swipes reached"
+    MAX_SWIPE: "Maximum daily swipes reached",
+    SERVER_ERROR: "Server Error",
 })
