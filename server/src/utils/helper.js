@@ -2,6 +2,7 @@ import hrModel from "../models/HR/hrModel.js";
 import employeeModel from "../models/Employee/employeeModel.js";
 
 import jwt from "jsonwebtoken";
+import moment from "moment";
 
 export const fetchDateTime = (type) => {
     type = type.toLowerCase().trim();
@@ -114,13 +115,44 @@ export const timeDifferenceInMinutes = (time1, time2) => {
 
 export const getUserModelByRole = (role) => {
     switch (role) {
-      case 'hr':
-        return hrModel;
-      case 'admin':
-        return adminModel;
-      case 'employee':
-        return employeeModel;
-      default:
-        return null;
+        case 'hr':
+            return hrModel;
+        case 'admin':
+            return adminModel;
+        case 'employee':
+            return employeeModel;
+        default:
+            return null;
     }
-  };
+};
+
+export const stringToMinutes = (time) => {
+    const [hours, minutes] = time.split(":").map(Number);
+    return hours * 60 + minutes;
+}
+
+export const convertMinutesToHourMinuteFormat = (totalMinutes) => {
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    return `${hours}.${minutes < 10 ? '0' + minutes : minutes}`;
+};
+
+export const calculateTotalHours = (dataArray) => {
+    let totalDuration = 0;
+    dataArray.forEach(dayData => {
+        const daySwipes = [dayData.firstSwipe, dayData.secondSwipe, dayData.thirdSwipe, dayData.fourthSwipe];
+        if (daySwipes[0].length > 0) {
+            const dayPairs = [
+                [daySwipes[0], daySwipes[1] || moment().format("HH:mm")],
+                [daySwipes[2], daySwipes[3] || moment().format("HH:mm")]
+            ];
+
+            dayPairs.forEach(pair => {
+                if (pair[0] && pair[1]) {
+                    totalDuration += timeDifferenceInMinutes(pair[0], pair[1]);
+                }
+            });
+        }
+    });
+    return convertMinutesToHourMinuteFormat(totalDuration);
+}
