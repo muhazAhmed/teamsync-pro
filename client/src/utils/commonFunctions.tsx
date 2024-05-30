@@ -75,6 +75,16 @@ export const ResponseInstances = (res:any, statusCode: number, setData:any) => {
   }
 }
 
+export const PaginationResponseInstances = (res:any, statusCode: number, setData:any) => {
+  if (res instanceof Error) {
+    return console.error(res.message);
+  } else if (setData != "" && res?.res?.status === statusCode) {
+    return setData(res?.res?.data)
+  } else {
+    return 
+  }
+}
+
 export const AssignRole = (role:string) => {
   if (role === "HR") return role = Variables.HR_ROLE;
   if (role === "Admin") return role = Variables.ADMIN_ROLE;
@@ -102,10 +112,8 @@ export const CheckAccess = {
   isDemoAccount : useSessionStorage("isDemoAccount"),
 }
 
-export const fetchUserId = () => {
-  const id = useSessionStorage("userInfo");
-  return id?._id
-}
+export const fetchUserId = useSessionStorage("userInfo")?._id
+
 
 export const formatDate = (date:any) => {
   return date ? date.format("DD-MM-YYYY") : null
