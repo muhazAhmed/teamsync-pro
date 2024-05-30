@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { openModal, useSessionStorage } from "../../utils/commonFunctions";
 import { icon } from "../../UI-Components/Icons/Icons";
 import LogoutPopUpModal from "./SubComponents/LogoutPopUpModal";
+import Notifications from "../../pages/Notifications/Notifications";
 
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -23,6 +24,7 @@ const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(0);
   const [pageName, setPageName] = useState();
   const [logoutModal, setLogoutModal] = useState<boolean>(false);
+  const [openNotification, setOpenNotification] = useState<boolean>(false);
   const navigate = useNavigate();
   const openSidebar = () => setIsSidebarOpen(1);
   const closeSidebar = () => setIsSidebarOpen(0);
@@ -93,12 +95,19 @@ const Sidebar = () => {
   ];
 
   const handleDropdownClick = (index: number | null) => {
+    setOpenNotification(false);
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
+
+  const handleNavigation = (path:string) => {
+    setOpenNotification(false);
+    navigate(path);
+  }
 
   return (
     <>
       {logoutModal && <LogoutPopUpModal modalState={setLogoutModal} />}
+      {openNotification && <Notifications setOpenNotification={setOpenNotification}/>}
       {!isHomePage && (
         <div
           className="toolbar"
@@ -131,6 +140,7 @@ const Sidebar = () => {
                   isIconOnly
                   aria-label="more than 99 notifications"
                   variant="light"
+                  onClick={() => setOpenNotification(!openNotification)}
                 >
                   <i className={icon.notification}></i>
                 </Button>
@@ -144,7 +154,7 @@ const Sidebar = () => {
                 <DropdownItem
                   key="profile"
                   className="h-14 gap-2"
-                  onClick={() => navigate(`/user-info/${userInfo?._id}`)}
+                  onClick={() => handleNavigation(`/user-info/${userInfo?._id}`)}
                 >
                   <h1 className="text-lg font-medium">
                     <i className={icon.user}></i>&nbsp; Profile
@@ -214,7 +224,7 @@ const Sidebar = () => {
                       )}
                     </div>
                   ) : (
-                    <div className="items" onClick={() => navigate(item.path)}>
+                    <div className="items" onClick={() => handleNavigation(item.path)}>
                       <i className={item.icon}></i>
                       <p>{item.label}</p>
                     </div>
