@@ -1,0 +1,13 @@
+.notification {
+    position: absolute;
+    z-index: 99;
+    right: 2px;
+    top: 60px;
+}
+
+.notification .custom-card {
+    min-height: 20vh;
+    background-color: var(--card) !important;
+    color: #fff !important;
+    border: 2px solid var(--secondary);
+}
