@@ -20,4 +20,6 @@ export const serverVariables = {
     NEW_ATTENDANCE: "/user/add/attendance/",
     FETCH_ONE_ATTENDANCE: "/user/fetch-one/attendance/",
     UPDATE_ATTENDANCE: "/user/update/attendance/",
+    ATTENDANCE_DETAILS: "/user/attendance-stat/",
+    FETCH_ATTENDANCE_BY_PAGE: "/user/attendance/all/"
 }
