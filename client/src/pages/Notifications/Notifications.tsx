@@ -55,9 +55,9 @@ const CardContent: FC<contentProps> = ({ selectedItem, handleSwitch }) => {
     <div className="notification-body">
       <div className="header">
         <h1>Notifications</h1>
-        <h1>
+        <button>
           <i className={icon.doubleCheck}></i> Mark all as read
-        </h1>
+        </button>
       </div>
       <div className="switches">
         <button
