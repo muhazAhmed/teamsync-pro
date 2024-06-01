@@ -64,4 +64,5 @@ export const icon = {
   gitHub: "fa-brands fa-github",
   alphabetP: "fa-solid fa-p",
   alphabetA: "fa-solid fa-a",
+  doubleCheck: "fa-solid fa-check-double",
 };
