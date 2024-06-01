@@ -11,6 +11,7 @@ const PageNotFound = React.lazy(() => import("./components/PageNotFound/PageNotF
 const Home = React.lazy(() => import("./pages/root/home/Home"));
 const UserForm = React.lazy(() => import("./pages/form/UserForm/UserForm"));
 const Dashboard = React.lazy(() => import("./pages/dashboard/Dashboard"));
+const Settings = React.lazy(() => import("./pages/Settings/Settings"));
 const Profile = React.lazy(() => import("./pages/profile/Profile"));
 const People = React.lazy(() => import("./pages/people/People"));
 const HelpDesk = React.lazy(() => import("./pages/help-desk/HelpDesk"));
@@ -38,6 +39,7 @@ function App() {
             <Route path="/user/form" element={<UserForm />} />
             <Route path="/dashboard/:id" element={<AuthGuard><Dashboard /></AuthGuard>} />
             <Route path="/help-desk/:id" element={<AuthGuard><HelpDesk /></AuthGuard>} />
+            <Route path="/settings/:id" element={<AuthGuard><Settings /></AuthGuard>} />
             <Route path="/user-info/:id" element={<AuthGuard><Profile /></AuthGuard>} />
             <Route path="/people" element={<AuthGuard><People /></AuthGuard>} />
             <Route path="/attendance/new/:id" element={<AuthGuard><Attendance /></AuthGuard>} />
