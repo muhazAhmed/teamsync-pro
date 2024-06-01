@@ -99,15 +99,17 @@ const Sidebar = () => {
     setActiveIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
-  const handleNavigation = (path:string) => {
+  const handleNavigation = (path: string) => {
     setOpenNotification(false);
     navigate(path);
-  }
+  };
 
   return (
     <>
       {logoutModal && <LogoutPopUpModal modalState={setLogoutModal} />}
-      {openNotification && <Notifications setOpenNotification={setOpenNotification}/>}
+      {openNotification && (
+        <Notifications setOpenNotification={setOpenNotification} />
+      )}
       {!isHomePage && (
         <div
           className="toolbar"
@@ -152,15 +154,28 @@ const Sidebar = () => {
               </DropdownTrigger>
               <DropdownMenu aria-label="Profile Actions" variant="flat">
                 <DropdownItem
+                  textValue="Profile"
                   key="profile"
                   className="h-14 gap-2"
-                  onClick={() => handleNavigation(`/user-info/${userInfo?._id}`)}
+                  onClick={() =>
+                    handleNavigation(`/user-info/${userInfo?._id}`)
+                  }
                 >
                   <h1 className="text-lg font-medium">
                     <i className={icon.user}></i>&nbsp; Profile
                   </h1>
                 </DropdownItem>
                 <DropdownItem
+                  textValue="Settings"
+                  key="settings"
+                  onClick={() => handleNavigation(`/settings/${userInfo?._id}`)}
+                >
+                  <h1 className="text-lg font-medium">
+                    <i className={icon.settings}></i>&nbsp; Settings
+                  </h1>
+                </DropdownItem>
+                <DropdownItem
+                  textValue="Logout"
                   key="logout"
                   color="danger"
                   onClick={() => openModal(setLogoutModal)}
@@ -224,7 +239,10 @@ const Sidebar = () => {
                       )}
                     </div>
                   ) : (
-                    <div className="items" onClick={() => handleNavigation(item.path)}>
+                    <div
+                      className="items"
+                      onClick={() => handleNavigation(item.path)}
+                    >
                       <i className={item.icon}></i>
                       <p>{item.label}</p>
                     </div>

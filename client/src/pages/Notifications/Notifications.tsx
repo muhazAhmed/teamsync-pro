@@ -1,43 +1,28 @@
-import { FC, useEffect } from "react";
-import { messaging } from "../../firebase"; // Adjust the path if needed
-import { getToken, onMessage } from "firebase/messaging";
+import { FC, useEffect, useState } from "react";
 import Card from "../../UI-Components/Card/Card";
 import "./style.css";
+import notificationLogo from "../../assets/images/notificationLogo.png";
+import { icon } from "../../UI-Components/Icons/Icons";
+import { fetchWebSocketNotification } from "./webSocket";
 
 interface NotificationProps {
   setOpenNotification: any;
 }
 
-const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
-  // useEffect(() => {
-  //   // Request permission to send notifications
-  //   Notification.requestPermission().then((permission) => {
-  //     if (permission === "granted") {
-  //       console.log("Notification permission granted.");
-  //       // Get FCM token
-  //       getToken(messaging, { vapidKey: "YOUR_PUBLIC_VAPID_KEY" })
-  //         .then((currentToken) => {
-  //           if (currentToken) {
-  //             console.log("FCM Token:", currentToken);
-  //             // Send the token to your backend to store and use later
-  //             // sendTokenToBackend(currentToken);
-  //           } else {
-  //             console.log(
-  //               "No registration token available. Request permission to generate one."
-  //             );
-  //           }
-  //         })
-  //         .catch((err) => {
-  //           console.error("An error occurred while retrieving token. ", err);
-  //         });
-  //     } else {
-  //       console.error("Unable to get permission to notify.");
-  //     }
-  //   });
+const selectedItemStyle = {
+  border: "1px solid var(--secondary)",
+  color: "var(--secondary)",
+  borderRadius: "8px",
+};
 
-  //   onMessage(messaging, (payload) => {
-  //     console.log("Message received. ", payload);
-  //   });
+const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
+  const [selectedItem, setSelectedItem] = useState<number>(1);
+
+  const handleSwitch = (id: number) => {
+    setSelectedItem(id);
+  };
+  // useEffect(() => {
+  //   fetchWebSocketNotification();
   // }, []);
 
   const handleClosePopup = () => {
@@ -48,15 +33,65 @@ const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
 
   return (
     <div className="notification slideDown" onMouseLeave={handleClosePopup}>
-      <Card content={<CardContent />} />
+      <Card
+        content={
+          <CardContent
+            selectedItem={selectedItem}
+            handleSwitch={handleSwitch}
+          />
+        }
+      />
     </div>
   );
 };
 
-const CardContent = () => {
+interface contentProps {
+  selectedItem: number;
+  handleSwitch: any;
+}
+
+const CardContent: FC<contentProps> = ({ selectedItem, handleSwitch }) => {
   return (
-    <div>
-      <h1>Notifications</h1>
+    <div className="notification-body">
+      <div className="header">
+        <h1>Notifications</h1>
+        <h1>
+          <i className={icon.doubleCheck}></i> Mark all as read
+        </h1>
+      </div>
+      <div className="switches">
+        <button
+          style={selectedItem === 1 ? selectedItemStyle : undefined}
+          onClick={() => handleSwitch(1)}
+        >
+          All (8)
+        </button>
+        <button
+          style={selectedItem === 2 ? selectedItemStyle : undefined}
+          onClick={() => handleSwitch(2)}
+        >
+          Unread (6)
+        </button>
+        <button
+          style={selectedItem === 3 ? selectedItemStyle : undefined}
+          onClick={() => handleSwitch(3)}
+        >
+          @mention (2)
+        </button>
+      </div>
+      <div className="main-content">
+        <NoContent />
+      </div>
+    </div>
+  );
+};
+
+const NoContent = () => {
+  return (
+    <div className="no-content">
+      <img src={notificationLogo} />
+      <h1>No notifications yet</h1>
+      <p>You'll see notifications here when they are available</p>
     </div>
   );
 };
