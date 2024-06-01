@@ -9,7 +9,7 @@ const customCardStyle = {
     borderRadius: "8px",
     padding: "16px",
     minWidth: "20vw",
-    boxShadow: "0 4px 8px rgba(3, 3, 3, 2)",
+    boxShadow: "-1px 5px 25px var(--primary)",
     backgroundColor: "#fff",
     color: "black",
   },
