@@ -3,7 +3,7 @@
     z-index: 99;
     right: 2px;
     top: 60px;
-    width: 23vw;
+    width: 24vw;
 }
 
 .notification .custom-card {
@@ -31,17 +31,17 @@
     padding-right: 5px;
 }
 
-.notification-body .header h1:first-child {
+.notification-body .header h1 {
     font-size: 13px;
 }
 
-.notification-body .header h1:last-child {
+.notification-body .header button {
     color: #7aa9ff;
     cursor: pointer;
     font-size: 12px;
 }
 
-.notification-body .header h1:last-child:hover {
+.notification-body .header button:hover {
     color: #5591ff;
 }
 
@@ -65,7 +65,7 @@
     height: 100%;
 }
 
-.notification-body .no-content img{
+.notification-body .no-content img {
     width: 10vw;
 }
 
@@ -86,4 +86,21 @@
     font-size: 12px;
     text-align: center;
     width: 95%;
+}
+
+@media (max-width: 1470px) {
+    .notification {
+        top: 70px;
+    }
+}
+
+@media (max-width: 768px) {
+    .notification {
+        width: 99%;
+        top: 67px;
+    }
+
+    .notification-body .no-content img {
+        width: 50vw;
+    }
 }

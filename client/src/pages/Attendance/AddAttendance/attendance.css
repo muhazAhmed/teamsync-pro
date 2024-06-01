@@ -53,6 +53,12 @@
     color: gray;
 }
 
+@media (max-width: 1470px) {
+    .attendance img {
+        width: 25vw;
+    }
+}
+
 @media (max-width: 768px) {
     .attendance {
         width: 100%;
