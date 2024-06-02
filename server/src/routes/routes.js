@@ -4,7 +4,7 @@ import { fetchAllUsersId, fetchOneUser, loginUser, newUser, updateUser} from "..
 import { fetchAllRequests, fetchPriorityCounts, updateRequest } from '../controllers/HR/HRController.js';
 import { deleteClientData, getAllClientData, getOneClientData, newClientData, updateClientData } from '../controllers/serviceController/ClientController.js';
 import { fetchAllUsers, fetchUserByName } from '../controllers/adminController/adminController.js';
-import { attendanceDashboardData, fetchAndCheckDaily, fetchOneAttendance, newAttendance, updateAttendance } from '../controllers/attendance/attendanceController.js';
+import { attendanceDashboardData, fetchAndCheckDaily, fetchAttendanceByIdPageWise, fetchOneAttendance, newAttendance, updateAttendance } from '../controllers/attendance/attendanceController.js';
 import "../controllers/serviceController/cronJobs.js"
 
 routes.post("/user/register", newUser)
@@ -22,6 +22,7 @@ routes.get("/user/fetch-one/attendance/:id", fetchOneAttendance)
 routes.patch("/user/update/attendance/:id", updateAttendance)
 routes.get("/user/attendance-stat/:id", attendanceDashboardData)
 routes.post("/user/attendance/daily-check/:id", fetchAndCheckDaily)
+routes.get("/user/attendance/all/:id", fetchAttendanceByIdPageWise)
 
 routes.get("/users/fetch-all", fetchAllUsers)
 routes.get("/users/fetch-by-name", fetchUserByName)

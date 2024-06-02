@@ -198,3 +198,26 @@ export const attendanceDashboardData = async (req, res) => {
         return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
     }
 }
+
+export const fetchAttendanceByIdPageWise = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 1;
+        const skip = (page - 1) * limit;
+        const attendanceData = await attendanceModal.find({ userId })
+            .skip(skip)
+            .limit(limit);
+        const totalCount = await attendanceModal.countDocuments({ userId });
+
+        return res.status(200).json({
+            data: attendanceData,
+            totalPages: Math.ceil(totalCount / limit),
+            currentPage: page,
+            totalItems: totalCount
+        });
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
+    }
+}
