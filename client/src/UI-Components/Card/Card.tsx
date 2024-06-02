@@ -2,6 +2,7 @@ import { FC } from "react";
 
 interface CardProps {
   content: any;
+  id?: any;
 }
 
 const customCardStyle = {
@@ -15,9 +16,13 @@ const customCardStyle = {
   },
 };
 
-const Card: FC<CardProps> = ({ content }) => {
+const Card: FC<CardProps> = ({ content, id }) => {
   return (
-    <div style={customCardStyle.container} className="custom-card">
+    <div
+      style={customCardStyle.container}
+      className="custom-card"
+      id={id ? id : undefined}
+    >
       <div>{content}</div>
     </div>
   );
