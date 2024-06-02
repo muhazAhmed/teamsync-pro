@@ -1,4 +1,13 @@
-export const icon = {
+export interface IconTypes {
+  [key: string]: string;
+}
+
+
+export const Icon = (name: string) => {
+  return <i className={icon[name]}></i>;
+}
+
+export const icon: IconTypes = {
   closeRounded: "fa-regular fa-circle-xmark",
   close: "fa-solid fa-xmark",
   plus: "fa-solid fa-plus",
@@ -65,4 +74,5 @@ export const icon = {
   alphabetP: "fa-solid fa-p",
   alphabetA: "fa-solid fa-a",
   doubleCheck: "fa-solid fa-check-double",
+  gear: "fa-solid fa-gear",
 };
