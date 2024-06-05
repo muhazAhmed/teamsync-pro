@@ -1,3 +1,121 @@
 .help-desk {
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.help-desk .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 50px;
+    width: 100%;
+}
+
+.help-desk .header h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.help-desk .header .search {
+    width: 50%;
+}
+
+.help-desk .header .search i {
+    color: var(--secondary);
+}
+
+.help-desk .header .search i:first-child {
+    font-size: 20px;
+    padding-right: 5px;
+}
+
+.help-desk .header .search i:last-child {
+    font-size: 25px;
+}
+
+.help-desk .body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.help-desk .body h1 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.help-desk .body h1 span {
+    font-weight: bold;
+}
+
+.help-desk .body .cards {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.help-desk .body .cards .custom-card {
+    width: 25%;
+    background-color: var(--card) !important;
+    color: #fff !important;
+    padding: 20px !important;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.help-desk .body .cards .custom-card:hover {
+    border: 2px solid var(--primary);
+}
+
+.help-desk .body .cards .custom-card .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.help-desk .body .cards .custom-card .card-body i {
+    font-size: 30px;
+    color: var(--secondary);
+}
+
+.help-desk .body .cards .custom-card .card-body h1 {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.help-desk .body .cards .custom-card .card-body p {
+    color: gray;
+    text-align: center;
+    font-size: 13px;
+}
+
+.help-desk .ticket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 55%;
+}
+
+.help-desk .ticket h1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.help-desk .ticket .ticket-card {
+    width: 100%;
+}
+
+.help-desk .ticket .custom-card {
+    width: 100% !important;
+    background-color: var(--card) !important;
+    color: #fff !important;
 }
