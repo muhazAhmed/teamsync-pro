@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import Loader from "../../UI-Components/Loader/Loader";
 import NotificationSettings from "./SubComponents/NotificationSettings/NotificationSettings";
 import AccountSettings from "./SubComponents/AccountSettings/AccountSettings";
-import Maintenance from "../../components/UnderMaintenance/Maintenance";
 
 const selectedItemStyle = {
   color: "var(--secondary)",
@@ -58,9 +57,8 @@ const Settings = () => {
         id="right-card"
         content={
           <div className="body">
-            {/* {selectedItem === 2 && <NotificationSettings />}
-            {selectedItem === 3 && <AccountSettings />} */}
-            <Maintenance />
+            {selectedItem === 2 && <NotificationSettings />}
+            {selectedItem === 3 && <AccountSettings />}
           </div>
         }
       />
