@@ -75,4 +75,6 @@ export const icon: IconTypes = {
   alphabetA: "fa-solid fa-a",
   doubleCheck: "fa-solid fa-check-double",
   gear: "fa-solid fa-gear",
+  rocket: "fa-solid fa-rocket",
+  gears: "fa-solid fa-gears",
 };
