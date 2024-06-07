@@ -103,6 +103,11 @@
     align-items: center;
     gap: 1rem;
     width: 55%;
+    margin-bottom: 2rem;
+}
+
+.help-desk .ticket .custom-card:hover {
+    border: 2px solid var(--primary);
 }
 
 .help-desk .ticket h1 {
@@ -118,4 +123,45 @@
     width: 100% !important;
     background-color: var(--card) !important;
     color: #fff !important;
+    border: 2px solid transparent;
+}
+
+.help-desk .ticket .ticket-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    padding: 10px;
+}
+
+.help-desk .ticket-card .header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    flex-direction: row;
+}
+
+.help-desk .ticket-card .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.help-desk .ticket-card .footer #clear:hover {
+    background-color: red !important;
+    border: 2px solid transparent !important;
+}
+
+.help-desk .ticket #desc {
+    height: 20vh !important;
+}
+
+.help-desk .ticket #desc label {
+    position: absolute;
+    top: 10px;
 }
