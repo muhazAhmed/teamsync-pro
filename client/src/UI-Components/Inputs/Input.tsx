@@ -11,6 +11,7 @@ interface InputProps {
   required?: boolean;
   setInputs: (value: any) => void;
   variant?: "primary" | "underline" | "ghost";
+  id?: any;
 }
 
 const commonStyle: React.CSSProperties = {
@@ -19,6 +20,7 @@ const commonStyle: React.CSSProperties = {
   width: "100%",
   backgroundColor: "inherit",
   fontSize: "14px",
+  textWrap: "wrap"
 };
 
 const inputDivStyle: React.CSSProperties = {
@@ -28,6 +30,7 @@ const inputDivStyle: React.CSSProperties = {
   justifyContent: "center",
   height: "55px",
   padding: "10px",
+  position: "relative",
 };
 
 const primaryStyle: React.CSSProperties = {
@@ -35,7 +38,7 @@ const primaryStyle: React.CSSProperties = {
   borderRadius: "10px",
 };
 const ghostStyle: React.CSSProperties = {
-  color: "black",
+  color: "#fff",
   border: "2px solid #00C3E3",
   backgroundColor: "transparent",
   borderRadius: "10px",
@@ -55,6 +58,7 @@ const CustomInput: React.FC<InputProps> = ({
   placeholder = label,
   variant = "primary",
   setInputs,
+  id,
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [isInputEmpty, setIsInputEmpty] = useState<boolean>(true);
@@ -74,6 +78,7 @@ const CustomInput: React.FC<InputProps> = ({
   return (
     <div
       className="custom-input"
+      id={id ? id : undefined}
       style={{
         ...inputDivStyle,
         ...(variant === "primary" && primaryStyle),
@@ -83,12 +88,18 @@ const CustomInput: React.FC<InputProps> = ({
     >
       <label
         style={{
-          visibility: isInputEmpty && !isFocused && !value ? "hidden" : "visible",
+          visibility:
+            isInputEmpty && !isFocused && !value ? "hidden" : "visible",
           fontSize: "12px",
         }}
         className={isInputEmpty && isFocused && !value ? "slideUp" : ""}
       >
         {label}
+        {required && (
+          <span style={{ color: "red", marginLeft: "5px", fontSize: "20px" }}>
+            *
+          </span>
+        )}
       </label>
       <input
         type={type}
