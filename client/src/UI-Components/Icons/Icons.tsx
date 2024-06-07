@@ -77,4 +77,5 @@ export const icon: IconTypes = {
   gear: "fa-solid fa-gear",
   rocket: "fa-solid fa-rocket",
   gears: "fa-solid fa-gears",
+  send: "fa-solid fa-paper-plane",
 };
