@@ -64,3 +64,9 @@ export const getOptionsByKey = (key: string) => {
       return [];
   }
 };
+
+export const priorities = [
+  {label: "High", value: "high", icon: "threeBars", color: "red"},
+  {label: "Medium", value: "medium", icon: "twoBars", color: "yellow"},
+  {label: "Normal", value: "normal", icon: "bar", color: "#00ba00"},
+]
