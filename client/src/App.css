@@ -1,5 +1,4 @@
-.app { height: 100vh; width: 100vw; display: flex;     background-image: url('./assets/images/wallpaper.jpg'); background-size: cover;
- background-repeat: no-repeat; background-attachment: fixed; }
+.app { height: 100vh; width: 100vw; display: flex; background-image: url('./assets/images/wallpaper.jpg'); background-size: cover;background-repeat: no-repeat; background-attachment: fixed;}
 .app-container { max-height: 100vh; width: 100%; overflow-y: auto; overflow-x: hidden;}
 
 :root {
@@ -15,7 +14,7 @@
 
 .text-primary { color: var(--primary) !important; }
 .text-secondary { color: var(--secondary) !important; }
-.btn-primary { color: var(#fff) !important; background-color: var(--primary) !important; }
+.btn-primary { color: #fff !important; background-color: var(--primary) !important; }
 .btn-ghost { color: var(#fff) !important; background-color: transparent !important; border: 2px solid var(--primary) !important; }
 .btn-ghost:hover { background-color: var(--primary) !important; color: #fff !important; }
 
