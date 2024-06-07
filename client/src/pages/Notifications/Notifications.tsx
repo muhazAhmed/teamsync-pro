@@ -4,6 +4,9 @@ import "./style.css";
 import notificationLogo from "../../assets/images/notificationLogo.png";
 import { icon } from "../../UI-Components/Icons/Icons";
 import { fetchWebSocketNotification } from "./webSocket";
+import { openModal } from "../../utils/commonFunctions";
+import Loader from "../../UI-Components/Loader/Loader";
+import ConfirmationModal from "./ConfirmationModal";
 
 interface NotificationProps {
   setOpenNotification: any;
@@ -17,6 +20,7 @@ const selectedItemStyle = {
 
 const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
   const [selectedItem, setSelectedItem] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSwitch = (id: number) => {
     setSelectedItem(id);
@@ -33,6 +37,7 @@ const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
 
   return (
     <div className="notification slideDown" onMouseLeave={handleClosePopup}>
+      {loading && <Loader />}
       <Card
         content={
           <CardContent
@@ -51,11 +56,20 @@ interface contentProps {
 }
 
 const CardContent: FC<contentProps> = ({ selectedItem, handleSwitch }) => {
+  const [confirmationModal, setConfirmationModal] = useState<boolean>(false);
+
+  const handleMarkAsReadClick = () => {
+    openModal(setConfirmationModal);
+  };
+
   return (
     <div className="notification-body">
+      {confirmationModal && (
+        <ConfirmationModal setModal={setConfirmationModal} />
+      )}
       <div className="header">
         <h1>Notifications</h1>
-        <button>
+        <button onClick={handleMarkAsReadClick}>
           <i className={icon.doubleCheck}></i> Mark all as read
         </button>
       </div>
