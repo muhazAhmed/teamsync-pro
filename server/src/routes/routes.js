@@ -6,6 +6,7 @@ import { deleteClientData, getAllClientData, getOneClientData, newClientData, up
 import { fetchAllUsers, fetchUserByName } from '../controllers/adminController/adminController.js';
 import { attendanceDashboardData, fetchAndCheckDaily, fetchAttendanceByIdPageWise, fetchOneAttendance, newAttendance, updateAttendance } from '../controllers/attendance/attendanceController.js';
 import "../controllers/serviceController/cronJobs.js"
+import { deleteSupportReq, fetchAllSupportReq, fetchOneSupportReq, newSupportReq, updateSupportReq } from '../controllers/serviceController/SupportController.js';
 
 routes.post("/user/register", newUser)
 routes.post("/user/login", loginUser)
@@ -27,6 +28,11 @@ routes.get("/user/attendance/all/:id", fetchAttendanceByIdPageWise)
 routes.get("/users/fetch-all", fetchAllUsers)
 routes.get("/users/fetch-by-name", fetchUserByName)
 
+routes.post("/user/new-support-request/:id", newSupportReq)
+routes.get("/user/fetch-support-requests", fetchAllSupportReq)
+routes.get("/user/fetch-one-support-request/:id", fetchOneSupportReq)
+routes.patch("/user/update-support-request/:id", updateSupportReq)
+routes.delete("/user/delete-support-request/:id", deleteSupportReq)
 
 routes.post("/client/new-request", newClientData)
 routes.get("/client/fetch-request/:id", getOneClientData)
