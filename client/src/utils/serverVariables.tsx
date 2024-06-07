@@ -21,5 +21,11 @@ export const serverVariables = {
     FETCH_ONE_ATTENDANCE: "/user/fetch-one/attendance/",
     UPDATE_ATTENDANCE: "/user/update/attendance/",
     ATTENDANCE_DETAILS: "/user/attendance-stat/",
-    FETCH_ATTENDANCE_BY_PAGE: "/user/attendance/all/"
+    FETCH_ATTENDANCE_BY_PAGE: "/user/attendance/all/",
+
+    NEW_SUPPORT_REQUEST: "/user/new-support-request/",
+    FETCH_ALL_SUPPORT_REQUEST: "/user/fetch-support-requests",
+    FETCH_ONE_SUPPORT_REQUEST: "/user/fetch-one-support-request/",
+    UPDATE_SUPPORT_REQUEST: "/user/update-support-request/",
+    DELETE_SUPPORT_REQUEST: "/user/delete-support-request/",
 }
