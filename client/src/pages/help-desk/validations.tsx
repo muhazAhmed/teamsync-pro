@@ -1,8 +1,10 @@
+import toast from "react-hot-toast";
 import { postMethodAPI } from "../../utils/apiCallMethods"
-import { fetchUserId } from "../../utils/commonFunctions";
+import { CheckAccess, fetchUserId } from "../../utils/commonFunctions";
 import { serverVariables } from "../../utils/serverVariables"
 
 export const handleSubmit = async (inputs: any, setLoading: any) => {
+    if (CheckAccess?.isDemoAccount) return toast.success("Request Submitted Successfully");
     return await postMethodAPI(serverVariables?.NEW_SUPPORT_REQUEST + fetchUserId, inputs, setLoading)
 }
 
