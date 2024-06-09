@@ -11,7 +11,7 @@ const customCardStyle = {
     padding: "16px",
     minWidth: "20vw",
     boxShadow: "-1px 5px 25px var(--primary)",
-    backgroundColor: "#fff",
+    backgroundColor: "var(--card)",
     color: "black",
   },
 };
