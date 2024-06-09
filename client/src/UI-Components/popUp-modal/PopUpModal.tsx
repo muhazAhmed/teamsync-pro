@@ -10,11 +10,14 @@ interface ModalProps {
   header?: boolean;
   children: React.ReactNode;
   footer?: FooterItem[];
+  id?: any;
+  className?: string;
 }
 
 interface FooterItem {
   label: string;
   color?: "primary" | "danger";
+  icon?: string;
   action: () => void;
 }
 
@@ -24,10 +27,15 @@ const Modal: React.FC<ModalProps> = ({
   header = true,
   children,
   footer,
+  id,
+  className,
 }) => {
   return ReactDOM.createPortal(
     <div className="blur-bg">
-      <div className="modal-container fadeIn">
+      <div
+        className={`modal-container ${className ? className : ""} fadeIn`}
+        id={id ? id : undefined}
+      >
         {header && (
           <div className="modalHeader">
             <h1>{title}</h1>
@@ -51,6 +59,7 @@ const Modal: React.FC<ModalProps> = ({
                 onClick={item.action}
                 key={item.label}
               >
+                {item?.icon && <i className={icon[item?.icon]}></i>}
                 {item.label}
               </Button>
             ))}
