@@ -26,6 +26,7 @@ import { serverVariables } from "../../utils/serverVariables";
 import Loader from "../../UI-Components/Loader/Loader";
 import { hrDemoData, empDemoData } from "../form/Demo";
 import EditModal from "./SubComponents/EditModal";
+import UserModal from "./SubComponents/UserModal";
 
 type User = {
   _id: string;
@@ -47,6 +48,7 @@ const People = () => {
   const [data, setData] = useState<ResponseData>({ hr: [], employee: [] });
   const [loading, setLoading] = useState<boolean>(false);
   const [openEditModal, setOpenEditModal] = useState<boolean>(false);
+  const [openViewModal, setOpenViewModal] = useState<boolean>(false);
   const [selectedUserDetails, setSelectedUserDetails] = useState<any>({});
   const [searchName, setSearchName] = useState<string>("");
   const [filter, setFilter] = useState<string>("all");
@@ -111,9 +113,16 @@ const People = () => {
     }
   }, [searchName]);
 
+  const handleClick = (modalName: any) => {
+    openModal(modalName);
+  };
+
   return (
     <div className="people">
       {loading && <Loader />}
+      {openViewModal && (
+        <UserModal setModal={setOpenViewModal} userId={selectedUserDetails} />
+      )}
       {openEditModal && (
         <EditModal
           openEditModal={openEditModal}
@@ -198,13 +207,21 @@ const People = () => {
         <div className="cards">
           {filteredUsers().map((user) => (
             <Card key={user._id} className="card">
-              <CardBody className="card-body">
+              <CardBody
+                className="card-body"
+                onClick={() => {
+                  handleClick(setOpenViewModal),
+                    setSelectedUserDetails({
+                      id: user?._id,
+                    });
+                }}
+              >
                 {isHr && (
                   <Tooltip content="Edit User" placement="left" color="primary">
                     <i
                       className={icon.pencil}
                       onClick={() => {
-                        openModal(setOpenEditModal),
+                        handleClick(setOpenEditModal),
                           setSelectedUserDetails({
                             userId: user?._id,
                             role: user?.isHR ? "hr" : "employee",

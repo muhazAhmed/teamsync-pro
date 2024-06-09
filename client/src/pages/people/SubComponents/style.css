@@ -1,0 +1,34 @@
+.user-modal {
+    position: relative;
+    width: 40vw;
+}
+
+.user-modal img {
+    position: absolute;
+    width: 4vw;
+    top: -25px;
+    right: 50%;
+    left: 44%;
+}
+
+.user-modal .user-modal-body {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+    row-gap: 3rem;
+    grid-template-columns: auto auto auto;
+}
+
+.user-modal .user-modal-body h1 {
+    font-size: 16px;
+}
+
+.user-modal-body p {
+    font-size: 14px;
+    color: gray;
+    font-weight: bold;
+}
+
+.user-modal .menu-footer {
+    min-height: 8vh !important;
+}
