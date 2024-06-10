@@ -43,27 +43,27 @@
 .people .cards {
     width: 100%;
     padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    gap: 1rem;
+    row-gap: 3rem;
+    grid-template-columns: auto auto auto auto;
 }
 
-.people .cards .card {
+.people .cards .custom-card {
     width: 25vw;
-    margin-bottom: 2rem;
     cursor: pointer;
 }
 
-.people .cards .card .card-body {
+.people .cards .custom-card .card-body {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
     position: relative;
+    color: #fff;
 }
 
-.people .cards .card .card-body .fa-pencil {
+.people .cards .custom-card .card-body .fa-pencil {
     color: gray;
     position: absolute;
     top: 10px;
@@ -71,18 +71,18 @@
     font-size: medium;
 }
 
-.people .cards .card .card-body img {
+.people .cards .custom-card .card-body img {
     width: 5vw;
 }
 
-.people .cards .card .card-body .user-info {
+.people .cards .custom-card .card-body .user-info {
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
     width: 100%;
 }
 
-.people .cards .card .card-body .user-info h6 {
+.people .cards .custom-card .card-body .user-info h6 {
     color: gray;
     font-size: 13px;
     width: fit-content;
@@ -106,15 +106,15 @@
     }
 
     .people .cards {
-        flex-direction: column;
         height: auto;
+        grid-template-columns: auto;
     }
 
-    .people .cards .card {
+    .people .cards .custom-card {
         width: 100%;
     }
 
-    .people .cards .card .card-body img {
+    .people .cards .custom-card .card-body img {
         width: 10vw;
     }
 }
