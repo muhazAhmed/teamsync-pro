@@ -32,3 +32,22 @@
 .user-modal .menu-footer {
     min-height: 8vh !important;
 }
+
+@media (max-width: 768px) {
+    .user-modal {
+        width: 100%;
+    }
+
+    .user-modal img {
+        width: 20vw;
+        top: -30px;
+        left: 40%;
+    }
+
+    .user-modal .user-modal-body {
+        gap: 2rem;
+        margin-top: 3rem;
+        row-gap: 3rem;
+        grid-template-columns: auto auto;
+    }
+}
