@@ -7,8 +7,6 @@ import {
 } from "../../utils/commonFunctions";
 import {
   Button,
-  Card,
-  CardBody,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -27,6 +25,7 @@ import Loader from "../../UI-Components/Loader/Loader";
 import { hrDemoData, empDemoData } from "../form/Demo";
 import EditModal from "./SubComponents/EditModal";
 import UserModal from "./SubComponents/UserModal";
+import Card from "../../UI-Components/Card/Card";
 
 type User = {
   _id: string;
@@ -206,53 +205,59 @@ const People = () => {
         </div>
         <div className="cards">
           {filteredUsers().map((user) => (
-            <Card key={user._id} className="card">
-              <CardBody
-                className="card-body"
-                onClick={() => {
-                  handleClick(setOpenViewModal),
-                    setSelectedUserDetails({
-                      id: user?._id,
-                    });
-                }}
-              >
-                {isHr && (
-                  <Tooltip content="Edit User" placement="left" color="primary">
-                    <i
-                      className={icon.pencil}
-                      onClick={() => {
-                        handleClick(setOpenEditModal),
-                          setSelectedUserDetails({
-                            userId: user?._id,
-                            role: user?.isHR ? "hr" : "employee",
-                          });
-                      }}
-                    ></i>
-                  </Tooltip>
-                )}
-
-                <img src={userLogo} alt="User Avatar" />
-                <div className="user-info">
-                  <h5 className="text-center">
-                    {user.firstName} {user.lastName}
-                  </h5>
-                  <h6>
-                    <i className={icon.work}></i>
-                    {user.employment?.designation || "-"}
-                  </h6>
-                  <Tooltip
-                    content="Reporting To"
-                    placement="left"
-                    color="primary"
-                  >
+            <Card
+              content={
+                <div
+                  className="card-body"
+                  onClick={() => {
+                    handleClick(setOpenViewModal),
+                      setSelectedUserDetails({
+                        id: user?._id,
+                      });
+                  }}
+                >
+                  {isHr && (
+                    <Tooltip
+                      content="Edit User"
+                      placement="left"
+                      color="primary"
+                    >
+                      <i
+                        className={icon.pencil}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleClick(setOpenEditModal),
+                            setSelectedUserDetails({
+                              userId: user?._id,
+                              role: user?.isHR ? "hr" : "employee",
+                            });
+                        }}
+                      ></i>
+                    </Tooltip>
+                  )}
+                  <img src={userLogo} alt="User Avatar" />
+                  <div className="user-info">
+                    <h5 className="text-center">
+                      {user.firstName} {user.lastName}
+                    </h5>
                     <h6>
-                      <i className={icon.user}></i>
-                      {user.employment?.reportingManager || "-"}
+                      <i className={icon.work}></i>
+                      {user.employment?.designation || "-"}
                     </h6>
-                  </Tooltip>
+                    <Tooltip
+                      content="Reporting To"
+                      placement="left"
+                      color="primary"
+                    >
+                      <h6>
+                        <i className={icon.user}></i>
+                        {user.employment?.reportingManager || "-"}
+                      </h6>
+                    </Tooltip>
+                  </div>
                 </div>
-              </CardBody>
-            </Card>
+              }
+            />
           ))}
         </div>
       </div>
