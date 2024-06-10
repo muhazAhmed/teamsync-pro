@@ -20,7 +20,8 @@ const commonStyle: React.CSSProperties = {
   width: "100%",
   backgroundColor: "inherit",
   fontSize: "14px",
-  textWrap: "wrap"
+  textWrap: "wrap",
+  color: "#fff"
 };
 
 const inputDivStyle: React.CSSProperties = {
@@ -31,6 +32,7 @@ const inputDivStyle: React.CSSProperties = {
   height: "55px",
   padding: "10px",
   position: "relative",
+  color: "#fff"
 };
 
 const primaryStyle: React.CSSProperties = {
@@ -45,7 +47,7 @@ const ghostStyle: React.CSSProperties = {
 };
 const underlineStyle: React.CSSProperties = {
   backgroundColor: "transparent",
-  color: "black",
+  color: "#fff",
   borderBottom: "2px solid #D4D4D8",
 };
 
