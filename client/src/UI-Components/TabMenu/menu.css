@@ -6,6 +6,9 @@
     border-radius: 8px;
     min-width: 40vw;
     position: relative;
+    background-color: var(--card);
+    box-shadow: -1px 5px 25px var(--primary);
+    color: #fff;
 }
 
 .tab-menu .fa-circle-xmark {
@@ -47,7 +50,6 @@
 }
 
 .tab-menu .menu-body {
-    background-color: #fff;
     width: 100%;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -56,10 +58,11 @@
     max-height: 50vh;
     overflow-y: auto;
     padding-top: 30px;
+    color: #fff;
 }
 
 .tab-menu .menu-body .group[data-has-value=true] .group-data-\[has-value\=true\]\:text-foreground {
-    color: black;
+    color: #fff;
 }
 
 .tab-menu .menu-footer {
