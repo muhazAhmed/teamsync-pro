@@ -1,24 +1,16 @@
 import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
   Button,
-  DropdownItem,
-  DropdownTrigger,
-  Dropdown,
-  DropdownMenu,
 } from "@nextui-org/react";
 import "./home.css";
-import logo from "../../../assets/images/TS-logo1.png";
 import mainImg from "../../../assets/images/homeImg.jpg";
 import featuresImg from "../../../assets/images/features.jpg";
 import Footer from "../../../components/footer/Footer";
-import { logout, openModal, useSessionStorage } from "../../../utils/commonFunctions";
+import { openModal, useSessionStorage } from "../../../utils/commonFunctions";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { icon } from "../../../UI-Components/Icons/Icons";
 import PopupModal from "./PopupModal";
+import RootNavbar from "../../../components/RootNavbar";
 
 const Home = () => {
   const [modal, setModal] = useState<boolean>(false);
@@ -31,15 +23,6 @@ const Home = () => {
     }
   }, []);
 
-  const icons = {
-    Arrow: <i className="fa-solid fa-angle-down"></i>,
-    HR: <i className={icon.user}></i>,
-    AttendanceManagement: <i className={icon.calendar}></i>,
-    LeaveManagement: <i className="fa-solid fa-umbrella-beach"></i>,
-    PayRole: <i className="fa-solid fa-hand-holding-dollar"></i>,
-    SelfServe: <i className="fa-brands fa-sellcast"></i>,
-  };
-
   const arrayOfFeatures = [
     "Attendance Management",
     "Leave Management",
@@ -50,80 +33,7 @@ const Home = () => {
   return (
     <div className="home">
       {modal && <PopupModal setModal={setModal} navigate={navigate}/>}
-      <Navbar>
-        <NavbarBrand>
-          <img src={logo} />
-        </NavbarBrand>
-        <NavbarContent className="hidden sm:flex gap-5" justify="center">
-          <Dropdown>
-            <NavbarItem>
-              <DropdownTrigger>
-                <Button
-                  disableRipple
-                  className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                  endContent={icons.Arrow}
-                  radius="sm"
-                  variant="light"
-                >
-                  Products
-                </Button>
-              </DropdownTrigger>
-            </NavbarItem>
-            <DropdownMenu
-              aria-label="ACME features"
-              className="w-[340px]"
-              itemClasses={{
-                base: "gap-4",
-              }}
-            >
-              <DropdownItem key="HR" startContent={icons.HR}>
-                HR Management
-              </DropdownItem>
-              <DropdownItem
-                key="autoscaling"
-                startContent={icons.AttendanceManagement}
-              >
-                Attendance Management
-              </DropdownItem>
-              <DropdownItem
-                key="usage_metrics"
-                startContent={icons.LeaveManagement}
-              >
-                Leave Management
-              </DropdownItem>
-              <DropdownItem key="production_ready" startContent={icons.PayRole}>
-                Pay Role Management
-              </DropdownItem>
-              <DropdownItem key="99_uptime" startContent={icons.SelfServe}>
-                Employee Self Serve
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <NavbarItem onClick={() => navigate("/product/pricing")}>
-            <h1>Pricing</h1>
-          </NavbarItem>
-          <NavbarItem onClick={() => navigate("/product/contact")}>
-            <h1>Contact Us</h1>
-          </NavbarItem>
-        </NavbarContent>
-        <NavbarContent justify="end">
-          <NavbarItem>
-            <Button
-              color="primary"
-              className="btn-ghost"
-              variant="flat"
-              onClick={() => {
-                if (user) logout(navigate, "");
-                else navigate("/user/form");
-              }}
-            >
-              {user
-                ? [<i key="icon" className={icon.logout}></i>, " Logout"]
-                : "Login"}
-            </Button>
-          </NavbarItem>
-        </NavbarContent>
-      </Navbar>
+      <RootNavbar/>
       <div className="home-container">
         <div className="section-1 fadeIn">
           <img src={mainImg} alt="Image" />
