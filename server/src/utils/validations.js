@@ -10,6 +10,8 @@ export const EMAIL_EXISTS = () => {
     return "Email Already Exists"
 }
 
+export const SUBSCRIPTION_ERROR = "You Have Already Subscribed To New Letter"
+
 export const RESPONSE_MESSAGE = (name) => ({
     USER_REGISTER: `${name} Registration Success`,
     USER_LOGIN: `${name} Login Success`,
@@ -22,4 +24,5 @@ export const RESPONSE_MESSAGE = (name) => ({
     ATTENDANCE_NOT_FOUND: "No Attendance Found With This UserID",
     MAX_SWIPE: "Maximum daily swipes reached",
     SERVER_ERROR: "Server Error",
+    SUBSCRIPTION_SUCCESS: "Newsletter Subscription Has Been Enabled Successfully"
 })
