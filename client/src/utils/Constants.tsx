@@ -20,6 +20,7 @@ export const message = (name: string) => ({
   LOGOUT_SUCCESS: "You Have Been LoggedOut",
   CREATE_SUCCESS: `${name} Created Successfully`,
   UNAUTHORIZED_USER: `You'r Not Allowed to Update ${name}`,
+  SUBSCRIPTION_SUCCESS: "Newsletter Subscription Has Been Enabled Successfully",
 
   // =========== API =============
   GET_FAIL: "Enable To Fetch Data",
