@@ -24,3 +24,6 @@
 .modalContainer h1, .modalContainer h2, .modalContainer h3, .modalContainer h4, .modalContainer h5, .modalContainer h6, .modalContainer p{color: black;}
 
 i, button{cursor: pointer;}
+nav #logo {width: 15vw; cursor: pointer;}
+nav h1 {cursor: pointer;}
+button:disabled {cursor: not-allowed; color: gray !important;}
