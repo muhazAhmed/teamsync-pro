@@ -2,25 +2,7 @@ import { FC } from "react";
 import "./ButtonStyle";
 import { Button, Tooltip } from "@nextui-org/react";
 import { Icon } from "../Icons/Icons";
-
-interface ButtonProps {
-  label: string;
-  color?: "default" | "danger" | "primary" | "secondary" | "warning";
-  textColor?: string;
-  id?: any;
-  className?: string;
-  variant?: "solid" | "shadow" | "ghost" | "flat" | "faded" | "bordered";
-  action?: any;
-  icon: string;
-  iconPosition?: string;
-  tooltip?: TooltipProps;
-}
-
-interface TooltipProps {
-  content: string;
-  color?: "primary" | "danger";
-  placement?: "top" | "bottom" | "left" | "right";
-}
+import { ButtonProps } from "./ButtonStyle";
 
 const ButtonIcon: FC<ButtonProps> = ({
   label,
@@ -33,6 +15,7 @@ const ButtonIcon: FC<ButtonProps> = ({
   action,
   id,
   tooltip,
+  disabled = false,
 }) => {
   const buttonContent = (
     <Button
@@ -42,6 +25,7 @@ const ButtonIcon: FC<ButtonProps> = ({
       style={{ color: textColor }}
       onClick={action}
       id={id ? id : undefined}
+      disabled={disabled}
     >
       {iconPosition === "left" && Icon(icon)} {label}
       {iconPosition === "right" && Icon(icon)}
