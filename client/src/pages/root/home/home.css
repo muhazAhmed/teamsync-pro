@@ -7,15 +7,6 @@
     margin-top: 0px !important;
 }
 
-.home nav img {
-    width: 15vw;
-    cursor: pointer;
-}
-
-.home nav h1 {
-    cursor: pointer;
-}
-
 .home .home-container {
     display: flex;
     flex-direction: column;
@@ -116,7 +107,7 @@
         width: 100vw;
     }
 
-    .home nav img {
+    nav img {
         width: 50vw;
     }
 
