@@ -1,0 +1,4 @@
+.logout {
+    background-color: var(--card);
+    box-shadow: -1px 5px 25px var(--primary);
+}
