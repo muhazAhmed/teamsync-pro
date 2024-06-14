@@ -130,41 +130,23 @@ export const fetchOneUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     const data = req.body;
-    const existingData = await hrModel.findOne({ _id: req.params.id });
+    const role = req.query.role;
+    const userModel = getUserModelByRole(role);
+    const existingData = await userModel.findOne({ _id: data._id });
 
-    if (Object.keys(req.body).includes("personalInformation")) {
-      existingData.personalInformation = Object.assign({},
-        existingData.personalInformation, req.body.personalInformation);
-      const updatedRequest = await hrModel.findOneAndUpdate(
-        { userId: req.params.id },
-        { $set: existingData },
-        { new: true }
-      );
-      return res.status(200).json({ updatedRequest, message: RESPONSE_MESSAGE("").USER_UPDATE });
-    }
-
-    if (Object.keys(req.body).includes("employment")) {
-      existingData.employment = Object.assign({},
-        existingData.employment, req.body.employment);
-      const updatedRequest = await hrModel.findOneAndUpdate(
-        { userId: req.params.id },
-        { $set: existingData },
-        { new: true }
-      );
-      return res.status(200).json({ updatedRequest, message: RESPONSE_MESSAGE("").USER_UPDATE });
-    }
-
-    if (Object.keys(req.body).includes("profile")) {
-      const updatedRequest = await hrModel.findOneAndUpdate(
-        { userId: req.params.id },
+    if (existingData) {
+      const updatedRequest = await userModel.findOneAndUpdate(
+        { _id: data._id },
         { $set: data },
         { new: true }
       );
-      return res.status(200).json({ updatedRequest, message: RESPONSE_MESSAGE("").USER_UPDATE });
+      if (updatedRequest) return res.status(200).json({ message: RESPONSE_MESSAGE("").USER_UPDATE })
+    } else {
+      return res.status(400).json({ message: RESPONSE_MESSAGE("").NO_USER_FOUND })
     }
 
-
   } catch (error) {
+    console.log(error.message)
     return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 };
