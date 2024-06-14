@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import TabMenu from "../../../UI-Components/TabMenu/TabMenu";
 import {
   Button,
@@ -6,16 +6,17 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
+  Input,
 } from "@nextui-org/react";
 import { getMethodAPI, patchMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import {
   ResponseInstances,
   closeModal,
+  fetchUserId,
   filterEmptyObj,
   useSessionStorage,
 } from "../../../utils/commonFunctions";
-import CustomInput from "../../../UI-Components/Inputs/Input";
 import {
   employmentConfigs,
   personalInfoConfigs,
@@ -28,13 +29,19 @@ import {
   status,
 } from "../../profile/Sub Components/ArrayOfInputs";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
 
 interface ModalProps {
   openEditModal: boolean;
   setEditModal: (value: boolean) => void;
   userDetails: any;
   setLoading: (value: boolean) => void;
+  fetchAllUsers: Function;
+}
+
+interface FooterButtonProps {
+  setEditModal: (value: boolean) => void;
+  action?: any;
+  sectionName?: string;
 }
 
 type Inputs = {
@@ -57,11 +64,28 @@ const EditModal: React.FC<ModalProps> = ({
   setEditModal,
   userDetails,
   setLoading,
+  fetchAllUsers,
 }) => {
   const [ResponseData, setResponseData] = useState<ResponseData>({});
-  const [inputs, setInputs] = useState<Inputs>({});
+  const [inputs, setInputs] = useState<Inputs>({
+    personalInformation: {},
+    employment: {},
+  });
   const isDemoAccount = useSessionStorage("isDemoAccount");
-  const { userId } = useParams();
+
+  const handleChange = (name: string, value: any, section?: string) => {
+    if (section) {
+      setInputs((prev) => ({
+        ...prev,
+        [section]: {
+          ...prev[section],
+          [name]: value,
+        },
+      }));
+    } else {
+      setInputs((prev) => ({ ...prev, [name]: value }));
+    }
+  };
 
   const fetchOneUser = async () => {
     const res = await getMethodAPI(
@@ -82,7 +106,10 @@ const EditModal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     if (ResponseData) {
-      const initialInputs: Inputs = {};
+      const initialInputs: Inputs = {
+        personalInformation: {},
+        employment: {},
+      };
       Object.keys(ResponseData).forEach((key: any) => {
         initialInputs[key] = ResponseData[key] || "";
       });
@@ -97,18 +124,15 @@ const EditModal: React.FC<ModalProps> = ({
       return;
     }
     const data = filterEmptyObj(inputs);
-    // const res = await patchMethodAPI(
-    //   `${serverVariables.UPDATE_REQUEST_USER}${userId}`,
-    //   data,
-    //   setLoading
-    // );
-    // if (res) {
-    //   closeModal(setEditModal);
-    // }
-  };
-
-  const onCancelClick = () => {
-    closeModal(setEditModal);
+    const res = await patchMethodAPI(
+      `${serverVariables.UPDATE_USER}${fetchUserId}?role=${userDetails?.role}`,
+      data,
+      setLoading
+    );
+    if (res) {
+      closeModal(setEditModal);
+      fetchAllUsers();
+    }
   };
 
   const DropdownInput: React.FC<{
@@ -151,16 +175,25 @@ const EditModal: React.FC<ModalProps> = ({
           setTabMenu={setEditModal}
           menuOptions={["Profile", "Personal Info", "Employment"]}
           menuItems={[
-            <ProfileSection inputs={inputs} setInputs={setInputs} />,
+            <ProfileSection
+              inputs={inputs}
+              handleChange={handleChange}
+              setEditModal={setEditModal}
+              action={handleUpdate}
+            />,
             <PersonalInfoSection
               inputs={inputs}
-              setInputs={setInputs}
               DropdownInput={DropdownInput}
+              handleChange={handleChange}
+              setEditModal={setEditModal}
+              action={handleUpdate}
             />,
             <EmploymentSection
               inputs={inputs}
-              setInputs={setInputs}
               DropdownInput={DropdownInput}
+              handleChange={handleChange}
+              setEditModal={setEditModal}
+              action={handleUpdate}
             />,
           ]}
         ></TabMenu>
@@ -173,127 +206,161 @@ export default EditModal;
 
 const ProfileSection: React.FC<{
   inputs: Inputs;
-  setInputs: (inputs: Inputs) => void;
-}> = ({ inputs, setInputs }) => {
+  handleChange: Function;
+  setEditModal: any;
+  action: Function;
+}> = ({ inputs, handleChange, setEditModal, action }) => {
   return (
-    <div style={commonStyle} id="Profile">
-      {profileConfigs(inputs).map((inputConfig: any) => (
-        <CustomInput
-          key={inputConfig.name}
-          type={inputConfig.type}
-          name={inputConfig.name}
-          value={inputs[inputConfig.name] || ""}
-          label={inputConfig.label}
-          setInputs={setInputs}
-          variant="underline"
-        />
-      ))}
-      <FooterButtons />
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={commonStyle} id="Profile">
+        {profileConfigs(inputs).map((inputConfig: any) => (
+          <Input
+            key={inputConfig?.name}
+            type={inputConfig.type}
+            name={inputConfig.name}
+            value={inputs[inputConfig.name] || ""}
+            label={inputConfig.label}
+            onChange={(e) => handleChange(inputConfig.name, e.target.value)}
+            variant="underlined"
+          />
+        ))}
+      </div>
+      <FooterButtons
+        setEditModal={setEditModal}
+        action={action}
+        sectionName={"profile"}
+      />
     </div>
   );
 };
 
 const PersonalInfoSection: React.FC<{
   inputs: Inputs;
-  setInputs: (inputs: Inputs) => void;
+  handleChange: Function;
+  setEditModal: any;
+  action: Function;
   DropdownInput: React.FC<{
     label: string;
     value: any;
     options: { label: string; value: any }[];
     onChange: (value: any) => void;
   }>;
-}> = ({ inputs, setInputs, DropdownInput }) => {
+}> = ({ inputs, DropdownInput, handleChange, setEditModal, action }) => {
   return (
-    <div style={commonStyle} id="Personal Info">
-      {personalInfoConfigs(inputs).map((inputConfig: any) =>
-        inputConfig.name === "gender" ||
-        inputConfig.name === "maritalStatus" ? (
-          <DropdownInput
-            key={inputConfig.name}
-            label={inputConfig.label}
-            value={inputs[inputConfig.name] || ""}
-            options={inputConfig.name === "gender" ? gender : maritalStatus}
-            onChange={(value) =>
-              setInputs((prev: any) => ({
-                ...prev,
-                [inputConfig.name]: value,
-              }))
-            }
-          />
-        ) : inputConfig.name === "physicallyChallenged" ? (
-          <DropdownInput
-            key={inputConfig.name}
-            label={inputConfig.label}
-            value={inputs[inputConfig.name] || ""}
-            options={physicallyChallenged}
-            onChange={(value) =>
-              setInputs((prev: any) => ({
-                ...prev,
-                [inputConfig.name]: value,
-              }))
-            }
-          />
-        ) : (
-          <CustomInput
-            key={inputConfig.name}
-            type={inputConfig.type}
-            name={inputConfig.name}
-            value={inputs[inputConfig.name] || ""}
-            label={inputConfig.label}
-            setInputs={setInputs}
-            variant="underline"
-          />
-        )
-      )}
-      <FooterButtons />
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={commonStyle} id="Personal Info">
+        {personalInfoConfigs(inputs).map((inputConfig: any) =>
+          inputConfig.name === "gender" ||
+          inputConfig.name === "maritalStatus" ? (
+            <DropdownInput
+              key={inputConfig.name}
+              label={inputConfig.label}
+              value={inputs.personalInformation[inputConfig.name] || ""}
+              options={inputConfig.name === "gender" ? gender : maritalStatus}
+              onChange={(value) =>
+                handleChange(inputConfig.name, value, "personalInformation")
+              }
+            />
+          ) : inputConfig.name === "physicallyChallenged" ? (
+            <DropdownInput
+              key={inputConfig.name}
+              label={inputConfig.label}
+              value={inputs.personalInformation[inputConfig.name] || ""}
+              options={physicallyChallenged}
+              onChange={(value) =>
+                handleChange(
+                  inputConfig.name,
+                  value === "true" ? true : false,
+                  "personalInformation"
+                )
+              }
+            />
+          ) : (
+            <Input
+              key={inputConfig.name}
+              type={inputConfig.type}
+              name={inputConfig.name}
+              value={inputs.personalInformation[inputConfig.name] || ""}
+              label={inputConfig.label}
+              onChange={(e) =>
+                handleChange(
+                  inputConfig.name,
+                  e.target.value,
+                  "personalInformation"
+                )
+              }
+              variant="underlined"
+            />
+          )
+        )}
+      </div>
+      <FooterButtons
+        setEditModal={setEditModal}
+        action={action}
+        sectionName={"personalInfo"}
+      />
     </div>
   );
 };
 
 const EmploymentSection: React.FC<{
   inputs: Inputs;
-  setInputs: (inputs: Inputs) => void;
+  handleChange: Function;
+  action: Function;
+  setEditModal: any;
   DropdownInput: React.FC<{
     label: string;
     value: any;
     options: { label: string; value: any }[];
     onChange: (value: any) => void;
   }>;
-}> = ({ inputs, setInputs, DropdownInput }) => {
+}> = ({ inputs, DropdownInput, handleChange, setEditModal, action }) => {
   return (
-    <div style={commonStyle} id="employment">
-      {employmentConfigs(inputs).map((inputConfig: any) =>
-        inputConfig.name === "status" ? (
-          <DropdownInput
-            key={inputConfig.name}
-            label={inputConfig.label}
-            value={inputs[inputConfig.name] || ""}
-            options={status}
-            onChange={(value) =>
-              setInputs((prev: any) => ({
-                ...prev,
-                [inputConfig.name]: value,
-              }))
-            }
-          />
-        ) : (
-          <CustomInput
-            key={inputConfig.name}
-            type={inputConfig.type}
-            name={inputConfig.name}
-            value={inputs[inputConfig.name] || ""}
-            label={inputConfig.label}
-            setInputs={setInputs}
-            variant="underline"
-          />
-        )
-      )}
-      <FooterButtons />
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div style={commonStyle} id="employment">
+        {employmentConfigs(inputs).map((inputConfig: any) =>
+          inputConfig.name === "status" ? (
+            <DropdownInput
+              key={inputConfig.name}
+              label={inputConfig.label}
+              value={inputs.employment[inputConfig.name] || ""}
+              options={status}
+              onChange={(value) =>
+                handleChange(inputConfig.name, value, "employment")
+              }
+            />
+          ) : (
+            <Input
+              key={inputConfig.name}
+              type={inputConfig.type}
+              name={inputConfig.name}
+              value={inputs.employment[inputConfig.name] || ""}
+              label={inputConfig.label}
+              onChange={(e) =>
+                handleChange(inputConfig.name, e.target.value, "employment")
+              }
+              variant="underlined"
+            />
+          )
+        )}
+      </div>
+      <FooterButtons
+        setEditModal={setEditModal}
+        action={action}
+        sectionName={"employment"}
+      />
     </div>
   );
 };
 
-const FooterButtons = () => {
+const FooterButtons: FC<FooterButtonProps> = ({
+  action,
+  setEditModal,
+  sectionName,
+}) => {
+  const onCancelClick = () => {
+    closeModal(setEditModal);
+  };
   return (
     <div
       className="menu-footer"
@@ -309,13 +376,15 @@ const FooterButtons = () => {
         variant="shadow"
         className="btn-primary"
         style={{ minWidth: "7vw" }}
+        onClick={() => action(sectionName)}
       >
-        Save
+        Update
       </Button>
       <Button
         variant="shadow"
         className="btn-ghost"
         style={{ minWidth: "7vw" }}
+        onClick={onCancelClick}
       >
         Cancel
       </Button>

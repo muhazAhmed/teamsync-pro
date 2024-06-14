@@ -128,6 +128,7 @@ const People = () => {
           setEditModal={setOpenEditModal}
           userDetails={selectedUserDetails}
           setLoading={setLoading}
+          fetchAllUsers={fetchAllUsers}
         />
       )}
       <div className="search">
@@ -206,6 +207,7 @@ const People = () => {
         <div className="cards">
           {filteredUsers().map((user) => (
             <Card
+              key={user?._id}
               content={
                 <div
                   className="card-body"
@@ -213,6 +215,7 @@ const People = () => {
                     handleClick(setOpenViewModal),
                       setSelectedUserDetails({
                         id: user?._id,
+                        role: user?.isHR ? "hr" : "employee",
                       });
                   }}
                 >
@@ -241,7 +244,7 @@ const People = () => {
                       {user.firstName} {user.lastName}
                     </h5>
                     <h6>
-                      <i className={icon.work}></i>
+                      <i className={icon.work}></i>&nbsp;&nbsp;
                       {user.employment?.designation || "-"}
                     </h6>
                     <Tooltip
@@ -250,7 +253,7 @@ const People = () => {
                       color="primary"
                     >
                       <h6>
-                        <i className={icon.user}></i>
+                        <i className={icon.user}></i>&nbsp;&nbsp;
                         {user.employment?.reportingManager || "-"}
                       </h6>
                     </Tooltip>
