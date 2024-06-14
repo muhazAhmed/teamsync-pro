@@ -6,7 +6,7 @@ import { useState } from "react";
 import { validEmail } from "../../utils/validation";
 import toast from "react-hot-toast";
 import { message } from "../../utils/Constants";
-import { CheckAccess } from "../../utils/commonFunctions";
+import { CheckAccess, directWithNewTab } from "../../utils/commonFunctions";
 import { postMethodAPI } from "../../utils/apiCallMethods";
 import Loader from "../../UI-Components/Loader/Loader";
 import { serverVariables } from "../../utils/serverVariables";
@@ -17,7 +17,8 @@ const Footer = () => {
 
   const onSubscribeClick = async () => {
     if (validEmail(email)) return toast.error(message("").INVALID_EMAIL);
-    if (CheckAccess?.isDemoAccount) {
+    if (CheckAccess?.isDemoAccount || !CheckAccess?.isLoggedIn) {
+      setEmail("");
       return toast.success(message("")?.SUBSCRIPTION_SUCCESS);
     } else {
       await postMethodAPI(
@@ -25,6 +26,7 @@ const Footer = () => {
         { email: email },
         setLoading
       );
+      setEmail("");
     }
   };
   return (
@@ -53,13 +55,21 @@ const Footer = () => {
             <i className={icon?.facebook}></i>
           </Tooltip>
           <Tooltip content="Instagram" placement="top" color="primary">
-            <i className={icon?.instagram}></i>
+            <i
+              className={icon?.instagram}
+              onClick={() =>
+                directWithNewTab("https://instagram.com/muhaz_ahmd")
+              }
+            ></i>
           </Tooltip>
           <Tooltip content="X-Twitter" placement="top" color="primary">
             <i className={icon?.twitter}></i>
           </Tooltip>
           <Tooltip content="GitHub" placement="top" color="primary">
-            <i className={icon?.gitHub}></i>
+            <i
+              className={icon?.gitHub}
+              onClick={() => directWithNewTab("https://github.com/muhazAhmed")}
+            ></i>
           </Tooltip>
         </div>
       </div>
