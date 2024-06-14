@@ -126,3 +126,7 @@ export const disableSundays = (date: Moment) => {
 export const disableFutureDays = (date: any) => {
   return date.isAfter(moment(), "day");
 }
+
+export const directWithNewTab = (url: string) => {
+  return window.open(url, '_blank');
+}
