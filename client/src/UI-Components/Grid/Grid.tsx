@@ -11,8 +11,8 @@ interface GridProps {
   templateColumns?: string;
   templateRows?: string;
   templateAreas?: string;
-  rowGap?: number;
-  columnGap?: number;
+  rowGap?: string;
+  columnGap?: string;
   rowStart?: number;
   rowEnd?: number;
   columnStart?: number;
@@ -41,8 +41,6 @@ const Grid: FC<GridProps> = ({
   className,
   style,
   gap,
-  columns,
-  rows,
   template,
   templateColumns,
   templateRows,
