@@ -33,7 +33,8 @@ const Sidebar = () => {
   useEffect(() => {
     if (
       location.href.split("/")[3] === "home" ||
-      location.href.split("/")[4] === "form"
+      location.href.split("/")[4] === "form" || 
+      location.href.split("/")[4] === "about"
     ) {
       setIsHomePage(true);
     } else return setIsHomePage(false);
