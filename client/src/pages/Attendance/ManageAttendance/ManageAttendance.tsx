@@ -1,35 +1,82 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import { openModal, usePageName } from "../../../utils/commonFunctions";
+import {
+  CheckAccess,
+  ResponseInstances,
+  fetchUserId,
+  openModal,
+  usePageName,
+} from "../../../utils/commonFunctions";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import moment from "moment";
 import { Button, Progress } from "@nextui-org/react";
-import DailyRecordChart from "./SubComponents/BarChart";
+// import DailyRecordChart from "./SubComponents/BarChart";
 import AllAttendanceModal from "./SubComponents/AllAttendanceModal/AllAttendanceModal";
 import Loader from "../../../UI-Components/Loader/Loader";
 import LeaveStat from "./SubComponents/DonutChart";
 import CheckInButton from "../AddAttendance/Button";
+import { getMethodAPI } from "../../../utils/apiCallMethods";
+import { serverVariables } from "../../../utils/serverVariables";
+import AreaChartData from "./SubComponents/AreaChart";
+
+type ResponseData = {
+  [key: string]: any;
+};
 
 const ManageAttendance = () => {
-  const [todayTotalHours, setTodayTotalHours] = useState(3.55);
+  const [data, setData] = useState<ResponseData>();
   const [attendanceModal, setAttendanceModal] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const percentage = (todayTotalHours / 9) * 100;
+  const percentage = (data?.totalHoursCompletedToday / 9) * 100;
   useEffect(() => {
     usePageName("Attendance / Dashboard");
+    if (CheckAccess?.isDemoAccount) {
+    } else {
+      fetchDashboardData();
+    }
   }, []);
+
+  const fetchDashboardData = async () => {
+    const res = await getMethodAPI(
+      `${serverVariables?.ATTENDANCE_DETAILS}${fetchUserId}`,
+      "",
+      setLoading
+    );
+    ResponseInstances(res, 200, (responseData: any) => {
+      setData(responseData);
+    });
+  };
 
   const statisticsData = [
     {
       label: "Today",
-      hours: `${todayTotalHours} / 9 hrs`,
+      hours: `${data?.totalHoursCompletedToday || 0} / 9 hrs`,
       color: "primary",
-      value: percentage,
+      value: data?.totalHoursCompletedToday || 0,
+      maxValue: 9,
     },
-    { label: "This Week", hours: `25 / 40 hrs`, color: "secondary", value: 75 },
-    { label: "This Month", hours: `90 / 160 hrs`, color: "danger", value: 50 },
-    { label: "Overtime", hours: `5 hrs`, color: "success", value: 20 },
+    {
+      label: "This Week",
+      hours: `${data?.totalHoursCompletedThisWeek || 0} / 45 hrs`,
+      color: "secondary",
+      value: data?.totalHoursCompletedThisWeek || 0,
+      maxValue: 45,
+    },
+    {
+      label: "This Month",
+      hours: `${data?.totalHoursCompletedThisMonth || 0} / 180 hrs`,
+      color: "danger",
+      value: data?.totalHoursCompletedThisMonth || 0,
+      maxValue: 180,
+    },
+    {
+      label: "Overtime",
+      hours: `${data?.todayOvertime || 0} hrs`,
+      color: "success",
+      value: data?.todayOvertime || 0,
+      maxValue: 16,
+    },
   ];
 
   const attendanceList = [
@@ -55,7 +102,7 @@ const ManageAttendance = () => {
     <div className="manage-attendance">
       {loading && <Loader />}
       {attendanceModal && (
-        <AllAttendanceModal setModal={setAttendanceModal} loading={loading} />
+        <AllAttendanceModal setModal={setAttendanceModal} loading={loading} setLoading={setLoading} />
       )}
       <div className="stats">
         <div className="current-stat">
@@ -66,16 +113,20 @@ const ManageAttendance = () => {
           </div>
           <div className="punch-in">
             <h3>Check in at</h3>
-            <p>Wed, 11th Mar 2024 12:32 AM</p>
+            <p>
+              {moment().format("ddd, Do MMM YYYY")}{" "}
+              {moment(data?.lastCheckInUpdate, "HH:mm").format("hh:mm A") ||
+                "-"}
+            </p>
           </div>
           <div className="progress-bar">
             <CircularProgressbar
               value={percentage}
-              text={`${todayTotalHours} hrs`}
+              text={`${data?.totalHoursCompletedToday || 0} hrs`}
             />
           </div>
 
-          <CheckInButton setLoading={setLoading}/>
+          <CheckInButton setLoading={setLoading} />
         </div>
         <div className="overall">
           <h1>Statistics</h1>
@@ -90,14 +141,16 @@ const ManageAttendance = () => {
                   color={item.color}
                   aria-label="Progress Graph"
                   value={item.value}
+                  maxValue={item.maxValue}
                 />
               </div>
             </div>
           ))}
         </div>
         <div className="activity">
-          <h1>Daily Records</h1>
-          <DailyRecordChart />
+          <h1>Last 10 Days Records</h1>
+          {/* <DailyRecordChart data={data} /> */}
+          <AreaChartData/>
         </div>
       </div>
       <div className="detailed-stat">

@@ -1,56 +1,86 @@
 import "./style.css";
 import DateRangePicker from "../../../../../UI-Components/DatePicker/DateRangePicker";
 import moment, { Moment } from "moment";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import {
+  CheckAccess,
+  PaginationResponseInstances,
   disableFutureDays,
+  fetchUserId,
   formatDate,
 } from "../../../../../utils/commonFunctions";
 import Modal from "../../../../../UI-Components/popUp-modal/PopUpModal";
 import { Button, Tooltip } from "@nextui-org/react";
 import Loader from "../../../../../UI-Components/Loader/Loader";
-import { icon } from "../../../../../UI-Components/Icons/Icons";
+import { Icon, icon } from "../../../../../UI-Components/Icons/Icons";
+import usePagination from "../../../../../utils/custom-hooks/usePagination";
+import Pagination from "../../../../../UI-Components/Pagination/Pagination";
+import { getMethodAPI } from "../../../../../utils/apiCallMethods";
+import { serverVariables } from "../../../../../utils/serverVariables";
+// import toast from "react-hot-toast";
+// import { message } from "../../../../../utils/Constants";
 
 interface ModalProps {
   setModal: (value: boolean) => void;
+  setLoading: (value: boolean) => void;
   loading: boolean;
 }
 
-const AllAttendanceModal: FC<ModalProps> = ({ setModal, loading }) => {
+const AllAttendanceModal: FC<ModalProps> = ({
+  setModal,
+  loading,
+  setLoading,
+}) => {
   const [startDate, setStartDate] = useState<Moment>(moment().startOf("day"));
   const [endDate, setEndDate] = useState<Moment>(moment().endOf("day"));
   const [openCalender, setOpenCalender] = useState<boolean>(false);
+  const [data, setData] = useState<any>();
+  // const [status, setStatus] = useState<string>("all");
+  const [paginationDetails, setPaginationDetails] = useState<any>();
+  const [itemsPerPage] = useState<number>(1);
   const isDateAfterToday = (date: any) => {
     return disableFutureDays(date);
   };
+
+  const fetchData = async (page: number) => {
+    const res = await getMethodAPI(
+      `${serverVariables?.FETCH_ATTENDANCE_BY_PAGE}${fetchUserId}?page=${page}&limit=${itemsPerPage}`,
+      "",
+      setLoading
+    );
+    PaginationResponseInstances(res, 200, (responseData: any) => {
+      setData(responseData?.data);
+      setPaginationDetails([
+        { totalPages: responseData?.totalPages },
+        { totalItems: responseData?.totalItems },
+      ]);
+    });
+  };
+
+  // const handleFilterChange = (status: string) => {
+  //   setStatus(status);
+  //   toast.success(message("Status").FILTER_APPLIED);
+  // };
 
   const handleApply = (startDate: Moment | null, endDate: Moment | null) => {
     console.log("Start Date:", formatDate(startDate));
     console.log("End Date:", formatDate(endDate));
   };
 
-  const attendanceList = [
-    {
-      date: "10-03-2024",
-      status: true,
-      firstSwipe: "10:00 AM",
-      secondSwipe: "01:00 PM",
-      thirdSwipe: "02:00 PM",
-      fourthSwipe: "06:00 PM",
-      total: "7 hrs",
-      overtime: "0 hrs",
-    },
-    {
-      date: "10-03-2024",
-      status: false,
-      firstSwipe: "10:00 AM",
-      secondSwipe: "01:00 PM",
-      thirdSwipe: "02:00 PM",
-      fourthSwipe: "06:00 PM",
-      total: "7 hrs",
-      overtime: "1 hrs",
-    },
-  ];
+  // const filteredListData = data?.filter((item: any) => {
+  //   if (status === "all") return true;
+  //   return item.priority === status;
+  // });
+
+  const { currentData, currentPage, goToPage, nextPage, prevPage } =
+    usePagination({ data: data, itemsPerPage });
+
+  useEffect(() => {
+    if (CheckAccess?.isDemoAccount) {
+    } else {
+      fetchData(currentPage);
+    }
+  }, [currentPage]);
 
   return (
     <div className="all-attendance">
@@ -89,7 +119,7 @@ const AllAttendanceModal: FC<ModalProps> = ({ setModal, loading }) => {
                 onClick={() => setOpenCalender(true)}
                 style={{ color: "#fff" }}
               >
-                Filter
+                {Icon("calendar")}Change Date
               </Button>
             </div>
 
@@ -108,7 +138,7 @@ const AllAttendanceModal: FC<ModalProps> = ({ setModal, loading }) => {
                 </tr>
               </thead>
               <tbody>
-                {attendanceList.map((item: any, index: number) => (
+                {currentData?.map((item: any, index: number) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{item?.date}</td>
@@ -125,6 +155,15 @@ const AllAttendanceModal: FC<ModalProps> = ({ setModal, loading }) => {
             </table>
           </div>
         </div>
+        {data?.length && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={paginationDetails[0]?.totalPages}
+            goToPage={goToPage}
+            prevPage={prevPage}
+            nextPage={nextPage}
+          />
+        )}
       </Modal>
     </div>
   );
