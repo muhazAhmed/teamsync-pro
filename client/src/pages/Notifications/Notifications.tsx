@@ -1,9 +1,9 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Card from "../../UI-Components/Card/Card";
 import "./style.css";
 import notificationLogo from "../../assets/images/notificationLogo.png";
 import { icon } from "../../UI-Components/Icons/Icons";
-import { fetchWebSocketNotification } from "./webSocket";
+// import { fetchWebSocketNotification } from "./webSocket";
 import { openModal } from "../../utils/commonFunctions";
 import Loader from "../../UI-Components/Loader/Loader";
 import ConfirmationModal from "./ConfirmationModal";
@@ -20,7 +20,8 @@ const selectedItemStyle = {
 
 const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
   const [selectedItem, setSelectedItem] = useState<number>(1);
-  const [loading, setLoading] = useState<boolean>(false);
+  let loading = false;
+  // const [loading, setLoading] = useState<boolean>(false);
 
   const handleSwitch = (id: number) => {
     setSelectedItem(id);

@@ -9,7 +9,7 @@ interface ModalProps {
   userId: any;
 }
 
-const UserModal: FC<ModalProps> = ({ setModal, userId }) => {
+const UserModal: FC<ModalProps> = ({ setModal }) => {
   return (
     <Modal
       setModal={setModal}
