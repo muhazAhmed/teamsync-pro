@@ -62,7 +62,7 @@ const Sidebar = () => {
       subItems: [
         { label: "Add New", path: `/attendance/new/${userInfo?._id}` },
         { label: "Manage", path: `/attendance/manage/${userInfo?._id}` },
-        { label: "Apply For Leave", path: `/leave/apply/${userInfo?._id}` },
+        { label: "Time Off", path: `/time-off/${userInfo?._id}` },
         { label: "Holiday Calender", path: `/calender/${userInfo?._id}` },
       ],
     },
