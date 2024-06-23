@@ -15,7 +15,8 @@ const selectedItemStyle = {
 
 const Settings = () => {
   const [selectedItem, setSelectedItem] = useState<number>(2);
-  const [loading, setLoading] = useState<boolean>(false);
+  let loading = false;
+  // const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
