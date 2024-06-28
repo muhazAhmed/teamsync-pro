@@ -125,3 +125,34 @@ export const UpdateRequestDemo = [
         department: "developer",
     },
 ]
+
+export const allAttendanceData = {
+    "lastCheckInUpdate": "",
+    "totalHoursCompletedToday": "4.00",
+    "totalHoursCompletedThisWeek": "23.56",
+    "totalHoursCompletedThisMonth": "33.56",
+    "todayOvertime": "0.00",
+    "firstSwipe": "09:00",
+    "secondSwipe": "13:00",
+    "thirdSwipe": 0,
+    "fourthSwipe": 0
+}
+
+export const attendanceList = [
+    {
+      date: "10-03-2024",
+      firstSwipe: "10:00 AM",
+      secondSwipe: "01:00 PM",
+      thirdSwipe: "02:00 PM",
+      fourthSwipe: "06:00 PM",
+      total: "7 hrs",
+    },
+    {
+      date: "10-03-2024",
+      firstSwipe: "10:00 AM",
+      secondSwipe: "01:00 PM",
+      thirdSwipe: "02:00 PM",
+      fourthSwipe: "06:00 PM",
+      total: "7 hrs",
+    },
+  ];

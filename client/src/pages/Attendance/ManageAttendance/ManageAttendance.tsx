@@ -11,7 +11,6 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import moment from "moment";
 import { Button, Progress } from "@nextui-org/react";
-// import DailyRecordChart from "./SubComponents/BarChart";
 import AllAttendanceModal from "./SubComponents/AllAttendanceModal/AllAttendanceModal";
 import Loader from "../../../UI-Components/Loader/Loader";
 import LeaveStat from "./SubComponents/DonutChart";
@@ -19,6 +18,7 @@ import CheckInButton from "../AddAttendance/Button";
 import { getMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import AreaChartData from "./SubComponents/AreaChart";
+import { allAttendanceData, attendanceList } from "../../form/Demo";
 
 type ResponseData = {
   [key: string]: any;
@@ -31,9 +31,10 @@ const ManageAttendance = () => {
   const percentage = (data?.totalHoursCompletedToday / 9) * 100;
   useEffect(() => {
     usePageName("Attendance / Dashboard");
-    if (CheckAccess?.isDemoAccount) {
-    } else {
+    if (!CheckAccess?.isDemoAccount) {
       fetchDashboardData();
+    } else {
+      setData(allAttendanceData);
     }
   }, []);
 
@@ -79,30 +80,15 @@ const ManageAttendance = () => {
     },
   ];
 
-  const attendanceList = [
-    {
-      date: "10-03-2024",
-      firstSwipe: "10:00 AM",
-      secondSwipe: "01:00 PM",
-      thirdSwipe: "02:00 PM",
-      fourthSwipe: "06:00 PM",
-      total: "7 hrs",
-    },
-    {
-      date: "10-03-2024",
-      firstSwipe: "10:00 AM",
-      secondSwipe: "01:00 PM",
-      thirdSwipe: "02:00 PM",
-      fourthSwipe: "06:00 PM",
-      total: "7 hrs",
-    },
-  ];
-
   return (
     <div className="manage-attendance">
       {loading && <Loader />}
       {attendanceModal && (
-        <AllAttendanceModal setModal={setAttendanceModal} loading={loading} setLoading={setLoading} />
+        <AllAttendanceModal
+          setModal={setAttendanceModal}
+          loading={loading}
+          setLoading={setLoading}
+        />
       )}
       <div className="stats">
         <div className="current-stat">
@@ -149,8 +135,7 @@ const ManageAttendance = () => {
         </div>
         <div className="activity">
           <h1>Last 10 Days Records</h1>
-          {/* <DailyRecordChart data={data} /> */}
-          <AreaChartData/>
+          <AreaChartData />
         </div>
       </div>
       <div className="detailed-stat">
