@@ -147,6 +147,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
                   label={label}
                   onChange={(e) => handleChange(key, e.target.value)}
                   variant="underlined"
+                  style={{color: "#fff"}}
                 />
               );
             }
