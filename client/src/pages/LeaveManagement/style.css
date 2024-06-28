@@ -1,0 +1,144 @@
+.time-off {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    height: 90vh;
+}
+
+.time-off .container  {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.time-off .header-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.app-container {
+    margin-top: 70px !important;
+}
+
+.time-off .stats {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.time-off .stats h1 {
+    color: var(--secondary);
+    font-weight: bold;
+}
+
+.time-off .stats #chips {
+    min-width: calc(60%) !important;
+    height: fit-content;
+}
+
+.time-off .end-content #holidays {
+    min-width: 100% !important;
+    height: 40vh;
+}
+
+.time-off .stats .custom-card .body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.time-off .custom-card .body .items-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
+
+.time-off .items-container .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: calc(50%);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4.5px);
+    -webkit-backdrop-filter: blur(4.5px);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.time-off .items-container .item h2 {
+    font-size: 17px;
+}
+
+.time-off .items-container .item h2 span {
+    color: var(--primary);
+    font-size: 30px;
+}
+
+.time-off .items-container .item h4 {
+    color: #c1c1c1;
+    font-size: 15px;
+}
+
+.time-off .items-container h5 {
+    font-size: 12px;
+    text-decoration: underline;
+    width: 100%;
+    text-align: end;
+    cursor: pointer;
+}
+
+.time-off .end-content {
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+    width: 50%;
+    position: relative;
+}
+
+.time-off table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.time-off table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.time-off td {
+    text-align: left;
+    padding: 8px 8px 8px 0px;
+}
+
+.time-off tbody td {
+    min-width: 5vw;
+}
+
+.time-off thead tr th, .time-off tbody tr td {
+    text-align: left;
+    font-size: 14px;
+}
+
+.table-wrapper .table {
+    width: 100%;
+}
+
+.time-off .table-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
