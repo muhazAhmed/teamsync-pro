@@ -8,6 +8,7 @@ interface PaginationProp {
   goToPage: (page: number) => void;
   prevPage: () => void;
   nextPage: () => void;
+  style?: any;
 }
 
 const Pagination: FC<PaginationProp> = ({
@@ -16,9 +17,10 @@ const Pagination: FC<PaginationProp> = ({
   goToPage,
   prevPage,
   nextPage,
+  style,
 }) => {
   return (
-    <div className="pagination">
+    <div className="pagination" style={style && style}>
       <Tooltip content="First Page" color="primary">
         <button
           onClick={() => goToPage(1)}
