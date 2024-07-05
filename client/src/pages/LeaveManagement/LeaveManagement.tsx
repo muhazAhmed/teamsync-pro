@@ -1,28 +1,43 @@
+import { useState } from "react";
 import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import Card from "../../UI-Components/Card/Card";
+import Pagination from "../../UI-Components/Pagination/Pagination";
+import { holidayList, leaveData } from "./ArrayOfItems";
 import "./style.css";
+import usePagination from "../../utils/custom-hooks/usePagination";
+import Loader from "../../UI-Components/Loader/Loader";
+import NewLeaveRequest from "./SubComponents/NewLeaveRequest";
+import LeaveStatus from "./SubComponents/LeaveStatus";
+import { openModal } from "../../utils/commonFunctions";
 
 const LeaveManagement = () => {
-  const holidayList = [
-    { label: "Eid", value: "17th Jun, Mon" },
-    { label: "Eid", value: "17th Jun, Mon" },
-    { label: "Eid", value: "17th Jun, Mon" },
-  ];
+  const [itemsPerPage] = useState<number>(3);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [newReqModal, setNewReqModal] = useState<boolean>(false);
+  const [leaveStatusModal, setLeaveStatusModal] = useState<boolean>(false);
+
+  const { currentData, currentPage, totalPages, nextPage, prevPage, goToPage } =
+    usePagination({ data: leaveData, itemsPerPage });
 
   return (
     <div className="time-off">
+      {loading && <Loader />}
+      {newReqModal && <NewLeaveRequest setModal={setNewReqModal} />}
+      {leaveStatusModal && <LeaveStatus setModal={setLeaveStatusModal} />}
       <div className="header-btn">
         <ButtonIcon
           label="Request Leave"
           className="btn-primary"
           iconPosition="left"
           icon="vacation"
+          action={() => openModal(setNewReqModal)}
         />
         <ButtonIcon
           label="Leave History"
           className="btn-ghost"
           iconPosition="left"
           icon="clock"
+          action={() => openModal(setLeaveStatusModal)}
         />
       </div>
       <div className="container">
@@ -56,7 +71,7 @@ const LeaveManagement = () => {
             }
           />
           <Card
-          className="table-wrapper"
+            className="table-wrapper"
             content={
               <div className="table">
                 <table>
@@ -71,24 +86,38 @@ const LeaveManagement = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>12/06/2021</td>
-                      <td>Casual Leave</td>
-                      <td>12/06/2021</td>
-                      <td>12/06/2021</td>
-                      <td>Casual Leave</td>
-                      <td>Approved</td>
-                    </tr>
-                    <tr>
-                      <td>12/06/2021</td>
-                      <td>Casual Leave</td>
-                      <td>12/06/2021</td>
-                      <td>12/06/2021</td>
-                      <td>Casual Leave</td>
-                      <td>Approved</td>
-                    </tr>
+                    {currentData?.map((item: any, index: number) => (
+                      <tr key={index}>
+                        <td>{item?.date}</td>
+                        <td>{item?.leaveType}</td>
+                        <td>{item?.from}</td>
+                        <td>{item?.to}</td>
+                        <td>{item?.reason}</td>
+                        <td
+                          style={
+                            item?.status === "Approved"
+                              ? { color: "#00ba00" }
+                              : item?.status === "Rejected"
+                              ? { color: "red" }
+                              : { color: "yellow" }
+                          }
+                        >
+                          {item?.status}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
+                {leaveData.length > itemsPerPage && (
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    goToPage={goToPage}
+                    prevPage={prevPage}
+                    nextPage={nextPage}
+                    style={{ position: "absolute", bottom: "-170px" }}
+                  />
+                )}
               </div>
             }
           />

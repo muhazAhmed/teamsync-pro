@@ -9,7 +9,7 @@
     height: 90vh;
 }
 
-.time-off .container  {
+.time-off .container {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -31,6 +31,7 @@
 .time-off .stats {
     display: flex;
     width: 100%;
+    gap: 1.5rem;
     flex-direction: column;
     justify-content: space-between;
 }
@@ -112,11 +113,16 @@
 .time-off table {
     border-collapse: collapse;
     width: 100%;
+    height: 100%;
 }
 
 .time-off table {
     border-collapse: collapse;
     width: 100%;
+}
+
+.time-off table tbody tr td {
+    color: #b9b9b9;
 }
 
 .time-off td {
@@ -128,17 +134,32 @@
     min-width: 5vw;
 }
 
-.time-off thead tr th, .time-off tbody tr td {
+.time-off thead tr th,
+.time-off tbody tr td {
     text-align: left;
     font-size: 14px;
 }
 
-.table-wrapper .table {
+.time-off .table-wrapper .table {
     width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.time-off .table-wrapper thead {
+    position: sticky;
+    top: 0;
+    background-color: var(--card);
+}
+
+.time-off table tbody td:last-child {
+    font-weight: bold;
 }
 
 .time-off .table-wrapper {
     display: flex;
-    align-items: center;
+    min-height: 45vh;
+    max-height: 45vh;
+    overflow: auto;
     justify-content: space-between;
 }
