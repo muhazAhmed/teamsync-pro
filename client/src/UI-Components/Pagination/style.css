@@ -16,6 +16,10 @@
     background-color: transparent;
 }
 
+.pagination button:disabled {
+    cursor: not-allowed;
+}
+
 .pagination button.active {
     background-color: var(--secondary);
 }
