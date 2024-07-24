@@ -2,6 +2,10 @@ import express from "express";
 const testingRoute = express.Router();
 import testingModel from "../models/services/testingModel.js";
 
+testingRoute.get("/api", (req, res) => {
+  return res.status(200).json("Server Loaded...");
+});
+
 testingRoute.get("/", (req, res) => {
   return res.status(200).json("API is Active...");
 });

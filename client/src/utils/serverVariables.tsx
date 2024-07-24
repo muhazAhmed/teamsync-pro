@@ -1,4 +1,5 @@
 export const serverVariables = {
+    RELOAD_SERVER: "",
     REGISTER_NEW_USER : "/user/register",
     LOGIN_USER: "/user/login",
     UPDATE_USER: "/user/update/",
