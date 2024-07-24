@@ -1,3 +1,4 @@
+import React, { MouseEvent } from "react";
 import "./modal.css";
 import ReactDOM from "react-dom";
 import { icon } from "../Icons/Icons";
@@ -30,8 +31,14 @@ const Modal: React.FC<ModalProps> = ({
   id,
   className,
 }) => {
+  const handleOutsideClick = (e: MouseEvent<HTMLDivElement>) => {
+    if ((e.target as Element).classList.contains("blur-bg")) {
+      closeModal(setModal);
+    }
+  };
+  
   return ReactDOM.createPortal(
-    <div className="blur-bg">
+    <div className="blur-bg" onClick={handleOutsideClick}>
       <div
         className={`modal-container ${className ? className : ""} fadeIn`}
         id={id ? id : undefined}
