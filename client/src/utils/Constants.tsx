@@ -2,13 +2,15 @@
 export const API_URL = "https://teamsync.onrender.com/api/";    // Demo, Testing
 
 // MESSAGES:
-export const message = (name: string) => ({
+export const message = (name?: string) => ({
 
   // =========== Root =============
   SERVER_ERROR: "Server Under Maintenance",
   UNAVAILABLE:"Temporarily Unavailable",
   TRY_AGAIN: "Please Try Again After Some Time",
   FILTER_APPLIED: `${name} Filter Applied`,
+  SERVER_RESTART: "Please wait until server gets restarted",
+  CONNECTED: "Connection Successful",
 
 // ============ Form ==========
   REQUIRED_FIELD: `Please Enter ${name}`,

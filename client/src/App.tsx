@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
 import "./animation.css";
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import Loader from "./UI-Components/Loader/Loader";
 import AuthGuard, { HRAuthGuard } from "./utils/AuthGuard";
+import { loadServer } from "./utils/onPageLoad";
 
 const Sidebar = React.lazy(() => import("./components/sidebar/Sidebar"));
 const PageNotFound = React.lazy(() => import("./components/PageNotFound/PageNotFound"));
@@ -25,6 +26,9 @@ const UpdateRequest = React.lazy(() => import("./pages/HR/UpdateRequest/UpdateRe
 
 function App() {
   const flag = location.href.includes("home") || location.href.includes("user/form");
+  useEffect(() => {
+    loadServer();
+  }, [])
 
   return (
     <div className='app'>
