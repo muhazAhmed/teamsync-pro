@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import Card from "../../UI-Components/Card/Card";
 import Pagination from "../../UI-Components/Pagination/Pagination";
@@ -15,7 +15,10 @@ const LeaveManagement = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [newReqModal, setNewReqModal] = useState<boolean>(false);
   const [leaveStatusModal, setLeaveStatusModal] = useState<boolean>(false);
-  setLoading(false);
+
+  useEffect(() => {
+    setLoading(false); // Temp
+  }, [])
 
   const { currentData, currentPage, totalPages, nextPage, prevPage, goToPage } =
     usePagination({ data: leaveData, itemsPerPage });
