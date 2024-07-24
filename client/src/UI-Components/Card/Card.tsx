@@ -4,6 +4,7 @@ interface CardProps {
   content: any;
   id?: any;
   className?: string;
+  style?: any;
 }
 
 const customCardStyle = {
@@ -17,14 +18,16 @@ const customCardStyle = {
   },
 };
 
-const Card: FC<CardProps> = ({ content, id, className }) => {
+const Card: FC<CardProps> = ({ content, id, className, style }) => {
   return (
     <div
       style={customCardStyle.container}
       className="custom-card"
       id={id ? id : undefined}
     >
-      <div className={className ? className : undefined}>{content}</div>
+      <div className={className ? className : undefined} style={style}>
+        {content}
+      </div>
     </div>
   );
 };
