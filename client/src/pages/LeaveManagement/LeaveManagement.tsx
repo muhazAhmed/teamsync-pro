@@ -15,6 +15,7 @@ const LeaveManagement = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [newReqModal, setNewReqModal] = useState<boolean>(false);
   const [leaveStatusModal, setLeaveStatusModal] = useState<boolean>(false);
+  setLoading(false);
 
   const { currentData, currentPage, totalPages, nextPage, prevPage, goToPage } =
     usePagination({ data: leaveData, itemsPerPage });
