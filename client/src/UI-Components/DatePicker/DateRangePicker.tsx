@@ -229,14 +229,14 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
             <Input
               label="From"
               readOnly
-              value={startDate ? startDate.format("MM/DD/YYYY") : ""}
+              value={startDate ? startDate.format("DD/MM/YYYY") : ""}
               variant={setModal && "bordered"}
               style={{ color: "#fff" }}
             />
             <Input
               label="To"
               readOnly
-              value={endDate ? endDate.format("MM/DD/YYYY") : ""}
+              value={endDate ? endDate.format("DD/MM/YYYY") : ""}
               variant={setModal && "bordered"}
               style={{ color: "#fff" }}
             />
