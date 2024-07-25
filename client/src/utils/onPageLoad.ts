@@ -2,7 +2,7 @@ import axios from "axios";
 import { API_URL, message } from "./Constants";
 import { serverVariables } from "./serverVariables";
 import toast from "react-hot-toast";
-import { newSessionStorage, useSessionStorage } from "./commonFunctions";
+import { fetchUserId, newSessionStorage, useSessionStorage } from "./commonFunctions";
 
 export const loadServer = async () => {
     try {
@@ -29,4 +29,9 @@ export const loadServer = async () => {
         console.error("Server Is Not Connected");
         toast.error(message()?.SERVER_ERROR);
     }
+}
+
+export const loadPage = () => {
+    loadServer();
+    fetchUserId;
 }
