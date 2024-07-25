@@ -24,5 +24,6 @@ export const RESPONSE_MESSAGE = (name) => ({
     ATTENDANCE_NOT_FOUND: "No Attendance Found With This UserID",
     MAX_SWIPE: "Maximum daily swipes reached",
     SERVER_ERROR: "Server Error",
-    SUBSCRIPTION_SUCCESS: "Newsletter Subscription Has Been Enabled Successfully"
+    SUBSCRIPTION_SUCCESS: "Newsletter Subscription Has Been Enabled Successfully",
+    REQUEST_ADDED: "Request Added Successfully",
 })
