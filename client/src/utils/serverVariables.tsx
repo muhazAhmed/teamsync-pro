@@ -29,4 +29,9 @@ export const serverVariables = {
     FETCH_ONE_SUPPORT_REQUEST: "/user/fetch-one-support-request/",
     UPDATE_SUPPORT_REQUEST: "/user/update-support-request/",
     DELETE_SUPPORT_REQUEST: "/user/delete-support-request/",
+
+    NEW_LEAVE_REQUEST: "/user/leave-request/new/",
+    FETCH_ONE_LEAVE_REQUEST: "/user/leave-request/fetch-one/",
+    FETCH_ALL_LEAVE_REQUEST: "/user/leave-request/fetch-all/",
+    UPDATE_LEAVE_REQUEST: "/user/leave-request/update/",
 }

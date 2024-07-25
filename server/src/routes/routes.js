@@ -7,6 +7,7 @@ import { fetchAllUsers, fetchUserByName } from '../controllers/adminController/a
 import { attendanceDashboardData, fetchAndCheckDaily, fetchAttendanceByIdPageWise, fetchOneAttendance, newAttendance, updateAttendance } from '../controllers/attendance/attendanceController.js';
 import "../controllers/serviceController/cronJobs.js"
 import { deleteSupportReq, fetchAllSupportReq, fetchOneSupportReq, newSupportReq, updateSupportReq } from '../controllers/serviceController/SupportController.js';
+import { newLeaveReq } from '../controllers/User/timeOffController.js';
 
 routes.post("/user/register", newUser)
 routes.post("/user/login", loginUser)
@@ -39,5 +40,7 @@ routes.get("/client/fetch-request/:id", getOneClientData)
 routes.get("/client/fetch-all-request", getAllClientData)
 routes.patch("/client/update-request/:id", updateClientData)
 routes.delete("/client/-request/:id", deleteClientData)
+
+routes.post("/user/leave-request/new/:id/:role", newLeaveReq)
 
 export default routes;
