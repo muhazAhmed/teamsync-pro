@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import Card from "../../UI-Components/Card/Card";
 import Pagination from "../../UI-Components/Pagination/Pagination";
@@ -16,18 +16,18 @@ const LeaveManagement = () => {
   const [newReqModal, setNewReqModal] = useState<boolean>(false);
   const [leaveStatusModal, setLeaveStatusModal] = useState<boolean>(false);
 
-  useEffect(() => {
-    setLoading(false); // Temp
-  }, [])
-
   const { currentData, currentPage, totalPages, nextPage, prevPage, goToPage } =
     usePagination({ data: leaveData, itemsPerPage });
 
   return (
     <div className="time-off">
       {loading && <Loader />}
-      {newReqModal && <NewLeaveRequest setModal={setNewReqModal} />}
-      {leaveStatusModal && <LeaveStatus setModal={setLeaveStatusModal} />}
+      {newReqModal && (
+        <NewLeaveRequest setModal={setNewReqModal} setLoading={setLoading} />
+      )}
+      {leaveStatusModal && (
+        <LeaveStatus setModal={setLeaveStatusModal} setLoading={setLoading} />
+      )}
       <div className="header-btn">
         <ButtonIcon
           label="Request Leave"
@@ -37,7 +37,7 @@ const LeaveManagement = () => {
           action={() => openModal(setNewReqModal)}
         />
         <ButtonIcon
-          label="Leave History"
+          label="Pending"
           className="btn-ghost"
           iconPosition="left"
           icon="clock"
