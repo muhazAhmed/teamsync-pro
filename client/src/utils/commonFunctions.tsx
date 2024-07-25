@@ -91,7 +91,8 @@ export const AssignRole = (role:string) => {
   if (role === "Employee") return role = Variables.EMPLOYEE_ROLE;
 }
 
-export const FetchRole = (role:any) => {
+export const FetchRole = (role?:any) => {
+  if (!role) role = useSessionStorage("client-id");
   if (role === Variables.HR_ROLE) return role = "hr";
   if (role === Variables.ADMIN_ROLE) return role = "admin";
   if (role === Variables.EMPLOYEE_ROLE) return role = "employee";
@@ -119,13 +120,17 @@ export const formatDate = (date:any) => {
   return date ? date.format("DD-MM-YYYY") : null
 }
 
-export const disableSundays = (date: Moment) => {
-  return date.day() === 0;
+export const disableSundays = (date?: Moment) => {
+  return date?.day() === 0;
 };
 
 export const disableFutureDays = (date: any) => {
-  return date.isAfter(moment(), "day");
+  return date?.isAfter(moment(), "day");
 }
+
+export const disablePastDays = (date?: any) => {
+  return date?.isBefore(moment().startOf('day'), "day");
+};
 
 export const directWithNewTab = (url: string) => {
   return window.open(url, '_blank');
