@@ -1,30 +1,66 @@
 import { FC, useState } from "react";
 import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
-import { closeModal } from "../../../utils/commonFunctions";
-import Card from "../../../UI-Components/Card/Card";
 import {
-  Dropdown,
-  DropdownTrigger,
-  Button,
-  DropdownMenu,
-  DropdownItem,
-} from "@nextui-org/react";
+  closeModal,
+  disablePastDays,
+  disableSundays,
+  FetchRole,
+  fetchUserId,
+  formatDate,
+  openModal,
+} from "../../../utils/commonFunctions";
+import Card from "../../../UI-Components/Card/Card";
+import { Select, SelectItem } from "@nextui-org/react";
 import DateRangePicker from "../../../UI-Components/DatePicker/DateRangePicker";
 import moment, { Moment } from "moment";
 import "./style.css";
-import { icon } from "../../../UI-Components/Icons/Icons";
 import CustomInput from "../../../UI-Components/Inputs/Input";
 import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
+import { postMethodAPI } from "../../../utils/apiCallMethods";
+import { serverVariables } from "../../../utils/serverVariables";
 
 interface ModalProps {
   setModal: any;
+  setLoading: any;
 }
 
-const NewLeaveRequest: FC<ModalProps> = ({ setModal }) => {
+const NewLeaveRequest: FC<ModalProps> = ({ setModal, setLoading }) => {
+  const [leaveType, setLeaveType] = useState<string>("normal");
+  const userRole = FetchRole();
   const [startDate, setStartDate] = useState<Moment>(moment().startOf("day"));
   const [endDate, setEndDate] = useState<Moment>(moment().endOf("day"));
   const [reason, setReason] = useState<string>("");
   const [calender, setCalendar] = useState<boolean>(false);
+  const [selectedLeaveDate, setSelectedLeaveDate] = useState<any>({
+    from: moment().format("DD-MM-YYYY"), // default
+    to: moment().format("DD-MM-YYYY"), // default
+  });
+
+  const handleApply = (startDate: Moment | null, endDate: Moment | null) => {
+    const from = formatDate(startDate);
+    const to = formatDate(endDate);
+    setSelectedLeaveDate({ from: from, to: to });
+  };
+
+  const disableDates = (date: Moment) => {
+    return disablePastDays(date) || disableSundays(date);
+  };
+
+  const handleSubmit = async () => {
+    const payload = {
+      leaveType,
+      from: selectedLeaveDate?.from,
+      to: selectedLeaveDate?.to,
+      reason,
+    };
+
+    const res = await postMethodAPI(
+      serverVariables?.NEW_LEAVE_REQUEST + fetchUserId + "/" + userRole,
+      payload,
+      setLoading
+    );
+    res && closeModal(setModal);
+  };
 
   return (
     <Modal
@@ -33,27 +69,24 @@ const NewLeaveRequest: FC<ModalProps> = ({ setModal }) => {
       className="leave-req"
     >
       <div className="leave-form">
-        <div className="item">
-          <label>Leave Type:</label>
-          <Dropdown>
-            <DropdownTrigger>
-              <Button
-                variant="bordered"
-                className="btn-ghost"
-                style={{ color: "#fff" }}
-              >
-                Select <i className={icon?.arrowDown}></i>
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Static Actions">
-              <DropdownItem key="new">Normal Leave</DropdownItem>
-              <DropdownItem key="copy">Paid Leave</DropdownItem>
-              <DropdownItem key="edit">Restricted Leave</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </div>
+        <Select
+          label="Select Leave Type"
+          className="dropdown"
+          variant="bordered"
+          onChange={(e) => setLeaveType(e?.target?.value)}
+        >
+          <SelectItem key="normal">Normal Leave</SelectItem>
+          <SelectItem key="paid">Paid Leave</SelectItem>
+          <SelectItem key="restricted">Restricted Leave</SelectItem>
+        </Select>
         <div className="item">
           <label>Leave Date</label>
+          <p
+            onClick={() => openModal(setCalendar)}
+            className="date-input text-sm"
+          >
+            {selectedLeaveDate?.from} - {selectedLeaveDate?.to}
+          </p>
           {calender && (
             <div
               style={{
@@ -68,13 +101,14 @@ const NewLeaveRequest: FC<ModalProps> = ({ setModal }) => {
                 endDate={endDate}
                 setStartDate={setStartDate}
                 setEndDate={setEndDate}
-                onApply={() => console.log("object")}
+                onApply={handleApply}
                 setModal={setCalendar}
+                disabledDates={disableDates}
               />
             </div>
           )}
         </div>
-        <div className="item flex-col" style={{ alignItems: "flex-start" }}>
+        <div className="item">
           <label>
             Leave Reason: <span className="text-slate-500">(optional)</span>
           </label>
@@ -96,13 +130,13 @@ const NewLeaveRequest: FC<ModalProps> = ({ setModal }) => {
               <div className="flex flex-col gap-1" style={{ width: "100%" }}>
                 <div className="summary-item">
                   <label>Leave Type:</label>
-                  <p>Normal Leave</p>
+                  <p>{leaveType}</p>
                 </div>
                 <div className="summary-item flex-col">
-                  <label>Leave Date:</label>{" "}
-                  <p>
-                    {startDate.format("MMM DD, YYYY")} -{" "}
-                    {endDate.format("MMM DD, YYYY")}
+                  <label>Leave Date:</label>
+                  <p className="text-sm text-wrap">
+                    From: {selectedLeaveDate?.from} <br /> To:{" "}
+                    {selectedLeaveDate?.to}
                   </p>
                 </div>
                 <div className="summary-item">
@@ -110,7 +144,12 @@ const NewLeaveRequest: FC<ModalProps> = ({ setModal }) => {
                 </div>
               </div>
               <div className="footer-btn">
-                <ButtonIcon icon="send" label="Submit" color="primary" />
+                <ButtonIcon
+                  icon="send"
+                  label="Submit"
+                  color="primary"
+                  action={handleSubmit}
+                />
                 <ButtonIcon
                   icon="close"
                   label="Cancel"
