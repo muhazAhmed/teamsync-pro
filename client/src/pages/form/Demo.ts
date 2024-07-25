@@ -140,19 +140,33 @@ export const allAttendanceData = {
 
 export const attendanceList = [
     {
-      date: "10-03-2024",
-      firstSwipe: "10:00 AM",
-      secondSwipe: "01:00 PM",
-      thirdSwipe: "02:00 PM",
-      fourthSwipe: "06:00 PM",
-      total: "7 hrs",
+        date: "10-03-2024",
+        firstSwipe: "10:00 AM",
+        secondSwipe: "01:00 PM",
+        thirdSwipe: "02:00 PM",
+        fourthSwipe: "06:00 PM",
+        total: "7 hrs",
     },
     {
-      date: "10-03-2024",
-      firstSwipe: "10:00 AM",
-      secondSwipe: "01:00 PM",
-      thirdSwipe: "02:00 PM",
-      fourthSwipe: "06:00 PM",
-      total: "7 hrs",
+        date: "10-03-2024",
+        firstSwipe: "10:00 AM",
+        secondSwipe: "01:00 PM",
+        thirdSwipe: "02:00 PM",
+        fourthSwipe: "06:00 PM",
+        total: "7 hrs",
     },
-  ];
+];
+
+export const leaveData = [
+    { date: "05/07/2023", leaveType: "Paid Leave", from: "05/07/2023", to: "05/07/2023", reason: "-", status: "Pending" },
+    { date: "12/06/2023", leaveType: "Casual Leave", from: "12/06/2023", to: "12/06/2023", reason: "-", status: "Rejected" },
+    { date: "21/05/2023", leaveType: "Casual Leave", from: "21/05/2023", to: "22/05/2023", reason: "Sick", status: "Approved" },
+    { date: "01/05/2023", leaveType: "Casual Leave", from: "01/05/2023", to: "12/06/2023", reason: "Eid", status: "Approved" },
+]
+
+export const leavePendingReq = [
+    { date: "05/07/2023", leaveType: "Paid Leave", from: "05/07/2023", to: "05/07/2023", reason: "-", status: "Pending" },
+    { date: "12/06/2023", leaveType: "Casual Leave", from: "12/06/2023", to: "12/06/2023", reason: "-", status: "Pending" },
+    { date: "21/05/2023", leaveType: "Casual Leave", from: "21/05/2023", to: "22/05/2023", reason: "Sick", status: "Pending" },
+    { date: "01/05/2023", leaveType: "Casual Leave", from: "01/05/2023", to: "12/06/2023", reason: "Eid", status: "Pending" },
+]
