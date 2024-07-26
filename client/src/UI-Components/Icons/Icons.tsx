@@ -78,5 +78,6 @@ export const icon: IconTypes = {
   rocket: "fa-solid fa-rocket",
   gears: "fa-solid fa-gears",
   send: "fa-solid fa-paper-plane",
-  vacation: "fa-solid fa-umbrella-beach"
+  vacation: "fa-solid fa-umbrella-beach",
+  warning2: "fa-solid fa-triangle-exclamation",
 };
