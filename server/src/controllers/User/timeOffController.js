@@ -34,6 +34,16 @@ export const fetchOneLeaveReq = async(req, res) => {
     }
 }
 
+export const fetchPendingLeaveReq = async(req, res) => {
+    try {
+        const fetchData = await timeOffModel.find({userId: req.params.id, status: "pending"})
+        return res.status(200).json(fetchData);
+    } catch (error) {
+        console.log(error.message)
+        return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
+    }
+}
+
 export const fetchAllLeaveReq = async(req, res) => {
     try {
         
