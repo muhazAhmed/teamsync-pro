@@ -13,7 +13,7 @@ const About = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (CheckAccess?.isLoggedIn) return navigate("/dashboard/" + fetchUserId);
+    if (CheckAccess()?.isLoggedIn) return navigate("/dashboard/" + fetchUserId());
     return navigate("/user/form");
   };
 

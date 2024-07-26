@@ -26,7 +26,7 @@ const Settings = () => {
   const handleClick = (index: number) => {
     setSelectedItem(index);
     if (index === 1) {
-      navigate(`/user-info/${fetchUserId}`);
+      navigate(`/user-info/${fetchUserId()}`);
     }
   };
 

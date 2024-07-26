@@ -33,5 +33,5 @@ export const loadServer = async () => {
 
 export const loadPage = () => {
     loadServer();
-    fetchUserId;
+    fetchUserId();
 }

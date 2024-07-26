@@ -34,7 +34,7 @@ const CheckInButton: FC<ButtonProp> = ({
   const [data, setData] = useState<any>({});
 
   useEffect(() => {
-    if (!CheckAccess.isDemoAccount) {
+    if (!CheckAccess().isDemoAccount) {
       fetchOneData();
     } else {
       setData("");
@@ -43,7 +43,7 @@ const CheckInButton: FC<ButtonProp> = ({
 
   const fetchOneData = useCallback(async () => {
     const res = await getMethodAPI(
-      `${serverVariables?.FETCH_ONE_ATTENDANCE}${fetchUserId}`,
+      `${serverVariables?.FETCH_ONE_ATTENDANCE}${fetchUserId()}`,
       "",
       setLoading
     );
@@ -53,7 +53,7 @@ const CheckInButton: FC<ButtonProp> = ({
   }, []);
 
   const handleSubmit = useCallback(async () => {
-    if (CheckAccess?.isDemoAccount)
+    if (CheckAccess()?.isDemoAccount)
       return toast.success(message("").LOGIN_SUCCESS);
 
     if (MaxSwipeError(data)) return;
@@ -66,7 +66,7 @@ const CheckInButton: FC<ButtonProp> = ({
         firstSwipe: firstSwipe,
       };
       await postMethodAPI(
-        `${serverVariables?.NEW_ATTENDANCE}${fetchUserId}`,
+        `${serverVariables?.NEW_ATTENDANCE}${fetchUserId()}`,
         newObj,
         setLoading
       );

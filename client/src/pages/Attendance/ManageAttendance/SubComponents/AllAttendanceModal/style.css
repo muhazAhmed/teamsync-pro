@@ -71,7 +71,7 @@ tbody tr td i:last-child {
     color: red;
 }
 
-th {
+.all-attendance th {
     background-color: var(--secondary);
     text-align: left;
     padding: 8px;

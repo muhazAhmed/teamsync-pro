@@ -46,7 +46,7 @@ const UpdateRequest = () => {
 
   useEffect(() => {
     usePageName("HR / Update Requests");
-    if (!CheckAccess.isDemoAccount) {
+    if (!CheckAccess().isDemoAccount) {
       fetchPriorityCounts();
       fetchAllRequests();
     } else {

@@ -17,7 +17,7 @@ const Footer = () => {
 
   const onSubscribeClick = async () => {
     if (validEmail(email)) return toast.error(message("").INVALID_EMAIL);
-    if (CheckAccess?.isDemoAccount || !CheckAccess?.isLoggedIn) {
+    if (CheckAccess()?.isDemoAccount || !CheckAccess()?.isLoggedIn) {
       setEmail("");
       return toast.success(message("")?.SUBSCRIPTION_SUCCESS);
     } else {

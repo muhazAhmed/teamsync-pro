@@ -34,7 +34,7 @@ export const useLocalStorage = (key: string) => {
   return items ? JSON.parse(items) : null;
 };
 
-export const logout = (navigate: any, modalState:any ) => {
+export const logout = (navigate: any, modalState: any) => {
   deleteSessionStorage("userInfo");
   deleteSessionStorage("client-id")
   deleteSessionStorage("userTokenID")
@@ -56,42 +56,42 @@ export const clearInputs = (setInputs: any) => {
   });
 };
 
-export const openModal = (setModal:any) => { return setModal(true) };
-export const closeModal = (setModal:any) => { return setModal(false) };
+export const openModal = (setModal: any) => { return setModal(true) };
+export const closeModal = (setModal: any) => { return setModal(false) };
 export const goBack = () => { return history.back() };
 
-export const usePageName = (name:string) => {
+export const usePageName = (name: string) => {
   newSessionStorage("pageName", name);
   window.dispatchEvent(new Event("pageNameUpdated"));
 }
 
-export const ResponseInstances = (res:any, statusCode: number, setData:any) => {
+export const ResponseInstances = (res: any, statusCode: number, setData: any) => {
   if (res instanceof Error) {
     return console.error(res.message);
   } else if (setData != "" && res?.res?.status === statusCode) {
     return setData(res?.res?.data)
   } else {
-    return 
+    return
   }
 }
 
-export const PaginationResponseInstances = (res:any, statusCode: number, setData:any) => {
+export const PaginationResponseInstances = (res: any, statusCode: number, setData: any) => {
   if (res instanceof Error) {
     return console.error(res.message);
   } else if (setData != "" && res?.res?.status === statusCode) {
     return setData(res?.res?.data)
   } else {
-    return 
+    return
   }
 }
 
-export const AssignRole = (role:string) => {
+export const AssignRole = (role: string) => {
   if (role === "HR") return role = Variables.HR_ROLE;
   if (role === "Admin") return role = Variables.ADMIN_ROLE;
   if (role === "Employee") return role = Variables.EMPLOYEE_ROLE;
 }
 
-export const FetchRole = (role?:any) => {
+export const FetchRole = (role?: any) => {
   if (!role) role = useSessionStorage("client-id");
   if (role === Variables.HR_ROLE) return role = "hr";
   if (role === Variables.ADMIN_ROLE) return role = "admin";
@@ -107,16 +107,15 @@ export const filterEmptyObj = (item: Item): Item => {
     }, {} as Item);
 };
 
-export const CheckAccess = {
-  isHr : useSessionStorage("client-id") == Variables.HR_ROLE,
-  isLoggedIn : useSessionStorage("userInfo"),
-  isDemoAccount : useSessionStorage("isDemoAccount"),
-}
+export const CheckAccess = () => ({
+  isHr: useSessionStorage("client-id") === Variables.HR_ROLE,
+  isLoggedIn: useSessionStorage("userInfo"),
+  isDemoAccount: useSessionStorage("isDemoAccount") === true,
+});
 
-export const fetchUserId = useSessionStorage("userInfo")?._id
+export const fetchUserId = () => useSessionStorage("userInfo")?._id
 
-
-export const formatDate = (date:any) => {
+export const formatDate = (date: any) => {
   return date ? date.format("DD-MM-YYYY") : null
 }
 

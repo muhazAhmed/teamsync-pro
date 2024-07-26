@@ -125,7 +125,7 @@ const EditModal: React.FC<ModalProps> = ({
     }
     const data = filterEmptyObj(inputs);
     const res = await patchMethodAPI(
-      `${serverVariables.UPDATE_USER}${fetchUserId}?role=${userDetails?.role}`,
+      `${serverVariables.UPDATE_USER}${fetchUserId()}?role=${userDetails?.role}`,
       data,
       setLoading
     );
