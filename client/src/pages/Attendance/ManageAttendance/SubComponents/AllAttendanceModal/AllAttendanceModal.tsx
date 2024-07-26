@@ -44,7 +44,7 @@ const AllAttendanceModal: FC<ModalProps> = ({
 
   const fetchData = async (page: number) => {
     const res = await getMethodAPI(
-      `${serverVariables?.FETCH_ATTENDANCE_BY_PAGE}${fetchUserId}?page=${page}&limit=${itemsPerPage}`,
+      `${serverVariables?.FETCH_ATTENDANCE_BY_PAGE}${fetchUserId()}?page=${page}&limit=${itemsPerPage}`,
       "",
       setLoading
     );
@@ -76,7 +76,7 @@ const AllAttendanceModal: FC<ModalProps> = ({
     usePagination({ data: data, itemsPerPage });
 
   useEffect(() => {
-    if (CheckAccess?.isDemoAccount) {
+    if (CheckAccess()?.isDemoAccount) {
     } else {
       fetchData(currentPage);
     }

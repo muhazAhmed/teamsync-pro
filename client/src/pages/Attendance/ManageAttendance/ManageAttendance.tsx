@@ -31,7 +31,7 @@ const ManageAttendance = () => {
   const percentage = (data?.totalHoursCompletedToday / 9) * 100;
   useEffect(() => {
     usePageName("Attendance / Dashboard");
-    if (!CheckAccess?.isDemoAccount) {
+    if (!CheckAccess()?.isDemoAccount) {
       fetchDashboardData();
     } else {
       setData(allAttendanceData);
@@ -40,7 +40,7 @@ const ManageAttendance = () => {
 
   const fetchDashboardData = async () => {
     const res = await getMethodAPI(
-      `${serverVariables?.ATTENDANCE_DETAILS}${fetchUserId}`,
+      `${serverVariables?.ATTENDANCE_DETAILS}${fetchUserId()}`,
       "",
       setLoading
     );
