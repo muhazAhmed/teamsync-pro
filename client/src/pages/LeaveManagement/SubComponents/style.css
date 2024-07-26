@@ -136,3 +136,11 @@
 .pending-history .table {
     width: 100%;
 }
+
+.pending-history .table table tbody td i:first-child:hover {
+    color: #00c200;
+}
+
+.pending-history .table table tbody td i:last-child:hover {
+    color: #ff4949;
+}
