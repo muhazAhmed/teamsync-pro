@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import {
+  CheckAccess,
   closeModal,
   disablePastDays,
   disableSundays,
@@ -18,6 +19,7 @@ import CustomInput from "../../../UI-Components/Inputs/Input";
 import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
+import toast from "react-hot-toast";
 
 interface ModalProps {
   setModal: any;
@@ -47,19 +49,25 @@ const NewLeaveRequest: FC<ModalProps> = ({ setModal, setLoading }) => {
   };
 
   const handleSubmit = async () => {
-    const payload = {
-      leaveType,
-      from: selectedLeaveDate?.from,
-      to: selectedLeaveDate?.to,
-      reason,
-    };
+    console.log(CheckAccess()?.isDemoAccount)
+    if (CheckAccess()?.isDemoAccount) {
+      toast.success("Request submitted successfully");
+      return closeModal(setModal);
+    } else {
+      const payload = {
+        leaveType,
+        from: selectedLeaveDate?.from,
+        to: selectedLeaveDate?.to,
+        reason,
+      };
 
-    const res = await postMethodAPI(
-      serverVariables?.NEW_LEAVE_REQUEST + fetchUserId + "/" + userRole,
-      payload,
-      setLoading
-    );
-    res && closeModal(setModal);
+      const res = await postMethodAPI(
+        serverVariables?.NEW_LEAVE_REQUEST + fetchUserId() + "/" + userRole,
+        payload,
+        setLoading
+      );
+      res && closeModal(setModal);
+    }
   };
 
   return (
