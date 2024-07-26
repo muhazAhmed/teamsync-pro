@@ -31,7 +31,9 @@ export const serverVariables = {
     DELETE_SUPPORT_REQUEST: "/user/delete-support-request/",
 
     NEW_LEAVE_REQUEST: "/user/leave-request/new/",
+    FETCH_PENDING_LEAVE_REQUEST: "/user/leave-request/fetch-by-status/",
     FETCH_ONE_LEAVE_REQUEST: "/user/leave-request/fetch-one/",
     FETCH_ALL_LEAVE_REQUEST: "/user/leave-request/fetch-all/",
     UPDATE_LEAVE_REQUEST: "/user/leave-request/update/",
+    DELETE_LEAVE_REQUEST: "/user/leave-request/delete/",
 }
