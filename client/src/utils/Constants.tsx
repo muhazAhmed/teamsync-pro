@@ -30,6 +30,8 @@ export const message = (name?: string) => ({
   REQUEST_SUBMITTED: "Your Request has been Sent",
   USER_ERROR: `Only ${name} can perform this Action`,
   SWIPE_ERROR: `Maximum Daily Swipes Reached`,
+  REQUEST_DELETED: "Request Has Been Deleted Successfully",
+  UPDATE_SUCCESS: "Updated Successfully",
 
   // =========== Tab Menu =============
   EMPTY_OPTIONS: "Please Add At-least 2 Menu Options"
