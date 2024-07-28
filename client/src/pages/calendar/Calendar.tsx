@@ -1,12 +1,17 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import "./style.css";
 import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import moment from "moment";
+import { usePageName } from "../../utils/commonFunctions";
 
 interface CalendarProps {}
 
 const Calendar: FC<CalendarProps> = ({}) => {
-  const [currentDate, setCurrentDate] = useState(moment()); // Current date
+  const [currentDate, setCurrentDate] = useState(moment());
+
+  useEffect(() => {
+    usePageName("Calendar");
+  }, []);
 
   const events = [
     { date: "03-07-2024", title: "New Year's Day", type: "holiday" },
