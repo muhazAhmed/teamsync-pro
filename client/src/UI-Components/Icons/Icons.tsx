@@ -80,4 +80,10 @@ export const icon: IconTypes = {
   send: "fa-solid fa-paper-plane",
   vacation: "fa-solid fa-umbrella-beach",
   warning2: "fa-solid fa-triangle-exclamation",
+  download: "fa-solid fa-download",
+  save: "fa-solid fa-floppy-disk",
+  leftRounded: "fa-regular fa-circle-left",
+  rightRounded: "fa-regular fa-circle-right",
+  upRounded: "fa-regular fa-circle-up",
+  downRounded: "fa-regular fa-circle-down",
 };
