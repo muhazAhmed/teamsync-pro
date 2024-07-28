@@ -7,7 +7,7 @@ import { fetchAllUsers, fetchUserByName } from '../controllers/adminController/a
 import { attendanceDashboardData, fetchAndCheckDaily, fetchAttendanceByIdPageWise, fetchOneAttendance, newAttendance, updateAttendance } from '../controllers/attendance/attendanceController.js';
 import "../controllers/serviceController/cronJobs.js"
 import { deleteSupportReq, fetchAllSupportReq, fetchOneSupportReq, newSupportReq, updateSupportReq } from '../controllers/serviceController/SupportController.js';
-import { fetchPendingLeaveReq, newLeaveReq } from '../controllers/User/timeOffController.js';
+import { deleteLeaveReq, fetchPendingLeaveReq, newLeaveReq } from '../controllers/User/timeOffController.js';
 
 routes.post("/user/register", newUser)
 routes.post("/user/login", loginUser)
@@ -43,5 +43,6 @@ routes.delete("/client/-request/:id", deleteClientData)
 
 routes.post("/user/leave-request/new/:id/:role", newLeaveReq)
 routes.get("/user/leave-request/fetch-by-status/:id", fetchPendingLeaveReq)
+routes.delete("/user/leave-request/delete/:id", deleteLeaveReq)
 
 export default routes;

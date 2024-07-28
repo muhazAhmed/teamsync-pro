@@ -55,7 +55,20 @@ export const fetchAllLeaveReq = async(req, res) => {
 
 export const updateLeaveReq = async(req, res) => {
     try {
-        
+        const reqId = req.params.id;
+        const data = req.body;
+        const { userId, leaveType, from, to, reason, status, reportingManager } = data;
+    } catch (error) {
+        console.log(error.message)
+        return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
+    }
+}
+
+export const deleteLeaveReq = async(req, res) => {
+    try {
+        const reqId = req.params.id;
+        await timeOffModel.findByIdAndDelete(reqId);
+        return res.status(200).json({message: RESPONSE_MESSAGE("").DELETE_SUCCESS});
     } catch (error) {
         console.log(error.message)
         return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);

@@ -26,4 +26,5 @@ export const RESPONSE_MESSAGE = (name) => ({
     SERVER_ERROR: "Server Error",
     SUBSCRIPTION_SUCCESS: "Newsletter Subscription Has Been Enabled Successfully",
     REQUEST_ADDED: "Request Added Successfully",
+    DELETE_SUCCESS: "Deleted Successfully",
 })
