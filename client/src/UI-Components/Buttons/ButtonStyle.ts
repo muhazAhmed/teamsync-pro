@@ -11,12 +11,13 @@ interface ButtonProps {
     textColor?: string;
     id?: any;
     className?: string;
-    variant?: "solid" | "shadow" | "ghost" | "flat" | "faded" | "bordered";
+    variant?: "solid" | "shadow" | "ghost" | "flat" | "faded" | "bordered" | "light";
     action?: any;
     icon: string;
     iconPosition?: string;
     disabled?: boolean;
     tooltip?: TooltipProps;
+    selected?: boolean;
 }
 
 interface TooltipProps {
@@ -27,5 +28,5 @@ interface TooltipProps {
 
 export type {
     ButtonProps,
-    TooltipProps,
+    TooltipProps
 }

@@ -11,12 +11,7 @@ interface ButtonGroupProps {
   disabled?: boolean;
 }
 
-const ButtonGroup: FC<ButtonGroupProps> = ({
-  className,
-  id,
-  items,
-  selected = false,
-}) => {
+const ButtonGroup: FC<ButtonGroupProps> = ({ className, id, items }) => {
   return (
     <div
       className={`btn-group ${className && className}`}
@@ -26,17 +21,17 @@ const ButtonGroup: FC<ButtonGroupProps> = ({
       {items.map((item, index) => (
         <ButtonIcon
           key={index}
-          label={item.label}
-          icon={item.icon || ""}
-          iconPosition={item.iconPosition}
-          color={item.color}
-          textColor={item.textColor}
-          className={selected ? "btn-primary" : item.className}
-          variant={item.variant}
-          action={item.action}
-          id={item.id}
-          tooltip={item.tooltip}
-          disabled={item.disabled}
+          label={item?.label}
+          icon={item?.icon || ""}
+          iconPosition={item?.iconPosition}
+          color={item?.color}
+          textColor={item?.textColor}
+          className={item?.selected ? "btn-primary" : item.className}
+          variant={item?.variant}
+          action={item?.action}
+          id={item?.id}
+          tooltip={item?.tooltip}
+          disabled={item?.disabled}
         />
       ))}
     </div>
