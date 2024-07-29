@@ -1,0 +1,111 @@
+.agenda-modal {
+    width: 40vw;
+}
+
+.agenda-modal .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.agenda-modal .modal-body .header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.agenda-modal .modal-body .header h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.agenda-modal .modal-body .progress {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.agenda-modal .modal-body .progress .progress-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.agenda-modal .modal-body .progress-bar span {
+    padding: 3px;
+    width: 95%;
+    background-color: #5d5d5d;
+    border-radius: 25px;
+}
+
+.agenda-modal .modal-body .progress-bar h5 {
+    font-size: 13px;
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+.agenda-modal .modal-body .selected span {
+    background-color: var(--primary);
+}
+
+.agenda-modal .modal-body .selected h5 {
+    color: var(--primary);
+}
+
+.agenda-modal .modal-body .body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 2rem;
+}
+
+.agenda-modal .modal-body .body .date {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.agenda-modal .modal-body .body .date-input {
+    display: flex;
+    flex-direction: column;
+    padding-right: 1rem;
+    gap: 0.5rem;
+}
+
+.agenda-modal .modal-body .body .location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.agenda-modal .modal-body .body .location .radio-toggle span {
+    color: #fff;
+    font-size: 13px;
+}
+
+.agenda-modal .modal-body .body .location input {
+    margin-bottom: 1rem;
+}
+
+.agenda-modal .modal-body .footer-btn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.agenda-modal .modal-body .footer-btn .btn-end {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
