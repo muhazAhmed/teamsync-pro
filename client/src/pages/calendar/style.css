@@ -99,3 +99,51 @@
 .calendar .event.meeting {
     background-color: #2a9d8f;
 }
+
+.calendar-day.empty {
+    color: transparent;
+    background-color: transparent;
+    cursor: default;
+}
+
+.calendar .list-view {
+    background-color: #1e2130;
+    border-radius: 8px;
+    padding: 20px;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.calendar .list-day {
+    background-color: #35374a;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.calendar .list-day-header {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.calendar .list-day-events {
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar .event {
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 4px;
+    color: white;
+}
+
+.calendar .event.holiday {
+    background-color: #ef233c;
+}
+
+.calendar .event.meeting {
+    background-color: #2a9d8f;
+}
