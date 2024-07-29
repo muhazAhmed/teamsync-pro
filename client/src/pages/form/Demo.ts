@@ -1,3 +1,7 @@
+import moment from "moment";
+
+const today = moment().format("DD-MM-YYYY");
+
 export const hrDemoData = {
     _id: "550955a76c2c47dc4ba1d4fd",
     firstName: "HR",
@@ -170,3 +174,9 @@ export const leavePendingReq = [
     { date: "21/05/2023", leaveType: "Casual Leave", from: "21/05/2023", to: "22/05/2023", reason: "Sick", status: "Pending" },
     { date: "01/05/2023", leaveType: "Casual Leave", from: "01/05/2023", to: "12/06/2023", reason: "Eid", status: "Pending" },
 ]
+
+export const calendarEvents = [
+    { date: today, title: "Demo holiday", type: "holiday" },
+    { date: "12-08-2024", title: "Team Meeting", type: "meeting" },
+    { date: "12-08-2024", title: "Team Meeting", type: "meeting" },
+  ];
