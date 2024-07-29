@@ -86,4 +86,8 @@ export const icon: IconTypes = {
   rightRounded: "fa-regular fa-circle-right",
   upRounded: "fa-regular fa-circle-up",
   downRounded: "fa-regular fa-circle-down",
+  grid: "fa-solid fa-table-cells-large",
+  list: "fa-solid fa-list",
+  pin: "fa-solid fa-thumbtack",
+  forward: "fa-solid fa-forward-step",
 };
