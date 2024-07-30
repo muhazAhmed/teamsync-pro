@@ -6,6 +6,7 @@ import { DatePicker, Radio, RadioGroup } from "@nextui-org/react";
 import TimePicker from "../../../UI-Components/TimePicker/TimePicker";
 import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { closeModal } from "../../../utils/commonFunctions";
+import { motion } from "framer-motion";
 
 interface ModalProps {
   setModal: any;
@@ -26,6 +27,24 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
       return setSelected("details");
     else if (selected === "guest" && action === "back")
       return setSelected("location");
+  };
+
+  const variants = {
+    enter: (direction: string) => ({
+      x: direction === "next" ? "100%" : "-100%",
+      opacity: 0,
+      transition: { duration: 0.3 },
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.3 },
+    },
+    exit: (direction: string) => ({
+      x: direction === "next" ? "-100%" : "100%",
+      opacity: 0,
+      transition: { duration: 0.3 },
+    }),
   };
 
   console.log(selectedFromTime, selectedToTime);
@@ -61,53 +80,63 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
             <h5>Guests</h5>
           </div>
         </div>
-        {selected === "location" ? (
-          <div className="body">
-            <div className="date">
-              <div className="date-input">
-                <label>Date</label>
-                <DatePicker
-                  variant="bordered"
-                  showMonthAndYearPickers
-                  aria-label=""
-                />
+        <motion.div
+          className="body"
+          key={selected}
+          custom={selected === "location" ? "next" : "back"}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          variants={variants}
+        >
+          {selected === "location" ? (
+            <div className="body">
+              <div className="date">
+                <div className="date-input">
+                  <label>Date</label>
+                  <DatePicker
+                    variant="bordered"
+                    showMonthAndYearPickers
+                    aria-label=""
+                  />
+                </div>
+                <div className="date-input">
+                  <label>From</label>
+                  <TimePicker setSelectedTime={setSelectedFromTime} />
+                </div>
+                <div className="date-input">
+                  <label>To</label>
+                  <TimePicker setSelectedTime={setSelectedToTime} />
+                </div>
               </div>
-              <div className="date-input">
-                <label>From</label>
-                <TimePicker setSelectedTime={setSelectedFromTime} />
-              </div>
-              <div className="date-input">
-                <label>To</label>
-                <TimePicker setSelectedTime={setSelectedToTime} />
+              <div className="location">
+                <label>Location</label>
+                <RadioGroup>
+                  <Radio
+                    value="physical"
+                    className="radio-toggle"
+                    onChange={(e) => setSelectedLocation(e?.target?.value)}
+                  >
+                    Physical
+                  </Radio>
+                  {selectedLocation === "physical" && <input />}
+                  <Radio
+                    value="virtual"
+                    className="radio-toggle"
+                    onChange={(e) => setSelectedLocation(e?.target?.value)}
+                  >
+                    Virtual
+                  </Radio>
+                  {selectedLocation === "virtual" && <input />}
+                </RadioGroup>
               </div>
             </div>
-            <div className="location">
-              <label>Location</label>
-              <RadioGroup>
-                <Radio
-                  value="physical"
-                  className="radio-toggle"
-                  onChange={(e) => setSelectedLocation(e?.target?.value)}
-                >
-                  Physical
-                </Radio>
-                {selectedLocation === "physical" && <input />}
-                <Radio
-                  value="virtual"
-                  className="radio-toggle"
-                  onChange={(e) => setSelectedLocation(e?.target?.value)}
-                >
-                  Virtual
-                </Radio>
-                {selectedLocation === "virtual" && <input />}
-              </RadioGroup>
-            </div>
-          </div>
-        ) : selected === "details" ? (
-          <div>{/* Details content goes here */}</div>
-        ) : (
-          <div>{/* Default content goes here */}</div>
-        )}
+          ) : selected === "details" ? (
+            <div>{/* Details content goes here */}</div>
+          ) : (
+            <div>{/* Default content goes here */}</div>
+          )}
+        </motion.div>
         <div className="footer-btn">
           <ButtonIcon
             icon="arrowLeft"
@@ -117,7 +146,7 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
             disabled={selected === "details"}
           />
           <div className="btn-end">
-            {selected == "guest" ? (
+            {selected === "guest" ? (
               <ButtonIcon icon="send" label="Save" className="btn-primary" />
             ) : (
               <ButtonIcon

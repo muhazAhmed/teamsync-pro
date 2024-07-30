@@ -1,5 +1,10 @@
 .agenda-modal {
     width: 40vw;
+    overflow-x: hidden;
+}
+
+.agenda-modal .modal-content {
+    overflow-x: hidden;
 }
 
 .agenda-modal .modal-body {

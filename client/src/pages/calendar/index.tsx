@@ -111,3 +111,60 @@ export const handleMonthChange = (
 export const handleModalActions = (modalName: any) => {
   openModal(modalName);
 };
+
+export const downloadCalendar = (
+  downloadFile: any,
+  calendarEvents: any[],
+  currentDate: moment.Moment
+) => {
+  const startOfMonth = currentDate.clone().startOf("month");
+  const endOfMonth = currentDate.clone().endOf("month");
+
+  const startOfWeek = startOfMonth.clone().startOf("week");
+  const endOfWeek = endOfMonth.clone().endOf("week");
+
+  const columnNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const rows: any[] = [];
+
+  let day = startOfWeek.clone();
+
+  while (day.isBefore(endOfWeek, "day")) {
+    const weekRow: any = {};
+
+    columnNames.forEach((dayName) => {
+      const events = calendarEvents
+        .filter((event: any) =>
+          moment(event.date, "DD-MM-YYYY").isSame(day, "day")
+        )
+        .map((event: any) => event.title)
+        .join(", ");
+      weekRow[dayName] = day.isSame(startOfMonth, "month")
+        ? `${day.date()} ${events}`
+        : "";
+
+      day.add(1, "day");
+    });
+
+    rows.push(weekRow);
+  }
+
+  const columnNamesMap = {
+    Sunday: "Sunday",
+    Monday: "Monday",
+    Tuesday: "Tuesday",
+    Wednesday: "Wednesday",
+    Thursday: "Thursday",
+    Friday: "Friday",
+    Saturday: "Saturday",
+  };
+
+  downloadFile(rows, "calendar_events", columnNamesMap, "excel");
+};
