@@ -1,4 +1,4 @@
-import attendanceModal from "../../models/attendance/attendanceModal.js";
+import attendanceModal from "../../models/attendanceModal.js";
 import { today } from "../../utils/constants.js";
 import { calculateTotalHours, convertMinutesToHourMinuteFormat, timeDifferenceInMinutes } from "../../utils/helper.js";
 import { REQUIRE_FIELD, RESPONSE_MESSAGE } from "../../utils/validations.js";

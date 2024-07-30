@@ -2,7 +2,7 @@ import cron from "node-cron";
 import axios from "axios";
 import { API_URL, fetchAllUserIds, today } from "../../utils/constants.js";
 import moment from "moment";
-import attendanceModal from "../../models/attendance/attendanceModal.js";
+import attendanceModal from "../../models/attendanceModal.js";
 
 //============= Keep Server Alive ============
 // cron.schedule('*/1 * * * *', async () => {

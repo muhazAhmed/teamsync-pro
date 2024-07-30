@@ -1,4 +1,4 @@
-import timeOffModel from "../../models/Employee/timeOffModel.js";
+import timeOffModel from "../../models/timeOffModel.js";
 import { REQUIRE_FIELD, RESPONSE_MESSAGE } from "../../utils/validations.js";
 import { getUserModelByRole } from "../../utils/helper.js";
 

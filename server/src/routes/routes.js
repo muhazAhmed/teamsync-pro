@@ -4,7 +4,7 @@ import { fetchAllUsersId, fetchOneUser, loginUser, newUser, updateUser} from "..
 import { fetchAllRequests, fetchPriorityCounts, updateRequest } from '../controllers/HR/HRController.js';
 import { deleteClientData, getAllClientData, getOneClientData, newClientData, updateClientData } from '../controllers/serviceController/ClientController.js';
 import { fetchAllUsers, fetchUserByName } from '../controllers/adminController/adminController.js';
-import { attendanceDashboardData, fetchAndCheckDaily, fetchAttendanceByIdPageWise, fetchOneAttendance, newAttendance, updateAttendance } from '../controllers/attendance/attendanceController.js';
+import { attendanceDashboardData, fetchAndCheckDaily, fetchAttendanceByIdPageWise, fetchOneAttendance, newAttendance, updateAttendance } from '../controllers/User/attendanceController.js';
 import "../controllers/serviceController/cronJobs.js"
 import { deleteSupportReq, fetchAllSupportReq, fetchOneSupportReq, newSupportReq, updateSupportReq } from '../controllers/serviceController/SupportController.js';
 import { deleteLeaveReq, fetchPendingLeaveReq, newLeaveReq } from '../controllers/User/timeOffController.js';

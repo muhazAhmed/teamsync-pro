@@ -1,5 +1,5 @@
 import clientModal from "../../models/services/client.js";
-import employeeModal from "../../models/Employee/employeeModel.js";
+import employeeModal from "../../models/employeeModel.js";
 import hrModal from "../../models/HR/hrModel.js"
 import { REQUIRE_FIELD, RESPONSE_MESSAGE, SUBSCRIPTION_ERROR } from "../../utils/validations.js";
 

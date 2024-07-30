@@ -1,5 +1,5 @@
 import hrModel from "../models/HR/hrModel.js";
-import employeeModel from "../models/Employee/employeeModel.js";
+import employeeModel from "../models/employeeModel.js";
 
 import jwt from "jsonwebtoken";
 import moment from "moment";

@@ -1,5 +1,5 @@
 import hrModel from "../../models/HR/hrModel.js";
-import employeeModel from "../../models/Employee/employeeModel.js"
+import employeeModel from "../../models/employeeModel.js"
 import bcrypt from "bcrypt";
 import { EmployeeID, GenCompanyEmail, GenJWT, LastLoginWithIP, getUserModelByRole } from "../../utils/helper.js";
 import { EMAIL_EXISTS, PASSWORD_INCORRECT, REQUIRE_FIELD, RESPONSE_MESSAGE } from "../../utils/validations.js";

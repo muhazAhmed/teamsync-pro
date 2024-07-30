@@ -1,5 +1,5 @@
 import hrModel from "../../models/HR/hrModel.js";
-import employeeModel from "../../models/Employee/employeeModel.js";
+import employeeModel from "../../models/employeeModel.js";
 import updateReqModal from "../../models/HR/updateRequest.js";
 import { RESPONSE_MESSAGE } from "../../utils/validations.js";
 
