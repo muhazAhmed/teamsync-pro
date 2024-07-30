@@ -179,4 +179,4 @@ export const calendarEvents = [
     { date: today, title: "Demo holiday", type: "holiday" },
     { date: "12-08-2024", title: "Team Meeting", type: "meeting" },
     { date: "12-08-2024", title: "Team Meeting", type: "meeting" },
-  ];
+];
