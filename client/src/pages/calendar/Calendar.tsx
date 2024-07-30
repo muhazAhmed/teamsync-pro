@@ -6,6 +6,7 @@ import { usePageName } from "../../utils/commonFunctions";
 import ButtonGroup from "../../UI-Components/Buttons/ButtonGroup";
 import { calendarEvents } from "../form/Demo";
 import {
+  downloadCalendar,
   generateCalendarDays,
   generateListDays,
   handleChangeView,
@@ -14,6 +15,7 @@ import {
 } from "./index";
 import NewAgenda from "./SubComponents/NewAgenda";
 import ViewModal from "./SubComponents/ViewModal";
+import useDownloadFile from "../../utils/custom-hooks/useDownloadFile";
 
 interface CalendarProps {}
 
@@ -22,6 +24,7 @@ const Calendar: FC<CalendarProps> = ({}) => {
   const [viewMode, setViewMode] = useState<string>("grid");
   const [agendaModal, setAgendaModal] = useState<boolean>(false);
   const [viewModal, setViewModal] = useState<boolean>(false);
+  const downloadFile = useDownloadFile();
 
   useEffect(() => {
     usePageName("Calendar");
@@ -61,6 +64,9 @@ const Calendar: FC<CalendarProps> = ({}) => {
             icon="download"
             label="Export"
             color="secondary"
+            action={() =>
+              downloadCalendar(downloadFile, calendarEvents, currentDate)
+            }
           />
           <ButtonIcon
             icon="plus"
