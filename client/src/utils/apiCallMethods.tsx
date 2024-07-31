@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_URL, message } from "./Constants";
 import toast from "react-hot-toast";
-// import { FetchRole, useSessionStorage } from "./commonFunctions";
+import { fetchUserToken } from "./commonFunctions";
 
 interface ApiResponse {
   response: any;
@@ -26,7 +26,12 @@ export const postMethodAPI = async (
 ): Promise<{ res: ApiResponse; successMessage: string } | Error> => {
   try {
     loading(true);
-    const res: ApiResponse = await axios.post(API_URL + variable, inputs);
+    const token = fetchUserToken();
+    const headers = token ? { "x-api-key": token } : {};
+    const res: ApiResponse = await axios.post(API_URL + variable, {
+      params: inputs,
+      headers,
+    });
     if (res.status === 201 || res.status === 200) {
       const successMessage = res?.data?.message || "";
       toast.success(successMessage, {
@@ -50,8 +55,11 @@ export const getMethodAPI = async (
 ): Promise<{ res: ApiResponse; successMessage: string } | Error> => {
   try {
     loading(true);
+    const token = fetchUserToken();
+    const headers = token ? { "x-api-key": token } : {};
     const res: ApiResponse = await axios.get(API_URL + variable, {
       params: inputs,
+      headers,
     });
     if (res.status === 200) {
       const successMessage = res?.data?.message || undefined;
@@ -74,8 +82,12 @@ export const patchMethodAPI = async (
 ): Promise<{ res: ApiResponse; successMessage: string } | Error> => {
   try {
     loading(true);
-    // const role = FetchRole(useSessionStorage("client-id"))
-    const res: ApiResponse = await axios.patch(API_URL + variable, inputs);
+    const token = fetchUserToken();
+    const headers = token ? { "x-api-key": token } : {};
+    const res: ApiResponse = await axios.patch(API_URL + variable, {
+      params: inputs,
+      headers,
+    });
     if (res.status === 200) {
       const successMessage = res?.data?.message || undefined;
       successMessage != undefined && toast.success(successMessage);
@@ -97,7 +109,12 @@ export const deleteMethodAPI = async (
 ): Promise<{ res: ApiResponse; successMessage: string } | Error> => {
   try {
     loading(true);
-    const res: ApiResponse = await axios.delete(API_URL + variable, inputs);
+    const token = fetchUserToken();
+    const headers = token ? { "x-api-key": token } : {};
+    const res: ApiResponse = await axios.delete(API_URL + variable, {
+      params: inputs,
+      headers,
+    });
     if (res.status === 200) {
       const successMessage = res?.data?.message || undefined;
       successMessage != undefined && toast.success(successMessage);
