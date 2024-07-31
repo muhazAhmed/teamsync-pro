@@ -90,4 +90,7 @@ export const icon: IconTypes = {
   list: "fa-solid fa-list",
   pin: "fa-solid fa-thumbtack",
   forward: "fa-solid fa-forward-step",
+  info: "fa-solid fa-info",
+  infoRounded: "fa-solid fa-circle-info",
+  users: "fa-solid fa-users"
 };
