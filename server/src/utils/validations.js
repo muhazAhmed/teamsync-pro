@@ -27,4 +27,8 @@ export const RESPONSE_MESSAGE = (name) => ({
     SUBSCRIPTION_SUCCESS: "Newsletter Subscription Has Been Enabled Successfully",
     REQUEST_ADDED: "Request Added Successfully",
     DELETE_SUCCESS: "Deleted Successfully",
+    NOT_AUTHENTICATED: "Not Authenticated",
+    NO_TOKEN: "Token not found",
+    INVALID_TOKEN: "Invalid Token",
+    UNAUTHORIZED: "You are not authorized to perform this action",
 })
