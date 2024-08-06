@@ -54,7 +54,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { icon: icon.house, label: "Home", path: `/dashboard/${userInfo?._id}` },
-    { icon: "fa-solid fa-bullhorn", label: "Feeds", path: "/feeds" },
+    { icon: "fa-solid fa-bullhorn", label: "Feeds", path: `/feeds/${userInfo?._id}` },
     { icon: icon.user, label: "People", path: "/people" },
     {
       icon: icon.checkSquare,
