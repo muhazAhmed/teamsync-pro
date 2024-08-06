@@ -28,8 +28,7 @@ export const postMethodAPI = async (
     loading(true);
     const token = fetchUserToken();
     const headers = token ? { "x-api-key": token } : {};
-    const res: ApiResponse = await axios.post(API_URL + variable, {
-      params: inputs,
+    const res: ApiResponse = await axios.post(API_URL + variable, inputs, {
       headers,
     });
     if (res.status === 201 || res.status === 200) {
@@ -84,8 +83,7 @@ export const patchMethodAPI = async (
     loading(true);
     const token = fetchUserToken();
     const headers = token ? { "x-api-key": token } : {};
-    const res: ApiResponse = await axios.patch(API_URL + variable, {
-      params: inputs,
+    const res: ApiResponse = await axios.patch(API_URL + variable, inputs, {
       headers,
     });
     if (res.status === 200) {
