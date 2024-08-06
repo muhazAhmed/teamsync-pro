@@ -92,5 +92,10 @@ export const icon: IconTypes = {
   forward: "fa-solid fa-forward-step",
   info: "fa-solid fa-info",
   infoRounded: "fa-solid fa-circle-info",
-  users: "fa-solid fa-users"
+  users: "fa-solid fa-users",
+  image: "fa-regular fa-image",
+  likeBefore: "fa-regular fa-heart",
+  likeAfter: "fa-solid fa-heart",
+  emoji: "fa-regular fa-face-smile-beam",
+  ellipse: "fa-solid fa-ellipsis",
 };
