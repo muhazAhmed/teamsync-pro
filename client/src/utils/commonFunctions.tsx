@@ -136,3 +136,7 @@ export const disablePastDays = (date?: any) => {
 export const directWithNewTab = (url: string) => {
   return window.open(url, '_blank');
 }
+
+export const FetchUserIdAndRole = () => {
+  return (`${fetchUserId()}/${FetchRole()}`)
+}
