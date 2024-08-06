@@ -15,6 +15,7 @@ import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import {
   AssignRole,
+  filterEmptyObj,
   newSessionStorage,
   openModal,
   useSessionStorage,
@@ -122,7 +123,7 @@ const UserForm = () => {
     if (isValid) {
       const res = await postMethodAPI(
         `${serverVariables.LOGIN_USER}`,
-        inputs,
+        filterEmptyObj(inputs),
         setLoading
       );
       if (res instanceof Error) {
