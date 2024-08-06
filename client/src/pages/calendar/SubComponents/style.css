@@ -114,3 +114,10 @@
     align-items: center;
     gap: 1rem;
 }
+
+.agenda-modal .modal-body .body .date-input textarea {
+    background-color: #3F3F46;
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 15vh;
+}

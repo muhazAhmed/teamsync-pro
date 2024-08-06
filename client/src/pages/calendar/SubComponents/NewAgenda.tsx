@@ -7,6 +7,7 @@ import TimePicker from "../../../UI-Components/TimePicker/TimePicker";
 import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { closeModal } from "../../../utils/commonFunctions";
 import { motion } from "framer-motion";
+import CustomInput from "../../../UI-Components/Inputs/Input";
 
 interface ModalProps {
   setModal: any;
@@ -14,6 +15,9 @@ interface ModalProps {
 
 const NewAgenda: FC<ModalProps> = ({ setModal }) => {
   const [selected, setSelected] = useState<string>("details");
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [guest, setGuest] = useState<string>("");
   const [selectedFromTime, setSelectedFromTime] = useState<string>("");
   const [selectedToTime, setSelectedToTime] = useState<string>("");
   const [selectedLocation, setSelectedLocation] = useState<string>("");
@@ -47,15 +51,36 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
     }),
   };
 
+  const eventHeader = () => {
+    if (selected === "details")
+      return { title: "What's your event about?", headerIcon: "infoRounded" };
+    else if (selected === "location")
+      return { title: "When and where will it take place?", headerIcon: "pin" };
+    else if (selected === "guest")
+      return { title: "Who should join it?", headerIcon: "users" };
+    return;
+  };
+
   console.log(selectedFromTime, selectedToTime);
 
   return (
     <Modal setModal={setModal} className="agenda-modal" header={false}>
       <div className="modal-body">
         <div className="header">
-          <i className={icon?.pin}></i>
-          <h1>When and where will it take place?</h1>
+          {(() => {
+            const { title, headerIcon } = eventHeader() || {
+              title: "",
+              headerIcon: "",
+            };
+            return (
+              <>
+                <i className={icon?.[headerIcon]}></i>
+                <h1>{title}</h1>
+              </>
+            );
+          })()}
         </div>
+
         <div className="progress">
           <div
             className={`${
@@ -119,7 +144,7 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
                   >
                     Physical
                   </Radio>
-                  {selectedLocation === "physical" && <input />}
+                  {selectedLocation === "physical" && <input placeholder="Location details" />}
                   <Radio
                     value="virtual"
                     className="radio-toggle"
@@ -132,9 +157,36 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
               </div>
             </div>
           ) : selected === "details" ? (
-            <div>{/* Details content goes here */}</div>
+            <div className="body">
+              <div className="date-input">
+                <label>Title</label>
+                <CustomInput
+                  name="title"
+                  setInputs={setTitle}
+                  value={title || ""}
+                  placeholder="Enter title here"
+                />
+              </div>
+              <div className="date-input">
+                <label>Description</label>
+                <textarea
+                  placeholder="Add description to encourage guests to attend this event. Link, emoji or new lines are supported"
+                  name="description"
+                  value={description || ""}
+                  onChange={(e) => setDescription(e?.target?.value)}
+                />
+              </div>
+            </div>
           ) : (
-            <div>{/* Default content goes here */}</div>
+            <div className="data-input">
+              <label>Guests</label>
+              <CustomInput
+                name="guest"
+                setInputs={setGuest}
+                value={guest || ""}
+                placeholder="Guest name or email..."
+              />
+            </div>
           )}
         </motion.div>
         <div className="footer-btn">
@@ -143,7 +195,7 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
             label="Back"
             variant="light"
             action={() => handleMenuChange("back")}
-            disabled={selected === "details"}
+            hidden={selected === "details"}
           />
           <div className="btn-end">
             {selected === "guest" ? (
