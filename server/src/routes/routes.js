@@ -9,6 +9,8 @@ import "../controllers/serviceController/cronJobs.js"
 import { deleteSupportReq, fetchAllSupportReq, fetchOneSupportReq, newSupportReq, updateSupportReq } from '../controllers/serviceController/SupportController.js';
 import { deleteLeaveReq, fetchPendingLeaveReq, newLeaveReq } from '../controllers/User/timeOffController.js';
 import { authenticate } from '../utils/middleware.js';
+import { deleteHoliday, fetchAllHolidays, fetchOneHoliday, newHoliday, updateHoliday } from '../controllers/User/holidayController.js';
+import { deleteEvent, fetchAllEvents, fetchOneEvents, newEvent, updateEvent } from '../controllers/User/EventController.js';
 
 routes.post("/user/register", newUser)
 routes.post("/user/login", loginUser)
@@ -45,5 +47,17 @@ routes.delete("/client/-request/:id", authenticate, deleteClientData)
 routes.post("/user/leave-request/new/:id/:role", authenticate, newLeaveReq)
 routes.get("/user/leave-request/fetch-by-status/:id", authenticate, fetchPendingLeaveReq)
 routes.delete("/user/leave-request/delete/:id", authenticate, deleteLeaveReq)
+
+routes.post("/user/holiday/new", authenticate, newHoliday)
+routes.get("/user/holiday/fetch-all", authenticate, fetchAllHolidays)
+routes.get("/user/holiday/fetch-one/:id", authenticate, fetchOneHoliday)
+routes.patch("/user/holiday/update/:id", authenticate, updateHoliday)
+routes.delete("/user/holiday/delete/:id", authenticate, deleteHoliday)
+
+routes.post("/user/event/new", authenticate, newEvent)
+routes.get("/user/event/fetch-all", authenticate, fetchAllEvents)
+routes.get("/user/event/fetch-one/:id", authenticate, fetchOneEvents)
+routes.patch("/user/event/update/:id", authenticate, updateEvent)
+routes.delete("/user/event/delete/:id", authenticate, deleteEvent)
 
 export default routes;

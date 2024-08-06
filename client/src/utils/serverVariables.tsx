@@ -36,4 +36,16 @@ export const serverVariables = {
     FETCH_ALL_LEAVE_REQUEST: "/user/leave-request/fetch-all/",
     UPDATE_LEAVE_REQUEST: "/user/leave-request/update/",
     DELETE_LEAVE_REQUEST: "/user/leave-request/delete/",
+
+    NEW_HOLIDAY: "/user/holiday/new",
+    FETCH_ALL_HOLIDAYS: "/user/holiday/fetch-all",
+    FETCH_ONE_HOLIDAY: "/user/holiday/fetch-one/",
+    UPDATE_HOLIDAY: "/user/holiday/update/",
+    DELETE_HOLIDAY: "/user/holiday/delete/",
+
+    NEW_EVENT: "/user/event/new",
+    FETCH_ALL_EVENTS: "/user/event/fetch-all",
+    FETCH_ONE_EVENT: "/user/event/fetch-one/",
+    UPDATE_EVENT: "/user/event/update/",
+    DELETE_EVENT: "/user/event/delete/",
 }
