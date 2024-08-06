@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import "./style.css";
 import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import moment from "moment";
-import { usePageName } from "../../utils/commonFunctions";
+import { FetchRole, usePageName } from "../../utils/commonFunctions";
 import ButtonGroup from "../../UI-Components/Buttons/ButtonGroup";
 import { calendarEvents } from "../form/Demo";
 import {
@@ -74,6 +74,13 @@ const Calendar: FC<CalendarProps> = ({}) => {
             className="btn-primary"
             action={() => handleModalActions(setAgendaModal)}
           />
+          {FetchRole() === "hr" && (
+            <ButtonIcon
+              icon="vacation"
+              label="Add Holiday"
+              className="btn-ghost"
+            />
+          )}
         </div>
       </div>
       {viewMode === "grid" ? (
