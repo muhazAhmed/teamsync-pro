@@ -5,23 +5,22 @@ interface CardProps {
   id?: any;
   className?: string;
   style?: any;
+  boxShadow?: boolean;
 }
 
-const customCardStyle = {
-  container: {
+const Card: FC<CardProps> = ({ content, id, className, style, boxShadow = true }) => {
+  const cardStyle: React.CSSProperties = {
     borderRadius: "8px",
     padding: "16px",
     minWidth: "20vw",
-    boxShadow: "-1px 5px 25px var(--primary)",
     backgroundColor: "var(--card)",
     color: "#fff",
-  },
-};
+    boxShadow: boxShadow ? "-1px 5px 25px var(--primary)" : "none",
+  };
 
-const Card: FC<CardProps> = ({ content, id, className, style }) => {
   return (
     <div
-      style={customCardStyle.container}
+      style={{ ...cardStyle, ...style }}
       className="custom-card"
       id={id ? id : undefined}
     >
