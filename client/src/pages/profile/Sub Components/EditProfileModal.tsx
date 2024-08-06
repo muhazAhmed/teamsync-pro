@@ -12,6 +12,7 @@ import {
 import {
   clearInputs,
   closeModal,
+  FetchRole,
   filterEmptyObj,
   useSessionStorage,
 } from "../../../utils/commonFunctions";
@@ -100,7 +101,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
       data = filterEmptyObj(inputs);
     }
     const res = await postMethodAPI(
-      `${serverVariables.UPDATE_REQUEST_USER}${userID}`,
+      `${serverVariables.UPDATE_REQUEST_USER}${userID}/${FetchRole()}`,
       data,
       setLoading
     );
@@ -147,7 +148,7 @@ const EditProfileModal: React.FC<ModalProps> = ({
                   label={label}
                   onChange={(e) => handleChange(key, e.target.value)}
                   variant="underlined"
-                  style={{color: "#fff"}}
+                  style={{ color: "#fff" }}
                 />
               );
             }
