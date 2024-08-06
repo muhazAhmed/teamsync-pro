@@ -7,9 +7,12 @@ export const updateRequest = async (req, res) => {
         const data = req.body;
         data.userId = req.params.id;
         const existingRequests = await updateRequestModal.findOne({ userId: req.params.id });
-        const role = data.isHr ? "hr" : "employee"
+        const role = req.params.role;
+        
         const userModel = getUserModelByRole(role);
         const fetchUser = await userModel.findOne({ _id: data.userId})
+        if (fetchUser === null ) return res.status(400).json({message: RESPONSE_MESSAGE("").NO_USER_FOUND})
+
         data.employeeID = fetchUser.employeeID;
         data.firstName = req.body.firstName ? req.body.firstName : fetchUser.firstName
 
