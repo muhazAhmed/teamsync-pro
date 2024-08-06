@@ -18,6 +18,7 @@ interface ButtonProps {
     disabled?: boolean;
     tooltip?: TooltipProps;
     selected?: boolean;
+    hidden?: boolean;
 }
 
 interface TooltipProps {

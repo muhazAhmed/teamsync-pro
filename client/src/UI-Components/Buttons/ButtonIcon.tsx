@@ -16,13 +16,14 @@ const ButtonIcon: FC<ButtonProps> = ({
   id,
   tooltip,
   disabled = false,
+  hidden = false,
 }) => {
   const buttonContent = (
     <Button
       className={className ? className : ""}
       color={color}
       variant={variant}
-      style={{ color: textColor }}
+      style={hidden ? { visibility: "hidden" } : { color: textColor }}
       onClick={action}
       id={id ? id : undefined}
       disabled={disabled}
