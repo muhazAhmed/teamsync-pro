@@ -31,4 +31,6 @@ export const RESPONSE_MESSAGE = (name) => ({
     NO_TOKEN: "Token not found",
     INVALID_TOKEN: "Invalid Token",
     UNAUTHORIZED: "You are not authorized to perform this action",
+    ADDED: "Added Successfully",
+    NO_DATA: "No data found",
 })
