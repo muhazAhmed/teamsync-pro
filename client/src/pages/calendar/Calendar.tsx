@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import "./style.css";
 import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import moment from "moment";
@@ -13,8 +13,8 @@ import {
   handleModalActions,
   handleMonthChange,
 } from "./index";
-import NewAgenda from "./SubComponents/NewAgenda";
-import ViewModal from "./SubComponents/ViewModal";
+const NewAgenda = React.lazy(() => import("./SubComponents/NewAgenda"));
+const ViewModal = React.lazy(() => import("./SubComponents/ViewModal"));
 import useDownloadFile from "../../utils/custom-hooks/useDownloadFile";
 
 interface CalendarProps {}

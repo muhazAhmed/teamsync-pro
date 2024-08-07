@@ -3,10 +3,11 @@ import './App.css';
 import "./animation.css";
 import React, { Suspense, useEffect } from 'react';
 import Loader from "./UI-Components/Loader/Loader";
-import AuthGuard, { HRAuthGuard } from "./utils/AuthGuard";
 import { loadPage } from "./utils/onPageLoad";
 
 const Sidebar = React.lazy(() => import("./components/sidebar/Sidebar"));
+const AuthGuard = React.lazy(() => import("./utils/AuthGuard"));
+const HRAuthGuard = React.lazy(() => import("./utils/AuthGuard").then(module => ({ default: module.HRAuthGuard })));
 const PageNotFound = React.lazy(() => import("./components/PageNotFound/PageNotFound"));
 
 const Home = React.lazy(() => import("./pages/root/home/Home"));

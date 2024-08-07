@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import {
   CheckAccess,
@@ -11,13 +11,13 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import moment from "moment";
 import { Button, Progress } from "@nextui-org/react";
-import AllAttendanceModal from "./SubComponents/AllAttendanceModal/AllAttendanceModal";
 import Loader from "../../../UI-Components/Loader/Loader";
-import LeaveStat from "./SubComponents/DonutChart";
 import CheckInButton from "../AddAttendance/Button";
 import { getMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
-import AreaChartData from "./SubComponents/AreaChart";
+const AllAttendanceModal = React.lazy(() => import("./SubComponents/AllAttendanceModal/AllAttendanceModal"));
+const LeaveStat = React.lazy(() => import("./SubComponents/DonutChart"));
+const AreaChartData = React.lazy(() => import("./SubComponents/AreaChart"));
 import { allAttendanceData, attendanceList } from "../../form/Demo";
 
 type ResponseData = {
