@@ -1,0 +1,107 @@
+.feeds {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.feeds .posts-section {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feeds .posts-section h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.feeds .posts-section .new-post {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.feeds .posts-section .new-post input {
+    background-color: transparent;
+    width: 95%;
+    padding: 10px;
+    border: 1px solid transparent;
+}
+
+.feeds .posts-section .new-post input:focus {
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 25px;
+}
+
+.feeds .new-post i,
+.feeds .new-post img {
+    cursor: pointer;
+}
+
+.feeds .posts-section .posts {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feeds .posts-section .post-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
+    align-items: center;
+}
+
+.feeds .posts-section .post-header .post-username {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 1rem;
+}
+
+.feeds .posts-section .posts p {
+    font-size: 15px;
+    color: #c2c2c2;
+}
+
+.feeds .posts-section .posts .post-img img {
+    border-radius: 25px;
+}
+
+.feeds .posts-section .posts .post-icons {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.feeds .posts-section .posts .post-icons .icon-items {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.feeds .posts-section .posts .post-icons .icon-items i {
+    font-size: 20px;
+}
+
+.feeds .posts-section .post-footer {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.feeds .posts-section .post-footer .new-post input {
+    border: 1px solid #c2c2c2;
+    border-radius: 25px;
+}

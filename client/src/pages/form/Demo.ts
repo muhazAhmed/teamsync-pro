@@ -180,3 +180,8 @@ export const calendarEvents = [
     { date: "12-08-2024", title: "Team Meeting", type: "meeting" },
     { date: "12-08-2024", title: "Team Meeting", type: "meeting" },
 ];
+
+export const feedPosts = [
+    { id: 1, profile: "https://i.pinimg.com/736x/30/84/c2/3084c269aa626fcc51443cdc5a930e45.jpg", name: "Muhaz Ahmed", date: "12 April at 09:28 PM", caption: "One of the perks of working in an international company is sharing knowledge with your colleagues.", image: "https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?cs=srgb&dl=pexels-pixabay-531880.jpg&fm=jpg", comments: "25 Comments", likes: "120k Likes", shares: "231 Shares", saved: "12 Saved" },
+    { id: 2, profile: "https://photosnow.org/wp-content/uploads/2024/04/cute-girl-pic-baby_18.jpg", name: "Rachel", date: "10 April at 07:42 PM", caption: "One of the perks of working in an international company is sharing knowledge with your colleagues.", image: "https://imgv3.fotor.com/images/slider-image/A-clear-close-up-photo-of-a-woman.jpg", comments: "100 Comments", likes: "260k Likes", shares: "343 Shares", saved: "120 Saved" },
+]
