@@ -140,3 +140,11 @@ export const directWithNewTab = (url: string) => {
 export const FetchUserIdAndRole = () => {
   return (`${fetchUserId()}/${FetchRole()}`)
 }
+
+export const unavailableClick = () => {
+  return toast.error(message()?.UNAVAILABLE)
+}
+
+export const disabledClick = (name?: string) => {
+  return toast.error(message(name ? name : "")?.DISABLED)
+}
