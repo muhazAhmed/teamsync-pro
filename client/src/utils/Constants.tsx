@@ -6,13 +6,14 @@ export const message = (name?: string) => ({
 
   // =========== Root =============
   SERVER_ERROR: "Server Under Maintenance",
-  UNAVAILABLE:"Temporarily Unavailable",
+  UNAVAILABLE: "Temporarily Unavailable",
   TRY_AGAIN: "Please Try Again After Some Time",
   FILTER_APPLIED: `${name} Filter Applied`,
   SERVER_RESTART: "Please wait until server gets restarted",
   CONNECTED: "Connection Successful",
+  DISABLED: `Temporarily Disabled ${name ? name : ""}`,
 
-// ============ Form ==========
+  // ============ Form ==========
   REQUIRED_FIELD: `Please Enter ${name}`,
   INVALID_EMAIL: "Please Enter Valid Email Address",
   INVALID_PHONE: "Please Enter Valid Phone Number",
