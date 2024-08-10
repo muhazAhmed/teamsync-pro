@@ -2,9 +2,13 @@ export interface IconTypes {
   [key: string]: string;
 }
 
-
 export const Icon = (name: string) => {
   return <i className={icon[name]}></i>;
+}
+
+export const animatedIcon = (name: string, animation: string) => {
+  const actualIcon = icon[name] + " " + "fa-" + animation;
+  return actualIcon;
 }
 
 export const icon: IconTypes = {
@@ -28,7 +32,7 @@ export const icon: IconTypes = {
   pencil: "fa-solid fa-pencil",
   refresh: "fa-solid fa-rotate",
   locked: "fa-brands fa-expeditedssl",
-  chat: "fa-regular fa-comments",
+  chat: "fa-regular fa-comment",
   location: "fa-solid fa-location-dot",
   warning: "fa-solid fa-circle-exclamation",
   arrowRight: "fa-solid fa-arrow-right",
@@ -53,7 +57,8 @@ export const icon: IconTypes = {
   url: "fa-solid fa-link",
   hotSpot: "fa-solid fa-tower-broadcast",
   luggage: "fa-solid fa-suitcase-rolling",
-  bookmark: "fa-solid fa-bookmark",
+  bookmark: "fa-regular fa-bookmark",
+  bookmarkAfter: "fa-solid fa-bookmark",
   filter: "fa-solid fa-filter",
   work: "fa-solid fa-briefcase",
   search: "fa-solid fa-magnifying-glass",
@@ -98,4 +103,26 @@ export const icon: IconTypes = {
   likeAfter: "fa-solid fa-heart",
   emoji: "fa-regular fa-face-smile-beam",
   ellipse: "fa-solid fa-ellipsis",
+  chevronUp: "fa-solid fa-circle-chevron-up",
+  chevronDown: "fa-solid fa-circle-chevron-down",
+  chevronLeft: "fa-solid fa-circle-chevron-left",
+  chevronRight: "fa-solid fa-circle-chevron-right",
+  spinner: "fa-solid fa-spinner",
+
+  // ============== With animations ===================
+  loadingSpinner: "fa-solid fa-spinner fa-spin-pulse",
+
+  // ===== All animation names ===========
+  // 1. beat
+  // 2. beat-fade
+  // 3. bounce
+  // 4. fade
+  // 5. flip
+  // 6. shake
+  // 7. spin
+  // 8. spin-pulse
+
+  // To use animated icon:
+  // import {animatedIcon} from "./Icons.tsx"
+  // <i className={animatedIcon(spinner, spin-pulse)}></i>
 };
