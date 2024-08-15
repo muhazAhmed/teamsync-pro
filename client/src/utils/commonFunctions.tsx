@@ -148,3 +148,9 @@ export const unavailableClick = () => {
 export const disabledClick = (name?: string) => {
   return toast.error(message(name ? name : "")?.DISABLED)
 }
+
+export const useToast = (name: string, type: "success" | "error", duration?: number) => {
+  toast[type](name, {
+    duration: duration ? duration : 3000,
+  });
+};
