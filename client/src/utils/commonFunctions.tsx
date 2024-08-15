@@ -34,7 +34,7 @@ export const useLocalStorage = (key: string) => {
   return items ? JSON.parse(items) : null;
 };
 
-export const logout = (navigate: any, modalState: any) => {
+export const logout = (navigate: any, modalState?: any) => {
   deleteSessionStorage("userInfo");
   deleteSessionStorage("client-id")
   deleteSessionStorage("userTokenID")
