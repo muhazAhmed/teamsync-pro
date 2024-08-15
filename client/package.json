@@ -15,7 +15,7 @@
     "@nextui-org/system": "^2.2.2",
     "@nextui-org/theme": "^2.2.6",
     "@tremor/react": "^3.17.2",
-    "axios": "^1.7.2",
+    "axios": "^1.7.4",
     "file-saver": "^2.0.5",
     "firebase": "^10.12.2",
     "framer-motion": "^11.2.10",
