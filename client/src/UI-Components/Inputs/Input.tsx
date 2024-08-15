@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { message } from "../../utils/Constants";
+import { icon } from "../Icons/Icons";
 
 interface InputProps {
   type?: string;
@@ -12,6 +13,7 @@ interface InputProps {
   setInputs: (value: any) => void;
   variant?: "primary" | "underline" | "ghost";
   id?: any;
+  autoComplete?: boolean;
 }
 
 const commonStyle: React.CSSProperties = {
@@ -21,7 +23,7 @@ const commonStyle: React.CSSProperties = {
   backgroundColor: "inherit",
   fontSize: "14px",
   textWrap: "wrap",
-  color: "#fff"
+  color: "#fff",
 };
 
 const inputDivStyle: React.CSSProperties = {
@@ -32,7 +34,7 @@ const inputDivStyle: React.CSSProperties = {
   height: "55px",
   padding: "10px",
   position: "relative",
-  color: "#fff"
+  color: "#fff",
 };
 
 const primaryStyle: React.CSSProperties = {
@@ -51,6 +53,11 @@ const underlineStyle: React.CSSProperties = {
   borderBottom: "2px solid #D4D4D8",
 };
 
+const passwordIconStyle: React.CSSProperties = {
+  position: "absolute",
+  right: "15px",
+};
+
 const CustomInput: React.FC<InputProps> = ({
   type = "text",
   value,
@@ -61,9 +68,14 @@ const CustomInput: React.FC<InputProps> = ({
   variant = "primary",
   setInputs,
   id,
+  autoComplete = true,
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [isInputEmpty, setIsInputEmpty] = useState<boolean>(true);
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
+  const togglePasswordVisibility = () =>
+    setIsPasswordVisible(!isPasswordVisible);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputs(e.target.value);
@@ -104,7 +116,7 @@ const CustomInput: React.FC<InputProps> = ({
         )}
       </label>
       <input
-        type={type}
+        type={type === "password" && isPasswordVisible ? "text" : type}
         placeholder={isInputEmpty && !isFocused ? placeholder : ""}
         value={value}
         name={name}
@@ -115,7 +127,15 @@ const CustomInput: React.FC<InputProps> = ({
         onChange={handleChange}
         onFocus={() => setIsFocused(true)}
         onBlur={handleBlur}
+        autoComplete={autoComplete ? "on" : "off"}
       />
+      {type === "password" && (
+        <i
+          className={!isPasswordVisible ? icon?.eye : icon?.eyeSlash}
+          onClick={togglePasswordVisibility}
+          style={passwordIconStyle}
+        ></i>
+      )}
     </div>
   );
 };
