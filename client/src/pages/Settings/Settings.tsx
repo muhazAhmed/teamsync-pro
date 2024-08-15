@@ -15,8 +15,7 @@ const selectedItemStyle = {
 
 const Settings = () => {
   const [selectedItem, setSelectedItem] = useState<number>(2);
-  let loading = false;
-  // const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,7 +58,7 @@ const Settings = () => {
         content={
           <div className="body">
             {selectedItem === 2 && <NotificationSettings />}
-            {selectedItem === 3 && <AccountSettings />}
+            {selectedItem === 3 && <AccountSettings setLoading={setLoading} />}
           </div>
         }
       />
