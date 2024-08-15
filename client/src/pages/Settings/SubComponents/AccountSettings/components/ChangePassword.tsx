@@ -5,22 +5,25 @@ import { ChangePasswordModalProps } from "./props";
 import CustomInput from "../../../../../UI-Components/Inputs/Input";
 import {
   closeModal,
-  // FetchUserIdAndRole,
+  FetchUserIdAndRole,
+  logout,
   useToast,
 } from "../../../../../utils/commonFunctions";
 import ButtonIcon from "../../../../../UI-Components/Buttons/ButtonIcon";
 import { message } from "../../../../../utils/Constants";
 import { validPassword } from "../../../../../utils/validation";
-// import { postMethodAPI } from "../../../../../utils/apiCallMethods";
-// import { serverVariables } from "../../../../../utils/serverVariables";
+import { postMethodAPI } from "../../../../../utils/apiCallMethods";
+import { serverVariables } from "../../../../../utils/serverVariables";
+import { useNavigate } from "react-router-dom";
 
 const ChangePassword: FC<ChangePasswordModalProps> = ({
-  // setLoading,
+  setLoading,
   setPasswordModal,
 }) => {
   const [oldPassword, setOldPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
   const [confirmNewPassword, setConfirmNewPassword] = useState<string>("");
+  const navigate = useNavigate();
 
   const validation = () => {
     const popupToast = (name: string) => {
@@ -52,45 +55,59 @@ const ChangePassword: FC<ChangePasswordModalProps> = ({
 
   const handleSubmit = async () => {
     if (validation()) {
-      // const payload = {
-      //   oldPassword,
-      //   newPassword,
-      // };
+      const payload = {
+        oldPassword,
+        newPassword,
+      };
 
-      // const res = await postMethodAPI(
-      //   serverVariables?.CHANGE_PASSWORD + FetchUserIdAndRole(),
-      //   payload,
-      //   setLoading
-      // );
+      const res = await postMethodAPI(
+        serverVariables?.CHANGE_PASSWORD + FetchUserIdAndRole(),
+        payload,
+        setLoading
+      );
+
+      return res && logout(navigate);
+    } else {
+      return false;
     }
   };
 
   return (
-    <Modal setModal={setPasswordModal} title="Change Password" className="change-password">
+    <Modal
+      setModal={setPasswordModal}
+      title="Change Password"
+      className="change-password"
+    >
       <div className="modal-body">
         <CustomInput
           name="oldPassword"
           setInputs={setOldPassword}
+          type="password"
           value={oldPassword || ""}
           label="Old Password"
           placeholder="Enter Old Password"
           required
+          autoComplete={false}
         />
         <CustomInput
           name="newPassword"
           setInputs={setNewPassword}
+          type="password"
           value={newPassword || ""}
           label="New Password"
           placeholder="Enter New Password"
           required
+          autoComplete={false}
         />
         <CustomInput
           name="confirmNewPassword"
           setInputs={setConfirmNewPassword}
+          type="password"
           value={confirmNewPassword || ""}
           label="Confirm New Password"
           placeholder="Confirm New Password"
           required
+          autoComplete={false}
         />
         <div className="modal-footer flex">
           <ButtonIcon
