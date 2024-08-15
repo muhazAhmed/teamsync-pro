@@ -33,4 +33,5 @@ export const RESPONSE_MESSAGE = (name) => ({
     UNAUTHORIZED: "You are not authorized to perform this action",
     ADDED: "Added Successfully",
     NO_DATA: "No data found",
+    PASSWORD_UPDATE: "Password Updated Successfully",
 })

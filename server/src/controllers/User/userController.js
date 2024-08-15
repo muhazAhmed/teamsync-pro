@@ -171,3 +171,39 @@ export const fetchAllUsersId = async (req, res) => {
     return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 }
+
+export const changePassword = async (req, res) => {
+  try {
+    const data = req.body;
+    const id = req.params.id;
+    const role = req.params.role;
+    const { oldPassword, newPassword } = data;
+    const userModel = getUserModelByRole(role);
+
+    if (!oldPassword) {
+      return res.status(400).json(REQUIRE_FIELD("Old Password"));
+    }
+    if (!newPassword) {
+      return res.status(400).json(REQUIRE_FIELD("New Password"));
+    }
+
+    const user = await userModel.findOne({ _id: id });
+    const matchPassword = await bcrypt.compare(oldPassword, user.password);
+
+    if (matchPassword) {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(newPassword, salt);
+      await userModel.findOneAndUpdate(
+        { _id: id },
+        { $set: { password: hashedPassword } },
+        { new: true }
+      );
+      return res.status(200).json({ message: RESPONSE_MESSAGE("").PASSWORD_UPDATE });
+    } else {
+      return res.status(401).json(PASSWORD_INCORRECT());
+    }
+
+  } catch (error) {
+
+  }
+}

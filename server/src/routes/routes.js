@@ -1,6 +1,6 @@
 import express from 'express';
 const routes = express.Router();
-import { fetchAllUsersId, fetchOneUser, loginUser, newUser, updateUser} from "../controllers/User/userController.js"
+import { changePassword, fetchAllUsersId, fetchOneUser, loginUser, newUser, updateUser} from "../controllers/User/userController.js"
 import { fetchAllRequests, fetchPriorityCounts, updateRequest } from '../controllers/HR/HRController.js';
 import { deleteClientData, getAllClientData, getOneClientData, newClientData, updateClientData } from '../controllers/serviceController/ClientController.js';
 import { fetchAllUsers, fetchUserByName } from '../controllers/adminController/adminController.js';
@@ -17,6 +17,7 @@ routes.post("/user/login", loginUser)
 routes.patch("/user/update/:id", authenticate, updateUser)
 routes.get("/user/fetch/:id", authenticate, fetchOneUser)
 routes.get("/user/fetch-all-users", authenticate, fetchAllUsersId)
+routes.post("/user/change-password/:id/:role", authenticate, changePassword)
 
 routes.post("/user/update-request/:id/:role", authenticate, updateRequest)
 routes.get("/user/fetch-all/update-request", authenticate, fetchAllRequests)

@@ -4,6 +4,7 @@ export const serverVariables = {
     LOGIN_USER: "/user/login",
     UPDATE_USER: "/user/update/",
     FETCH_ONE_USER: "/user/fetch/",
+    CHANGE_PASSWORD: "/user/change-password/",
     
     UPDATE_REQUEST_USER: "/user/update-request/",
     FETCH_ALL_UPDATE_REQUESTS: "/user/fetch-all/update-request",
