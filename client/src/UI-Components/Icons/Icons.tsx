@@ -66,6 +66,7 @@ export const icon: IconTypes = {
   twoBars: "fa-solid fa-grip-lines",
   bar: "fa-solid fa-minus",
   eye: "fa-solid fa-eye",
+  eyeSlash: "fa-regular fa-eye-slash",
   clock: "fa-solid fa-clock",
   facebook: "fa-brands fa-facebook",
   twitter: "fa-brands fa-x-twitter",
