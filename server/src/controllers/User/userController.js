@@ -200,10 +200,10 @@ export const changePassword = async (req, res) => {
       );
       return res.status(200).json({ message: RESPONSE_MESSAGE("").PASSWORD_UPDATE });
     } else {
-      return res.status(401).json(PASSWORD_INCORRECT());
+      return res.status(401).json(RESPONSE_MESSAGE("Old").PASSWORD_INCORRECT);
     }
-
   } catch (error) {
-
+    console.log(error.message)
+    return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
   }
 }
