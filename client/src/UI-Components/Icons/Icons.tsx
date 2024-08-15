@@ -108,6 +108,8 @@ export const icon: IconTypes = {
   chevronLeft: "fa-solid fa-circle-chevron-left",
   chevronRight: "fa-solid fa-circle-chevron-right",
   spinner: "fa-solid fa-spinner",
+  fingerprint: "fa-solid fa-fingerprint",
+  key: "fa-solid fa-key",
 
   // ============== With animations ===================
   loadingSpinner: "fa-solid fa-spinner fa-spin-pulse",
