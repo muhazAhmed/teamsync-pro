@@ -26,10 +26,11 @@ const Feeds = () => {
       <div className="posts-section">
         <Card
           boxShadow={false}
+          id="new-post"
           content={
             <div className="new-post">
               <Tooltip content="Profile" className="btn-primary">
-                <Avatar src={userLogo} size="md" className="cursor-pointer" />
+                <Avatar src={userLogo} size="md" className="cursor-pointer first-logo" />
               </Tooltip>
               <input placeholder="What's on your mind?" />
               <Tooltip content="Upload" className="btn-primary">
@@ -111,7 +112,7 @@ const Feeds = () => {
                       <Avatar
                         src={userLogo}
                         size="md"
-                        className="cursor-pointer"
+                        className="cursor-pointer last-logo"
                       />
                     </Tooltip>
                     <input placeholder="Write your comment..." />
