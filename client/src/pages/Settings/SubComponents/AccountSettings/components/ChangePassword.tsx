@@ -4,6 +4,7 @@ import "./style.css";
 import { ChangePasswordModalProps } from "./props";
 import CustomInput from "../../../../../UI-Components/Inputs/Input";
 import {
+  CheckAccess,
   closeModal,
   FetchUserIdAndRole,
   logout,
@@ -60,13 +61,18 @@ const ChangePassword: FC<ChangePasswordModalProps> = ({
         newPassword,
       };
 
-      const res = await postMethodAPI(
-        serverVariables?.CHANGE_PASSWORD + FetchUserIdAndRole(),
-        payload,
-        setLoading
-      );
+      if (CheckAccess()?.isDemoAccount) {
+        useToast("Password Changed Successfully", "success");
+        return setPasswordModal(false);
+      } else {
+        const res = await postMethodAPI(
+          serverVariables?.CHANGE_PASSWORD + FetchUserIdAndRole(),
+          payload,
+          setLoading
+        );
 
-      return res && logout(navigate);
+        return res && logout(navigate);
+      }
     } else {
       return false;
     }
