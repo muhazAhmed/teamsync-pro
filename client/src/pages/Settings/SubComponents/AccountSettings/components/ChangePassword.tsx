@@ -63,7 +63,7 @@ const ChangePassword: FC<ChangePasswordModalProps> = ({
 
       if (CheckAccess()?.isDemoAccount) {
         useToast("Password Changed Successfully", "success");
-        return setPasswordModal(false);
+        return logout(navigate);
       } else {
         const res = await postMethodAPI(
           serverVariables?.CHANGE_PASSWORD + FetchUserIdAndRole(),
