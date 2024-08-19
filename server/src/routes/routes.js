@@ -11,6 +11,7 @@ import { deleteLeaveReq, fetchPendingLeaveReq, newLeaveReq } from '../controller
 import { authenticate } from '../utils/middleware.js';
 import { deleteHoliday, fetchAllHolidays, fetchOneHoliday, newHoliday, updateHoliday } from '../controllers/User/holidayController.js';
 import { deleteEvent, fetchAllEvents, fetchOneEvents, newEvent, updateEvent } from '../controllers/User/EventController.js';
+import { fetchOneLoan, newLoanReq } from '../controllers/User/LoanController.js';
 
 routes.post("/user/register", newUser)
 routes.post("/user/login", loginUser)
@@ -60,5 +61,8 @@ routes.get("/user/event/fetch-all", authenticate, fetchAllEvents)
 routes.get("/user/event/fetch-one/:id", authenticate, fetchOneEvents)
 routes.patch("/user/event/update/:id", authenticate, updateEvent)
 routes.delete("/user/event/delete/:id", authenticate, deleteEvent)
+
+routes.post("/user/loan/new-req/:id/:role", authenticate, newLoanReq)
+routes.get("/user/loan/fetch-one/:id", authenticate, fetchOneLoan)
 
 export default routes;
