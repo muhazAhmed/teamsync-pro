@@ -1,6 +1,4 @@
-import {
-  Button,
-} from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
 import "./home.css";
 import mainImg from "../../../assets/images/homeImg.jpg";
 import featuresImg from "../../../assets/images/features.jpg";
@@ -26,16 +24,16 @@ const Home = () => {
   const arrayOfFeatures = [
     "Attendance Management",
     "Leave Management",
-    "PayRole Management",
+    "Payroll Management",
     "HR Software",
   ];
 
   return (
     <div className="home">
-      {modal && <PopupModal setModal={setModal} navigate={navigate}/>}
-      <RootNavbar/>
+      {modal && <PopupModal setModal={setModal} navigate={navigate} />}
+      <RootNavbar />
       <div className="home-container">
-        <div className="section-1 fadeIn">
+        <div className="section-1 slideUp">
           <img src={mainImg} alt="Image" />
           <div className="section1-item">
             <h1>
@@ -43,8 +41,9 @@ const Home = () => {
               <br /> your people must grow
             </h1>
             <p>
-              Automate your HR processes with greytHR, a comprehensive,
-              full-suite HRMS platform for enhanced people management.
+              Automate your project management processes with teamSync, a
+              comprehensive, full-suite project management tool for enhanced
+              team collaboration.
             </p>
             <div className="section1-btn">
               <Button
