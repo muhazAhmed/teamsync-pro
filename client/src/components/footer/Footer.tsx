@@ -85,7 +85,7 @@ const Footer = () => {
           Subscribe
         </Button>
       </div>
-      <p>
+      <p style={{ marginBottom: " 1rem" }}>
         <span>®</span>2023, Muhaz Ahmed, All right reserved
       </p>
     </div>
