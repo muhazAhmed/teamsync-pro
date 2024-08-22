@@ -22,6 +22,11 @@
 
 .help-desk .header .search {
     width: 50%;
+    height: 6vh;
+}
+
+.help-desk .header .search .header-input .relative {
+    height: 100%;
 }
 
 .help-desk .header .search i {

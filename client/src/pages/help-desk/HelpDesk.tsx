@@ -76,6 +76,7 @@ const HelpDesk = () => {
             radius="full"
             name="searchName"
             endContent={Icon("arrowRightRounded")}
+            className="h-full header-input"
           />
         </div>
       </div>
