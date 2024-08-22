@@ -109,6 +109,7 @@
     .form-main {
         width: 100%;
         /* height: auto; */
+        position: relative;
     }
     .form-main #home-icon {
         font-size: 0.8rem;
@@ -117,7 +118,7 @@
         flex-direction: column;
         align-items: center;
         width: 100% !important;
-        gap: 2rem;
+        gap: 0.6rem;
     }
 
     .form-leftSide {
@@ -132,9 +133,7 @@
     }
 
     .form-leftSide h1 {
-        width: 90% !important;
-        font-size: 1.2rem !important;
-        font-weight: bold;
+        display: none;
     }
 
     .form-leftSide img {
@@ -149,5 +148,12 @@
 
     .form-rightSide h1 {
         font-size: 1.5rem;
+    }
+
+    .form-main #header-btn {
+        left: 10px !important;
+        width: 2vw !important;
+        padding-right: 50px;
+        padding-left: 50px;
     }
 }

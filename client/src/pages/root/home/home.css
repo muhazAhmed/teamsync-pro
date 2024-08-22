@@ -131,6 +131,10 @@
         font-size: 23px !important;
     }
 
+    .home-container .section2-item h2 {
+        font-size: 15px;
+    }
+
     .home-container p {
         font-size: 15px !important;
     }
