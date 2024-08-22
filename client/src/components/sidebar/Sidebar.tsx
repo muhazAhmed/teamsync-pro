@@ -33,7 +33,7 @@ const Sidebar = () => {
   useEffect(() => {
     if (
       location.href.split("/")[3] === "home" ||
-      location.href.split("/")[4] === "form" || 
+      location.href.split("/")[4] === "form" ||
       location.href.split("/")[4] === "about"
     ) {
       setIsHomePage(true);
@@ -54,7 +54,11 @@ const Sidebar = () => {
 
   const menuItems = [
     { icon: icon.house, label: "Home", path: `/dashboard/${userInfo?._id}` },
-    { icon: "fa-solid fa-bullhorn", label: "Feeds", path: `/feeds/${userInfo?._id}` },
+    {
+      icon: "fa-solid fa-bullhorn",
+      label: "Feeds",
+      path: `/feeds/${userInfo?._id}`,
+    },
     { icon: icon.user, label: "People", path: "/people" },
     {
       icon: icon.checkSquare,
@@ -153,7 +157,15 @@ const Sidebar = () => {
               <DropdownTrigger>
                 <Avatar src={userLogo} size="md" className="cursor-pointer" />
               </DropdownTrigger>
-              <DropdownMenu aria-label="Profile Actions" variant="flat">
+              <DropdownMenu
+                aria-label="Profile Actions"
+                style={{
+                  backgroundColor: "var(--card)",
+                  color: "#fff",
+                  borderRadius: "12px",
+                  margin: "0",
+                }}
+              >
                 <DropdownItem
                   textValue="Profile"
                   key="profile"
