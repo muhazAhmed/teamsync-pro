@@ -14,6 +14,7 @@ interface InputProps {
   variant?: "primary" | "underline" | "ghost";
   id?: any;
   autoComplete?: boolean;
+  readOnly?: boolean;
 }
 
 const commonStyle: React.CSSProperties = {
@@ -69,6 +70,7 @@ const CustomInput: React.FC<InputProps> = ({
   setInputs,
   id,
   autoComplete = true,
+  readOnly = false,
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [isInputEmpty, setIsInputEmpty] = useState<boolean>(true);
@@ -98,6 +100,7 @@ const CustomInput: React.FC<InputProps> = ({
         ...(variant === "primary" && primaryStyle),
         ...(variant === "ghost" && ghostStyle),
         ...(variant === "underline" && underlineStyle),
+        cursor: readOnly ? "not-allowed" : "",
       }}
     >
       <label
@@ -123,11 +126,14 @@ const CustomInput: React.FC<InputProps> = ({
         style={{
           ...commonStyle,
           marginBottom: isInputEmpty && !isFocused ? "1rem" : "0rem",
+          color: readOnly ? "gray" : "white",
+          cursor: readOnly ? "not-allowed" : "",
         }}
         onChange={handleChange}
         onFocus={() => setIsFocused(true)}
         onBlur={handleBlur}
         autoComplete={autoComplete ? "on" : "off"}
+        readOnly={readOnly}
       />
       {type === "password" && (
         <i
