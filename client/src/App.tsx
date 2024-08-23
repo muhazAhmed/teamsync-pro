@@ -23,6 +23,7 @@ const ManageAttendance = React.lazy(() => import("./pages/Attendance/ManageAtten
 const LeaveManagement = React.lazy(() => import("./pages/LeaveManagement/LeaveManagement"));
 const Calendar = React.lazy(() => import("./pages/calendar/Calendar"));
 const Feeds = React.lazy(() => import("./pages/feeds/Feeds"));
+const Loan = React.lazy(() => import("./pages/loans/Loan"));
 
 // ============================ HR Routes ===================
 const UpdateRequest = React.lazy(() => import("./pages/HR/UpdateRequest/UpdateRequest"));
@@ -57,6 +58,7 @@ function App() {
             <Route path="/time-off/:id" element={<AuthGuard><LeaveManagement /></AuthGuard>} />
             <Route path="/calendar/:id" element={<AuthGuard><Calendar /></AuthGuard>} />
             <Route path="/feeds/:id" element={<AuthGuard><Feeds /></AuthGuard>} />
+            <Route path="/loan-management" element={<AuthGuard><Loan /></AuthGuard>} />
 
             {/* HR routes */}
             <Route path="/hr/update-request" element={<HRAuthGuard><UpdateRequest /></HRAuthGuard>} />
