@@ -1,0 +1,48 @@
+.new-loan {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.new-loan .amount {
+    display: flex;
+    flex-direction: column;
+}
+
+.new-loan .amount label {
+    font-size: 12px;
+}
+
+.new-loan .amount-options {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.new-loan .custom-input {
+    padding-top: 25px !important;
+}
+
+.new-loan .amount input {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    padding: 5px;
+    padding-left: 25px;
+}
+
+.new-loan .amount span {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+}
+
+.new-loan .footer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+.new-loan-modal .modal-content {
+    max-height: 100%;
+}
