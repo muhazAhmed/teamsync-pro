@@ -19,7 +19,7 @@ import { message } from "../../../utils/Constants";
 
 const ApplyLoan: FC<ApplyLoanPopupProps> = ({ setModal, setLoading }) => {
   const currDate = moment().format("MMM DD, YYYY");
-  const [selectedAmount, setSelectedAmount] = useState<number>(0);
+  const [selectedAmountId, setSelectedAmountId] = useState<number>(0);
   const [inputs, setInputs] = useState<any>({
     employeeId: fetchUserId(),
     appliedOn: currDate,
@@ -34,7 +34,7 @@ const ApplyLoan: FC<ApplyLoanPopupProps> = ({ setModal, setLoading }) => {
   ];
 
   const handleAmountSelection = (amount: string, index: number) => {
-    setSelectedAmount(index);
+    setSelectedAmountId(index);
     setInputs((prev: any) => ({ ...prev, loanAmount: Number(amount) }));
   };
 
@@ -78,9 +78,8 @@ const ApplyLoan: FC<ApplyLoanPopupProps> = ({ setModal, setLoading }) => {
                 label={item?.label}
                 borderRadius="half"
                 onClick={() => handleAmountSelection(item?.value, item?.id)}
-                // variant="ghost"
                 className={
-                  selectedAmount === index ? "btn-primary" : "btn-ghost"
+                  selectedAmountId === index ? "btn-primary" : "btn-ghost"
                 }
               />
             ))}
@@ -93,12 +92,13 @@ const ApplyLoan: FC<ApplyLoanPopupProps> = ({ setModal, setLoading }) => {
               placeholder="Enter different amount..."
               name="loanAmount"
               value={inputs?.loanAmount || 100}
-              onChange={(e) =>
+              onChange={(e) => {
                 setInputs((prev: any) => ({
                   ...prev,
                   loanAmount: Number(e?.target?.value),
-                }))
-              }
+                })),
+                  setSelectedAmountId(3);
+              }}
             />
           </div>
         </div>
