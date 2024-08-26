@@ -49,4 +49,9 @@ export const serverVariables = {
     FETCH_ONE_EVENT: "/user/event/fetch-one/",
     UPDATE_EVENT: "/user/event/update/",
     DELETE_EVENT: "/user/event/delete/",
+
+    NEW_LOAN: "/user/loan/new-req/",
+    FETCH_ALL_LOANS_BY_ID: "/user/loan/fetch-all/",
+    FETCH_ONE_LOAN: "/user/loan/fetch-one/",
+    UPDATE_LOAN: "/user/loan/update/",
 }

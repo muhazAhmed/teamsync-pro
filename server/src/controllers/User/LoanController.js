@@ -11,7 +11,7 @@ export const newLoanReq = async(req, res) => {
         const { loanId, employeeId, appliedOn, loanAmount, loanStatus, reporter, repaymentStatus } = data;
         if (!id) return res.status(400).json({message: REQUIRE_FIELD("User ID")});
         if (!role) return res.status(400).json({message: REQUIRE_FIELD("User Role")});
-        if (!loanAmount) return res.status(400).json({message: REQUIRE_FIELD("Loan Amount")});
+        if (!loanAmount || loanAmount === 0) return res.status(400).json({message: REQUIRE_FIELD("Loan Amount")});
 
         data.loanId = genRandomStringNumber(6).toUpperCase();
         data.employeeId = req.params.id;
@@ -57,16 +57,6 @@ export const updateLoanData = async(req, res) => {
         const id = req.params.id;
         const data = req.body;
         const { loanId, employeeId, appliedOn, loanAmount, loanStatus, reporter, repaymentStatus } = data;
-
-    } catch (error) {
-        console.log(error.message)
-        return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
-    }
-}
-
-export const deleteLoanData = async(req, res) => {
-    try {
-        const id = req.params.id;
 
     } catch (error) {
         console.log(error.message)
