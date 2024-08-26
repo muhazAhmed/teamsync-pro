@@ -4,26 +4,51 @@ import "./style.css";
 import { ApplyLoanPopupProps } from "../props";
 import moment from "moment";
 import CustomInput from "../../../UI-Components/Inputs/Input";
-import { fetchUserId } from "../../../utils/commonFunctions";
+import {
+  CheckAccess,
+  closeModal,
+  fetchUserId,
+  FetchUserIdAndRole,
+  useToast,
+} from "../../../utils/commonFunctions";
 import Chip from "../../../UI-Components/Chip/Chip";
 import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
+import { postMethodAPI } from "../../../utils/apiCallMethods";
+import { serverVariables } from "../../../utils/serverVariables";
+import { message } from "../../../utils/Constants";
 
-const ApplyLoan: FC<ApplyLoanPopupProps> = ({ setModal }) => {
+const ApplyLoan: FC<ApplyLoanPopupProps> = ({ setModal, setLoading }) => {
   const currDate = moment().format("MMM DD, YYYY");
-  const [otherAmount, setOtherAmount] = useState<boolean>(false);
+  const [selectedAmount, setSelectedAmount] = useState<number>(0);
   const [inputs, setInputs] = useState<any>({
     employeeId: fetchUserId(),
     appliedOn: currDate,
     loanAmount: "",
   });
 
-  const handleAmountSelection = (amount: string) => {
-    if (amount === "Other") {
-      setOtherAmount(true);
+  const amounts = [
+    { id: 0, label: "$100", value: "100" },
+    { id: 1, label: "$500", value: "500" },
+    { id: 2, label: "$1000", value: "1000" },
+    { id: 3, label: "Other", value: "Other" },
+  ];
+
+  const handleAmountSelection = (amount: string, index: number) => {
+    setSelectedAmount(index);
+    setInputs((prev: any) => ({ ...prev, loanAmount: Number(amount) }));
+  };
+
+  const handleSubmit = async () => {
+    if (CheckAccess()?.isDemoAccount) {
+      useToast(message()?.REQUEST_SUBMITTED, "success");
     } else {
-      setOtherAmount(false);
-      setInputs((prev: any) => ({ ...prev, loanAmount: Number(amount) }));
+      await postMethodAPI(
+        serverVariables?.NEW_LOAN + FetchUserIdAndRole(),
+        inputs,
+        setLoading
+      );
     }
+    return setModal(false);
   };
 
   return (
@@ -46,56 +71,50 @@ const ApplyLoan: FC<ApplyLoanPopupProps> = ({ setModal }) => {
           readOnly
         />
         <div className="amount">
-          <label>Loan Amount</label>
-          <p>Amount: ${inputs?.loanAmount}</p>
+          <label>Loan Amount:</label>
           <div className="amount-options">
-            <Chip
-              label="$100"
-              borderRadius="half"
-              onClick={() => handleAmountSelection("100")}
-              variant="ghost"
-            />
-            <Chip
-              label="$500"
-              borderRadius="half"
-              onClick={() => handleAmountSelection("500")}
-              variant="ghost"
-            />
-            <Chip
-              label="$1000"
-              borderRadius="half"
-              onClick={() => handleAmountSelection("1000")}
-              variant="ghost"
-            />
-            <Chip
-              label="Other"
-              borderRadius="half"
-              onClick={() => handleAmountSelection("Other")}
-              variant="ghost"
-            />
-          </div>
-          {otherAmount && (
-            <div style={{ position: "relative" }}>
-              <span>$</span>
-              <input
-                type="number"
-                className="fadeIn"
-                placeholder="Enter Amount..."
-                name="loanAmount"
-                value={inputs?.loanAmount || ""}
-                onChange={(e) =>
-                  setInputs((prev: any) => ({
-                    ...prev,
-                    loanAmount: Number(e?.target?.value),
-                  }))
+            {amounts?.map((item: any, index: number) => (
+              <Chip
+                label={item?.label}
+                borderRadius="half"
+                onClick={() => handleAmountSelection(item?.value, item?.id)}
+                // variant="ghost"
+                className={
+                  selectedAmount === index ? "btn-primary" : "btn-ghost"
                 }
               />
-            </div>
-          )}
+            ))}
+          </div>
+          <div style={{ position: "relative" }}>
+            <span>$</span>
+            <input
+              type="number"
+              className="w-full"
+              placeholder="Enter different amount..."
+              name="loanAmount"
+              value={inputs?.loanAmount || 100}
+              onChange={(e) =>
+                setInputs((prev: any) => ({
+                  ...prev,
+                  loanAmount: Number(e?.target?.value),
+                }))
+              }
+            />
+          </div>
         </div>
         <div className="footer">
-          <ButtonIcon icon="send" label="Request" color="primary" />
-          <ButtonIcon icon="closeRounded" label="Cancel" color="danger" />
+          <ButtonIcon
+            icon="send"
+            label="Request"
+            color="primary"
+            action={() => handleSubmit()}
+          />
+          <ButtonIcon
+            icon="closeRounded"
+            label="Cancel"
+            color="danger"
+            action={() => closeModal(setModal)}
+          />
         </div>
       </div>
     </Modal>
