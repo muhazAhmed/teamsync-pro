@@ -45,7 +45,8 @@ export const fetchOneLoan = async(req, res) => {
 export const fetchAllLoanById = async(req, res) => {
     try {
         const id = req.params.id;
-
+        const data = await LoanModel.find({employeeId: id});
+        return res.status(200).json(data)
     } catch (error) {
         console.log(error.message)
         return res.status(500).json(RESPONSE_MESSAGE("").SERVER_ERROR);
