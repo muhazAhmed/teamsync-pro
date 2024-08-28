@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import { fetchUserId, usePageName } from "../../utils/commonFunctions";
+import {
+  FetchRole,
+  fetchUserId,
+  usePageName,
+} from "../../utils/commonFunctions";
 import Card from "../../UI-Components/Card/Card";
 import { icon } from "../../UI-Components/Icons/Icons";
 import { settingsBreadCrumbs, switchItems } from "./arrayOfSettings";
@@ -36,20 +40,24 @@ const Settings = () => {
         id="left-card"
         content={
           <div className="switches">
-            {switchItems.map((item, index) => (
-              <div
-                className={"switch-item"}
-                key={index}
-                onClick={() => handleClick(index + 1)}
-                style={selectedItem === index + 1 ? selectedItemStyle : {}}
-              >
-                <h1>
-                  <i className={icon[item.icon]}></i>
-                  {item?.name}
-                </h1>
-                <i className={icon?.arrowRightRounded}></i>
-              </div>
-            ))}
+            {switchItems.map((item, index) => {
+              if (item.access.includes(FetchRole())) {
+                return (
+                  <div
+                    className={"switch-item"}
+                    key={index}
+                    onClick={() => handleClick(index + 1)}
+                    style={selectedItem === index + 1 ? selectedItemStyle : {}}
+                  >
+                    <h1>
+                      <i className={icon[item.icon]}></i>
+                      {item?.name}
+                    </h1>
+                    <i className={icon?.arrowRightRounded}></i>
+                  </div>
+                );
+              }
+            })}
           </div>
         }
       />
