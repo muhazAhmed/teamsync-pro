@@ -17,7 +17,11 @@ import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import { message } from "../../../utils/Constants";
 
-const ApplyLoan: FC<ApplyLoanPopupProps> = ({ setModal, setLoading }) => {
+const ApplyLoan: FC<ApplyLoanPopupProps> = ({
+  setModal,
+  setLoading,
+  fetchLoanData,
+}) => {
   const currDate = moment().format("MMM DD, YYYY");
   const [selectedAmountId, setSelectedAmountId] = useState<number>(0);
   const [inputs, setInputs] = useState<any>({
@@ -47,6 +51,7 @@ const ApplyLoan: FC<ApplyLoanPopupProps> = ({ setModal, setLoading }) => {
         inputs,
         setLoading
       );
+      fetchLoanData();
     }
     return setModal(false);
   };
