@@ -72,10 +72,10 @@ const Sidebar = () => {
     },
     {
       icon: icon.checkList,
-      label: "To Do",
+      label: "Tasks",
       subItems: [
-        { label: "Tasks", path: "/tasks" },
-        { label: "Review", path: "/tasks/manage" },
+        { label: "Task Manager", path: `/tasks/${userInfo?._id}` },
+        { label: "Review", path: `/tasks/review/${userInfo?._id}` },
       ],
     },
     {
