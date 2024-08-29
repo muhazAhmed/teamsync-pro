@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { motion } from "framer-motion";
 
 interface CardProps {
   content: any;
@@ -6,9 +7,17 @@ interface CardProps {
   className?: string;
   style?: any;
   boxShadow?: boolean;
+  hoverEffect?: boolean;
 }
 
-const Card: FC<CardProps> = ({ content, id, className, style, boxShadow = true }) => {
+const Card: FC<CardProps> = ({
+  content,
+  id,
+  className,
+  style,
+  boxShadow = true,
+  hoverEffect = false,
+}) => {
   const cardStyle: React.CSSProperties = {
     borderRadius: "8px",
     padding: "16px",
@@ -18,16 +27,24 @@ const Card: FC<CardProps> = ({ content, id, className, style, boxShadow = true }
     boxShadow: boxShadow ? "-1px 5px 25px var(--primary)" : "none",
   };
 
+  const motionProps = hoverEffect
+    ? {
+        whileHover: { scale: 1.05 },
+        transition: { duration: 0.3 },
+      }
+    : {};
+
   return (
-    <div
+    <motion.div
       style={{ ...cardStyle, ...style }}
       className="custom-card"
       id={id ? id : undefined}
+      {...motionProps}
     >
       <div className={className ? className : undefined} style={style}>
         {content}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
