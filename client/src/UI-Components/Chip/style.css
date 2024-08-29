@@ -3,6 +3,7 @@
     cursor: pointer;
     text-align: center;
     width: fit-content;
+    min-width: 4vw;
 }
 
 .chip p {
