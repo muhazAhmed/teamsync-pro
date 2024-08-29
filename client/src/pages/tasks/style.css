@@ -1,0 +1,71 @@
+.tasks {
+    width: 100%;
+    padding-left: 10px;
+    height: 90%;
+    position: relative;
+}
+
+.app-container {
+    margin-top: 70px !important;
+}
+
+.tasks .task-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    background-color: black;
+}
+
+.tasks .all-tasks {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.tasks ::-webkit-scrollbar {
+    width: 0px;
+}
+
+.all-tasks .custom-card {
+    height: 45vh;
+}
+
+.tasks .task-container #stats-card {
+    border: 2px solid #ff0055;
+}
+
+.tasks .task-container #user-stats {
+    border: 2px solid #00ff62;
+}
+
+.task-container .CircularProgressbar .CircularProgressbar-text {
+    font-size: 25px !important;
+}
+
+@media (max-width: 768px) {
+    .tasks {
+        height: auto;
+    }
+
+    .task-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .tasks .all-tasks {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        width: 98% !important;
+    }
+
+    .tasks .stats {
+        width: 98% !important;
+    }
+}

@@ -24,6 +24,7 @@ const LeaveManagement = React.lazy(() => import("./pages/LeaveManagement/LeaveMa
 const Calendar = React.lazy(() => import("./pages/calendar/Calendar"));
 const Feeds = React.lazy(() => import("./pages/feeds/Feeds"));
 const Loan = React.lazy(() => import("./pages/loans/Loan"));
+const Tasks = React.lazy(() => import("./pages/tasks/Tasks"));
 
 // ============================ HR Routes ===================
 const UpdateRequest = React.lazy(() => import("./pages/HR/UpdateRequest/UpdateRequest"));
@@ -37,36 +38,37 @@ function App() {
   return (
     <div className='app'>
       <BrowserRouter>
-         <Sidebar />
-        <div className="app-container" style={flag ? {marginTop: "0px"} : {marginTop: "80px"}}>
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            {/* Redirect from "/" to "/home" */}
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} />
+        <Sidebar />
+        <div className="app-container" style={flag ? { marginTop: "0px" } : { marginTop: "80px" }}>
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              {/* Redirect from "/" to "/home" */}
+              <Route path="/" element={<Navigate to="/home" />} />
+              <Route path="/home" element={<Home />} />
 
-            {/* Main routes */}
-            <Route path="/user/form" element={<UserForm />} />
-            <Route path="/product/about" element={<About />} />
-            <Route path="/dashboard/:id" element={<AuthGuard><Dashboard /></AuthGuard>} />
-            <Route path="/help-desk/:id" element={<AuthGuard><HelpDesk /></AuthGuard>} />
-            <Route path="/settings/:id" element={<AuthGuard><Settings /></AuthGuard>} />
-            <Route path="/user-info/:id" element={<AuthGuard><Profile /></AuthGuard>} />
-            <Route path="/people" element={<AuthGuard><People /></AuthGuard>} />
-            <Route path="/attendance/new/:id" element={<AuthGuard><Attendance /></AuthGuard>} />
-            <Route path="/attendance/manage/:id" element={<AuthGuard><ManageAttendance /></AuthGuard>} />
-            <Route path="/time-off/:id" element={<AuthGuard><LeaveManagement /></AuthGuard>} />
-            <Route path="/calendar/:id" element={<AuthGuard><Calendar /></AuthGuard>} />
-            <Route path="/feeds/:id" element={<AuthGuard><Feeds /></AuthGuard>} />
-            <Route path="/loan-management" element={<AuthGuard><Loan /></AuthGuard>} />
+              {/* Main routes */}
+              <Route path="/user/form" element={<UserForm />} />
+              <Route path="/product/about" element={<About />} />
+              <Route path="/dashboard/:id" element={<AuthGuard><Dashboard /></AuthGuard>} />
+              <Route path="/help-desk/:id" element={<AuthGuard><HelpDesk /></AuthGuard>} />
+              <Route path="/settings/:id" element={<AuthGuard><Settings /></AuthGuard>} />
+              <Route path="/user-info/:id" element={<AuthGuard><Profile /></AuthGuard>} />
+              <Route path="/people" element={<AuthGuard><People /></AuthGuard>} />
+              <Route path="/attendance/new/:id" element={<AuthGuard><Attendance /></AuthGuard>} />
+              <Route path="/attendance/manage/:id" element={<AuthGuard><ManageAttendance /></AuthGuard>} />
+              <Route path="/time-off/:id" element={<AuthGuard><LeaveManagement /></AuthGuard>} />
+              <Route path="/calendar/:id" element={<AuthGuard><Calendar /></AuthGuard>} />
+              <Route path="/feeds/:id" element={<AuthGuard><Feeds /></AuthGuard>} />
+              <Route path="/loan-management" element={<AuthGuard><Loan /></AuthGuard>} />
+              <Route path="/tasks/:id" element={<AuthGuard><Tasks /></AuthGuard>} />
 
-            {/* HR routes */}
-            <Route path="/hr/update-request" element={<HRAuthGuard><UpdateRequest /></HRAuthGuard>} />
+              {/* HR routes */}
+              <Route path="/hr/update-request" element={<HRAuthGuard><UpdateRequest /></HRAuthGuard>} />
 
 
-            <Route path="/*" element={<PageNotFound />} />
-          </Routes>
-        </Suspense>
+              <Route path="/*" element={<PageNotFound />} />
+            </Routes>
+          </Suspense>
         </div>
       </BrowserRouter>
     </div>
