@@ -111,6 +111,8 @@ export const icon: IconTypes = {
   spinner: "fa-solid fa-spinner",
   fingerprint: "fa-solid fa-fingerprint",
   key: "fa-solid fa-key",
+  file: "fa-regular fa-file",
+  fileLine: "fa-regular fa-file-lines",
 
   // ============== With animations ===================
   loadingSpinner: "fa-solid fa-spinner fa-spin-pulse",
