@@ -154,3 +154,10 @@ export const useToast = (name: string, type: "success" | "error", duration?: num
     duration: duration ? duration : 3000,
   });
 };
+
+export const textEllipse = (text: string, maxLength: number) => {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + "...";
+  }
+  return text;
+};
