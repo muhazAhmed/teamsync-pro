@@ -113,6 +113,10 @@ export const icon: IconTypes = {
   key: "fa-solid fa-key",
   file: "fa-regular fa-file",
   fileLine: "fa-regular fa-file-lines",
+  caretDown: "fa-solid fa-caret-down",
+  caretUp: "fa-solid fa-caret-up",
+  caretLeft: "fa-solid fa-caret-left",
+  caretRight: "fa-solid fa-caret-right",
 
   // ============== With animations ===================
   loadingSpinner: "fa-solid fa-spinner fa-spin-pulse",
