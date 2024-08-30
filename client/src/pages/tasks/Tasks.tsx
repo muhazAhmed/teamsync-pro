@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import "./style.css";
-import { textEllipse, usePageName } from "../../utils/commonFunctions";
+import {
+  checkBGColors,
+  CheckPriorityColor,
+  textEllipse,
+  usePageName,
+} from "../../utils/commonFunctions";
 import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import Card from "../../UI-Components/Card/Card";
 import { DummyTasks, userTasksStat } from "./demo";
@@ -11,6 +16,7 @@ import {
   DropdownItem,
   Tooltip,
   Progress,
+  Button,
 } from "@nextui-org/react";
 import { icon } from "../../UI-Components/Icons/Icons";
 import Chip from "../../UI-Components/Chip/Chip";
@@ -20,8 +26,7 @@ import "react-circular-progressbar/dist/styles.css";
 const Tasks = () => {
   const [statsData, setStatsData] = useState<any>([]);
   useEffect(() => {
-    usePageName("Tasks");
-
+    usePageName("Tasks (Under Development)");
     setStatsData(userTasksStat);
   }, []);
 
@@ -29,12 +34,38 @@ const Tasks = () => {
     <div className="tasks">
       <div className="task-header">
         <h1 className="text-xl font-semibold">Projects</h1>
-        <ButtonIcon
-          icon="plus"
-          label="New Project"
-          iconPosition="right"
-          className="btn-ghost"
-        />
+        <div className="flex items-center gap-3">
+          <ButtonIcon
+            icon="plus"
+            label="New Project"
+            iconPosition="right"
+            className="btn-ghost"
+          />
+          <Dropdown>
+            <DropdownTrigger style={{ marginRight: "0.5rem" }}>
+              <Button
+                color="secondary"
+                endContent={<i className={icon?.filter}></i>}
+              >
+                Filter
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu
+              aria-label="Dynamic Actions"
+              style={{
+                backgroundColor: "var(--card)",
+                color: "#fff",
+                borderRadius: "12px",
+              }}
+            >
+              <DropdownItem key="todo">TODO</DropdownItem>
+              <DropdownItem key="inProgress">InProgress</DropdownItem>
+              <DropdownItem key="completed">Completed</DropdownItem>
+              <DropdownItem key="cancelled">Cancelled</DropdownItem>
+              <DropdownItem key="overdue">Overdue</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </div>
       </div>
       <div className="task-container w-full h-full mt-3 flex">
         <div className="all-tasks h-full p-3" style={{ width: "75%" }}>
@@ -47,31 +78,37 @@ const Tasks = () => {
               content={
                 <div className="task-body flex flex-col gap-4">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-sm">{item?.projectTitle}</h2>
+                    <h2 className="text-sm">
+                      {textEllipse(item?.projectTitle, 15)}
+                    </h2>
                     <Dropdown>
                       <DropdownTrigger>
-                        <i
-                          className={`${icon?.ellipse} p-[2px] px-1 border-1 rounded-full text-gray-400 text-tiny`}
-                        ></i>
+                        <h2
+                          className="capitalize p-1 px-3 text-center rounded-lg text-[12px] flex items-center gap-1"
+                          style={{
+                            border: `2px solid ${checkBGColors(
+                              item?.status,
+                              "status"
+                            )}`,
+                          }}
+                        >
+                          {item?.status}
+                          <i className={`${icon?.caretDown}`}></i>
+                        </h2>
                       </DropdownTrigger>
                       <DropdownMenu
-                        aria-label="Static Actions"
+                        aria-label="Dynamic Actions"
                         style={{
                           backgroundColor: "var(--card)",
                           color: "#fff",
                           borderRadius: "12px",
                         }}
                       >
-                        <DropdownItem key="new">New file</DropdownItem>
-                        <DropdownItem key="copy">Copy link</DropdownItem>
-                        <DropdownItem key="edit">Edit file</DropdownItem>
-                        <DropdownItem
-                          key="delete"
-                          className="text-danger"
-                          color="danger"
-                        >
-                          Delete file
-                        </DropdownItem>
+                        <DropdownItem key="todo">TODO</DropdownItem>
+                        <DropdownItem key="inProgress">InProgress</DropdownItem>
+                        <DropdownItem key="completed">Completed</DropdownItem>
+                        <DropdownItem key="cancelled">Cancelled</DropdownItem>
+                        <DropdownItem key="overdue">Overdue</DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
                   </div>
@@ -83,9 +120,7 @@ const Tasks = () => {
                       <h5 className="text-gray-400 text-sm">{item?.dueDate}</h5>
                     </Tooltip>
                     <Tooltip content="Priority" color="primary">
-                      <h6 className="p-1 bg-red-600 capitalize text-[12px] rounded-2xl">
-                        {item?.priority}
-                      </h6>
+                      {CheckPriorityColor(item?.priority)}
                     </Tooltip>
                   </div>
                   <div className="h-10">
@@ -116,7 +151,7 @@ const Tasks = () => {
                       className="w-full"
                     />
                   </div>
-                  <div className="border-[1px] rounded-full border-gray-700 mt-2"></div>
+                  <div className="border-[1px] rounded-full border-gray-700 mt-1"></div>
                   <div className="flex w-full items-center justify-between">
                     <Tooltip content="Contributors" color="primary">
                       <div className="flex items-center gap-2">
