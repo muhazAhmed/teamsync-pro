@@ -33,38 +33,31 @@ const Tasks = () => {
   return (
     <div className="tasks">
       <div className="task-header">
-        <h1 className="text-xl font-semibold">Projects</h1>
+        <h1 className="text-xl font-semibold main-header">Projects</h1>
+        <div className="flex relative items-center bg-gray-800 w-72 rounded-full">
+          <i className={`${icon?.search} absolute left-3`}></i>
+          <input
+            placeholder="Search title here..."
+            className="w-[200px] p-2 bg-transparent outline-none pl-10"
+          />
+        </div>
         <div className="flex items-center gap-3">
           <ButtonIcon
             icon="plus"
             label="New Project"
             iconPosition="right"
             className="btn-ghost"
+            borderRadius="full"
           />
-          <Dropdown>
-            <DropdownTrigger style={{ marginRight: "0.5rem" }}>
-              <Button
-                color="secondary"
-                endContent={<i className={icon?.filter}></i>}
-              >
-                Filter
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Dynamic Actions"
-              style={{
-                backgroundColor: "var(--card)",
-                color: "#fff",
-                borderRadius: "12px",
-              }}
+          {statusDropDown(
+            <Button
+              color="secondary"
+              className="rounded-full px-6"
+              endContent={<i className={icon?.filter}></i>}
             >
-              <DropdownItem key="todo">TODO</DropdownItem>
-              <DropdownItem key="inProgress">InProgress</DropdownItem>
-              <DropdownItem key="completed">Completed</DropdownItem>
-              <DropdownItem key="cancelled">Cancelled</DropdownItem>
-              <DropdownItem key="overdue">Overdue</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+              Filter
+            </Button>
+          )}
         </div>
       </div>
       <div className="task-container w-full h-full mt-3 flex">
@@ -76,41 +69,30 @@ const Tasks = () => {
               className="h-full cursor-pointer"
               hoverEffect
               content={
-                <div className="task-body flex flex-col gap-4">
+                <div
+                  className="task-body flex flex-col gap-4"
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                  }}
+                >
                   <div className="flex items-center justify-between">
                     <h2 className="text-sm">
                       {textEllipse(item?.projectTitle, 15)}
                     </h2>
-                    <Dropdown>
-                      <DropdownTrigger>
-                        <h2
-                          className="capitalize p-1 px-3 text-center rounded-lg text-[12px] flex items-center gap-1"
-                          style={{
-                            border: `2px solid ${checkBGColors(
-                              item?.status,
-                              "status"
-                            )}`,
-                          }}
-                        >
-                          {item?.status}
-                          <i className={`${icon?.caretDown}`}></i>
-                        </h2>
-                      </DropdownTrigger>
-                      <DropdownMenu
-                        aria-label="Dynamic Actions"
+                    {statusDropDown(
+                      <h2
+                        className="capitalize p-1 px-3 text-center rounded-lg text-[12px] flex items-center gap-1"
                         style={{
-                          backgroundColor: "var(--card)",
-                          color: "#fff",
-                          borderRadius: "12px",
+                          border: `2px solid ${checkBGColors(
+                            item?.status,
+                            "status"
+                          )}`,
                         }}
                       >
-                        <DropdownItem key="todo">TODO</DropdownItem>
-                        <DropdownItem key="inProgress">InProgress</DropdownItem>
-                        <DropdownItem key="completed">Completed</DropdownItem>
-                        <DropdownItem key="cancelled">Cancelled</DropdownItem>
-                        <DropdownItem key="overdue">Overdue</DropdownItem>
-                      </DropdownMenu>
-                    </Dropdown>
+                        {item?.status}
+                        <i className={`${icon?.caretDown}`}></i>
+                      </h2>
+                    )}
                   </div>
                   <div className="flex w-full gap-3 items-center">
                     <Tooltip content="Due Date" color="primary">
@@ -278,3 +260,37 @@ const Tasks = () => {
 };
 
 export default Tasks;
+
+export const statusDropDown = (buttonContent: any) => {
+  return (
+    <Dropdown>
+      <DropdownTrigger style={{ marginRight: "0.5rem" }}>
+        {buttonContent}
+      </DropdownTrigger>
+      <DropdownMenu
+        aria-label="Dynamic Actions"
+        style={{
+          backgroundColor: "var(--card)",
+          color: "#fff",
+          borderRadius: "12px",
+        }}
+      >
+        <DropdownItem key="todo" className="text-gray-300">
+          TODO
+        </DropdownItem>
+        <DropdownItem key="inProgress" className="text-yellow-400">
+          InProgress
+        </DropdownItem>
+        <DropdownItem key="completed" className="text-green-400">
+          Completed
+        </DropdownItem>
+        <DropdownItem key="overdue" className="text-blue-400">
+          Overdue
+        </DropdownItem>
+        <DropdownItem key="rejected" className="text-red-500">
+          Rejected
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+  );
+};
