@@ -17,10 +17,11 @@ const ButtonIcon: FC<ButtonProps> = ({
   tooltip,
   disabled = false,
   hidden = false,
+  borderRadius,
 }) => {
   const buttonContent = (
     <Button
-      className={className ? className : ""}
+      className={`${className} custom-button rounded-${borderRadius}`}
       color={color}
       variant={variant}
       style={hidden ? { visibility: "hidden" } : { color: textColor }}
@@ -38,6 +39,7 @@ const ButtonIcon: FC<ButtonProps> = ({
       content={tooltip.content}
       color={tooltip.color || "primary"}
       placement={tooltip.placement || "top"}
+      className="round"
     >
       {buttonContent}
     </Tooltip>

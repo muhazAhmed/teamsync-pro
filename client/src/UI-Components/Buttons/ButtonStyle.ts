@@ -19,6 +19,7 @@ interface ButtonProps {
     tooltip?: TooltipProps;
     selected?: boolean;
     hidden?: boolean;
+    borderRadius?: "auto" | "full" | "md" | "lg";
 }
 
 interface TooltipProps {
