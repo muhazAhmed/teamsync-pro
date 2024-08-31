@@ -186,7 +186,7 @@ export const checkBGColors = (value: string, name?: string) => {
     if (name === "status") {
       if (value === "inProgress") return "yellow";
       if (value === "completed") return "#00ba00";
-      if (value === "cancelled") return "#FF033E";
+      if (value === "rejected") return "#FF033E";
       if (value === "overdue") return "orange";
       if (value === "todo" || value === "Pending") return "gray";
     } else if (name === "priority") {
