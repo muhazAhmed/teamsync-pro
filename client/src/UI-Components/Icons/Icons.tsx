@@ -2,8 +2,8 @@ export interface IconTypes {
   [key: string]: string;
 }
 
-export const Icon = (name: string) => {
-  return <i className={icon[name]}></i>;
+export const Icon = (name: string, iconStyles?: React.CSSProperties) => {
+  return <i className={icon[name]} style={iconStyles}></i>;
 }
 
 export const animatedIcon = (name: string, animation: string) => {
@@ -117,6 +117,9 @@ export const icon: IconTypes = {
   caretUp: "fa-solid fa-caret-up",
   caretLeft: "fa-solid fa-caret-left",
   caretRight: "fa-solid fa-caret-right",
+  message: "fa-regular fa-envelope",
+  circle: "fa-regular fa-circle-dot",
+  play: "fa-regular fa-circle-play",
 
   // ============== With animations ===================
   loadingSpinner: "fa-solid fa-spinner fa-spin-pulse",
