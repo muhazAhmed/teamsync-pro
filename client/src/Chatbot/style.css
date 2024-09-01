@@ -1,0 +1,14 @@
+.chatbot {
+    background-color: var(--card);
+    margin-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .chatbot {
+        width: 95%;
+    }
+
+    .chatbot .open-theme .img-container img {
+        width: 20vw;
+    }
+}
