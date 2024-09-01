@@ -17,14 +17,19 @@ import { openModal, useSessionStorage } from "../../utils/commonFunctions";
 import { icon } from "../../UI-Components/Icons/Icons";
 import LogoutPopUpModal from "./SubComponents/LogoutPopUpModal";
 import Notifications from "../../pages/Notifications/Notifications";
+import chatbotImg from "../../assets/images/chatbot.png";
+import Chatbot from "../../Chatbot/Chatbot";
+import Loader from "../../UI-Components/Loader/Loader";
 
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isHomePage, setIsHomePage] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(0);
   const [pageName, setPageName] = useState();
+  const [loading, setLoading] = useState<boolean>(false);
   const [logoutModal, setLogoutModal] = useState<boolean>(false);
   const [openNotification, setOpenNotification] = useState<boolean>(false);
+  const [openChatbot, setOpenChatbot] = useState<boolean>(false);
   const navigate = useNavigate();
   const openSidebar = () => setIsSidebarOpen(1);
   const closeSidebar = () => setIsSidebarOpen(0);
@@ -34,7 +39,8 @@ const Sidebar = () => {
     if (
       location.href.split("/")[3] === "home" ||
       location.href.split("/")[4] === "form" ||
-      location.href.split("/")[4] === "about"
+      location.href.split("/")[4] === "about" ||
+      location.href.split("/")[4] === "contact"
     ) {
       setIsHomePage(true);
     } else return setIsHomePage(false);
@@ -111,9 +117,17 @@ const Sidebar = () => {
 
   return (
     <>
+      {loading && <Loader />}
       {logoutModal && <LogoutPopUpModal modalState={setLogoutModal} />}
       {openNotification && (
         <Notifications setOpenNotification={setOpenNotification} />
+      )}
+      {openChatbot && (
+        <Chatbot
+          setModal={setOpenChatbot}
+          setLoading={setLoading}
+          chatBotImage={chatbotImg}
+        />
       )}
       {!isHomePage && (
         <div
@@ -132,9 +146,16 @@ const Sidebar = () => {
             / {pageName}
           </h1>
           <div
-            className="flex items-center gap-8"
+            className="flex items-center gap-6"
             // style={{ marginRight: "1rem" }}
           >
+            <Tooltip content="Chatbot" color="primary">
+              <img
+                src={chatbotImg}
+                className="w-[28px] cursor-pointer"
+                onClick={() => openModal(setOpenChatbot)}
+              />
+            </Tooltip>
             <Badge
               content="99+"
               shape="circle"
