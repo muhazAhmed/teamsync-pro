@@ -20,6 +20,7 @@ interface ButtonProps {
     selected?: boolean;
     hidden?: boolean;
     borderRadius?: "auto" | "full" | "md" | "lg";
+    iconStyles?: React.CSSProperties;
 }
 
 interface TooltipProps {

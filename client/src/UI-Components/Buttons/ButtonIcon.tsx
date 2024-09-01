@@ -18,6 +18,7 @@ const ButtonIcon: FC<ButtonProps> = ({
   disabled = false,
   hidden = false,
   borderRadius,
+  iconStyles,
 }) => {
   const buttonContent = (
     <Button
@@ -29,8 +30,8 @@ const ButtonIcon: FC<ButtonProps> = ({
       id={id ? id : undefined}
       disabled={disabled}
     >
-      {iconPosition === "left" && Icon(icon)} {label}
-      {iconPosition === "right" && Icon(icon)}
+      {iconPosition === "left" && Icon(icon, iconStyles && iconStyles)} {label}
+      {iconPosition === "right" && Icon(icon, iconStyles && iconStyles)}
     </Button>
   );
 
