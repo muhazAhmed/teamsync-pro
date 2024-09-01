@@ -8,6 +8,14 @@ interface CardProps {
   style?: any;
   boxShadow?: boolean;
   hoverEffect?: boolean;
+  animation?:
+    | "fadeIn"
+    | "fadeOut"
+    | "none"
+    | "slideUp"
+    | "slideDown"
+    | "slideLeft"
+    | "slideRight";
 }
 
 const Card: FC<CardProps> = ({
@@ -17,6 +25,7 @@ const Card: FC<CardProps> = ({
   style,
   boxShadow = true,
   hoverEffect = false,
+  animation = "none",
 }) => {
   const cardStyle: React.CSSProperties = {
     borderRadius: "8px",
@@ -37,7 +46,7 @@ const Card: FC<CardProps> = ({
   return (
     <motion.div
       style={{ ...cardStyle, ...style }}
-      className="custom-card"
+      className={`custom-card ${animation}`}
       id={id ? id : undefined}
       {...motionProps}
     >
