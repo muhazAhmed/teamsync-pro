@@ -57,26 +57,46 @@ const RootNavbar = () => {
             itemClasses={{
               base: "gap-4",
             }}
+            style={{
+              backgroundColor: "var(--card)",
+              color: "#fff",
+              borderRadius: "12px",
+              margin: "0",
+            }}
           >
-            <DropdownItem key="HR" startContent={icons.HR}>
+            <DropdownItem
+              key="HR"
+              startContent={icons.HR}
+              onClick={() => navigate("/user/form")}
+            >
               HR Management
             </DropdownItem>
             <DropdownItem
               key="autoscaling"
               startContent={icons.AttendanceManagement}
+              onClick={() => navigate("/user/form")}
             >
               Attendance Management
             </DropdownItem>
             <DropdownItem
               key="usage_metrics"
               startContent={icons.LeaveManagement}
+              onClick={() => navigate("/user/form")}
             >
               Leave Management
             </DropdownItem>
-            <DropdownItem key="production_ready" startContent={icons.PayRole}>
+            <DropdownItem
+              key="production_ready"
+              startContent={icons.PayRole}
+              onClick={() => navigate("/user/form")}
+            >
               Pay Role Management
             </DropdownItem>
-            <DropdownItem key="99_uptime" startContent={icons.SelfServe}>
+            <DropdownItem
+              key="99_uptime"
+              startContent={icons.SelfServe}
+              onClick={() => navigate("/user/form")}
+            >
               Employee Self Serve
             </DropdownItem>
           </DropdownMenu>
