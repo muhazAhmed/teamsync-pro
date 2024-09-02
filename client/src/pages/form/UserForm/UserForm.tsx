@@ -176,8 +176,8 @@ const UserForm = () => {
         <div className="form-leftSide">
           <img src={formSVG} alt="svg" />
           <h1>
-            Log in to empower your HR journey with our streamlined HR Management
-            Portal.
+            Log in to optimize your team's productivity with our intuitive
+            management portal.
           </h1>
         </div>
         {!isRegister ? (
