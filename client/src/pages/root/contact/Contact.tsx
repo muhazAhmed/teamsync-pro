@@ -53,8 +53,8 @@ const Contact = () => {
           <div className="flex flex-col items-start gap-2 slideDown">
             <h1 className="text-[40px] font-bold">Contact Us</h1>
             <p className="text-[16px] text-gray-400 w-[60%]">
-              Email complete form to learn how Snappy can solve your messaging
-              problem.
+              Reach out to us to learn how TeamSync can enhance your team's
+              productivity and streamline your task management.
             </p>
             <p className="text-[16px] text-gray-400">muhazvla313@gmail.com</p>
           </div>
@@ -71,16 +71,15 @@ const Contact = () => {
                 Feedback & Suggestions
               </h3>
               <p className="w-[80%] text-gray-400">
-                We value your feedback and continuously working to improve
-                Snappy. Your input is crucial in shaping of the future of
-                Snappy.
+                We value your feedback and are dedicated to improving TeamSync.
+                Your input helps shape the future of our platform.
               </p>
             </div>
             <div className="flex flex-col items-start gap-2">
-              <h3 className="font-medium text-[20px]">Media Inquiries</h3>
+              <h3 className="font-medium text-[20px]">General Support</h3>
               <p className="w-[90%] text-gray-400">
-                For media-related questions or press inquiries, please continue
-                with this form or mail us directly.
+                For questions or support, please use this form or contact us
+                directly. We're here to assist with any issues or inquiries.
               </p>
             </div>
           </div>
