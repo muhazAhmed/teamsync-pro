@@ -54,4 +54,6 @@ export const serverVariables = {
     FETCH_ALL_LOANS_BY_ID: "/user/loan/fetch-all/",
     FETCH_ONE_LOAN: "/user/loan/fetch-one/",
     UPDATE_LOAN: "/user/loan/update/",
+
+    newContactMessage: "client/message/new"
 }
