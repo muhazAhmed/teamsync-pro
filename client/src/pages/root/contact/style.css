@@ -1,0 +1,34 @@
+.app-container {
+    margin-top: 0px !important;
+}
+
+@media (max-width: 768px) {
+    .contact {
+        flex-direction: column;
+        height: auto;
+        gap: 2.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .contact .left-items {
+        width: 100%;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .contact .left-items h1 {
+        width: 100%;
+    }
+
+    .contact .left-items p {
+        width: 100%;
+    }
+
+    .contact .left-cub-items {
+        display: none;
+    }
+
+    .contact .form-main {
+        width: 90%;
+    }
+}
