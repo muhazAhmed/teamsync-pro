@@ -35,4 +35,5 @@ export const RESPONSE_MESSAGE = (name) => ({
     NO_DATA: "No data found",
     PASSWORD_UPDATE: "Password Updated Successfully",
     PASSWORD_INCORRECT: `${name} Password Incorrect`,
+    GET_BACK_TO_YOU: "Your request has been received, we'll get back to you soon"
 })
