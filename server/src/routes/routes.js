@@ -12,6 +12,7 @@ import { authenticate } from '../utils/middleware.js';
 import { deleteHoliday, fetchAllHolidays, fetchOneHoliday, newHoliday, updateHoliday } from '../controllers/User/holidayController.js';
 import { deleteEvent, fetchAllEvents, fetchOneEvents, newEvent, updateEvent } from '../controllers/User/EventController.js';
 import { fetchAllLoanById, fetchOneLoan, newLoanReq, updateLoanData } from '../controllers/User/LoanController.js';
+import { newMessage } from '../controllers/serviceController/contactController.js';
 
 routes.post("/user/register", newUser)
 routes.post("/user/login", loginUser)
@@ -66,5 +67,7 @@ routes.post("/user/loan/new-req/:id/:role", authenticate, newLoanReq)
 routes.get("/user/loan/fetch-one/:id", authenticate, fetchOneLoan)
 routes.get("/user/loan/fetch-all/:id", authenticate, fetchAllLoanById)
 routes.patch("/user/loan/update/:id", authenticate, updateLoanData)
+
+routes.post("/client/message/new", newMessage)
 
 export default routes;
