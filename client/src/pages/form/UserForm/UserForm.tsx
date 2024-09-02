@@ -299,7 +299,7 @@ const UserForm = () => {
                 </DropdownMenu>
               </Dropdown>
               <Input
-                type="email"
+                type="number"
                 name="phone"
                 label="Phone"
                 onChange={handleInputChange}
