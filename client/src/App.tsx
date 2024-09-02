@@ -12,6 +12,7 @@ const PageNotFound = React.lazy(() => import("./components/PageNotFound/PageNotF
 
 const Home = React.lazy(() => import("./pages/root/home/Home"));
 const About = React.lazy(() => import("./pages/root/about/About"));
+const Contact = React.lazy(() => import("./pages/root/contact/Contact"));
 const UserForm = React.lazy(() => import("./pages/form/UserForm/UserForm"));
 const Dashboard = React.lazy(() => import("./pages/dashboard/Dashboard"));
 const Settings = React.lazy(() => import("./pages/Settings/Settings"));
@@ -49,6 +50,7 @@ function App() {
               {/* Main routes */}
               <Route path="/user/form" element={<UserForm />} />
               <Route path="/product/about" element={<About />} />
+              <Route path="/product/contact" element={<Contact />} />
               <Route path="/dashboard/:id" element={<AuthGuard><Dashboard /></AuthGuard>} />
               <Route path="/help-desk/:id" element={<AuthGuard><HelpDesk /></AuthGuard>} />
               <Route path="/settings/:id" element={<AuthGuard><Settings /></AuthGuard>} />

@@ -18,7 +18,7 @@ import { icon } from "../../UI-Components/Icons/Icons";
 import LogoutPopUpModal from "./SubComponents/LogoutPopUpModal";
 import Notifications from "../../pages/Notifications/Notifications";
 import chatbotImg from "../../assets/images/chatbot.png";
-import Chatbot from "../../Chatbot/Chatbot";
+import Chatbot from "../Chatbot/Chatbot";
 import Loader from "../../UI-Components/Loader/Loader";
 
 const Sidebar = () => {

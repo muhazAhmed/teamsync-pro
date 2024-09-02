@@ -1,11 +1,11 @@
 import { FC, MouseEvent, useState } from "react";
 import { ChatbotProps } from "./props";
-import { closeModal } from "../utils/commonFunctions";
+import { closeModal } from "../../utils/commonFunctions";
 import "./style.css";
-import { icon } from "../UI-Components/Icons/Icons";
+import { icon } from "../../UI-Components/Icons/Icons";
 import { Tooltip } from "@nextui-org/react";
 import { motion } from "framer-motion";
-import ButtonIcon from "../UI-Components/Buttons/ButtonIcon";
+import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 
 const Chatbot: FC<ChatbotProps> = ({ setModal, chatBotImage }) => {
   const [mouseHovered, setMouseHovered] = useState<boolean>(false);
