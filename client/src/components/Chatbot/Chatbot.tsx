@@ -18,7 +18,7 @@ const Chatbot: FC<ChatbotProps> = ({ setModal, chatBotImage }) => {
 
   return (
     <div
-      className="blur-bg justify-end items-end pb-5"
+      className="blur-bg justify-end items-end pb-5 z-50"
       onClick={handleOutsideClick}
     >
       <div className="chatbot slideLeft w-[25%] h-[90%] rounded-xl shadow-lg shadow-sky-600 relative">
