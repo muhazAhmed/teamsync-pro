@@ -8,7 +8,7 @@ import {
 } from "../../utils/commonFunctions";
 import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import Card from "../../UI-Components/Card/Card";
-import { DummyTasks, userTasksStat } from "./demo";
+import { DummyTasks, myTeamUsers, userTasksStat } from "./demo";
 import {
   Dropdown,
   DropdownTrigger,
@@ -17,6 +17,7 @@ import {
   Tooltip,
   Progress,
   Button,
+  Avatar,
 } from "@nextui-org/react";
 import { icon } from "../../UI-Components/Icons/Icons";
 import Chip from "../../UI-Components/Chip/Chip";
@@ -190,7 +191,7 @@ const Tasks = () => {
                       text={`${statsData?.progressValue}%`}
                     />
                   </div>
-                  <div className="flex flex-col items-start gap-1">
+                  <div className="flex flex-col items-start gap-1 fadeIn">
                     <h4 className="text-md">Running Task</h4>
                     <h2 className="text-3xl font-bold">
                       {statsData?.runningTask}
@@ -240,16 +241,34 @@ const Tasks = () => {
             boxShadow={false}
             id="user-stats"
             content={
-              <div className="">
-                <div className="flex w-full items-center justify-between">
-                  <h3>Our Team</h3>
+              <div className="flex flex-col gap-4 max-h-64 overflow-auto relative">
+                <div
+                  className="flex w-full items-center justify-between sticky top-0 z-50"
+                  style={{ backgroundColor: "var(--card)" }}
+                >
+                  <h3>My Team ({myTeamUsers?.length})</h3>
                   <Tooltip content="More" color="primary">
                     <i
                       className={`${icon?.ellipse}-vertical text-gray-400`}
                     ></i>
                   </Tooltip>
                 </div>
-                <div></div>
+                {myTeamUsers?.map((item: any) => (
+                  <div
+                    className="flex items-center gap-4 cursor-pointer rounded-full p-2 hover:bg-slate-700 slideUp"
+                    key={item?._id}
+                  >
+                    <Avatar src={item?.image} />
+                    <div className="flex flex-col">
+                      <p className="text-[15px] text-gray-300 font-bold">
+                        {item?.firstName} {item?.lastName}
+                      </p>
+                      <span className="text-[14px] text-gray-400">
+                        {item?.designation}
+                      </span>
+                    </div>
+                  </div>
+                ))}
               </div>
             }
           />

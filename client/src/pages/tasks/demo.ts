@@ -102,3 +102,12 @@ export const DummyTasks = [
 
 export const userTasksStat =
     { progressValue: 77, runningTask: 30, completedWork: "10/30", inProgressWork: "13/30" }
+
+
+export const myTeamUsers = [
+    { image: "https://i.pinimg.com/originals/f2/b7/1e/f2b71eb6fdf8d5cb093d73831018dd37.jpg", firstName: "Farine", lastName: "Ahmed", designation: "Sr. Full Stack dev", _id: "0" },
+    { image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa6LBK2WzDdjoxFUnJRWuQgOG84mDelZU1muqi9fEL2HQ0f_z5JSczQersSCDxWTYmtgw&usqp=CAU", firstName: "Aman", lastName: "Gupta", designation: "Junior QA", _id: "1" },
+    { image: "https://us.images.westend61.de/0000748119pw/portrait-of-smiling-young-man-working-with-laptop-at-desk-in-a-modern-office-TCF05112.jpg", firstName: "John", lastName: "Doré", designation: "DevOps Eng.", _id: "2" },
+    { image: "https://us.images.westend61.de/0000748119pw/portrait-of-smiling-young-man-working-with-laptop-at-desk-in-a-modern-office-TCF05112.jpg", firstName: "Karan", lastName: "Kishor", designation: "Project Manager", _id: "3" },
+    { image: "https://us.images.westend61.de/0000748119pw/portrait-of-smiling-young-man-working-with-laptop-at-desk-in-a-modern-office-TCF05112.jpg", firstName: "Philip", lastName: "", designation: "UX/UI", _id: "4" },
+]
