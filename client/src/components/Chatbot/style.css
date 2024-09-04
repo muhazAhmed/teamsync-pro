@@ -1,6 +1,7 @@
 .chatbot {
     background-color: var(--card);
     margin-right: 0.5rem;
+    z-index: 999;
 }
 
 @media (max-width: 768px) {

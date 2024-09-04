@@ -243,8 +243,8 @@ const Tasks = () => {
             content={
               <div className="flex flex-col gap-4 max-h-64 overflow-auto relative">
                 <div
-                  className="flex w-full items-center justify-between sticky top-0 z-50"
-                  style={{ backgroundColor: "var(--card)" }}
+                  className="flex w-full items-center justify-between sticky top-0"
+                  style={{ backgroundColor: "var(--card)", zIndex: 49 }}
                 >
                   <h3>My Team ({myTeamUsers?.length})</h3>
                   <Tooltip content="More" color="primary">
