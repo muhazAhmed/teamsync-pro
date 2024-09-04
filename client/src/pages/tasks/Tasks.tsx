@@ -1,38 +1,45 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css";
 import {
   checkBGColors,
   CheckPriorityColor,
+  openModal,
   textEllipse,
   usePageName,
 } from "../../utils/commonFunctions";
 import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import Card from "../../UI-Components/Card/Card";
 import { DummyTasks, myTeamUsers, userTasksStat } from "./demo";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Tooltip,
-  Progress,
-  Button,
-  Avatar,
-} from "@nextui-org/react";
+import { Tooltip, Progress, Button } from "@nextui-org/react";
 import { icon } from "../../UI-Components/Icons/Icons";
 import Chip from "../../UI-Components/Chip/Chip";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import TaskStats from "./components/TaskStats";
+import { statusDropDown } from "./components/StatusDropDown";
+import Loader from "../../UI-Components/Loader/Loader";
+const TaskViewModal = React.lazy(() => import("./components/TaskViewModal"));
 
 const Tasks = () => {
   const [statsData, setStatsData] = useState<any>([]);
+  const [teamData, setTeamData] = useState<any>([]);
+  const [openViewTaskModal, setOpenViewTaskModal] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
   useEffect(() => {
     usePageName("Tasks (Under Development)");
     setStatsData(userTasksStat);
+    setTeamData(myTeamUsers);
   }, []);
 
   return (
     <div className="tasks">
+      {loading && <Loader />}
+      {openViewTaskModal && (
+        <TaskViewModal
+          setModal={setOpenViewTaskModal}
+          setLoading={setLoading}
+        />
+      )}
       <div className="task-header">
         <h1 className="text-xl font-semibold main-header">Projects</h1>
         <div className="flex relative items-center bg-gray-800 w-72 rounded-full">
@@ -75,6 +82,7 @@ const Tasks = () => {
                   onContextMenu={(e) => {
                     e.preventDefault();
                   }}
+                  onClick={() => openModal(setOpenViewTaskModal)}
                 >
                   <div className="flex items-center justify-between">
                     <h2 className="text-sm">
@@ -166,150 +174,10 @@ const Tasks = () => {
             />
           ))}
         </div>
-        <div
-          className="stats w-full flex items-center flex-col gap-3 h-full"
-          style={{ width: "25%" }}
-        >
-          <Card
-            boxShadow={false}
-            id="stats-card"
-            content={
-              <div className="stat-progress flex flex-col gap-6">
-                <div className="flex w-full items-center justify-between">
-                  <h3>Task Progress</h3>
-                  <Tooltip content="More" color="primary">
-                    <i
-                      className={`${icon?.ellipse}-vertical text-gray-400`}
-                    ></i>
-                  </Tooltip>
-                </div>
-                <div className="w-full flex items-center justify-evenly">
-                  <div className="circular-bar w-24">
-                    <CircularProgressbar
-                      value={statsData?.progressValue}
-                      maxValue={100}
-                      text={`${statsData?.progressValue}%`}
-                    />
-                  </div>
-                  <div className="flex flex-col items-start gap-1 fadeIn">
-                    <h4 className="text-md">Running Task</h4>
-                    <h2 className="text-3xl font-bold">
-                      {statsData?.runningTask}
-                    </h2>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-4">
-                  <div className="">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm text-gray-400">Completed</p>
-                      <p className="text-sm text-gray-400">
-                        {statsData?.completedWork?.split("/")[0]} of{" "}
-                        {statsData?.completedWork?.split("/")[1]}
-                      </p>
-                    </div>
-                    <Progress
-                      aria-label="Progress"
-                      size="sm"
-                      value={statsData?.completedWork?.split("/")[0]}
-                      maxValue={statsData?.completedWork?.split("/")[1]}
-                      color="primary"
-                      className="w-full"
-                    />
-                  </div>
-                  <div className="">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm text-gray-400">In-Progress</p>
-                      <p className="text-sm text-gray-400">
-                        {statsData?.inProgressWork?.split("/")[0]} of{" "}
-                        {statsData?.inProgressWork?.split("/")[1]}
-                      </p>
-                    </div>
-                    <Progress
-                      aria-label="Progress"
-                      size="sm"
-                      value={statsData?.inProgressWork?.split("/")[0]}
-                      maxValue={statsData?.inProgressWork?.split("/")[1]}
-                      color="primary"
-                      className="w-full"
-                    />
-                  </div>
-                </div>
-              </div>
-            }
-          />
-          <Card
-            boxShadow={false}
-            id="user-stats"
-            content={
-              <div className="flex flex-col gap-4 max-h-64 overflow-auto relative">
-                <div
-                  className="flex w-full items-center justify-between sticky top-0"
-                  style={{ backgroundColor: "var(--card)", zIndex: 49 }}
-                >
-                  <h3>My Team ({myTeamUsers?.length})</h3>
-                  <Tooltip content="More" color="primary">
-                    <i
-                      className={`${icon?.ellipse}-vertical text-gray-400`}
-                    ></i>
-                  </Tooltip>
-                </div>
-                {myTeamUsers?.map((item: any) => (
-                  <div
-                    className="flex items-center gap-4 cursor-pointer rounded-full p-2 hover:bg-slate-700 slideUp"
-                    key={item?._id}
-                  >
-                    <Avatar src={item?.image} />
-                    <div className="flex flex-col">
-                      <p className="text-[15px] text-gray-300 font-bold">
-                        {item?.firstName} {item?.lastName}
-                      </p>
-                      <span className="text-[14px] text-gray-400">
-                        {item?.designation}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            }
-          />
-        </div>
+        <TaskStats statsData={statsData} teamData={teamData} />
       </div>
     </div>
   );
 };
 
 export default Tasks;
-
-export const statusDropDown = (buttonContent: any) => {
-  return (
-    <Dropdown>
-      <DropdownTrigger style={{ marginRight: "0.5rem" }}>
-        {buttonContent}
-      </DropdownTrigger>
-      <DropdownMenu
-        aria-label="Dynamic Actions"
-        style={{
-          backgroundColor: "var(--card)",
-          color: "#fff",
-          borderRadius: "12px",
-        }}
-      >
-        <DropdownItem key="todo" className="text-gray-300">
-          TODO
-        </DropdownItem>
-        <DropdownItem key="inProgress" className="text-yellow-400">
-          InProgress
-        </DropdownItem>
-        <DropdownItem key="completed" className="text-green-400">
-          Completed
-        </DropdownItem>
-        <DropdownItem key="overdue" className="text-blue-400">
-          Overdue
-        </DropdownItem>
-        <DropdownItem key="rejected" className="text-red-500">
-          Rejected
-        </DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
-  );
-};

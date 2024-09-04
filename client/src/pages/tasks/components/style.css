@@ -1,0 +1,15 @@
+/* ======= Task View Modal ======== */
+
+@media (max-width: 768px) {
+    .task-view {
+        width: 95%;
+    }
+
+    .task-view label {
+        width: 12vw;
+    }
+
+    .task-view button {
+        width: 50%;
+    }
+}
