@@ -18,8 +18,9 @@ const Chatbot: FC<ChatbotProps> = ({ setModal, chatBotImage }) => {
 
   return (
     <div
-      className="blur-bg justify-end items-end pb-5 z-50"
+      className="blur-bg justify-end items-end pb-5"
       onClick={handleOutsideClick}
+      style={{zIndex: "999"}}
     >
       <div className="chatbot slideLeft w-[25%] h-[90%] rounded-xl shadow-lg shadow-sky-600 relative">
         <Tooltip content="Close" color="danger">
