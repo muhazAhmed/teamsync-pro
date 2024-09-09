@@ -20,6 +20,11 @@ interface TitleBarButtonsProps {
     tooltipColor?: "primary" | "secondary" | "danger";
 }
 
+interface UserProfileProps {
+    setModal: any
+    userId?: string
+}
+
 export type {
-    TaskStatsProps, TaskViewModalProps, TitleBarButtonsProps
+    TaskStatsProps, TaskViewModalProps, TitleBarButtonsProps, UserProfileProps
 }
