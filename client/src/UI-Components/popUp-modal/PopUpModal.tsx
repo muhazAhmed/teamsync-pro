@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { icon } from "../Icons/Icons";
 import { closeModal } from "../../utils/commonFunctions";
 import { Button, Tooltip } from "@nextui-org/react";
+import { motion } from "framer-motion";
 
 interface ModalProps {
   setModal: (value: boolean) => void;
@@ -13,6 +14,10 @@ interface ModalProps {
   footer?: FooterItem[];
   id?: any;
   className?: string;
+  initial?: any;
+  animate?: any;
+  whileHover?: any;
+  transition?: any;
 }
 
 interface FooterItem {
@@ -30,18 +35,26 @@ const Modal: React.FC<ModalProps> = ({
   footer,
   id,
   className,
+  initial = {},
+  animate = {},
+  whileHover = {},
+  transition = {},
 }) => {
   const handleOutsideClick = (e: MouseEvent<HTMLDivElement>) => {
     if ((e.target as Element).classList.contains("blur-bg")) {
       closeModal(setModal);
     }
   };
-  
+
   return ReactDOM.createPortal(
     <div className="blur-bg" onClick={handleOutsideClick}>
-      <div
+      <motion.div
         className={`modal-container ${className ? className : ""} fadeIn`}
         id={id ? id : undefined}
+        initial={initial}
+        animate={animate}
+        whileHover={whileHover}
+        transition={transition}
       >
         {header && (
           <div className="modalHeader">
@@ -72,7 +85,7 @@ const Modal: React.FC<ModalProps> = ({
             ))}
           </div>
         )}
-      </div>
+      </motion.div>
     </div>,
     document.body
   );
