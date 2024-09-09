@@ -20,8 +20,11 @@ import Notifications from "../../pages/Notifications/Notifications";
 import chatbotImg from "../../assets/images/chatbot.png";
 import Chatbot from "../Chatbot/Chatbot";
 import Loader from "../../UI-Components/Loader/Loader";
+import { useContextAPI } from "../../utils/ContextAPI";
+import Message from "../../pages/message/Message";
 
 const Sidebar = () => {
+  const { chatModal } = useContextAPI();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [isHomePage, setIsHomePage] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(0);
@@ -118,6 +121,7 @@ const Sidebar = () => {
   return (
     <>
       {loading && <Loader />}
+      {chatModal && <Message setLoading={setLoading} />}
       {logoutModal && <LogoutPopUpModal modalState={setLogoutModal} />}
       {openNotification && (
         <Notifications setOpenNotification={setOpenNotification} />
