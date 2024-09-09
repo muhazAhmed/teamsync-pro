@@ -33,7 +33,7 @@ const TaskViewModal: FC<TaskViewModalProps> = ({ setModal }) => {
             isHovered={mouseHovered === 1}
             iconType={mouseHovered === 1 ? icon?.closeRounded : icon?.circle}
             hoverColor="text-red-500"
-            defaultColor="text-gray-500"
+            defaultColor="text-red-500"
             tooltipColor="danger"
           />
 
@@ -45,7 +45,7 @@ const TaskViewModal: FC<TaskViewModalProps> = ({ setModal }) => {
             isHovered={mouseHovered === 2}
             iconType={mouseHovered === 2 ? icon?.arrowOpen : icon?.circle}
             hoverColor="text-green-500"
-            defaultColor="text-gray-500"
+            defaultColor="text-green-500"
           />
           <h1 className="text-[18px] w-full text-center">Task Overview</h1>
         </div>
