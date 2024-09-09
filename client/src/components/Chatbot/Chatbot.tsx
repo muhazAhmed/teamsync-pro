@@ -26,7 +26,7 @@ const Chatbot: FC<ChatbotProps> = ({ setModal, chatBotImage }) => {
         <Tooltip content="Close" color="danger">
           <i
             className={`${mouseHovered ? icon?.closeRounded : icon?.circle} ${
-              mouseHovered ? "text-red-500" : "text-gray-500"
+              mouseHovered ? "text-red-500" : "text-red-500"
             } absolute left-2 top-2 text-sm`}
             onMouseEnter={() => setMouseHovered(true)}
             onMouseLeave={() => setMouseHovered(false)}
