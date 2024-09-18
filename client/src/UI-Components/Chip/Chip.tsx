@@ -1,5 +1,6 @@
 import { FC } from "react";
 import "./style.css";
+import { icon } from "../Icons/Icons";
 
 interface ChipProps {
   className?: string;
@@ -10,6 +11,8 @@ interface ChipProps {
   variant?: "primary" | "ghost";
   borderRadius?: "none" | "semi" | "half" | "full";
   textColor?: string;
+  iconItem?: string;
+  iconStyles?: string;
 }
 const Chip: FC<ChipProps> = ({
   className,
@@ -20,15 +23,18 @@ const Chip: FC<ChipProps> = ({
   variant = "primary",
   borderRadius = "half",
   textColor,
+  iconItem,
+  iconStyles,
 }) => {
   return (
     <div
-      className={`chip ${className} chip-${borderRadius} btn-${variant}`}
+      className={`chip ${className} chip-${borderRadius} btn-${variant} flex gap-2`}
       id={id}
       style={style}
       onClick={onClick}
     >
       <p style={{ color: textColor ? textColor : "white" }}>{label}</p>
+      {iconItem && <i className={`${icon?.[iconItem]} ${iconStyles}`}></i>}
     </div>
   );
 };

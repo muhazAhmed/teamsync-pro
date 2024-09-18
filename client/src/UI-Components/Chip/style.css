@@ -2,8 +2,8 @@
     padding: 5px;
     cursor: pointer;
     text-align: center;
-    max-width: fit-content;
-    min-width: 25%;
+    max-width: 110%;
+    width: fit-content;
 }
 
 .chip p {
