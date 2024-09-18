@@ -11,94 +11,8 @@
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
-    height: 100%;
     align-items: center;
     gap: 3rem;
-}
-
-.home-container .section-1 {
-    display: flex;
-    background-color: #918CFF;
-    align-items: center;
-    width: 100%;
-    justify-content: space-evenly;
-    padding: 20px;
-    border-radius: 25px;
-    width: 90%;
-    height: 75vh;
-}
-
-.home-container .section-1 img {
-    width: 40vw;
-}
-
-.home-container .section1-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.home-container .section1-item h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-.section1-item p {
-    font-size: 1.1rem;
-    text-align: center;
-}
-
-.section1-item .section1-btn {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.section1-btn button {
-    border-radius: 25px !important;
-    padding: 25px 20px;
-}
-
-.home-container .section-2 {
-    display: flex;
-    background: rgb(251, 177, 254);
-    background: linear-gradient(112deg, rgba(251, 177, 254, 1) 70%, rgba(217, 155, 254, 1) 85%);
-    align-items: center;
-    width: 100%;
-    justify-content: space-evenly;
-    padding: 20px;
-    border-radius: 25px;
-    width: 90%;
-    height: 75vh;
-}
-
-.home-container .section-2 img {
-    width: 30vw;
-}
-
-.home-container .section2-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-}
-
-.home-container .section2-item h1 {
-    font-size: 2rem;
-    color: black;
-    font-weight: bold;
-}
-
-.home-container .section2-item h2 {
-    font-size: 1.1rem;
-    color: black;
-    font-weight: 600;
-}
-
-.home-container .section2-item i {
-    color: green;
 }
 
 @media (max-width: 768px) {
@@ -116,34 +30,40 @@
         width: auto;
     }
 
-    .home-container .section-1 {
+    .home-container .hero-landing {
         width: 95%;
         height: auto;
         flex-direction: column;
     }
 
-    .home-container .section-2 {
-        width: 95%;
-        height: 50vh;
-    }
-
     .home-container h1 {
         font-size: 23px !important;
-    }
-
-    .home-container .section2-item h2 {
-        font-size: 15px;
+        text-align: center;
     }
 
     .home-container p {
-        font-size: 15px !important;
+        font-size: 12px !important;
     }
 
-    .section-1 img {
+    .hero-landing img {
         width: 90vw !important;
     }
 
-    .section-2 img {
-        display: none;
+    .hero-services img {
+        width: 20vw;
+    }
+
+    .hero-services {
+        height: 100%;
+    }
+
+    .hero-services .card {
+        width: 93%;
+    }
+
+    .hero-services .service-card {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 }
