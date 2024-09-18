@@ -120,6 +120,9 @@ export const icon: IconTypes = {
   message: "fa-regular fa-envelope",
   circle: "fa-regular fa-circle-dot",
   play: "fa-regular fa-circle-play",
+  attach: "fa-solid fa-paperclip",
+  starSolid: "fa-solid fa-star",
+  starRegular: "fa-regular fa-star",
 
   // ============== With animations ===================
   loadingSpinner: "fa-solid fa-spinner fa-spin-pulse",
