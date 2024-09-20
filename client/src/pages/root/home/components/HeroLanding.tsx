@@ -71,7 +71,7 @@ const HeroLanding: FC<Props> = ({ setModal, navigate, user }) => {
       <motion.img
         src={taskImg}
         alt="image"
-        className=" w-[70vw] rounded-lg transform mt-8"
+        className=" w-[70vw] rounded-lg transform mt-8 shadow-2xl shadow-cyan-700"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
