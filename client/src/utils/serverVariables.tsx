@@ -55,5 +55,7 @@ export const serverVariables = {
     FETCH_ONE_LOAN: "/user/loan/fetch-one/",
     UPDATE_LOAN: "/user/loan/update/",
 
+    NEW_BUG: "/user/bug/new",
+
     newContactMessage: "client/message/new"
 }
