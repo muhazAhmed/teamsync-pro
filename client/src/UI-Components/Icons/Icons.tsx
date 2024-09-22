@@ -123,6 +123,7 @@ export const icon: IconTypes = {
   attach: "fa-solid fa-paperclip",
   starSolid: "fa-solid fa-star",
   starRegular: "fa-regular fa-star",
+  bug: "fa-solid fa-bug",
 
   // ============== With animations ===================
   loadingSpinner: "fa-solid fa-spinner fa-spin-pulse",
