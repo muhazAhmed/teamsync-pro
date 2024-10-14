@@ -85,7 +85,7 @@ const TaskStats: FC<TaskStatsProps> = ({ statsData, teamData }) => {
           <div className="flex flex-col gap-4 max-h-64 overflow-auto relative">
             <div
               className="flex w-full items-center justify-between sticky top-0"
-              style={{ backgroundColor: "var(--card)", zIndex: 49 }}
+              style={{ backgroundColor: "var(--card)", zIndex: 40 }}
             >
               <h3>My Team ({teamData?.length})</h3>
               <Tooltip content="More" color="primary">
