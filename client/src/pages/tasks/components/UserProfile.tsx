@@ -3,8 +3,11 @@ import { UserProfileProps } from "../props";
 import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import { Avatar, Tooltip } from "@nextui-org/react";
 import { icon } from "../../../UI-Components/Icons/Icons";
+import { useContextAPI } from "../../../utils/ContextAPI";
 
 const UserProfile: FC<UserProfileProps> = ({ setModal }) => {
+  const { openChat } = useContextAPI();
+
   return (
     <Modal
       setModal={setModal}
@@ -41,6 +44,9 @@ const UserProfile: FC<UserProfileProps> = ({ setModal }) => {
           <Tooltip content="Message" color="primary">
             <i
               className={`${icon?.chat} text-[20px] font-bold text-green-300`}
+              onClick={() => {
+                openChat(), setModal(false);
+              }}
             ></i>
           </Tooltip>
           <Tooltip content="Mail" color="primary">
