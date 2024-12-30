@@ -265,3 +265,50 @@
   top: -93px;
   height: 215% !important;
 }
+
+@media (max-width: 768px) {
+  .manage-attendance .stats {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .manage-attendance .stats .overall,
+  .manage-attendance .stats .activity,
+  .manage-attendance .stats .current-stat,
+  .manage-attendance .detailed-stat .daily-graph,
+  .manage-attendance .table {
+    width: 95%;
+  }
+
+  .manage-attendance .detailed-stat {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .manage-attendance .table .table-wrapper {
+    overflow-x: auto;
+    position: relative;
+  }
+
+  .manage-attendance .table .table-wrapper th,
+  .manage-attendance .table-wrapper td {
+    font-size: 12px;
+  }
+
+  .manage-attendance .table .table-wrapper .header button {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .manage-attendance .table .table-wrapper ::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  .manage-attendance .daily-graph .recharts-responsive-container svg {
+    top: -70px;
+  }
+
+}

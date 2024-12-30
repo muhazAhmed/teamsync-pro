@@ -6,6 +6,7 @@ import Loader from "./UI-Components/Loader/Loader";
 import { loadPage } from "./utils/onPageLoad";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorBoundary";
+import Payroll from "./pages/payroll";
 
 const Sidebar = React.lazy(() => import("./components/sidebar/Sidebar"));
 const AuthGuard = React.lazy(() => import("./utils/AuthGuard"));
@@ -66,6 +67,7 @@ function App() {
                 <Route path="/feeds/:id" element={<AuthGuard><Feeds /></AuthGuard>} />
                 <Route path="/loan-management" element={<AuthGuard><Loan /></AuthGuard>} />
                 <Route path="/tasks/:id" element={<AuthGuard><Tasks /></AuthGuard>} />
+                <Route path="/salary-revision" element={<AuthGuard><Payroll /></AuthGuard>} />
 
                 {/* HR routes */}
                 <Route path="/hr/update-request" element={<HRAuthGuard><UpdateRequest /></HRAuthGuard>} />

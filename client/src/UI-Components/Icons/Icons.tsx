@@ -124,6 +124,9 @@ export const icon: IconTypes = {
   starSolid: "fa-solid fa-star",
   starRegular: "fa-regular fa-star",
   bug: "fa-solid fa-bug",
+  cash: "fa-solid fa-money-bill-wave",
+  gauge: "fa-solid fa-gauge",
+  clockLeft: "fa-solid fa-clock-rotate-left",
 
   // ============== With animations ===================
   loadingSpinner: "fa-solid fa-spinner fa-spin-pulse",
