@@ -32,13 +32,13 @@ const LogoutPopUpModal: React.FC<LogoutPopUpModalProps> = ({ modalState }) => {
             Are you sure want to Logout?
           </h1>
           <div className="flex items-center gap-5 justify-center">
-            <Button color="danger" onClick={() => logout(navigate, modalState)}>
+            <Button color="danger" onPress={() => logout(navigate, modalState)}>
               Logout
             </Button>
             <Button
               color="warning"
               variant="bordered"
-              onClick={() => closeModal(modalState)}
+              onPress={() => closeModal(modalState)}
             >
               Cancel
             </Button>

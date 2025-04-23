@@ -93,7 +93,7 @@ const CheckInButton: FC<ButtonProp> = ({
   const buttonLabel = useMemo(() => determineButtonLabel(data), [data]);
   return (
     <>
-      <Button className="btn-primary" onClick={handleSubmit}>
+      <Button className="btn-primary" onPress={handleSubmit}>
         {buttonLabel}
       </Button>
     </>

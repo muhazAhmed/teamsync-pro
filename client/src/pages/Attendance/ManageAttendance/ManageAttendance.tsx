@@ -146,7 +146,7 @@ const ManageAttendance = () => {
               <Button
                 variant="shadow"
                 color="secondary"
-                onClick={() => openModal(setAttendanceModal)}
+                onPress={() => openModal(setAttendanceModal)}
               >
                 View More
               </Button>

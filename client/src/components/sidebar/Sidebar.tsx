@@ -172,7 +172,7 @@ const Sidebar = () => {
                   isIconOnly
                   aria-label="more than 99 notifications"
                   variant="light"
-                  onClick={() => setOpenNotification(!openNotification)}
+                  onPress={() => setOpenNotification(!openNotification)}
                 >
                   <i className={icon.notification}></i>
                 </Button>

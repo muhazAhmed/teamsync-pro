@@ -8,7 +8,7 @@ const Maintenance = () => {
     <div className="pageNF fadeIn">
         <img src={svg}/>
         <h1>This Page is Under Maintenance, Please Visit After Sometime</h1>
-        <Button className="btn-ghost" onClick={goBack}>Back</Button>
+        <Button className="btn-ghost" onPress={goBack}>Back</Button>
     </div>
   )
 }

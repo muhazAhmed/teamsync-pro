@@ -15,7 +15,7 @@ interface MenuItem {
 interface MenuProps {
   setTabMenu: (value: boolean) => void;
   menuOptions: string[];
-  menuItems: any[]
+  menuItems: any[];
   isParent?: boolean;
   closeIcon?: boolean;
 }
@@ -25,7 +25,7 @@ const TabMenu: React.FC<MenuProps> = ({
   menuOptions,
   menuItems,
   isParent = true,
-  closeIcon = false
+  closeIcon = false,
 }) => {
   const [selectedMenu, setSelectedMenu] = useState(0);
 
@@ -65,15 +65,13 @@ const TabMenu: React.FC<MenuProps> = ({
               key={menuItem.id}
               variant="shadow"
               className={menuItem.selected ? "btn-primary" : "btn-ghost"}
-              onClick={() => handleMenuItemClick(menuItem.id)}
+              onPress={() => handleMenuItemClick(menuItem.id)}
             >
               {menuItem.label}
             </Button>
           ))}
         </div>
-         <div className="menu-body">
-         {menuItems[selectedMenu]}
-        </div>
+        <div className="menu-body">{menuItems[selectedMenu]}</div>
       </div>
     </div>
   );

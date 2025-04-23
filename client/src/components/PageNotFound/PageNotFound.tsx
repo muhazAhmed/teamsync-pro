@@ -7,7 +7,7 @@ const PageNotFound = () => {
   return (
     <div className="pageNF fadeIn">
         <img src={SVG} />
-        <Button className="btn-ghost" onClick={goBack}>Back</Button>
+        <Button className="btn-ghost" onPress={goBack}>Back</Button>
     </div>
   )
 }

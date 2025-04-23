@@ -376,7 +376,7 @@ const FooterButtons: FC<FooterButtonProps> = ({
         variant="shadow"
         className="btn-primary"
         style={{ minWidth: "7vw" }}
-        onClick={() => action(sectionName)}
+        onPress={() => action(sectionName)}
       >
         Update
       </Button>
@@ -384,7 +384,7 @@ const FooterButtons: FC<FooterButtonProps> = ({
         variant="shadow"
         className="btn-ghost"
         style={{ minWidth: "7vw" }}
-        onClick={onCancelClick}
+        onPress={onCancelClick}
       >
         Cancel
       </Button>
