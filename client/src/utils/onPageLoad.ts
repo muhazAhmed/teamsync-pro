@@ -1,8 +1,9 @@
 import axios from "axios";
-import { API_URL, message } from "./Constants";
+import { message } from "./Constants";
 import { serverVariables } from "./serverVariables";
 import toast from "react-hot-toast";
 import { fetchUserId, newSessionStorage, useSessionStorage } from "./commonFunctions";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const loadServer = async () => {
     try {
