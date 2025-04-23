@@ -1,9 +1,5 @@
-// export const API_URL = "http://localhost:8800/api/"; // Local Server
-export const API_URL = "https://teamsync.onrender.com/api/";    // Demo, Testing
-
 // MESSAGES:
 export const message = (name?: string) => ({
-
   // =========== Root =============
   SERVER_ERROR: "Server Under Maintenance",
   UNAVAILABLE: "Temporarily Unavailable",
@@ -17,7 +13,8 @@ export const message = (name?: string) => ({
   REQUIRED_FIELD: `Please Enter ${name}`,
   INVALID_EMAIL: "Please Enter Valid Email Address",
   INVALID_PHONE: "Please Enter Valid Phone Number",
-  INVALID_PASSWORD: "Password Must Have At-Least 8 Characters With Minimum 1 Number And Alphabet",
+  INVALID_PASSWORD:
+    "Password Must Have At-Least 8 Characters With Minimum 1 Number And Alphabet",
   PASSWORD_NOT_MATCHING: "Passwords Not Matching",
   LOGIN_SUCCESS: "You Have Been LoggedIn",
   LOGOUT_SUCCESS: "You Have Been LoggedOut",
@@ -35,11 +32,11 @@ export const message = (name?: string) => ({
   UPDATE_SUCCESS: "Updated Successfully",
 
   // =========== Tab Menu =============
-  EMPTY_OPTIONS: "Please Add At-least 2 Menu Options"
+  EMPTY_OPTIONS: "Please Add At-least 2 Menu Options",
 });
 
 export const Variables = {
   HR_ROLE: "6872",
   ADMIN_ROLE: "61646D696E",
   EMPLOYEE_ROLE: "656D706C6F796565",
-}
+};
