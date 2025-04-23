@@ -1,4 +1,11 @@
-import { AreaChart } from "@tremor/react";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 interface Data {
   date: string;
@@ -18,29 +25,23 @@ const data: Data[] = [
   { date: "Jun 10", Time: 10 },
 ];
 
-const valueFormatter = (number: number): string =>
-  `${Intl.NumberFormat("us").format(number).toString()}`;
-
 const AreaChartData: React.FC = () => {
   return (
-    <>
-      <AreaChart
-        data={data}
-        index="date"
-        categories={["Time", "Sponsored"]}
-        colors={["transparent", "green"]}
-        valueFormatter={valueFormatter}
-        showLegend={false}
-        showYAxis={false}
-        showGradient={false}
-        showGridLines={false}
-        showAnimation={true}
-        startEndOnly={true}
-        className="mt-6 h-32"
-        style={{ height: "100%" }}
-        curveType="monotone"
-      />
-    </>
+    <div className="mt-6 h-32">
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart data={data}>
+          <XAxis dataKey="date" />
+          <YAxis hide />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="Time"
+            stroke="#4ade80"
+            fill="transparent"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 
