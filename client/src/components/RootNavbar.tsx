@@ -114,7 +114,7 @@ const RootNavbar = () => {
             color="primary"
             className="btn-ghost"
             variant="flat"
-            onClick={() => {
+            onPress={() => {
               if (user) logout(navigate, "");
               else navigate("/user/form");
             }}

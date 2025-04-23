@@ -76,7 +76,7 @@ const Modal: React.FC<ModalProps> = ({
                 variant="shadow"
                 className={item?.color === "primary" ? "btn-primary" : ""}
                 color={item?.color}
-                onClick={item.action}
+                onPress={item.action}
                 key={item.label}
               >
                 {item?.icon && <i className={icon[item?.icon]}></i>}

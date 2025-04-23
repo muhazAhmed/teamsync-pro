@@ -116,7 +116,7 @@ const AllAttendanceModal: FC<ModalProps> = ({
               <Button
                 variant="shadow"
                 className="btn-primary"
-                onClick={() => setOpenCalender(true)}
+                onPress={() => setOpenCalender(true)}
                 style={{ color: "#fff" }}
               >
                 {Icon("calendar")}Change Date

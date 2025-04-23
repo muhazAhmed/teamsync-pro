@@ -16,7 +16,7 @@ const DeleteModal: FC<ModalProps> = ({ setModal, userData }) => {
       <h1>Are you sure want to <span className="text-red-600">Delete</span> this request?</h1>
       <div className="modal-footer flex" style={{ justifyContent: "flex-end" }}>
         <Button color="danger">Delete</Button>
-        <Button className="btn-ghost" onClick={() => closeModal(setModal)}>
+        <Button className="btn-ghost" onPress={() => closeModal(setModal)}>
           Cancel
         </Button>
       </div>

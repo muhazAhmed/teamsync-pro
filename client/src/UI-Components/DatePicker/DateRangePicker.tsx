@@ -93,7 +93,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
         <div className="calendar-header">
           <Tooltip content="Previous Month" color="primary" placement="right">
             <Button
-              onClick={() => handlePrevMonth(isStart)}
+              onPress={() => handlePrevMonth(isStart)}
               variant="shadow"
               className="btn-ghost"
             >
@@ -103,7 +103,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           <span>{date.format("MMMM YYYY")}</span>
           <Tooltip content="Next Month" color="primary" placement="left">
             <Button
-              onClick={() => handleNextMonth(isStart)}
+              onPress={() => handleNextMonth(isStart)}
               variant="shadow"
               className="btn-ghost"
             >
@@ -159,7 +159,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
         <div className="btn-select">
           <Button
             variant={setModal ? "bordered" : "solid"}
-            onClick={() => {
+            onPress={() => {
               setStartDate(moment().startOf("day")),
                 setEndDate(moment().startOf("day"));
             }}
@@ -168,7 +168,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           </Button>
           <Button
             variant={setModal ? "bordered" : "solid"}
-            onClick={() => {
+            onPress={() => {
               setStartDate(moment().subtract(1, "days")),
                 setEndDate(moment().subtract(1, "days"));
             }}
@@ -177,7 +177,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           </Button>
           <Button
             variant={setModal ? "bordered" : "solid"}
-            onClick={() => {
+            onPress={() => {
               const startOfWeek = moment().startOf("week");
               const endOfWeek = moment().endOf("week");
               setStartDate(startOfWeek);
@@ -188,7 +188,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           </Button>
           <Button
             variant={setModal ? "bordered" : "solid"}
-            onClick={() => {
+            onPress={() => {
               const startOfMonth = moment().startOf("month");
               const endOfMonth = moment().endOf("month");
               setStartDate(startOfMonth);
@@ -199,7 +199,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           </Button>
           <Button
             variant={setModal ? "bordered" : "solid"}
-            onClick={() => {
+            onPress={() => {
               const tomorrow = moment().add(1, "day");
               setStartDate(tomorrow);
               setEndDate(tomorrow);
@@ -211,14 +211,14 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
 
         <div className="calendar-action-btn">
           <Button
-            onClick={handleApply}
+            onPress={handleApply}
             variant="shadow"
             className="btn-primary"
             style={{ color: "#fff" }}
           >
             Apply
           </Button>
-          <Button onClick={handleClear} variant="shadow" color="danger">
+          <Button onPress={handleClear} variant="shadow" color="danger">
             Clear
           </Button>
         </div>

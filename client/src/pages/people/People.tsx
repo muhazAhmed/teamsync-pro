@@ -176,13 +176,13 @@ const People = () => {
           >
             <Button
               className="btn-ghost"
-              onClick={() => isHr && navigate("/user/form")}
+              onPress={() => isHr && navigate("/user/form")}
             >
               Register User
             </Button>
             <Button
               className="btn-ghost"
-              onClick={() => isHr && navigate("/hr/update-request")}
+              onPress={() => isHr && navigate("/hr/update-request")}
             >
               Update Requests
             </Button>

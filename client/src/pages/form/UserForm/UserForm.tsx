@@ -158,7 +158,7 @@ const UserForm = () => {
         className="btn-ghost"
         id="header-btn"
         variant="shadow"
-        onClick={() => openModal(setDemoModal)}
+        onPress={() => openModal(setDemoModal)}
       >
         Try Demo
       </Button>
@@ -234,7 +234,7 @@ const UserForm = () => {
                 autoComplete="off"
               />
             </div>
-            <Button color="primary" onClick={handleLogin}>
+            <Button color="primary" onPress={handleLogin}>
               Login
             </Button>
             <h2>
@@ -265,7 +265,7 @@ const UserForm = () => {
                 onChange={handleInputChange}
               />
             </div>
-            <Button color="primary" onClick={() => handleSection("next")}>
+            <Button color="primary" onPress={() => handleSection("next")}>
               Next
             </Button>
             <h2>
@@ -338,11 +338,11 @@ const UserForm = () => {
               <Button
                 color="primary"
                 className="btn-primary"
-                onClick={() => handleSection("back")}
+                onPress={() => handleSection("back")}
               >
                 Back
               </Button>
-              <Button color="primary" onClick={handleRegister}>
+              <Button color="primary" onPress={handleRegister}>
                 Register
               </Button>
             </div>

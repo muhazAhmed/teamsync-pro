@@ -26,7 +26,7 @@ const ButtonIcon: FC<ButtonProps> = ({
       color={color}
       variant={variant}
       style={hidden ? { visibility: "hidden" } : { color: textColor }}
-      onClick={action}
+      onPress={action}
       id={id ? id : undefined}
       disabled={disabled}
     >

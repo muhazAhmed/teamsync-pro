@@ -18,7 +18,7 @@ const ConfirmationModal: FC<PopUpModalProps> = ({ setModal }) => {
           style={{ justifyContent: "flex-end" }}
         >
           <Button className="btn-primary">Yes</Button>
-          <Button className="btn-ghost" onClick={() => closeModal(setModal)}>
+          <Button className="btn-ghost" onPress={() => closeModal(setModal)}>
             Cancel
           </Button>
         </div>
