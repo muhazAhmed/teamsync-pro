@@ -1,7 +1,8 @@
 import axios from "axios";
-import { API_URL, message } from "./Constants";
+import { message } from "./Constants";
 import toast from "react-hot-toast";
 import { fetchUserToken } from "./commonFunctions";
+const API_URL = import.meta.env.VITE_API_URL;
 
 interface ApiResponse {
   response: any;
