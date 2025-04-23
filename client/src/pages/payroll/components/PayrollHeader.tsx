@@ -39,7 +39,7 @@ const PayrollHeader = () => {
               margin: "0",
             }}
           >
-            {(item) => <DropdownItem>{item.label}</DropdownItem>}
+            {(item) => <DropdownItem key={item.id}>{item.label}</DropdownItem>}
           </DropdownMenu>
         </Dropdown>
         <ButtonIcon
