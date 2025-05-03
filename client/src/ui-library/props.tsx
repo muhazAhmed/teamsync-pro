@@ -1,0 +1,18 @@
+import React from "react";
+import type { ButtonProps as NextUIButtonProps } from "@nextui-org/react";
+
+export interface ButtonProps extends Omit<NextUIButtonProps, "children"> {
+  label: string;
+  icon?: string;
+  iconPosition?: "left" | "right";
+  tooltip?: TooltipProps;
+  selected?: boolean;
+  iconStyles?: React.CSSProperties;
+  loading?: boolean;
+}
+
+interface TooltipProps {
+  content: string;
+  color?: "primary" | "danger";
+  placement?: "top" | "bottom" | "left" | "right";
+}
