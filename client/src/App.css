@@ -26,7 +26,7 @@
 i, button{cursor: pointer;}
 nav #logo {width: 15vw; cursor: pointer;}
 nav h1 {cursor: pointer;}
-button:disabled {cursor: not-allowed; color: gray !important;}
+button:disabled {cursor: not-allowed;}
 
 @media (max-width: 768px) {
     nav #logo { width: 50vw;} 
