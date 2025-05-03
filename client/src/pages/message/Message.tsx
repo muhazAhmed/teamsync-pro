@@ -5,8 +5,9 @@ import TitleBarButtons from "../tasks/components/TitleBarButtons";
 import { icon } from "../../UI-Components/Icons/Icons";
 import { Avatar } from "@nextui-org/react";
 import { io } from "socket.io-client";
+const SOCKET_CONNECTION = import.meta.env.VITE_SOCKET_CONNECTION;
 
-const socket = io("http://localhost:8800");
+const socket = io(SOCKET_CONNECTION);
 
 const Message: FC<MessageProps> = ({}) => {
   const { closeChat } = useContextAPI();
@@ -16,13 +17,16 @@ const Message: FC<MessageProps> = ({}) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    socket.on("chat message", (msg) => {
-      setMessages((prevMessages) => [...prevMessages, msg]);
-    });
+    if (SOCKET_CONNECTION) {
+      socket.on("chat message", (msg) => {
+        setMessages((prevMessages) => [...prevMessages, msg]);
+      });
 
-    return () => {
-      socket.off("chat message");
-    };
+      return () => {
+        socket.off("chat message");
+      };
+    }
+    return;
   }, []);
 
   useEffect(() => {
