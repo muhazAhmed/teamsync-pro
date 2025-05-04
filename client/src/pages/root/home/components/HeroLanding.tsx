@@ -1,9 +1,9 @@
 import { FC } from "react";
 import taskImg from "../../../../assets/images/tasks.png";
-import ButtonIcon from "../../../../UI-Components/Buttons/ButtonIcon";
 import { icon } from "../../../../UI-Components/Icons/Icons";
 import { directWithNewTab, openModal } from "../../../../utils/commonFunctions";
 import { motion } from "framer-motion";
+import Buttons from "../../../../ui-library/buttons/Button";
 
 interface Props {
   setModal: any;
@@ -52,20 +52,20 @@ const HeroLanding: FC<Props> = ({ setModal, navigate, user }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1, ease: "easeInOut" }}
       >
-        <ButtonIcon
+        <Buttons
           icon="rocket"
           label="Get Started"
           className="btn-primary shadow-2xl shadow-cyan-400"
-          action={() =>
+          onPress={() =>
             navigate(user ? `/dashboard/${user?._id}` : "/user/form")
           }
         />
-        <ButtonIcon
+        <Buttons
           icon="eye"
           label="Request Demo"
           color="secondary"
           className="shadow-2xl shadow-purple-400"
-          action={() => openModal(setModal)}
+          onPress={() => openModal(setModal)}
         />
       </motion.div>
       <motion.img
