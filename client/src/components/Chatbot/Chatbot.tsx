@@ -5,7 +5,7 @@ import "./style.css";
 import { icon } from "../../UI-Components/Icons/Icons";
 import { Tooltip } from "@nextui-org/react";
 import { motion } from "framer-motion";
-import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
+import Buttons from "../../ui-library/buttons/Button";
 
 const Chatbot: FC<ChatbotProps> = ({ setModal, chatBotImage }) => {
   const [mouseHovered, setMouseHovered] = useState<boolean>(false);
@@ -20,7 +20,7 @@ const Chatbot: FC<ChatbotProps> = ({ setModal, chatBotImage }) => {
     <div
       className="blur-bg justify-end items-end pb-5"
       onClick={handleOutsideClick}
-      style={{zIndex: "999"}}
+      style={{ zIndex: "999" }}
     >
       <div className="chatbot slideLeft w-[25%] h-[90%] rounded-xl shadow-lg shadow-sky-600 relative">
         <Tooltip content="Close" color="danger">
@@ -70,13 +70,13 @@ const Chatbot: FC<ChatbotProps> = ({ setModal, chatBotImage }) => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ type: "spring", stiffness: 50, delay: 0.8 }}
             >
-              <ButtonIcon
+              <Buttons
                 icon="play"
                 label="Start now"
                 className="btn-primary rounded-full mt-5"
                 iconPosition="right"
                 iconStyles={{ fontSize: "20px" }}
-                action={() => setChatHasOpened(true)}
+                onPress={() => setChatHasOpened(true)}
               />
             </motion.div>
           </div>

@@ -4,10 +4,10 @@ import { icon } from "../../../UI-Components/Icons/Icons";
 import "./style.css";
 import { DatePicker, Radio, RadioGroup } from "@nextui-org/react";
 import TimePicker from "../../../UI-Components/TimePicker/TimePicker";
-import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { closeModal } from "../../../utils/commonFunctions";
 import { motion } from "framer-motion";
 import CustomInput from "../../../UI-Components/Inputs/Input";
+import Buttons from "../../../ui-library/buttons/Button";
 
 interface ModalProps {
   setModal: any;
@@ -144,7 +144,9 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
                   >
                     Physical
                   </Radio>
-                  {selectedLocation === "physical" && <input placeholder="Location details" />}
+                  {selectedLocation === "physical" && (
+                    <input placeholder="Location details" />
+                  )}
                   <Radio
                     value="virtual"
                     className="radio-toggle"
@@ -190,30 +192,30 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
           )}
         </motion.div>
         <div className="footer-btn">
-          <ButtonIcon
+          <Buttons
             icon="arrowLeft"
             label="Back"
             variant="light"
-            action={() => handleMenuChange("back")}
+            onPress={() => handleMenuChange("back")}
             hidden={selected === "details"}
           />
           <div className="btn-end">
             {selected === "guest" ? (
-              <ButtonIcon icon="send" label="Save" className="btn-primary" />
+              <Buttons icon="send" label="Save" className="btn-primary" />
             ) : (
-              <ButtonIcon
+              <Buttons
                 icon="forward"
                 label="Next"
                 className="btn-primary"
                 iconPosition="right"
-                action={() => handleMenuChange("next")}
+                onPress={() => handleMenuChange("next")}
               />
             )}
-            <ButtonIcon
+            <Buttons
               icon="close"
               label="Cancel"
               className="btn-ghost"
-              action={() => closeModal(setModal)}
+              onPress={() => closeModal(setModal)}
             />
           </div>
         </div>

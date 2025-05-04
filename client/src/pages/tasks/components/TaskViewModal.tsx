@@ -5,7 +5,7 @@ import "./style.css";
 import { icon } from "../../../UI-Components/Icons/Icons";
 import TitleBarButtons from "./TitleBarButtons";
 import { Avatar } from "@nextui-org/react";
-import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
+import Buttons from "../../../ui-library/buttons/Button";
 
 const TaskViewModal: FC<TaskViewModalProps> = ({ setModal }) => {
   const [mouseHovered, setMouseHovered] = useState<number | null>(null);
@@ -112,12 +112,11 @@ const TaskViewModal: FC<TaskViewModalProps> = ({ setModal }) => {
             </p>
           </div>
           <div className="slideUp flex border-t-1 border-gray-600 items-center justify-center py-[12px]">
-            <ButtonIcon
+            <Buttons
               icon="arrowOpen"
               label="Open"
-              className="btn-primary w-[12vw]"
+              className="btn-primary w-[12vw] rounded-full"
               iconPosition="right"
-              borderRadius="full"
             />
           </div>
         </div>

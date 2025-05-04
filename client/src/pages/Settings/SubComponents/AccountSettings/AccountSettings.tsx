@@ -1,8 +1,8 @@
 import { FC, useState } from "react";
 import "./style.css";
-import ButtonIcon from "../../../../UI-Components/Buttons/ButtonIcon";
 import { openModal } from "../../../../utils/commonFunctions";
 import ChangePassword from "./components/ChangePassword";
+import Buttons from "../../../../ui-library/buttons/Button";
 
 interface AccountSettingsProps {
   setLoading: any;
@@ -28,12 +28,12 @@ const AccountSettings: FC<AccountSettingsProps> = ({ setLoading }) => {
       <div className="item-set">
         <div className="item">
           <h3>Change / Update Password</h3>
-          <ButtonIcon
+          <Buttons
             icon="key"
             label="Reset"
             color="danger"
             iconPosition="right"
-            action={() => handleModal("changePassword")}
+            onPress={() => handleModal("changePassword")}
           />
         </div>
       </div>

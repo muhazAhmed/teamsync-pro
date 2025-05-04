@@ -7,7 +7,6 @@ import {
   usePageName,
 } from "../../utils/commonFunctions";
 import "./style.css";
-import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import { icon } from "../../UI-Components/Icons/Icons";
 import { loanData } from "../form/Demo";
 import {
@@ -22,6 +21,7 @@ import ApplyLoan from "./components/ApplyLoan";
 import Loader from "../../UI-Components/Loader/Loader";
 import { getMethodAPI } from "../../utils/apiCallMethods";
 import { serverVariables } from "../../utils/serverVariables";
+import Buttons from "../../ui-library/buttons/Button";
 
 const Loan = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -48,13 +48,19 @@ const Loan = () => {
   return (
     <div className="loan">
       {loading && <Loader />}
-      {newLoan && <ApplyLoan setModal={setNewLoan} setLoading={setLoading} fetchLoanData={fetchLoanData} />}
+      {newLoan && (
+        <ApplyLoan
+          setModal={setNewLoan}
+          setLoading={setLoading}
+          fetchLoanData={fetchLoanData}
+        />
+      )}
       <div className="header">
-        <ButtonIcon
+        <Buttons
           icon="pencil"
           label="New Loan"
           className="btn-primary"
-          action={() => openModal(setNewLoan)}
+          onPress={() => openModal(setNewLoan)}
         />
         <Dropdown>
           <DropdownTrigger>

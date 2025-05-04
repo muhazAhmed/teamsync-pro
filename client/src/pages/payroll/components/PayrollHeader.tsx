@@ -7,9 +7,9 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "@nextui-org/react";
-import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { dateFilter } from "../data";
 import { Icon } from "../../../UI-Components/Icons/Icons";
+import Buttons from "../../../ui-library/buttons/Button";
 
 const PayrollHeader = () => {
   useEffect(() => {
@@ -42,7 +42,7 @@ const PayrollHeader = () => {
             {(item) => <DropdownItem key={item.id}>{item.label}</DropdownItem>}
           </DropdownMenu>
         </Dropdown>
-        <ButtonIcon
+        <Buttons
           icon="bug"
           label="Report Error"
           iconPosition="right"

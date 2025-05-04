@@ -10,12 +10,12 @@ import {
   logout,
   useToast,
 } from "../../../../../utils/commonFunctions";
-import ButtonIcon from "../../../../../UI-Components/Buttons/ButtonIcon";
 import { message } from "../../../../../utils/Constants";
 import { validPassword } from "../../../../../utils/validation";
 import { postMethodAPI } from "../../../../../utils/apiCallMethods";
 import { serverVariables } from "../../../../../utils/serverVariables";
 import { useNavigate } from "react-router-dom";
+import Buttons from "../../../../../ui-library/buttons/Button";
 
 const ChangePassword: FC<ChangePasswordModalProps> = ({
   setLoading,
@@ -116,14 +116,14 @@ const ChangePassword: FC<ChangePasswordModalProps> = ({
           autoComplete={false}
         />
         <div className="modal-footer flex">
-          <ButtonIcon
-            action={handleSubmit}
+          <Buttons
+            onPress={handleSubmit}
             icon="send"
             label="Update"
             className="btn-ghost"
           />
-          <ButtonIcon
-            action={() => closeModal(setPasswordModal)}
+          <Buttons
+            onPress={() => closeModal(setPasswordModal)}
             icon="close"
             label="Cancel"
             color="danger"
