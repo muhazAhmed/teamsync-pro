@@ -16,10 +16,10 @@ import DateRangePicker from "../../../UI-Components/DatePicker/DateRangePicker";
 import moment, { Moment } from "moment";
 import "./style.css";
 import CustomInput from "../../../UI-Components/Inputs/Input";
-import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import toast from "react-hot-toast";
+import Buttons from "../../../ui-library/buttons/Button";
 
 interface ModalProps {
   setModal: any;
@@ -49,7 +49,7 @@ const NewLeaveRequest: FC<ModalProps> = ({ setModal, setLoading }) => {
   };
 
   const handleSubmit = async () => {
-    console.log(CheckAccess()?.isDemoAccount)
+    console.log(CheckAccess()?.isDemoAccount);
     if (CheckAccess()?.isDemoAccount) {
       toast.success("Request submitted successfully");
       return closeModal(setModal);
@@ -152,17 +152,17 @@ const NewLeaveRequest: FC<ModalProps> = ({ setModal, setLoading }) => {
                 </div>
               </div>
               <div className="footer-btn">
-                <ButtonIcon
+                <Buttons
                   icon="send"
                   label="Submit"
                   color="primary"
-                  action={handleSubmit}
+                  onPress={handleSubmit}
                 />
-                <ButtonIcon
+                <Buttons
                   icon="close"
                   label="Cancel"
                   color="danger"
-                  action={() => closeModal(setModal)}
+                  onPress={() => closeModal(setModal)}
                 />
               </div>
             </div>

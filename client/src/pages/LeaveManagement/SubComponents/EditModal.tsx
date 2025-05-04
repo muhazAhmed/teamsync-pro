@@ -9,13 +9,13 @@ import {
   formatDate,
   CheckAccess,
 } from "../../../utils/commonFunctions";
-import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { Select, SelectItem } from "@nextui-org/react";
 import DateRangePicker from "../../../UI-Components/DatePicker/DateRangePicker";
 import toast from "react-hot-toast";
 import { message } from "../../../utils/Constants";
 import { patchMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
+import Buttons from "../../../ui-library/buttons/Button";
 
 interface ModalProps {
   setModal: any;
@@ -143,11 +143,11 @@ const EditModal: FC<ModalProps> = ({
             id="reason"
           />
         </div>
-        <ButtonIcon
+        <Buttons
           icon="save"
           label="Update"
           color="secondary"
-          action={handleUpdate}
+          onPress={handleUpdate}
         />
       </div>
     </Modal>

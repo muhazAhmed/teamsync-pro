@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
 import "./style.css";
-import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import moment from "moment";
 import { FetchRole, usePageName } from "../../utils/commonFunctions";
 import ButtonGroup from "../../UI-Components/Buttons/ButtonGroup";
@@ -16,6 +15,7 @@ import {
 const NewAgenda = React.lazy(() => import("./SubComponents/NewAgenda"));
 const ViewModal = React.lazy(() => import("./SubComponents/ViewModal"));
 import useDownloadFile from "../../utils/custom-hooks/useDownloadFile";
+import Buttons from "../../ui-library/buttons/Button";
 
 interface CalendarProps {}
 
@@ -60,22 +60,22 @@ const Calendar: FC<CalendarProps> = ({}) => {
           ]}
         />
         <div className="header-btn">
-          <ButtonIcon
+          <Buttons
             icon="download"
             label="Export"
             color="secondary"
-            action={() =>
+            onPress={() =>
               downloadCalendar(downloadFile, calendarEvents, currentDate)
             }
           />
-          <ButtonIcon
+          <Buttons
             icon="plus"
             label="Create Agenda"
             className="btn-primary"
-            action={() => handleModalActions(setAgendaModal)}
+            onPress={() => handleModalActions(setAgendaModal)}
           />
           {FetchRole() === "hr" && (
-            <ButtonIcon
+            <Buttons
               icon="vacation"
               label="Add Holiday"
               className="btn-ghost"
@@ -88,18 +88,18 @@ const Calendar: FC<CalendarProps> = ({}) => {
           <div className="calendar-title">
             <h3>{currentDate.format("MMMM - YYYY")}</h3>
             <div className="month-toggle">
-              <ButtonIcon
+              <Buttons
                 icon="leftRounded"
                 label=""
-                action={() =>
+                onPress={() =>
                   handleMonthChange("prev", setCurrentDate, currentDate)
                 }
               />
               <p>{currentDate.format("MMMM")}</p>
-              <ButtonIcon
+              <Buttons
                 icon="rightRounded"
                 label=""
-                action={() =>
+                onPress={() =>
                   handleMonthChange("next", setCurrentDate, currentDate)
                 }
               />

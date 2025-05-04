@@ -7,7 +7,6 @@ import {
   textEllipse,
   usePageName,
 } from "../../utils/commonFunctions";
-import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import Card from "../../UI-Components/Card/Card";
 import { DummyTasks, myTeamUsers, userTasksStat } from "./demo";
 import { Tooltip, Progress, Button } from "@nextui-org/react";
@@ -17,6 +16,7 @@ import "react-circular-progressbar/dist/styles.css";
 import TaskStats from "./components/TaskStats";
 import { statusDropDown } from "./components/StatusDropDown";
 import Loader from "../../UI-Components/Loader/Loader";
+import Buttons from "../../ui-library/buttons/Button";
 const TaskViewModal = React.lazy(() => import("./components/TaskViewModal"));
 
 const Tasks = () => {
@@ -50,12 +50,11 @@ const Tasks = () => {
           />
         </div>
         <div className="flex items-center gap-3">
-          <ButtonIcon
+          <Buttons
             icon="plus"
             label="New Project"
             iconPosition="right"
-            className="btn-ghost"
-            borderRadius="full"
+            className="btn-ghost rounded-full"
           />
           {statusDropDown(
             <Button

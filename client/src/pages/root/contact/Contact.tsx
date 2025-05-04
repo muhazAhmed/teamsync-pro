@@ -1,6 +1,5 @@
 import { useState } from "react";
 import RootNavbar from "../../../components/RootNavbar";
-import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import Card from "../../../UI-Components/Card/Card";
 import { icon } from "../../../UI-Components/Icons/Icons";
 import "./style.css";
@@ -11,6 +10,7 @@ import { postMethodAPI } from "../../../utils/apiCallMethods";
 import Loader from "../../../UI-Components/Loader/Loader";
 import { serverVariables } from "../../../utils/serverVariables";
 import { Email } from "../../../utils/Email";
+import Buttons from "../../../ui-library/buttons/Button";
 
 const Contact = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -150,13 +150,13 @@ const Contact = () => {
                     value={inputs.message || ""}
                   />
                   <div className="flex w-full items-center justify-center">
-                    <ButtonIcon
+                    <Buttons
                       icon="send"
                       label="Submit"
-                      borderRadius="full"
-                      className="btn-primary w-[60%] font-semibold text-[16px]"
+                      className="btn-primary w-[60%] font-semibold text-[16px] rounded-full"
                       iconPosition="right"
-                      action={handleSubmit}
+                      onPress={handleSubmit}
+                      disabled={loading}
                     />
                   </div>
                 </div>

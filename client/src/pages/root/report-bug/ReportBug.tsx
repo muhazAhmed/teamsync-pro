@@ -6,9 +6,9 @@ import {
   fetchUserId,
   useToast,
 } from "../../../utils/commonFunctions";
-import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
+import Buttons from "../../../ui-library/buttons/Button";
 
 interface BugsProp {
   setModal: any;
@@ -71,11 +71,11 @@ const ReportBug: FC<BugsProp> = ({
             })
           }
         />
-        <ButtonIcon
+        <Buttons
           icon="send"
           label="Submit"
           className="btn-primary w-full"
-          action={() => handleSubmit()}
+          onPress={() => handleSubmit()}
         />
       </div>
     </Modal>

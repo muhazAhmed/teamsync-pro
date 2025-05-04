@@ -6,13 +6,13 @@ import { Icon } from "../../UI-Components/Icons/Icons";
 import Card from "../../UI-Components/Card/Card";
 import { priorities } from "../profile/Sub Components/ArrayOfInputs";
 import CustomInput from "../../UI-Components/Inputs/Input";
-import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import { categoriesArray, handleSubmit } from "./validations";
 import Loader from "../../UI-Components/Loader/Loader";
 import PopupModal from "./subComponents/Modal";
 import GettingStarted from "./subComponents/GettingStarted";
 import ManagingTasks from "./subComponents/ManagingTasks";
 import Others from "./subComponents/Others";
+import Buttons from "../../ui-library/buttons/Button";
 
 const HelpDesk = () => {
   const [categories, setCategories] = useState<string>("");
@@ -174,22 +174,22 @@ const HelpDesk = () => {
                 id="desc"
               />
               <div className="footer">
-                <ButtonIcon
+                <Buttons
                   icon="send"
                   label="Submit"
                   variant="shadow"
                   iconPosition="left"
                   className="btn-primary"
                   tooltip={{ content: "Rise Ticket", placement: "top" }}
-                  action={handleClick}
+                  onPress={handleClick}
                 />
-                <ButtonIcon
+                <Buttons
                   icon="trash"
                   label="Clear"
                   iconPosition="left"
                   className="btn-ghost"
                   id="clear"
-                  action={clearStates}
+                  onPress={clearStates}
                 />
               </div>
             </div>

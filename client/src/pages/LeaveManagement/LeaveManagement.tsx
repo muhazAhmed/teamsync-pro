@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import ButtonIcon from "../../UI-Components/Buttons/ButtonIcon";
 import Card from "../../UI-Components/Card/Card";
 import Pagination from "../../UI-Components/Pagination/Pagination";
 import { holidayList, leaveData } from "./ArrayOfItems";
@@ -9,6 +8,7 @@ import Loader from "../../UI-Components/Loader/Loader";
 import NewLeaveRequest from "./SubComponents/NewLeaveRequest";
 import LeaveStatus from "./SubComponents/LeaveStatus";
 import { openModal, usePageName } from "../../utils/commonFunctions";
+import Buttons from "../../ui-library/buttons/Button";
 
 const LeaveManagement = () => {
   const [itemsPerPage] = useState<number>(3);
@@ -33,19 +33,19 @@ const LeaveManagement = () => {
         <LeaveStatus setModal={setLeaveStatusModal} setLoading={setLoading} />
       )}
       <div className="header-btn">
-        <ButtonIcon
+        <Buttons
           label="Request Leave"
           className="btn-primary"
           iconPosition="left"
           icon="vacation"
-          action={() => openModal(setNewReqModal)}
+          onPress={() => openModal(setNewReqModal)}
         />
-        <ButtonIcon
+        <Buttons
           label="Pending"
           className="btn-ghost"
           iconPosition="left"
           icon="clock"
-          action={() => openModal(setLeaveStatusModal)}
+          onPress={() => openModal(setLeaveStatusModal)}
         />
       </div>
       <div className="container">

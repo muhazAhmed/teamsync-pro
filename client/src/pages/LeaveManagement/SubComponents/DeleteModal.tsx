@@ -1,12 +1,12 @@
 import { FC } from "react";
 import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import { icon } from "../../../UI-Components/Icons/Icons";
-import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { CheckAccess, closeModal } from "../../../utils/commonFunctions";
 import { deleteMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import toast from "react-hot-toast";
 import { message } from "../../../utils/Constants";
+import Buttons from "../../../ui-library/buttons/Button";
 
 interface ModalProps {
   setModal: any;
@@ -64,17 +64,17 @@ const DeleteModal: FC<ModalProps> = ({
             marginTop: "1rem",
           }}
         >
-          <ButtonIcon
+          <Buttons
             icon="delete"
             label="Delete"
             color="danger"
-            action={handleDelete}
+            onPress={handleDelete}
           />
-          <ButtonIcon
+          <Buttons
             icon="Cancel"
             label="Cancel"
             className="btn-ghost"
-            action={() => closeModal(setModal)}
+            onPress={() => closeModal(setModal)}
           />
         </div>
       </div>

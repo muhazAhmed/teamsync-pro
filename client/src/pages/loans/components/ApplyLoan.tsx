@@ -12,10 +12,10 @@ import {
   useToast,
 } from "../../../utils/commonFunctions";
 import Chip from "../../../UI-Components/Chip/Chip";
-import ButtonIcon from "../../../UI-Components/Buttons/ButtonIcon";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import { message } from "../../../utils/Constants";
+import Buttons from "../../../ui-library/buttons/Button";
 
 const ApplyLoan: FC<ApplyLoanPopupProps> = ({
   setModal,
@@ -108,17 +108,17 @@ const ApplyLoan: FC<ApplyLoanPopupProps> = ({
           </div>
         </div>
         <div className="footer">
-          <ButtonIcon
+          <Buttons
             icon="send"
             label="Request"
             color="primary"
-            action={() => handleSubmit()}
+            onPress={() => handleSubmit()}
           />
-          <ButtonIcon
+          <Buttons
             icon="closeRounded"
             label="Cancel"
             color="danger"
-            action={() => closeModal(setModal)}
+            onPress={() => closeModal(setModal)}
           />
         </div>
       </div>
