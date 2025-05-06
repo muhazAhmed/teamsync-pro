@@ -1,8 +1,7 @@
 import { FC } from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import userLogo from "../../../assets/images/man.png";
 import "./style.css";
-import { closeModal } from "../../../utils/commonFunctions";
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
   setModal: any;
@@ -11,19 +10,7 @@ interface ModalProps {
 
 const UserModal: FC<ModalProps> = ({ setModal }) => {
   return (
-    <Modal
-      setModal={setModal}
-      header={false}
-      className="user-modal"
-      footer={[
-        {
-          label: "Close",
-          color: "primary",
-          action: () => closeModal(setModal),
-          icon: "close",
-        },
-      ]}
-    >
+    <Modal setModal={setModal} className="user-modal">
       <img src={userLogo} alt="User Avatar" />
       <div className="user-modal-body">
         <div className="item">

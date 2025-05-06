@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import Modal from "../../../../../UI-Components/popUp-modal/PopUpModal";
 import "./style.css";
 import { ChangePasswordModalProps } from "./props";
 import CustomInput from "../../../../../UI-Components/Inputs/Input";
@@ -16,6 +15,7 @@ import { postMethodAPI } from "../../../../../utils/apiCallMethods";
 import { serverVariables } from "../../../../../utils/serverVariables";
 import { useNavigate } from "react-router-dom";
 import Buttons from "../../../../../ui-library/buttons/Button";
+import Modal from "../../../../../ui-library/Modal";
 
 const ChangePassword: FC<ChangePasswordModalProps> = ({
   setLoading,

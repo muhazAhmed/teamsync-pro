@@ -1,5 +1,4 @@
 import { FC, useEffect, useState } from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import {
   CheckAccess,
   closeModal,
@@ -7,13 +6,14 @@ import {
   ResponseInstances,
 } from "../../../utils/commonFunctions";
 import "./style.css";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import { Tooltip } from "@nextui-org/react";
 import { leavePendingReq } from "../../form/Demo";
 import { getMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
   setModal: any;

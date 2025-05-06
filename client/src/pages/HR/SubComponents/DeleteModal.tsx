@@ -1,7 +1,7 @@
 import { Button } from "@nextui-org/react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import { FC } from "react";
 import { closeModal } from "../../../utils/commonFunctions";
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
   setModal: (value: boolean) => void;

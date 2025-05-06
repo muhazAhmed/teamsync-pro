@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import "./style.css";
 import {
   FetchRole,
@@ -6,12 +6,16 @@ import {
   usePageName,
 } from "../../utils/commonFunctions";
 import Card from "../../UI-Components/Card/Card";
-import { icon } from "../../UI-Components/Icons/Icons";
+import { icon } from "../../ui-library/Icons";
 import { settingsBreadCrumbs, switchItems } from "./arrayOfSettings";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../UI-Components/Loader/Loader";
-import NotificationSettings from "./SubComponents/NotificationSettings/NotificationSettings";
-import AccountSettings from "./SubComponents/AccountSettings/AccountSettings";
+const NotificationSettings = lazy(
+  () => import("./SubComponents/NotificationSettings/NotificationSettings")
+);
+const AccountSettings = lazy(
+  () => import("./SubComponents/AccountSettings/AccountSettings")
+);
 
 const selectedItemStyle = {
   color: "var(--secondary)",

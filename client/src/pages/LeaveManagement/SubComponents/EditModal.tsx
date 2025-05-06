@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import moment, { Moment } from "moment";
 import CustomInput from "../../../UI-Components/Inputs/Input";
 import {
@@ -16,6 +15,7 @@ import { message } from "../../../utils/Constants";
 import { patchMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import Buttons from "../../../ui-library/buttons/Button";
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
   setModal: any;

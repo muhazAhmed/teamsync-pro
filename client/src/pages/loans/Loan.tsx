@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import {
   CheckAccess,
   fetchUserId,
@@ -7,7 +7,7 @@ import {
   usePageName,
 } from "../../utils/commonFunctions";
 import "./style.css";
-import { icon } from "../../UI-Components/Icons/Icons";
+import { icon } from "../../ui-library/Icons";
 import { loanData } from "../form/Demo";
 import {
   Button,
@@ -17,7 +17,7 @@ import {
   DropdownTrigger,
   Tooltip,
 } from "@nextui-org/react";
-import ApplyLoan from "./components/ApplyLoan";
+const ApplyLoan = lazy(() => import("./components/ApplyLoan"));
 import Loader from "../../UI-Components/Loader/Loader";
 import { getMethodAPI } from "../../utils/apiCallMethods";
 import { serverVariables } from "../../utils/serverVariables";

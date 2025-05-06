@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Button, Tooltip } from "@nextui-org/react";
 import "./menu.css";
-import { icon } from "../Icons/Icons";
 import { closeModal } from "../../utils/commonFunctions";
 import toast from "react-hot-toast";
 import { message } from "../../utils/Constants";
+import { icon } from "../../ui-library/Icons";
 
 interface MenuItem {
   id: number;

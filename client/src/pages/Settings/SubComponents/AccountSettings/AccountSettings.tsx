@@ -1,7 +1,7 @@
-import { FC, useState } from "react";
+import { FC, lazy, useState } from "react";
 import "./style.css";
 import { openModal } from "../../../../utils/commonFunctions";
-import ChangePassword from "./components/ChangePassword";
+const ChangePassword = lazy(() => import("./components/ChangePassword"));
 import Buttons from "../../../../ui-library/buttons/Button";
 
 interface AccountSettingsProps {

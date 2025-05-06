@@ -1,5 +1,6 @@
 import React from "react";
 import type { ButtonProps as NextUIButtonProps } from "@nextui-org/react";
+import { HTMLMotionProps } from "framer-motion";
 
 export interface ButtonProps extends Omit<NextUIButtonProps, "children"> {
   label: string;
@@ -23,4 +24,10 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   items: ButtonProps[];
   selected?: boolean;
   disabled?: boolean;
+}
+
+export interface ModalProps extends Omit<HTMLMotionProps<"div">, "children"> {
+  setModal: (value: boolean) => void;
+  title?: string;
+  children: React.ReactNode;
 }

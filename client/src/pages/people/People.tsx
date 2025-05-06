@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import {
   ResponseInstances,
   openModal,
@@ -16,15 +16,15 @@ import {
 } from "@nextui-org/react";
 import userLogo from "../../assets/images/man.png";
 import "./people.css";
-import { icon } from "../../UI-Components/Icons/Icons";
+import { icon } from "../../ui-library/Icons";
 import { Variables } from "../../utils/Constants";
 import { useNavigate } from "react-router-dom";
 import { getMethodAPI } from "../../utils/apiCallMethods";
 import { serverVariables } from "../../utils/serverVariables";
 import Loader from "../../UI-Components/Loader/Loader";
 import { hrDemoData, empDemoData } from "../form/Demo";
-import EditModal from "./SubComponents/EditModal";
-import UserModal from "./SubComponents/UserModal";
+const EditModal = lazy(() => import("./SubComponents/EditModal"));
+const UserModal = lazy(() => import("./SubComponents/UserModal"));
 import Card from "../../UI-Components/Card/Card";
 
 type User = {

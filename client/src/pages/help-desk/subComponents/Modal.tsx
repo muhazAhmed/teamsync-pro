@@ -1,5 +1,5 @@
 import { FC } from "react"
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal"
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
     setModal: any;

@@ -1,8 +1,8 @@
 import { Avatar, Tooltip } from "@nextui-org/react";
 import "./profile.css";
 import userLogo from "../../assets/images/man.png";
-import { icon } from "../../UI-Components/Icons/Icons";
-import { useEffect, useState } from "react";
+import { icon } from "../../ui-library/Icons";
+import { lazy, useEffect, useState } from "react";
 import {
   ResponseInstances,
   useSessionStorage,
@@ -14,7 +14,7 @@ import { serverVariables } from "../../utils/serverVariables";
 import { useParams } from "react-router-dom";
 import Loader from "../../UI-Components/Loader/Loader";
 import toast from "react-hot-toast";
-import EditProfileModal from "./Sub Components/EditProfileModal";
+const EditProfileModal = lazy(() => import("./Sub Components/EditProfileModal"));
 import { Variables, message } from "../../utils/Constants";
 import {
   DataForEmployment,

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import "./style.css";
-import { icon } from "../Icons/Icons";
+import { icon } from "../../ui-library/Icons";
 
 interface ChipProps {
   className?: string;

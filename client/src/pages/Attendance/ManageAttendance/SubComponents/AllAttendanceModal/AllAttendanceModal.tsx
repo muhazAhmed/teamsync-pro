@@ -9,14 +9,14 @@ import {
   fetchUserId,
   formatDate,
 } from "../../../../../utils/commonFunctions";
-import Modal from "../../../../../UI-Components/popUp-modal/PopUpModal";
 import { Button, Tooltip } from "@nextui-org/react";
 import Loader from "../../../../../UI-Components/Loader/Loader";
-import { Icon, icon } from "../../../../../UI-Components/Icons/Icons";
+import { Icon, icon } from "../../../../../ui-library/Icons";
 import usePagination from "../../../../../utils/custom-hooks/usePagination";
 import Pagination from "../../../../../UI-Components/Pagination/Pagination";
 import { getMethodAPI } from "../../../../../utils/apiCallMethods";
 import { serverVariables } from "../../../../../utils/serverVariables";
+import Modal from "../../../../../ui-library/Modal";
 // import toast from "react-hot-toast";
 // import { message } from "../../../../../utils/Constants";
 
