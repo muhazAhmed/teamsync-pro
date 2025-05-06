@@ -16,3 +16,11 @@ interface TooltipProps {
   color?: "primary" | "danger";
   placement?: "top" | "bottom" | "left" | "right";
 }
+
+export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+  id?: any;
+  items: ButtonProps[];
+  selected?: boolean;
+  disabled?: boolean;
+}
