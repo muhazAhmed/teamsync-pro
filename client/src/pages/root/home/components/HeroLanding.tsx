@@ -1,6 +1,6 @@
 import { FC } from "react";
 import taskImg from "../../../../assets/images/tasks.png";
-import { icon } from "../../../../UI-Components/Icons/Icons";
+import { icon } from "../../../../ui-library/Icons";
 import { directWithNewTab, openModal } from "../../../../utils/commonFunctions";
 import { motion } from "framer-motion";
 import Buttons from "../../../../ui-library/buttons/Button";

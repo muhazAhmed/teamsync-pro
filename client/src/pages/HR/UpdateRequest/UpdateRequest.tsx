@@ -6,7 +6,7 @@ import {
   openModal,
   usePageName,
 } from "../../../utils/commonFunctions";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import {
   Button,
   Dropdown,

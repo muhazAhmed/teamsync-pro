@@ -2,7 +2,7 @@ import { FC, MouseEvent, useState } from "react";
 import { TaskViewModalProps } from "../props";
 import { closeModal } from "../../../utils/commonFunctions";
 import "./style.css";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import TitleBarButtons from "./TitleBarButtons";
 import { Avatar } from "@nextui-org/react";
 import Buttons from "../../../ui-library/buttons/Button";

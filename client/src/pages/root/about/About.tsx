@@ -4,7 +4,7 @@ import Grid from "../../../UI-Components/Grid/Grid";
 import svg from "../../../assets/svg/about.svg";
 import RootNavbar from "../../../components/RootNavbar";
 import "./style.css";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import { useNavigate } from "react-router-dom";
 import { CheckAccess, fetchUserId } from "../../../utils/commonFunctions";
 

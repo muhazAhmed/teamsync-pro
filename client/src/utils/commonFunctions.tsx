@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { Variables, message } from "./Constants";
 import moment, { Moment } from "moment";
-import { icon } from "../UI-Components/Icons/Icons";
+import { icon } from "../ui-library/Icons";
 
 interface Item {
   [key: string]: any;

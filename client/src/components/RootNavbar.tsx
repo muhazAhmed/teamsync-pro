@@ -10,7 +10,7 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 import logo from "../assets/images/TS-logo1.png";
-import { icon } from "../UI-Components/Icons/Icons";
+import { icon } from "../ui-library/Icons";
 import { logout, useSessionStorage } from "../utils/commonFunctions";
 import { useNavigate } from "react-router-dom";
 

@@ -1,4 +1,4 @@
-import { IconTypes } from "../../UI-Components/Icons/Icons";
+import { IconTypes } from "../../ui-library/Icons";
 
 export const switchItems: { name: string; icon: keyof IconTypes; access: any }[] = [
   { name: "Profile", icon: "user", access: ["employee", "admin", "hr"] },

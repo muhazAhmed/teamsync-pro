@@ -1,6 +1,6 @@
 import "./footer.css";
 import img from "../../assets/images/TS-logo1.png";
-import { icon } from "../../UI-Components/Icons/Icons";
+import { icon } from "../../ui-library/Icons";
 import { Button, Input, Tooltip } from "@nextui-org/react";
 import { useState } from "react";
 import { validEmail } from "../../utils/validation";

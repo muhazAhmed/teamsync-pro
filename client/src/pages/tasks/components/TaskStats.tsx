@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { TaskStatsProps } from "../props";
 import Card from "../../../UI-Components/Card/Card";
 import { Avatar, Progress, Tooltip } from "@nextui-org/react";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import { CircularProgressbar } from "react-circular-progressbar";
 import UserProfile from "./UserProfile";
 import { openModal } from "../../../utils/commonFunctions";

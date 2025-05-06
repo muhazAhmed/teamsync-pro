@@ -10,7 +10,7 @@ import {
 import Card from "../../UI-Components/Card/Card";
 import { DummyTasks, myTeamUsers, userTasksStat } from "./demo";
 import { Tooltip, Progress, Button } from "@nextui-org/react";
-import { icon } from "../../UI-Components/Icons/Icons";
+import { icon } from "../../ui-library/Icons";
 import Chip from "../../UI-Components/Chip/Chip";
 import "react-circular-progressbar/dist/styles.css";
 import TaskStats from "./components/TaskStats";
