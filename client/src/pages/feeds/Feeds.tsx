@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./style.css";
 import { disabledClick, usePageName } from "../../utils/commonFunctions";
 import Card from "../../UI-Components/Card/Card";
-import { animatedIcon, icon } from "../../UI-Components/Icons/Icons";
+import { animatedIcon, icon } from "../../ui-library/Icons";
 import { Avatar, Tooltip } from "@nextui-org/react";
 import userLogo from "../../assets/images/man.png";
 import { feedPosts } from "../form/Demo";

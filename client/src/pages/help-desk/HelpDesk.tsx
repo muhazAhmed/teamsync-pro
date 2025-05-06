@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./helpDesk.css";
 import { usePageName } from "../../utils/commonFunctions";
 import { Input, Select, SelectItem } from "@nextui-org/react";
-import { Icon } from "../../UI-Components/Icons/Icons";
+import { Icon } from "../../ui-library/Icons";
 import Card from "../../UI-Components/Card/Card";
 import { priorities } from "../profile/Sub Components/ArrayOfInputs";
 import CustomInput from "../../UI-Components/Inputs/Input";

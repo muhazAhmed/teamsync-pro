@@ -1,4 +1,4 @@
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import { payrollCardData } from "../data";
 import { motion } from "framer-motion";
 

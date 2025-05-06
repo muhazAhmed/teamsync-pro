@@ -1,7 +1,7 @@
 import { useState } from "react";
 import RootNavbar from "../../../components/RootNavbar";
 import Card from "../../../UI-Components/Card/Card";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import "./style.css";
 import { clearInputs, useToast } from "../../../utils/commonFunctions";
 import { message } from "../../../utils/Constants";

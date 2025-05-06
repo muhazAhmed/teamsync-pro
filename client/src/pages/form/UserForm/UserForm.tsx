@@ -23,7 +23,7 @@ import {
 import Loader from "../../../UI-Components/Loader/Loader";
 import { loginValidation, validations } from "./FormValidation";
 import { useNavigate } from "react-router-dom";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import PopupModal from "../../root/home/PopupModal";
 
 const UserForm = () => {

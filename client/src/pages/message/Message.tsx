@@ -2,7 +2,7 @@ import { FC, MouseEvent, useEffect, useRef, useState } from "react";
 import { MessageProps } from "./props";
 import { useContextAPI } from "../../utils/ContextAPI";
 import TitleBarButtons from "../tasks/components/TitleBarButtons";
-import { icon } from "../../UI-Components/Icons/Icons";
+import { icon } from "../../ui-library/Icons";
 import { Avatar } from "@nextui-org/react";
 import { io } from "socket.io-client";
 const SOCKET_CONNECTION = import.meta.env.VITE_SOCKET_CONNECTION;

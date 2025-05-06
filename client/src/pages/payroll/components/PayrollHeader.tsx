@@ -8,7 +8,7 @@ import {
   DropdownItem,
 } from "@nextui-org/react";
 import { dateFilter } from "../data";
-import { Icon } from "../../../UI-Components/Icons/Icons";
+import { Icon } from "../../../ui-library/Icons";
 import Buttons from "../../../ui-library/buttons/Button";
 
 const PayrollHeader = () => {
