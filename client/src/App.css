@@ -18,10 +18,7 @@
 .btn-ghost { color: inherit !important; background-color: transparent !important; border: 2px solid var(--primary) !important; }
 .btn-ghost:hover { background-color: var(--primary) !important; color: #fff !important; }
 
-.blur-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 998; display: flex; align-items: center; justify-content: center;}
-.modalContainer {border-radius: 12px; padding: 20px; background-color: #e5e5e5; position: relative;}
-.modalContainer .fa-xmark, .modalContainer .fa-circle-xmark {color: black; font-size: 20px; position: absolute; top: 10px; right: 10px;}
-.modalContainer h1, .modalContainer h2, .modalContainer h3, .modalContainer h4, .modalContainer h5, .modalContainer h6, .modalContainer p{color: black;}
+.blur-bg { position: fixed !important; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 998; display: flex; align-items: center; justify-content: center;}
 
 i, button{cursor: pointer;}
 nav #logo {width: 15vw; cursor: pointer;}
@@ -32,6 +29,11 @@ button:disabled {cursor: not-allowed;}
 .btn-group button:first-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px;}
 .btn-group button:last-child { border-top-right-radius: 10px;border-bottom-right-radius: 10px; border-right: none;}
 
+.modal-container { background-color: var(--card); box-shadow: -1px 5px 25px var(--primary); color: #fff; padding: 10px; border-radius: 18px; max-height: 70vh; min-width: 25vw; min-height: 15vh;}
+.modal-container>div ::-webkit-scrollbar-thumb { background: #afafaf; border-radius: 10px;}
+.modal-container>div ::-webkit-scrollbar { width: 5px }
+
 @media (max-width: 768px) {
     nav #logo { width: 50vw;} 
+    .modal-container { height: auto; min-width: 90%; max-width: 90%;}
 }
