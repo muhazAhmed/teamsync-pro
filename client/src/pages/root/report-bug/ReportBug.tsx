@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import moment from "moment";
 import {
   CheckAccess,
@@ -9,6 +8,7 @@ import {
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import Buttons from "../../../ui-library/buttons/Button";
+import Modal from "../../../ui-library/Modal";
 
 interface BugsProp {
   setModal: any;
@@ -24,7 +24,6 @@ const ReportBug: FC<BugsProp> = ({
 }) => {
   const currDate = moment().format("DD-MM-YYYY HH:mm");
   const url = window.location.href;
-  console.log(url);
   const [inputs, setInputs] = useState<any>({
     date: currDate,
     userID: fetchUserId(),
@@ -44,7 +43,7 @@ const ReportBug: FC<BugsProp> = ({
   };
 
   return (
-    <Modal setModal={setModal} header={false}>
+    <Modal setModal={setModal}>
       <div className="w-full flex flex-col items-center gap-2">
         <h1 className="text-2xl font-bold">Report Bug</h1>
         <input

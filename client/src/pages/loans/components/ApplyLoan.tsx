@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import "./style.css";
 import { ApplyLoanPopupProps } from "../props";
 import moment from "moment";
@@ -16,6 +15,7 @@ import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import { message } from "../../../utils/Constants";
 import Buttons from "../../../ui-library/buttons/Button";
+import Modal from "../../../ui-library/Modal";
 
 const ApplyLoan: FC<ApplyLoanPopupProps> = ({
   setModal,

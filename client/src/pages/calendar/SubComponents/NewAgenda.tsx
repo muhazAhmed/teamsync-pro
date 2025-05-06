@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import "./style.css";
 import { DatePicker, Radio, RadioGroup } from "@nextui-org/react";
 import TimePicker from "../../../UI-Components/TimePicker/TimePicker";
@@ -8,6 +7,7 @@ import { closeModal } from "../../../utils/commonFunctions";
 import { motion } from "framer-motion";
 import CustomInput from "../../../UI-Components/Inputs/Input";
 import Buttons from "../../../ui-library/buttons/Button";
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
   setModal: any;
@@ -64,7 +64,7 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
   console.log(selectedFromTime, selectedToTime);
 
   return (
-    <Modal setModal={setModal} className="agenda-modal" header={false}>
+    <Modal setModal={setModal} className="agenda-modal">
       <div className="modal-body">
         <div className="header">
           {(() => {
@@ -195,7 +195,6 @@ const NewAgenda: FC<ModalProps> = ({ setModal }) => {
           <Buttons
             icon="arrowLeft"
             label="Back"
-            variant="light"
             onPress={() => handleMenuChange("back")}
             hidden={selected === "details"}
           />

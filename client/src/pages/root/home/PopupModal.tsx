@@ -1,8 +1,8 @@
 import React from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import { Button } from "@nextui-org/react";
 import { newSessionStorage, AssignRole } from "../../../utils/commonFunctions";
 import { empDemoData, hrDemoData } from "../../form/Demo";
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
   setModal: (value: boolean) => void;
@@ -20,7 +20,7 @@ const PopupModal: React.FC<ModalProps> = ({ setModal, navigate }) => {
 
   return (
     <Modal setModal={setModal} title={"Choose Login As"}>
-      <div className="modal-footer flex" style={{ justifyContent: "center" }}>
+      <div className="flex items-center justify-center gap-4 p-5">
         <Button
           className="btn-primary text-white"
           onPress={() => SuccessResponse(hrDemoData, "demo token", "HR")}

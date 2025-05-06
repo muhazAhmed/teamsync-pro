@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { message } from "../../utils/Constants";
-import { icon } from "../Icons/Icons";
+import { icon } from "../../ui-library/Icons";
 
 interface InputProps {
   type?: string;

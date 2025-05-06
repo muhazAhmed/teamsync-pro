@@ -1,12 +1,12 @@
 import { FC } from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { animatedIcon } from "../../../ui-library/Icons";
 import { CheckAccess, closeModal } from "../../../utils/commonFunctions";
 import { deleteMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import toast from "react-hot-toast";
 import { message } from "../../../utils/Constants";
 import Buttons from "../../../ui-library/buttons/Button";
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
   setModal: any;
@@ -47,8 +47,11 @@ const DeleteModal: FC<ModalProps> = ({
         style={{ alignItems: "center", justifyContent: "center", gap: "1rem" }}
       >
         <i
-          className={icon?.warning2}
-          style={{ fontSize: "2.5rem", color: "yellow" }}
+          className={animatedIcon(
+            "warning2",
+            "fade",
+            "text-4xl text-yellow-300"
+          )}
         ></i>
         <h2 style={{ fontSize: "1.2rem", fontWeight: "bold" }}>Are You Sure</h2>
         <p style={{ width: "60%", textAlign: "center" }}>

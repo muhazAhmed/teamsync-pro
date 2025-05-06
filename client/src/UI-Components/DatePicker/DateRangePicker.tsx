@@ -2,9 +2,9 @@ import { Button, Input, Tooltip } from "@nextui-org/react";
 import { Moment } from "moment";
 import moment from "moment";
 import "./style.css";
-import { icon } from "../Icons/Icons";
 import { useState } from "react";
 import { closeModal } from "../../utils/commonFunctions";
+import { icon } from "../../ui-library/Icons";
 
 interface DateRangePickerProps {
   disabledDates?: (date: Moment) => boolean;

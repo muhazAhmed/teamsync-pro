@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import {
   CheckAccess,
   closeModal,
@@ -20,6 +19,7 @@ import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import toast from "react-hot-toast";
 import Buttons from "../../../ui-library/buttons/Button";
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
   setModal: any;

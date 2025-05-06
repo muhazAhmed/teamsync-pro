@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { UserProfileProps } from "../props";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
 import { Avatar, Tooltip } from "@nextui-org/react";
-import { icon } from "../../../UI-Components/Icons/Icons";
+import { icon } from "../../../ui-library/Icons";
 import { useContextAPI } from "../../../utils/ContextAPI";
+import Modal from "../../../ui-library/Modal";
 
 const UserProfile: FC<UserProfileProps> = ({ setModal }) => {
   const { openChat } = useContextAPI();
@@ -11,7 +11,6 @@ const UserProfile: FC<UserProfileProps> = ({ setModal }) => {
   return (
     <Modal
       setModal={setModal}
-      header={false}
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       whileHover={{ scale: 1.04 }}

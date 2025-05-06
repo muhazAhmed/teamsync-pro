@@ -1,12 +1,12 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import Card from "../../UI-Components/Card/Card";
 import "./style.css";
 import notificationLogo from "../../assets/images/notificationLogo.png";
-import { icon } from "../../UI-Components/Icons/Icons";
+import { icon } from "../../ui-library/Icons";
 // import { fetchWebSocketNotification } from "./webSocket";
 import { openModal } from "../../utils/commonFunctions";
 import Loader from "../../UI-Components/Loader/Loader";
-import ConfirmationModal from "./ConfirmationModal";
+const ConfirmationModal = React.lazy(() => import("./ConfirmationModal"));
 
 interface NotificationProps {
   setOpenNotification: any;
@@ -20,6 +20,7 @@ const selectedItemStyle = {
 
 const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
   const [selectedItem, setSelectedItem] = useState<number>(1);
+  const [confirmationModal, setConfirmationModal] = useState<boolean>(false);
   let loading = false;
   // const [loading, setLoading] = useState<boolean>(false);
 
@@ -30,7 +31,12 @@ const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
   //   fetchWebSocketNotification();
   // }, []);
 
+  const handleMarkAsReadClick = () => {
+    openModal(setConfirmationModal);
+  };
+
   const handleClosePopup = () => {
+    if (confirmationModal) return;
     setTimeout(() => {
       setOpenNotification(false);
     }, 4000);
@@ -44,6 +50,9 @@ const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
           <CardContent
             selectedItem={selectedItem}
             handleSwitch={handleSwitch}
+            handleMarkAsReadClick={handleMarkAsReadClick}
+            confirmationModal={confirmationModal}
+            setConfirmationModal={setConfirmationModal}
           />
         }
       />
@@ -54,15 +63,18 @@ const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
 interface contentProps {
   selectedItem: number;
   handleSwitch: any;
+  handleMarkAsReadClick: any;
+  confirmationModal: boolean;
+  setConfirmationModal: any;
 }
 
-const CardContent: FC<contentProps> = ({ selectedItem, handleSwitch }) => {
-  const [confirmationModal, setConfirmationModal] = useState<boolean>(false);
-
-  const handleMarkAsReadClick = () => {
-    openModal(setConfirmationModal);
-  };
-
+const CardContent: FC<contentProps> = ({
+  selectedItem,
+  handleSwitch,
+  handleMarkAsReadClick,
+  confirmationModal,
+  setConfirmationModal,
+}) => {
   return (
     <div className="notification-body">
       {confirmationModal && (

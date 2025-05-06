@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Modal from "../../../UI-Components/popUp-modal/PopUpModal";
-import "./modal.css";
 import {
   Button,
   Input,
@@ -21,6 +19,7 @@ import toast from "react-hot-toast";
 import { message } from "../../../utils/Constants";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
+import Modal from "../../../ui-library/Modal";
 
 interface ModalProps {
   setEditModal: (value: boolean) => void;
@@ -113,46 +112,51 @@ const EditProfileModal: React.FC<ModalProps> = ({
 
   return (
     <>
-      <Modal
-        setModal={setEditModal}
-        title={title}
-        footer={[
-          { label: "Save", color: "primary", action: handleUpdate },
-          {
-            label: "Clear",
-            color: "danger",
-            action: () => clearInputs(setInputs),
-          },
-        ]}
-      >
-        <div className="modal-body">
-          {Object.keys(inputs).map((key) => {
-            const label = (profileLabels(title) as Record<string, string>)[key];
-            if (!label) return null;
-            if (dropdownKeys.includes(key)) {
-              return (
-                <DropdownInput
-                  key={key}
-                  label={label}
-                  value={inputs[key]}
-                  options={getOptionsByKey(key)}
-                  onChange={(value) => handleChange(key, value)}
-                />
-              );
-            } else {
-              return (
-                <Input
-                  key={key}
-                  name={key}
-                  value={inputs[key]}
-                  label={label}
-                  onChange={(e) => handleChange(key, e.target.value)}
-                  variant="underlined"
-                  style={{ color: "#fff" }}
-                />
-              );
-            }
-          })}
+      <Modal setModal={setEditModal} title={title} className="fadeIn">
+        <div className="flex flex-col gap-5">
+          <div className="grid grid-cols-3 gap-x-4 gap-y-4 items-center">
+            {Object.keys(inputs).map((key) => {
+              const label = (profileLabels(title) as Record<string, string>)[
+                key
+              ];
+              if (!label) return null;
+              if (dropdownKeys.includes(key)) {
+                return (
+                  <DropdownInput
+                    key={key}
+                    label={label}
+                    value={inputs[key]}
+                    options={getOptionsByKey(key)}
+                    onChange={(value) => handleChange(key, value)}
+                  />
+                );
+              } else {
+                return (
+                  <Input
+                    key={key}
+                    name={key}
+                    value={inputs[key]}
+                    label={label}
+                    onChange={(e) => handleChange(key, e.target.value)}
+                    variant="underlined"
+                    style={{ color: "#fff" }}
+                  />
+                );
+              }
+            })}
+          </div>
+
+          <div className="flex justify-end gap-3">
+            <Button className="btn-primary" onPress={handleUpdate}>
+              Save
+            </Button>
+            <Button
+              className="btn-ghost"
+              onPress={() => clearInputs(setInputs)}
+            >
+              Clear
+            </Button>
+          </div>
         </div>
       </Modal>
     </>
