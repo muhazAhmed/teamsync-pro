@@ -6,10 +6,15 @@ export interface IconTypes {
     return <i className={icon[name]} style={iconStyles}></i>;
   }
   
-  export const animatedIcon = (name: string, animation: string) => {
-    const actualIcon = icon[name] + " " + "fa-" + animation;
-    return <i className={actualIcon}></i>;
-  }
+  export const animatedIcon = (
+    name: keyof typeof icon,
+    animation: string,
+    additionalClasses = ""
+  ): string => {
+    const iconClass = icon[name];
+    const animationClass = `fa-${animation}`;
+    return `${iconClass} ${animationClass} ${additionalClasses}`.trim();
+  };  
   
   export const icon: IconTypes = {
     closeRounded: "fa-regular fa-circle-xmark",
