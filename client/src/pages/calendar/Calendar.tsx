@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from "react";
 import "./style.css";
 import moment from "moment";
 import { FetchRole, usePageName } from "../../utils/commonFunctions";
-import ButtonGroup from "../../UI-Components/Buttons/ButtonGroup";
 import { calendarEvents } from "../form/Demo";
 import {
   downloadCalendar,
@@ -16,6 +15,7 @@ const NewAgenda = React.lazy(() => import("./SubComponents/NewAgenda"));
 const ViewModal = React.lazy(() => import("./SubComponents/ViewModal"));
 import useDownloadFile from "../../utils/custom-hooks/useDownloadFile";
 import Buttons from "../../ui-library/buttons/Button";
+import ButtonGroup from "../../ui-library/buttons/ButtonGroup";
 
 interface CalendarProps {}
 
@@ -41,7 +41,7 @@ const Calendar: FC<CalendarProps> = ({}) => {
               label: "",
               icon: "grid",
               selected: viewMode === "grid",
-              action: () => handleChangeView("grid", setViewMode),
+              onPress: () => handleChangeView("grid", setViewMode),
               tooltip: {
                 content: "Grid View",
                 color: "primary",
@@ -51,7 +51,7 @@ const Calendar: FC<CalendarProps> = ({}) => {
               label: "",
               icon: "list",
               selected: viewMode === "list",
-              action: () => handleChangeView("list", setViewMode),
+              onPress: () => handleChangeView("list", setViewMode),
               tooltip: {
                 content: "List View",
                 color: "primary",
