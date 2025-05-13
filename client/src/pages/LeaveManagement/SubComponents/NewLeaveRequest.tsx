@@ -71,103 +71,101 @@ const NewLeaveRequest: FC<ModalProps> = ({ setModal, setLoading }) => {
   };
 
   return (
-    <Modal
-      title="Request Time Off"
-      setModal={() => closeModal(setModal)}
-      className="leave-req"
-    >
-      <div className="leave-form">
-        <Select
-          label="Select Leave Type"
-          className="dropdown"
-          variant="bordered"
-          onChange={(e) => setLeaveType(e?.target?.value)}
-        >
-          <SelectItem key="normal">Normal Leave</SelectItem>
-          <SelectItem key="paid">Paid Leave</SelectItem>
-          <SelectItem key="restricted">Restricted Leave</SelectItem>
-        </Select>
-        <div className="item">
-          <label>Leave Date</label>
-          <p
-            onClick={() => openModal(setCalendar)}
-            className="date-input text-sm"
+    <Modal title="Request Time Off" setModal={() => closeModal(setModal)}>
+      <div className="leave-req flex items-center justify-between w-[40vw] h-[50vh]">
+        <div className="leave-form flex flex-col items-start justify-between p-5 h-full w-full">
+          <Select
+            label="Select Leave Type"
+            className="dropdown"
+            variant="bordered"
+            onChange={(e) => setLeaveType(e?.target?.value)}
           >
-            {selectedLeaveDate?.from} - {selectedLeaveDate?.to}
-          </p>
-          {calender && (
-            <div
-              style={{
-                position: "absolute",
-                top: "8px",
-                right: "15px",
-                zIndex: "10",
-              }}
+            <SelectItem key="normal">Normal Leave</SelectItem>
+            <SelectItem key="paid">Paid Leave</SelectItem>
+            <SelectItem key="restricted">Restricted Leave</SelectItem>
+          </Select>
+          <div className="item flex items-start gap-2 flex-col text-[15px]">
+            <label className="text-gray-300">Leave Date</label>
+            <p
+              onClick={() => openModal(setCalendar)}
+              className="date-input text-sm bg-[#484848] p-5 rounded-xl cursor-pointer"
             >
-              <DateRangePicker
-                startDate={startDate}
-                endDate={endDate}
-                setStartDate={setStartDate}
-                setEndDate={setEndDate}
-                onApply={handleApply}
-                setModal={setCalendar}
-                disabledDates={disableDates}
-              />
-            </div>
-          )}
+              {selectedLeaveDate?.from} - {selectedLeaveDate?.to}
+            </p>
+            {calender && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: "8px",
+                  right: "15px",
+                  zIndex: "10",
+                }}
+              >
+                <DateRangePicker
+                  startDate={startDate}
+                  endDate={endDate}
+                  setStartDate={setStartDate}
+                  setEndDate={setEndDate}
+                  onApply={handleApply}
+                  setModal={setCalendar}
+                  disabledDates={disableDates}
+                />
+              </div>
+            )}
+          </div>
+          <div className="item">
+            <label>
+              Leave Reason: <span className="text-slate-500">(optional)</span>
+            </label>
+            <CustomInput
+              name="reason"
+              value={reason || ""}
+              setInputs={setReason}
+              type="text"
+              placeholder="Enter leave reason"
+              id="reason"
+            />
+          </div>
         </div>
-        <div className="item">
-          <label>
-            Leave Reason: <span className="text-slate-500">(optional)</span>
-          </label>
-          <CustomInput
-            name="reason"
-            value={reason || ""}
-            setInputs={setReason}
-            type="text"
-            placeholder="Enter leave reason"
-            id="reason"
+        <div className="w-full h-full">
+          <Card
+            style={{ height: "100%" }}
+            content={
+              <div className="summary-body flex flex-col items-center justify-between h-full text-[#b3b3b3]">
+                <div className="flex flex-col w-full">
+                  <div className="summary-item flex items-start gap-2 w-full p-2">
+                    <label>Leave Type:</label>
+                    <p>{leaveType}</p>
+                  </div>
+                  <div className="summary-item flex flex-col items-start gap-2 w-full p-1">
+                    <label>Leave Date:</label>
+                    <p className="text-sm text-wrap">
+                      From: {selectedLeaveDate?.from} <br /> To:{" "}
+                      {selectedLeaveDate?.to}
+                    </p>
+                  </div>
+                  <div className="summary-item flex items-start gap-2 w-full p-2">
+                    <span>Leave Reason:</span> {reason}
+                  </div>
+                </div>
+                <div className="footer-btn flex items-center w-full justify-evenly">
+                  <Buttons
+                    icon="send"
+                    label="Submit"
+                    color="primary"
+                    onPress={handleSubmit}
+                  />
+                  <Buttons
+                    icon="close"
+                    label="Cancel"
+                    color="danger"
+                    onPress={() => closeModal(setModal)}
+                  />
+                </div>
+              </div>
+            }
           />
         </div>
-      </div>
-      <div className="summary">
-        <Card
-          style={{ height: "100%" }}
-          content={
-            <div className="summary-body">
-              <div className="flex flex-col gap-1" style={{ width: "100%" }}>
-                <div className="summary-item">
-                  <label>Leave Type:</label>
-                  <p>{leaveType}</p>
-                </div>
-                <div className="summary-item flex-col">
-                  <label>Leave Date:</label>
-                  <p className="text-sm text-wrap">
-                    From: {selectedLeaveDate?.from} <br /> To:{" "}
-                    {selectedLeaveDate?.to}
-                  </p>
-                </div>
-                <div className="summary-item">
-                  <span>Leave Reason:</span> {reason}
-                </div>
-              </div>
-              <div className="footer-btn">
-                <Buttons
-                  icon="send"
-                  label="Submit"
-                  color="primary"
-                  onPress={handleSubmit}
-                />
-                <Buttons
-                  icon="close"
-                  label="Cancel"
-                  color="danger"
-                  onPress={() => closeModal(setModal)}
-                />
-              </div>
-            </div>
-          }
-        />
       </div>
     </Modal>
   );
