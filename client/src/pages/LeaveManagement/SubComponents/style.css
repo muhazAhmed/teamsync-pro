@@ -1,71 +1,7 @@
-.leave-req .modal-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40vw;
-    height: 50vh;
-    gap: 1rem;
-}
 
-.leave-req .modal-content .leave-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-    height: 100%;
-    width: 100%;
-    padding: 10px;
-    border-radius: 15px;
-}
-
-.leave-req .modal-content .leave-form .dropdown span {
-    color: #fff;
-}
-
-.leave-req .modal-content .leave-form .item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    flex-direction: column;
-    font-size: 15px;
-}
-
-.leave-req .modal-content .leave-form .item .date-input {
-    background-color: #484848;
-    padding: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.leave-req .modal-content .leave-form .item label {
-    color: slategrey;
-}
 
 .leave-req .modal-content .leave-form .item #reason {
     width: 110%;
-}
-
-.leave-req .modal-content .summary,
-.leave-req .summary .custom-card {
-    width: 100%;
-    height: 100%;
-}
-
-.leave-req .summary .summary-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    height: 100%;
-    color: #b3b3b3;
-}
-
-.leave-req .summary .summary-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 10px;
 }
 
 .leave-req .summary .footer-btn {
