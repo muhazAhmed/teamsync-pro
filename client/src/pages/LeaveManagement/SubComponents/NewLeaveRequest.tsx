@@ -9,7 +9,7 @@ import {
   formatDate,
   openModal,
 } from "../../../utils/commonFunctions";
-import Card from "../../../UI-Components/Card/Card";
+import Card from "../../../ui-library/Card";
 import { Select, SelectItem } from "@nextui-org/react";
 import DateRangePicker from "../../../UI-Components/DatePicker/DateRangePicker";
 import moment, { Moment } from "moment";
@@ -128,43 +128,40 @@ const NewLeaveRequest: FC<ModalProps> = ({ setModal, setLoading }) => {
           </div>
         </div>
         <div className="w-full h-full">
-          <Card
-            style={{ height: "100%" }}
-            content={
-              <div className="summary-body flex flex-col items-center justify-between h-full text-[#b3b3b3]">
-                <div className="flex flex-col w-full">
-                  <div className="summary-item flex items-start gap-2 w-full p-2">
-                    <label>Leave Type:</label>
-                    <p>{leaveType}</p>
-                  </div>
-                  <div className="summary-item flex flex-col items-start gap-2 w-full p-1">
-                    <label>Leave Date:</label>
-                    <p className="text-sm text-wrap">
-                      From: {selectedLeaveDate?.from} <br /> To:{" "}
-                      {selectedLeaveDate?.to}
-                    </p>
-                  </div>
-                  <div className="summary-item flex items-start gap-2 w-full p-2">
-                    <span>Leave Reason:</span> {reason}
-                  </div>
+          <Card className="h-full">
+            <div className="summary-body flex flex-col items-center justify-between h-full text-[#b3b3b3]">
+              <div className="flex flex-col w-full">
+                <div className="summary-item flex items-start gap-2 w-full p-2">
+                  <label>Leave Type:</label>
+                  <p>{leaveType}</p>
                 </div>
-                <div className="footer-btn flex items-center w-full justify-evenly">
-                  <Buttons
-                    icon="send"
-                    label="Submit"
-                    color="primary"
-                    onPress={handleSubmit}
-                  />
-                  <Buttons
-                    icon="close"
-                    label="Cancel"
-                    color="danger"
-                    onPress={() => closeModal(setModal)}
-                  />
+                <div className="summary-item flex flex-col items-start gap-2 w-full p-1">
+                  <label>Leave Date:</label>
+                  <p className="text-sm text-wrap">
+                    From: {selectedLeaveDate?.from} <br /> To:{" "}
+                    {selectedLeaveDate?.to}
+                  </p>
+                </div>
+                <div className="summary-item flex items-start gap-2 w-full p-2">
+                  <span>Leave Reason:</span> {reason}
                 </div>
               </div>
-            }
-          />
+              <div className="footer-btn flex items-center w-full justify-evenly">
+                <Buttons
+                  icon="send"
+                  label="Submit"
+                  color="primary"
+                  onPress={handleSubmit}
+                />
+                <Buttons
+                  icon="close"
+                  label="Cancel"
+                  color="danger"
+                  onPress={() => closeModal(setModal)}
+                />
+              </div>
+            </div>
+          </Card>
         </div>
       </div>
     </Modal>

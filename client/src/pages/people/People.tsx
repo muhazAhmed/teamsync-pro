@@ -25,7 +25,7 @@ import Loader from "../../UI-Components/Loader/Loader";
 import { hrDemoData, empDemoData } from "../form/Demo";
 const EditModal = lazy(() => import("./SubComponents/EditModal"));
 const UserModal = lazy(() => import("./SubComponents/UserModal"));
-import Card from "../../UI-Components/Card/Card";
+import Card from "../../ui-library/Card";
 
 type User = {
   _id: string;
@@ -206,61 +206,54 @@ const People = () => {
         </div>
         <div className="cards">
           {filteredUsers().map((user) => (
-            <Card
-              key={user?._id}
-              content={
-                <div
-                  className="card-body"
-                  onClick={() => {
-                    handleClick(setOpenViewModal),
-                      setSelectedUserDetails({
-                        id: user?._id,
-                        role: user?.isHR ? "hr" : "employee",
-                      });
-                  }}
-                >
-                  {isHr && (
-                    <Tooltip
-                      content="Edit User"
-                      placement="left"
-                      color="primary"
-                    >
-                      <i
-                        className={icon.pencil}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleClick(setOpenEditModal),
-                            setSelectedUserDetails({
-                              userId: user?._id,
-                              role: user?.isHR ? "hr" : "employee",
-                            });
-                        }}
-                      ></i>
-                    </Tooltip>
-                  )}
-                  <img src={userLogo} alt="User Avatar" />
-                  <div className="user-info">
-                    <h5 className="text-center">
-                      {user.firstName} {user.lastName}
-                    </h5>
-                    <h6>
-                      <i className={icon.work}></i>&nbsp;&nbsp;
-                      {user.employment?.designation || "-"}
+            <Card key={user?._id} className="w-[25vw] cursor-pointer">
+              <div
+                className="card-body flex flex-col items-center gap-8 relative text-white"
+                onClick={() => {
+                  handleClick(setOpenViewModal),
+                    setSelectedUserDetails({
+                      id: user?._id,
+                      role: user?.isHR ? "hr" : "employee",
+                    });
+                }}
+              >
+                {isHr && (
+                  <Tooltip content="Edit User" placement="left" color="primary">
+                    <i
+                      className={`${icon.pencil} text-gray-500 absolute top-2 right-2 cursor-pointer text-medium`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleClick(setOpenEditModal),
+                          setSelectedUserDetails({
+                            userId: user?._id,
+                            role: user?.isHR ? "hr" : "employee",
+                          });
+                      }}
+                    ></i>
+                  </Tooltip>
+                )}
+                <img src={userLogo} alt="User Avatar" className="w-[5vw]" />
+                <div className="user-info flex flex-col gap-1 w-full">
+                  <h5 className="text-center">
+                    {user.firstName} {user.lastName}
+                  </h5>
+                  <h6 className="text-gray-500 text-[13px] w-fit">
+                    <i className={icon.work}></i>&nbsp;&nbsp;
+                    {user.employment?.designation || "-"}
+                  </h6>
+                  <Tooltip
+                    content="Reporting To"
+                    placement="left"
+                    color="primary"
+                  >
+                    <h6 className="text-gray-500 text-[13px] w-fit">
+                      <i className={icon.user}></i>&nbsp;&nbsp;
+                      {user.employment?.reportingManager || "-"}
                     </h6>
-                    <Tooltip
-                      content="Reporting To"
-                      placement="left"
-                      color="primary"
-                    >
-                      <h6>
-                        <i className={icon.user}></i>&nbsp;&nbsp;
-                        {user.employment?.reportingManager || "-"}
-                      </h6>
-                    </Tooltip>
-                  </div>
+                  </Tooltip>
                 </div>
-              }
-            />
+              </div>
+            </Card>
           ))}
         </div>
       </div>

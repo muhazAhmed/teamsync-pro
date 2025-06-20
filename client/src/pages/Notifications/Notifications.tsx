@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import Card from "../../UI-Components/Card/Card";
+import Card from "../../ui-library/Card";
 import "./style.css";
 import notificationLogo from "../../assets/images/notificationLogo.png";
 import { icon } from "../../ui-library/Icons";
@@ -45,17 +45,15 @@ const Notifications: FC<NotificationProps> = ({ setOpenNotification }) => {
   return (
     <div className="notification slideDown" onMouseLeave={handleClosePopup}>
       {loading && <Loader />}
-      <Card
-        content={
-          <CardContent
-            selectedItem={selectedItem}
-            handleSwitch={handleSwitch}
-            handleMarkAsReadClick={handleMarkAsReadClick}
-            confirmationModal={confirmationModal}
-            setConfirmationModal={setConfirmationModal}
-          />
-        }
-      />
+      <Card className="min-h-[70vh]">
+        <CardContent
+          selectedItem={selectedItem}
+          handleSwitch={handleSwitch}
+          handleMarkAsReadClick={handleMarkAsReadClick}
+          confirmationModal={confirmationModal}
+          setConfirmationModal={setConfirmationModal}
+        />
+      </Card>
     </div>
   );
 };

@@ -75,33 +75,6 @@
     border: 2px solid transparent;
 }
 
-.help-desk .body .cards .custom-card:hover {
-    border: 2px solid var(--primary);
-}
-
-.help-desk .body .cards .custom-card .card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.help-desk .body .cards .custom-card .card-body i {
-    font-size: 30px;
-    color: var(--secondary);
-}
-
-.help-desk .body .cards .custom-card .card-body h1 {
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.help-desk .body .cards .custom-card .card-body p {
-    color: gray;
-    text-align: center;
-    font-size: 13px;
-}
-
 .help-desk .ticket {
     display: flex;
     flex-direction: column;
@@ -109,10 +82,6 @@
     gap: 1rem;
     width: 55%;
     margin-bottom: 2rem;
-}
-
-.help-desk .ticket .custom-card:hover {
-    border: 2px solid var(--primary);
 }
 
 .help-desk .ticket h1 {
