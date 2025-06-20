@@ -58,15 +58,7 @@
     gap: 1rem;
 }
 
-.time-off .custom-card .body .items-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 1rem;
-}
-
-.time-off .items-container .item {
+.time-off .stats .item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,86 +72,6 @@
     padding: 10px;
 }
 
-.time-off .items-container .item h2 {
-    font-size: 17px;
-}
-
-.time-off .items-container .item h2 span {
-    color: var(--primary);
-    font-size: 30px;
-}
-
-.time-off .items-container .item h4 {
-    color: #c1c1c1;
-    font-size: 15px;
-}
-
-.time-off .items-container h5 {
-    font-size: 12px;
-    text-decoration: underline;
-    width: 100%;
-    text-align: end;
-    cursor: pointer;
-}
-
-.time-off .end-content {
-    display: flex;
-    gap: 1rem;
-    height: 100%;
-    width: 50%;
-    position: relative;
-}
-
-.time-off table {
-    border-collapse: collapse;
-    width: 100%;
-    height: 100%;
-}
-
-.time-off table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.time-off table tbody tr td {
-    color: #b9b9b9;
-}
-
 .time-off td {
-    text-align: left;
     padding: 8px 8px 8px 0px;
-}
-
-.time-off tbody td {
-    min-width: 5vw;
-}
-
-.time-off thead tr th,
-.time-off tbody tr td {
-    text-align: left;
-    font-size: 14px;
-}
-
-.time-off .table-wrapper .table {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.time-off .table-wrapper thead {
-    position: sticky;
-    top: 0;
-    background-color: var(--card);
-}
-
-.time-off table tbody td:last-child {
-    font-weight: bold;
-}
-
-.time-off .table-wrapper {
-    display: flex;
-    min-height: 45vh;
-    max-height: 45vh;
-    overflow: auto;
-    justify-content: space-between;
 }

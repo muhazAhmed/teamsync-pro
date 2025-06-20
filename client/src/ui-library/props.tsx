@@ -31,3 +31,10 @@ export interface ModalProps extends Omit<HTMLMotionProps<"div">, "children"> {
   title?: string;
   children: React.ReactNode;
 }
+
+export interface CardProps extends HTMLMotionProps<"div"> {
+  children: React.ReactNode;
+  boxShadow?: boolean;
+  hoverStyles?: boolean;
+  hoverEffect?: boolean;
+}

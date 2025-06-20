@@ -1,6 +1,6 @@
 import { useState } from "react";
 import RootNavbar from "../../../components/RootNavbar";
-import Card from "../../../UI-Components/Card/Card";
+import Card from "../../../ui-library/Card";
 import { icon } from "../../../ui-library/Icons";
 import "./style.css";
 import { clearInputs, useToast } from "../../../utils/commonFunctions";
@@ -85,84 +85,81 @@ const Contact = () => {
           </div>
         </div>
         <div className="form-main w-[30%]">
-          <Card
-            animation="slideLeft"
-            content={
-              <div className="w-full h-full flex flex-col gap-8">
-                <div className="w-full flex flex-col gap-1 items-start">
-                  <h1 className="text-[25px] font-bold">Get in Touch</h1>
-                  <p className="text-[15px] text-gray-300">
-                    You can reach us anytime
-                  </p>
-                </div>
-                <div className="form flex flex-col w-full p-2 gap-4">
-                  <div className="names w-full flex items-center justify-between gap-4">
-                    <input
-                      className=" w-full p-2 pl-3 rounded-full outline-none border-1 bg-transparent border-gray-400"
-                      placeholder="First name"
-                      name="firstName"
-                      onChange={handleChange}
-                      required
-                      value={inputs.firstName || ""}
-                    />
-                    <input
-                      className="w-full p-2 pl-3 rounded-full outline-none border-1 bg-transparent border-gray-400"
-                      placeholder="Last name"
-                      name="lastName"
-                      onChange={handleChange}
-                      required
-                      value={inputs.lastName || ""}
-                    />
-                  </div>
-                  <div className="relative flex items-center">
-                    <i
-                      className={`${icon?.message} absolute left-4 text-gray-400 text-[20px]`}
-                    ></i>
-                    <input
-                      className="w-full p-2 pl-12 rounded-full outline-none border-1 bg-transparent border-gray-400"
-                      placeholder="Your email"
-                      name="email"
-                      type="email"
-                      onChange={handleChange}
-                      required
-                      value={inputs.email || ""}
-                    />
-                  </div>
-                  <div className="relative flex items-center">
-                    <i
-                      className={`${icon?.phone} absolute left-4 text-gray-400 text-[18px]`}
-                    ></i>
-                    <input
-                      className="w-full p-2 pl-12 rounded-full outline-none border-1 bg-transparent border-gray-400"
-                      placeholder="Phone number (with code)"
-                      name="phone"
-                      type="number"
-                      onChange={handleChange}
-                      value={inputs.phone || ""}
-                    />
-                  </div>
-                  <textarea
-                    className="w-full h-28 rounded-2xl outline-none border-1 bg-transparent p-2 resize-none border-gray-400"
-                    placeholder="How can we help?"
-                    name="message"
+          <Card>
+            <div className="w-full h-full flex flex-col gap-8">
+              <div className="w-full flex flex-col gap-1 items-start">
+                <h1 className="text-[25px] font-bold">Get in Touch</h1>
+                <p className="text-[15px] text-gray-300">
+                  You can reach us anytime
+                </p>
+              </div>
+              <div className="form flex flex-col w-full p-2 gap-4">
+                <div className="names w-full flex items-center justify-between gap-4">
+                  <input
+                    className=" w-full p-2 pl-3 rounded-full outline-none border-1 bg-transparent border-gray-400"
+                    placeholder="First name"
+                    name="firstName"
                     onChange={handleChange}
                     required
-                    value={inputs.message || ""}
+                    value={inputs.firstName || ""}
                   />
-                  <div className="flex w-full items-center justify-center">
-                    <Buttons
-                      icon="send"
-                      label="Submit"
-                      className="btn-primary w-[60%] font-semibold text-[16px] rounded-full"
-                      iconPosition="right"
-                      onPress={handleSubmit}
-                      disabled={loading}
-                    />
-                  </div>
+                  <input
+                    className="w-full p-2 pl-3 rounded-full outline-none border-1 bg-transparent border-gray-400"
+                    placeholder="Last name"
+                    name="lastName"
+                    onChange={handleChange}
+                    required
+                    value={inputs.lastName || ""}
+                  />
+                </div>
+                <div className="relative flex items-center">
+                  <i
+                    className={`${icon?.message} absolute left-4 text-gray-400 text-[20px]`}
+                  ></i>
+                  <input
+                    className="w-full p-2 pl-12 rounded-full outline-none border-1 bg-transparent border-gray-400"
+                    placeholder="Your email"
+                    name="email"
+                    type="email"
+                    onChange={handleChange}
+                    required
+                    value={inputs.email || ""}
+                  />
+                </div>
+                <div className="relative flex items-center">
+                  <i
+                    className={`${icon?.phone} absolute left-4 text-gray-400 text-[18px]`}
+                  ></i>
+                  <input
+                    className="w-full p-2 pl-12 rounded-full outline-none border-1 bg-transparent border-gray-400"
+                    placeholder="Phone number (with code)"
+                    name="phone"
+                    type="number"
+                    onChange={handleChange}
+                    value={inputs.phone || ""}
+                  />
+                </div>
+                <textarea
+                  className="w-full h-28 rounded-2xl outline-none border-1 bg-transparent p-2 resize-none border-gray-400"
+                  placeholder="How can we help?"
+                  name="message"
+                  onChange={handleChange}
+                  required
+                  value={inputs.message || ""}
+                />
+                <div className="flex w-full items-center justify-center">
+                  <Buttons
+                    icon="send"
+                    label="Submit"
+                    className="btn-primary w-[60%] font-semibold text-[16px] rounded-full"
+                    iconPosition="right"
+                    onPress={handleSubmit}
+                    disabled={loading}
+                  />
                 </div>
               </div>
-            }
-          />
+            </div>
+          </Card>
         </div>
       </div>
     </>

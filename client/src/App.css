@@ -33,6 +33,8 @@ button:disabled {cursor: not-allowed;}
 .modal-container>div ::-webkit-scrollbar-thumb { background: #afafaf; border-radius: 10px;}
 .modal-container>div ::-webkit-scrollbar { width: 5px }
 
+.custom-cards {border-radius: 8px; padding: 16px; min-width: 20vw; background-color: var(--card); color: white;}
+
 @media (max-width: 768px) {
     nav #logo { width: 50vw;} 
     .modal-container { height: auto; min-width: 90%; max-width: 90%;}

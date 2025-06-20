@@ -49,32 +49,6 @@
     grid-template-columns: auto auto auto auto;
 }
 
-.people .cards .custom-card {
-    width: 25vw;
-    cursor: pointer;
-}
-
-.people .cards .custom-card .card-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    position: relative;
-    color: #fff;
-}
-
-.people .cards .custom-card .card-body .fa-pencil {
-    color: gray;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: medium;
-}
-
-.people .cards .custom-card .card-body img {
-    width: 5vw;
-}
-
 .people .cards .custom-card .card-body .user-info {
     display: flex;
     flex-direction: column;

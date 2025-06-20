@@ -5,7 +5,7 @@ import {
   fetchUserId,
   usePageName,
 } from "../../utils/commonFunctions";
-import Card from "../../UI-Components/Card/Card";
+import Card from "../../ui-library/Card";
 import { icon } from "../../ui-library/Icons";
 import { settingsBreadCrumbs, switchItems } from "./arrayOfSettings";
 import { useNavigate } from "react-router-dom";
@@ -40,40 +40,34 @@ const Settings = () => {
   return (
     <div className="settings">
       {loading && <Loader />}
-      <Card
-        id="left-card"
-        content={
-          <div className="switches">
-            {switchItems.map((item, index) => {
-              if (item.access.includes(FetchRole())) {
-                return (
-                  <div
-                    className={"switch-item"}
-                    key={index}
-                    onClick={() => handleClick(index + 1)}
-                    style={selectedItem === index + 1 ? selectedItemStyle : {}}
-                  >
-                    <h1>
-                      <i className={icon[item.icon]}></i>
-                      {item?.name}
-                    </h1>
-                    <i className={icon?.arrowRightRounded}></i>
-                  </div>
-                );
-              }
-            })}
-          </div>
-        }
-      />
-      <Card
-        id="right-card"
-        content={
-          <div className="body">
-            {selectedItem === 2 && <NotificationSettings />}
-            {selectedItem === 3 && <AccountSettings setLoading={setLoading} />}
-          </div>
-        }
-      />
+      <Card id="left-card">
+        <div className="switches">
+          {switchItems.map((item, index) => {
+            if (item.access.includes(FetchRole())) {
+              return (
+                <div
+                  className={"switch-item"}
+                  key={index}
+                  onClick={() => handleClick(index + 1)}
+                  style={selectedItem === index + 1 ? selectedItemStyle : {}}
+                >
+                  <h1>
+                    <i className={icon[item.icon]}></i>
+                    {item?.name}
+                  </h1>
+                  <i className={icon?.arrowRightRounded}></i>
+                </div>
+              );
+            }
+          })}
+        </div>
+      </Card>
+      <Card id="right-card">
+        <div className="body">
+          {selectedItem === 2 && <NotificationSettings />}
+          {selectedItem === 3 && <AccountSettings setLoading={setLoading} />}
+        </div>
+      </Card>
     </div>
   );
 };

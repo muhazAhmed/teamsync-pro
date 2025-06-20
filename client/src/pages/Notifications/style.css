@@ -6,13 +6,6 @@
     width: 24vw;
 }
 
-.notification .custom-card {
-    min-height: 70vh;
-    background-color: var(--card) !important;
-    color: #fff !important;
-    border: 2px solid var(--secondary);
-}
-
 .notification .notification-body {
     display: flex;
     align-items: center;
