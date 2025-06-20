@@ -1,21 +1,15 @@
-# Security Policy
-
-## Supported Versions
-
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+# 🔐 Security Policy
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability in TeamSync Pro, please **do not open a GitHub issue**.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Instead, please email **muhazvla313@gmail.com** with details.
+
+We will review the issue and respond as soon as possible.  
+Please include:
+- Description of the vulnerability
+- Steps to reproduce (if possible)
+- Suggestions for a fix (optional)
+
+Thank you for helping make this project safer for everyone!
