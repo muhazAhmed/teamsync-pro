@@ -1,15 +1,40 @@
 # 🔐 Security Policy
 
-## Reporting a Vulnerability
+## Supported Versions
 
-If you discover a security vulnerability in TeamSync Pro, please **do not open a GitHub issue**.
+At the moment, TeamSync Pro is a personal project and not actively maintained in production. However, security reports are still appreciated to help keep the codebase safe for contributors and learners.
 
-Instead, please email **muhazvla313@gmail.com** with details.
+| Version | Supported          |
+|---------|--------------------|
+| main    | ✅ Yes              |
+| dev     | ✅ Yes              |
 
-We will review the issue and respond as soon as possible.  
-Please include:
+---
+
+## 📣 Reporting a Vulnerability
+
+If you find a security issue or vulnerability in this project, **please do not open a GitHub issue** or disclose it publicly.
+
+Instead, report it privately by emailing:
+
+📧 **muhazvla313@gmail.com**
+
+Include as much detail as possible, such as:
 - Description of the vulnerability
-- Steps to reproduce (if possible)
-- Suggestions for a fix (optional)
+- Steps to reproduce (screenshots, code snippets, etc.)
+- A possible fix (if you have one — totally optional)
 
-Thank you for helping make this project safer for everyone!
+---
+
+## ⏱ Response Expectations
+
+- We aim to respond within **3–5 working days**.
+- Critical issues may be patched faster.
+- You will be credited in the changelog if you want.
+
+---
+
+## 🙏 Thanks for Your Help!
+
+By reporting security issues responsibly, you’re helping make TeamSync Pro a better project for everyone — especially the students learning from it.
+
