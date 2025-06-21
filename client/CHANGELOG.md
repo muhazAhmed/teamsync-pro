@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/muhazAhmed/teamsync-pro/compare/v0.0.2...v0.0.3) (2025-06-21)
+
+
+### Features
+
+* new ui/custom-chip ([b3ea3a2](https://github.com/muhazAhmed/teamsync-pro/commit/b3ea3a2d2d02791fc22b106af8b0cc8bf7ea34bb))
+
 ### 0.0.2 (2025-06-20)
 
 
