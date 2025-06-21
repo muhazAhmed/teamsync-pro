@@ -10,12 +10,13 @@ import {
   FetchUserIdAndRole,
   useToast,
 } from "../../../utils/commonFunctions";
-import Chip from "../../../UI-Components/Chip/Chip";
+import Chip from "../../../ui-library/Chip";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import { message } from "../../../utils/Constants";
 import Buttons from "../../../ui-library/buttons/Button";
 import Modal from "../../../ui-library/Modal";
+import clsx from "clsx";
 
 const ApplyLoan: FC<ApplyLoanPopupProps> = ({
   setModal,
@@ -80,20 +81,22 @@ const ApplyLoan: FC<ApplyLoanPopupProps> = ({
           <div className="amount-options">
             {amounts?.map((item: any, index: number) => (
               <Chip
-                label={item?.label}
-                borderRadius="half"
+                className={clsx(
+                  selectedAmountId === index ? "btn-primary" : "btn-ghost",
+                  "rounded-medium"
+                )}
+                key={item?.id}
                 onClick={() => handleAmountSelection(item?.value, item?.id)}
-                className={
-                  selectedAmountId === index ? "btn-primary" : "btn-ghost"
-                }
-              />
+              >
+                {item?.label}
+              </Chip>
             ))}
           </div>
-          <div style={{ position: "relative" }}>
-            <span>$</span>
+          <div className="border-2 border-[var(--primary)] rounded-xl p-2 flex items-center gap-1">
+            <span className="text-sm">$</span>
             <input
               type="number"
-              className="w-full"
+              className="w-full bg-transparent outline-none"
               placeholder="Enter different amount..."
               name="loanAmount"
               value={inputs?.loanAmount || 100}
