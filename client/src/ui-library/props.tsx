@@ -38,3 +38,9 @@ export interface CardProps extends HTMLMotionProps<"div"> {
   hoverStyles?: boolean;
   hoverEffect?: boolean;
 }
+
+export interface ChipProps extends Omit<HTMLMotionProps<"div">, "children"> {
+  hoverEffect?: boolean;
+  children: React.ReactNode;
+  variant?: "primary" | "ghost";
+}

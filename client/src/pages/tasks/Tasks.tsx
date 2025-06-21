@@ -11,7 +11,7 @@ import Card from "../../ui-library/Card";
 import { DummyTasks, myTeamUsers, userTasksStat } from "./demo";
 import { Tooltip, Progress, Button } from "@nextui-org/react";
 import { icon } from "../../ui-library/Icons";
-import Chip from "../../UI-Components/Chip/Chip";
+import Chip from "../../ui-library/Chip";
 import "react-circular-progressbar/dist/styles.css";
 import TaskStats from "./components/TaskStats";
 import { statusDropDown } from "./components/StatusDropDown";
@@ -121,11 +121,12 @@ const Tasks = () => {
                 <div className="w-full flex items-center gap-3">
                   {item?.tags.map((item: string, index: number) => (
                     <Chip
-                      label={item}
                       key={index}
-                      borderRadius="half"
+                      className="rounded-medium"
                       variant="ghost"
-                    />
+                    >
+                      {item}
+                    </Chip>
                   ))}
                 </div>
                 <div className="flex flex-col gap-2 mt-2">

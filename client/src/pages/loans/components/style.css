@@ -23,20 +23,6 @@
     padding-top: 25px !important;
 }
 
-.new-loan .amount input {
-    background-color: transparent;
-    border: 2px solid var(--primary);
-    border-radius: 8px;
-    padding: 5px;
-    padding-left: 25px;
-}
-
-.new-loan .amount span {
-    position: absolute;
-    left: 10px;
-    top: 7px;
-}
-
 .new-loan .footer {
     display: flex;
     flex-direction: row;
