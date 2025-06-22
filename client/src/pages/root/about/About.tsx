@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Card from "../../../ui-library/Card";
-import Grid from "../../../UI-Components/Grid/Grid";
+import Grid from "../../../ui-library/Grid";
 import svg from "../../../assets/svg/about.svg";
 import RootNavbar from "../../../components/RootNavbar";
 import "./style.css";
@@ -51,12 +51,7 @@ const About = () => {
               TeamSync Group traces its roots back to a small team with big
               dreams.
             </p>
-            <Grid
-              rowGap="1rem"
-              // columnGap="1rem"
-              gridTemplateColumns="1fr 1fr"
-              className="about-grid"
-            >
+            <Grid className="about-grid gridRowGap-[1rem] gridTemplateColumns-[1fr_1fr]">
               <div className="items slideLeft">
                 <h1>50+ years</h1>
                 <p>of Shaping architectural landscapes</p>
