@@ -44,3 +44,7 @@ export interface ChipProps extends Omit<HTMLMotionProps<"div">, "children"> {
   children: React.ReactNode;
   variant?: "primary" | "ghost";
 }
+
+export interface GridProps extends Omit<HTMLMotionProps<"div">, "children"> {
+  children: React.ReactNode;
+}
