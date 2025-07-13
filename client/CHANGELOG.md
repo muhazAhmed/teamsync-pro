@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/muhazAhmed/teamsync-pro/compare/v0.0.3...v0.0.4) (2025-07-13)
+
+
+### Features
+
+* major ui-library changes ([b0abc1c](https://github.com/muhazAhmed/teamsync-pro/commit/b0abc1c298216ddbba0385a9202ca4c9e2e95e83))
+* moved customed input ([235dd85](https://github.com/muhazAhmed/teamsync-pro/commit/235dd850a958c57c587c81c7f7a44db5665ebfa0))
+* ui/custom-grid ([72fd490](https://github.com/muhazAhmed/teamsync-pro/commit/72fd49013b23b4466fe6921deaf015e1283ccd10))
+
 ### [0.0.3](https://github.com/muhazAhmed/teamsync-pro/compare/v0.0.2...v0.0.3) (2025-06-21)
 
 
