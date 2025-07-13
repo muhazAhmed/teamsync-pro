@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { message } from "../../utils/Constants";
-import { icon } from "../../ui-library/Icons";
-
-interface InputProps {
-  type?: string;
-  placeholder?: string;
-  value: any;
-  name: string;
-  label?: string;
-  required?: boolean;
-  setInputs: (value: any) => void;
-  variant?: "primary" | "underline" | "ghost";
-  id?: any;
-  autoComplete?: boolean;
-  readOnly?: boolean;
-}
+import { icon } from "../Icons";
+import clsx from "clsx";
+import { InputProps } from "../props";
 
 const commonStyle: React.CSSProperties = {
   border: "none",
@@ -69,8 +57,8 @@ const CustomInput: React.FC<InputProps> = ({
   variant = "primary",
   setInputs,
   id,
-  autoComplete = true,
   readOnly = false,
+  ...props
 }) => {
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [isInputEmpty, setIsInputEmpty] = useState<boolean>(true);
@@ -119,6 +107,8 @@ const CustomInput: React.FC<InputProps> = ({
         )}
       </label>
       <input
+        {...props}
+        className={clsx("", props?.className)}
         type={type === "password" && isPasswordVisible ? "text" : type}
         placeholder={isInputEmpty && !isFocused ? placeholder : ""}
         value={value}
@@ -132,7 +122,6 @@ const CustomInput: React.FC<InputProps> = ({
         onChange={handleChange}
         onFocus={() => setIsFocused(true)}
         onBlur={handleBlur}
-        autoComplete={autoComplete ? "on" : "off"}
         readOnly={readOnly}
       />
       {type === "password" && (

@@ -5,7 +5,7 @@ import { DatePicker, Radio, RadioGroup } from "@nextui-org/react";
 import TimePicker from "../../../UI-Components/TimePicker/TimePicker";
 import { closeModal } from "../../../utils/commonFunctions";
 import { motion } from "framer-motion";
-import CustomInput from "../../../UI-Components/Inputs/Input";
+import CustomInput from "../../../ui-library/inputs/Input";
 import Buttons from "../../../ui-library/buttons/Button";
 import Modal from "../../../ui-library/Modal";
 

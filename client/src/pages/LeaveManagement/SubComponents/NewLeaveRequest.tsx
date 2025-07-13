@@ -14,7 +14,7 @@ import { Select, SelectItem } from "@nextui-org/react";
 import DateRangePicker from "../../../UI-Components/DatePicker/DateRangePicker";
 import moment, { Moment } from "moment";
 import "./style.css";
-import CustomInput from "../../../UI-Components/Inputs/Input";
+import CustomInput from "../../../ui-library/inputs/Input";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
 import toast from "react-hot-toast";

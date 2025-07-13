@@ -1,4 +1,4 @@
-import React from "react";
+import React, { InputHTMLAttributes } from "react";
 import type { ButtonProps as NextUIButtonProps } from "@nextui-org/react";
 import { HTMLMotionProps } from "framer-motion";
 
@@ -43,4 +43,17 @@ export interface ChipProps extends Omit<HTMLMotionProps<"div">, "children"> {
   hoverEffect?: boolean;
   children: React.ReactNode;
   variant?: "primary" | "ghost";
+}
+
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  type?: string;
+  placeholder?: string;
+  value: any;
+  name: string;
+  label?: string;
+  required?: boolean;
+  setInputs: (value: any) => void;
+  variant?: "primary" | "underline" | "ghost";
+  id?: any;
+  readOnly?: boolean;
 }

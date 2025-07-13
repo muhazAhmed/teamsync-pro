@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import "./style.css";
 import { ApplyLoanPopupProps } from "../props";
 import moment from "moment";
-import CustomInput from "../../../UI-Components/Inputs/Input";
+import CustomInput from "../../../ui-library/inputs/Input";
 import {
   CheckAccess,
   closeModal,
