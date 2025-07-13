@@ -11,7 +11,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import moment from "moment";
 import { Button, Progress } from "@nextui-org/react";
-import Loader from "../../../UI-Components/Loader/Loader";
+import Loader from "../../../ui-library/Loader/Loader";
 import CheckInButton from "../AddAttendance/Button";
 import { getMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";

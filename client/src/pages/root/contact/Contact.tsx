@@ -7,7 +7,7 @@ import { clearInputs, useToast } from "../../../utils/commonFunctions";
 import { message } from "../../../utils/Constants";
 import { validEmail, validNameString } from "../../../utils/validation";
 import { postMethodAPI } from "../../../utils/apiCallMethods";
-import Loader from "../../../UI-Components/Loader/Loader";
+import Loader from "../../../ui-library/Loader/Loader";
 import { serverVariables } from "../../../utils/serverVariables";
 import { Email } from "../../../utils/Email";
 import Buttons from "../../../ui-library/buttons/Button";

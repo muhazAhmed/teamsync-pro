@@ -4,7 +4,7 @@ import Pagination from "../../UI-Components/Pagination/Pagination";
 import { holidayList, leaveData } from "./ArrayOfItems";
 import "./style.css";
 import usePagination from "../../utils/custom-hooks/usePagination";
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 const NewLeaveRequest = lazy(() => import("./SubComponents/NewLeaveRequest"));
 const LeaveStatus = lazy(() => import("./SubComponents/LeaveStatus"));
 import { openModal, usePageName } from "../../utils/commonFunctions";

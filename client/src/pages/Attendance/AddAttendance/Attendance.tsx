@@ -4,7 +4,7 @@ import "./attendance.css";
 import SVG from "../../../assets/svg/time.svg";
 import moment from "moment";
 import { usePageName } from "../../../utils/commonFunctions";
-import Loader from "../../../UI-Components/Loader/Loader";
+import Loader from "../../../ui-library/Loader/Loader";
 import CheckInButton from "./Button";
 
 const Attendance = () => {

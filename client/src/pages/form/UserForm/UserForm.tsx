@@ -20,7 +20,7 @@ import {
   openModal,
   useSessionStorage,
 } from "../../../utils/commonFunctions";
-import Loader from "../../../UI-Components/Loader/Loader";
+import Loader from "../../../ui-library/Loader/Loader";
 import { loginValidation, validations } from "./FormValidation";
 import { useNavigate } from "react-router-dom";
 import { icon } from "../../../ui-library/Icons";

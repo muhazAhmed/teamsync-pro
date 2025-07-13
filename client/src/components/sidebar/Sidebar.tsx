@@ -19,7 +19,7 @@ const LogoutPopUpModal = lazy(() => import("./SubComponents/LogoutPopUpModal"));
 import Notifications from "../../pages/Notifications/Notifications";
 import chatbotImg from "../../assets/images/chatbot.png";
 const Chatbot = lazy(() => import("../Chatbot/Chatbot"));
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 import { useContextAPI } from "../../utils/ContextAPI";
 import Message from "../../pages/message/Message";
 

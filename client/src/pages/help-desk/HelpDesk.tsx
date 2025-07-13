@@ -7,7 +7,7 @@ import Card from "../../ui-library/Card";
 import { priorities } from "../profile/Sub Components/ArrayOfInputs";
 import CustomInput from "../../ui-library/inputs/Input";
 import { categoriesArray, handleSubmit } from "./validations";
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 import PopupModal from "./subComponents/Modal";
 import GettingStarted from "./subComponents/GettingStarted";
 import ManagingTasks from "./subComponents/ManagingTasks";

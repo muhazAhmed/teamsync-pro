@@ -5,7 +5,7 @@ import notificationLogo from "../../assets/images/notificationLogo.png";
 import { icon } from "../../ui-library/Icons";
 // import { fetchWebSocketNotification } from "./webSocket";
 import { openModal } from "../../utils/commonFunctions";
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 const ConfirmationModal = React.lazy(() => import("./ConfirmationModal"));
 
 interface NotificationProps {

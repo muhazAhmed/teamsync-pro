@@ -21,7 +21,7 @@ import { Variables } from "../../utils/Constants";
 import { useNavigate } from "react-router-dom";
 import { getMethodAPI } from "../../utils/apiCallMethods";
 import { serverVariables } from "../../utils/serverVariables";
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 import { hrDemoData, empDemoData } from "../form/Demo";
 const EditModal = lazy(() => import("./SubComponents/EditModal"));
 const UserModal = lazy(() => import("./SubComponents/UserModal"));

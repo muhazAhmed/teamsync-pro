@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { message } from "../../utils/Constants";
 import { CheckAccess, directWithNewTab } from "../../utils/commonFunctions";
 import { postMethodAPI } from "../../utils/apiCallMethods";
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 import { serverVariables } from "../../utils/serverVariables";
 
 const Footer = () => {

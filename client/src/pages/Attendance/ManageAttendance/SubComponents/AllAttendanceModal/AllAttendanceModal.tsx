@@ -10,7 +10,7 @@ import {
   formatDate,
 } from "../../../../../utils/commonFunctions";
 import { Button, Tooltip } from "@nextui-org/react";
-import Loader from "../../../../../UI-Components/Loader/Loader";
+import Loader from "../../../../../ui-library/Loader/Loader";
 import { Icon, icon } from "../../../../../ui-library/Icons";
 import usePagination from "../../../../../utils/custom-hooks/usePagination";
 import Pagination from "../../../../../UI-Components/Pagination/Pagination";

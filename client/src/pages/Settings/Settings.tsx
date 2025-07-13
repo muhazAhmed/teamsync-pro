@@ -9,7 +9,7 @@ import Card from "../../ui-library/Card";
 import { icon } from "../../ui-library/Icons";
 import { settingsBreadCrumbs, switchItems } from "./arrayOfSettings";
 import { useNavigate } from "react-router-dom";
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 const NotificationSettings = lazy(
   () => import("./SubComponents/NotificationSettings/NotificationSettings")
 );

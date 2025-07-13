@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
 import "./animation.css";
 import React, { Suspense, useEffect } from 'react';
-import Loader from "./UI-Components/Loader/Loader";
+import Loader from "./ui-library/Loader/Loader";
 import { loadPage } from "./utils/onPageLoad";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./components/ErrorBoundary";

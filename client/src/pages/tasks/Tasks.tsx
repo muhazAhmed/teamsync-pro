@@ -15,7 +15,7 @@ import Chip from "../../ui-library/Chip";
 import "react-circular-progressbar/dist/styles.css";
 import TaskStats from "./components/TaskStats";
 import { statusDropDown } from "./components/StatusDropDown";
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 import Buttons from "../../ui-library/buttons/Button";
 const TaskViewModal = React.lazy(() => import("./components/TaskViewModal"));
 

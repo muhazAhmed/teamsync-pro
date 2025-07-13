@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import ErrorSVG from "../assets/svg/error_crash.svg";
 import { useToast } from "../utils/commonFunctions";
 import ReportBug from "../pages/root/report-bug/ReportBug";
-import Loader from "../UI-Components/Loader/Loader";
+import Loader from "../ui-library/Loader/Loader";
 import Buttons from "../ui-library/buttons/Button";
 
 interface ErrorBoundaryProps {

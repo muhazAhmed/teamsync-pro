@@ -17,7 +17,7 @@ import {
 } from "@nextui-org/react";
 import { getMethodAPI } from "../../../utils/apiCallMethods";
 import { serverVariables } from "../../../utils/serverVariables";
-import Loader from "../../../UI-Components/Loader/Loader";
+import Loader from "../../../ui-library/Loader/Loader";
 import toast from "react-hot-toast";
 import { message } from "../../../utils/Constants";
 import Pagination from "../../../UI-Components/Pagination/Pagination";

@@ -12,7 +12,7 @@ import {
 import { getMethodAPI } from "../../utils/apiCallMethods";
 import { serverVariables } from "../../utils/serverVariables";
 import { useParams } from "react-router-dom";
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 import toast from "react-hot-toast";
 const EditProfileModal = lazy(() => import("./Sub Components/EditProfileModal"));
 import { Variables, message } from "../../utils/Constants";

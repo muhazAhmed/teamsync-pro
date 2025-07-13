@@ -18,7 +18,7 @@ import {
   Tooltip,
 } from "@nextui-org/react";
 const ApplyLoan = lazy(() => import("./components/ApplyLoan"));
-import Loader from "../../UI-Components/Loader/Loader";
+import Loader from "../../ui-library/Loader/Loader";
 import { getMethodAPI } from "../../utils/apiCallMethods";
 import { serverVariables } from "../../utils/serverVariables";
 import Buttons from "../../ui-library/buttons/Button";
