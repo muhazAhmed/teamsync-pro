@@ -61,3 +61,10 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 export interface GridProps extends Omit<HTMLMotionProps<"div">, "children"> {
   children: React.ReactNode;
 }
+
+export interface TimePickerProps {
+  setSelectedTime: (time: string) => void;
+  format?: "12" | "24";
+  className?: string;
+  id?: string;
+}
