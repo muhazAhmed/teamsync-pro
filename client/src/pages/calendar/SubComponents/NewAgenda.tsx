@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { icon } from "../../../ui-library/Icons";
 import "./style.css";
 import { DatePicker, Radio, RadioGroup } from "@nextui-org/react";
-import TimePicker from "../../../UI-Components/TimePicker/TimePicker";
+import TimePicker from "../../../ui-library/TimePicker";
 import { closeModal } from "../../../utils/commonFunctions";
 import { motion } from "framer-motion";
 import CustomInput from "../../../ui-library/inputs/Input";
