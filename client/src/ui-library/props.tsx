@@ -57,3 +57,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id?: any;
   readOnly?: boolean;
 }
+
+export interface GridProps extends Omit<HTMLMotionProps<"div">, "children"> {
+  children: React.ReactNode;
+}
