@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import "./style.css";
 import { ChangePasswordModalProps } from "./props";
-import CustomInput from "../../../../../UI-Components/Inputs/Input";
+import CustomInput from "../../../../../ui-library/inputs/Input";
 import {
   CheckAccess,
   closeModal,
@@ -93,7 +93,7 @@ const ChangePassword: FC<ChangePasswordModalProps> = ({
           label="Old Password"
           placeholder="Enter Old Password"
           required
-          autoComplete={false}
+          autoComplete="off"
         />
         <CustomInput
           name="newPassword"
@@ -103,7 +103,7 @@ const ChangePassword: FC<ChangePasswordModalProps> = ({
           label="New Password"
           placeholder="Enter New Password"
           required
-          autoComplete={false}
+          autoComplete="off"
         />
         <CustomInput
           name="confirmNewPassword"
@@ -113,7 +113,7 @@ const ChangePassword: FC<ChangePasswordModalProps> = ({
           label="Confirm New Password"
           placeholder="Confirm New Password"
           required
-          autoComplete={false}
+          autoComplete="off"
         />
         <div className="modal-footer flex">
           <Buttons

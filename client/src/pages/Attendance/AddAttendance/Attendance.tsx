@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CustomInput from "../../../UI-Components/Inputs/Input";
+import CustomInput from "../../../ui-library/inputs/Input";
 import "./attendance.css";
 import SVG from "../../../assets/svg/time.svg";
 import moment from "moment";

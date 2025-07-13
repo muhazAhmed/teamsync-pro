@@ -5,7 +5,7 @@ import { Input, Select, SelectItem } from "@nextui-org/react";
 import { Icon } from "../../ui-library/Icons";
 import Card from "../../ui-library/Card";
 import { priorities } from "../profile/Sub Components/ArrayOfInputs";
-import CustomInput from "../../UI-Components/Inputs/Input";
+import CustomInput from "../../ui-library/inputs/Input";
 import { categoriesArray, handleSubmit } from "./validations";
 import Loader from "../../UI-Components/Loader/Loader";
 import PopupModal from "./subComponents/Modal";

@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import moment, { Moment } from "moment";
-import CustomInput from "../../../UI-Components/Inputs/Input";
+import CustomInput from "../../../ui-library/inputs/Input";
 import {
   disablePastDays,
   disableSundays,
