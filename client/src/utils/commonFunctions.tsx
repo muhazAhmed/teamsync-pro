@@ -132,6 +132,8 @@ export const fetchUserId = () => useSessionStorage("userInfo")?._id;
 
 export const fetchUserToken = () => useSessionStorage("userTokenID");
 
+export const UserDetails = () => useSessionStorage("userInfo");
+
 export const formatDate = (date: any) => {
   return date ? date.format("DD-MM-YYYY") : null;
 };
@@ -197,6 +199,14 @@ export const checkBGColors = (value: string, name?: string) => {
   }
 };
 
+export const taskProgressColor: any = {
+  inProgress: "border-yellow-400",
+  completed: "border-[#00ba00]",
+  rejected: "border-[#FF033E]",
+  overdue: "border-orange-400",
+  todo: "border-gray-400",
+};
+
 export const CheckPriorityColor = (value: string) => {
   const validateColor = () => {
     if (value === "high") {
@@ -213,10 +223,12 @@ export const CheckPriorityColor = (value: string) => {
   const colorData = validateColor();
 
   return (
-    <h6 className="flex items-center gap-2 rounded-medium px-3 text-[13px] capitalize" 
-      style={{ color: colorData.color, backgroundColor: colorData.bgColor }}>
-        {colorData.icon && <i className={icon?.[colorData.icon] || ""}></i>}
-        {value}
+    <h6
+      className="flex items-center gap-2 rounded-medium px-3 text-[13px] capitalize"
+      style={{ color: colorData.color, backgroundColor: colorData.bgColor }}
+    >
+      {colorData.icon && <i className={icon?.[colorData.icon] || ""}></i>}
+      {value}
     </h6>
   );
 };
