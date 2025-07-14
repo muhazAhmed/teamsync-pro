@@ -68,3 +68,8 @@ export interface TimePickerProps {
   className?: string;
   id?: string;
 }
+
+export interface HoverAnimationProps extends HTMLMotionProps<"div"> {
+  initialAnimation?: boolean;
+  children: React.ReactNode;
+}
