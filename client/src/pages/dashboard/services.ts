@@ -1,0 +1,1 @@
+export const defaultComponentsClassName = "flex flex-col gap-3 w-full p-4 rounded-xl bg-primary/10 backdrop-blur-md border border-primary/40 shadow-md cursor-pointer";

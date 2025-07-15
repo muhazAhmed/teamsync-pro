@@ -9,6 +9,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import TaskViewModal from "../../tasks/components/TaskViewModal";
 import CardHeader from "./CardHeader";
+import { defaultComponentsClassName } from "../services";
 
 const data = [
   {
@@ -45,7 +46,7 @@ const TaskCard = (setLoading: any) => {
         />
       )}
       <HoverAnimation
-        className="flex flex-col gap-5 w-full p-4 rounded-xl bg-primary/20 backdrop-blur-md border border-primary/40 shadow-md cursor-pointer"
+        className={defaultComponentsClassName}
         onClick={() => navigate(`/tasks/${id}`)}
       >
         <CardHeader label="Tasks" />
@@ -56,7 +57,7 @@ const TaskCard = (setLoading: any) => {
               className="w-full flex justify-between items-center hover:bg-primary/20 p-2 rounded-md"
               onClick={(e) => handleViewTask(e, item.id)}
             >
-              <p className="text-sm">{textEllipse(item.label, 25)}</p>
+              <p className="text-sm w-[60%]">{textEllipse(item.label, 25)}</p>
               <span
                 className={clsx(
                   "text-[12px] p-1 px-2 rounded-full border-2",
