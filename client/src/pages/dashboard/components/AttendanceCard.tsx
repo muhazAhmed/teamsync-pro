@@ -3,6 +3,7 @@ import HoverAnimation from "../../../ui-library/HoverAnimation";
 import { useNavigate } from "react-router-dom";
 import { fetchUserId } from "../../../utils/commonFunctions";
 import CardHeader from "./CardHeader";
+import { defaultComponentsClassName } from "../services";
 
 const AttendanceCard = (setLoading: any) => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const AttendanceCard = (setLoading: any) => {
 
   return (
     <HoverAnimation
-      className="flex flex-col gap-3 w-full p-4 rounded-xl bg-primary/30 backdrop-blur-md border border-primary/40 shadow-md cursor-pointer"
+      className={defaultComponentsClassName}
       onClick={() => navigate(`/attendance/manage/${id}`)}
     >
       <CardHeader label="Attendance" />

@@ -4,6 +4,7 @@ import { fetchUserId } from "../../../utils/commonFunctions";
 import CardHeader from "./CardHeader";
 import { icon } from "../../../ui-library/Icons";
 import { BarChart, Bar, XAxis, ResponsiveContainer } from "recharts";
+import { defaultComponentsClassName } from "../services";
 
 const data = [
   { label: "Sun", value: 0 },
@@ -22,7 +23,7 @@ const AttendanceSummary = () => {
   return (
     <>
       <HoverAnimation
-        className="flex flex-col gap-3 w-full p-4 rounded-xl bg-primary/10 backdrop-blur-md border border-primary/40 shadow-md cursor-pointer relative"
+        className={defaultComponentsClassName}
         onClick={() => navigate(`/attendance/manage/${id}`)}
       >
         <CardHeader label="Attendance Summary" />
