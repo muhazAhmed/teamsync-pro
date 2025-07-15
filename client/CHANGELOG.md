@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/muhazAhmed/teamsync-pro/compare/v0.0.4...v0.0.5) (2025-07-15)
+
+
+### Features
+
+* added few components to dashboard page ([0ba7a15](https://github.com/muhazAhmed/teamsync-pro/commit/0ba7a15b0afa66e8bf818e8f7aea16a5b2195a7f))
+* added few ui library components ([9586275](https://github.com/muhazAhmed/teamsync-pro/commit/9586275cfea5581b9a48fb8e9540e3cc586d85a7))
+
 ### [0.0.4](https://github.com/muhazAhmed/teamsync-pro/compare/v0.0.3...v0.0.4) (2025-07-13)
 
 
