@@ -7,7 +7,12 @@ testingRoute.get("/api", (req, res) => {
 });
 
 testingRoute.get("/", (req, res) => {
-  return res.status(200).json("API is Active...");
+  return res.status(200).json({
+    status: "ok",
+    message: "API is Active",
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(), // Shows how long server has been running
+  });
 });
 
 testingRoute.get("/database", async (req, res) => {
