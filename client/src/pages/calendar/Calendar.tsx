@@ -13,7 +13,7 @@ import {
 } from "./index";
 const NewAgenda = React.lazy(() => import("./SubComponents/NewAgenda"));
 const ViewModal = React.lazy(() => import("./SubComponents/ViewModal"));
-import useDownloadFile from "../../utils/custom-hooks/useDownloadFile";
+import useDownloadFile from "../../hooks/useDownloadFile";
 import Buttons from "../../ui-library/buttons/Button";
 import ButtonGroup from "../../ui-library/buttons/ButtonGroup";
 

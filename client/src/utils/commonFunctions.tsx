@@ -132,8 +132,6 @@ export const fetchUserId = () => useSessionStorage("userInfo")?._id;
 
 export const fetchUserToken = () => useSessionStorage("userTokenID");
 
-export const UserDetails = () => useSessionStorage("userInfo");
-
 export const formatDate = (date: any) => {
   return date ? date.format("DD-MM-YYYY") : null;
 };

@@ -17,8 +17,8 @@ const HeroLanding: FC<Props> = ({ setModal, navigate, user }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3, ease: "easeInOut" }}
-        className="flex p-2 px-5 gap-2 rounded-full bg-[#3b3b3b] cursor-pointer"
+        whileHover={{ scale: 1.05 }}
+        className="flex p-2 px-5 gap-2 rounded-full bg-[#3b3b3b] cursor-pointer shadow-2xl shadow-red-400"
         onClick={() =>
           directWithNewTab("https://github.com/muhazAhmed/teamsync-pro")
         }
@@ -56,6 +56,7 @@ const HeroLanding: FC<Props> = ({ setModal, navigate, user }) => {
           icon="rocket"
           label="Get Started"
           className="btn-primary shadow-2xl shadow-cyan-400"
+          hoverAnimation
           onPress={() =>
             navigate(user ? `/dashboard/${user?._id}` : "/user/form")
           }
@@ -64,7 +65,9 @@ const HeroLanding: FC<Props> = ({ setModal, navigate, user }) => {
           icon="eye"
           label="Request Demo"
           color="secondary"
-          className="shadow-2xl shadow-purple-400"
+          variant="ghost"
+          className="shadow-2xl shadow-purple-400 border-primary"
+          hoverAnimation
           onPress={() => openModal(setModal)}
         />
       </motion.div>

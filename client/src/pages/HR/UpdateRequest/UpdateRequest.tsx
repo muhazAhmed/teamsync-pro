@@ -21,7 +21,7 @@ import Loader from "../../../ui-library/Loader/Loader";
 import toast from "react-hot-toast";
 import { message } from "../../../utils/Constants";
 import Pagination from "../../../UI-Components/Pagination/Pagination";
-import usePagination from "../../../utils/custom-hooks/usePagination";
+import usePagination from "../../../hooks/usePagination";
 import { UpdateRequestDemo } from "../../form/Demo";
 import DeleteModal from "../SubComponents/DeleteModal";
 

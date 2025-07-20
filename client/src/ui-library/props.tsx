@@ -10,6 +10,7 @@ export interface ButtonProps extends Omit<NextUIButtonProps, "children"> {
   selected?: boolean;
   iconStyles?: React.CSSProperties;
   loading?: boolean;
+  hoverAnimation?: boolean;
 }
 
 interface TooltipProps {

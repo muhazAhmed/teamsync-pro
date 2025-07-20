@@ -112,7 +112,7 @@ const RootNavbar = () => {
         <NavbarItem>
           <Button
             color="primary"
-            className="btn-ghost"
+            className="btn-ghost shadow-2xl shadow-green-400"
             variant="flat"
             onPress={() => {
               if (user) logout(navigate, "");

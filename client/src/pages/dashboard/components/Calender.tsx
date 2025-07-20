@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HoverAnimation from "../../../ui-library/HoverAnimation";
 import { defaultComponentsClassName } from "../services";
 import moment from "moment";
+import clsx from "clsx";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -60,11 +61,14 @@ const Calender = () => {
               {week.map((day, idx) => (
                 <div
                   key={idx}
-                  className={`py-1 rounded-md ${
+                  className={clsx(
+                    "py-1 text-sm w-8 h-8 flex items-center justify-center transition-all",
                     isSameMonth(day)
-                      ? "text-white hover:bg-primary/30"
-                      : "text-gray-500"
-                  }`}
+                      ? "text-white hover:bg-primary/30 rounded-full"
+                      : "text-gray-500",
+                    moment().isSame(day, "day") &&
+                      "border border-primary rounded-full bg-transparent"
+                  )}
                 >
                   {day.format("D")}
                 </div>

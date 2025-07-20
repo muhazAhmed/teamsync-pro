@@ -52,7 +52,7 @@ const HeroServices = () => {
         {arrayOfServices.map((service, index) => (
           <motion.div
             key={index}
-            className="card flex gap-3 items-center flex-col bg-gray-800 w-64 rounded-3xl p-5 cursor-pointer"
+            className="card flex gap-3 items-center flex-col bg-primary/10 backdrop-blur-md border border-primary/40 shadow-md w-64 rounded-3xl p-5 cursor-pointer"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             whileHover={{ scale: 1.04 }}

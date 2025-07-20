@@ -34,6 +34,7 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    border-bottom: 2px transparent;
 }
 
 .footer .tags h5 {
@@ -41,12 +42,13 @@
     cursor: pointer;
     padding: 5px;
     transition: all 0.3s ease-in-out;
+    border-bottom: 2px transparent;
+    border-radius: 25px;
 }
 
 .footer .tags h5:hover {
     border-bottom: 2px solid var(--secondary);
     color: var(--secondary);
-    border-radius: 25px;
 }
 
 .footer .mid-section {
