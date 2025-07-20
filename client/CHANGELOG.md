@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/muhazAhmed/teamsync-pro/compare/v0.0.5...v0.0.6) (2025-07-20)
+
+
+### Bug Fixes
+
+* major changes and bug fixes ([4178401](https://github.com/muhazAhmed/teamsync-pro/commit/41784014d013f0ee00f8511c65888473ebcb28b1))
+
 ### [0.0.5](https://github.com/muhazAhmed/teamsync-pro/compare/v0.0.4...v0.0.5) (2025-07-15)
 
 
