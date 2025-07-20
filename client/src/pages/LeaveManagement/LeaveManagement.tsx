@@ -3,7 +3,7 @@ import Card from "../../ui-library/Card";
 import Pagination from "../../UI-Components/Pagination/Pagination";
 import { holidayList, leaveData } from "./ArrayOfItems";
 import "./style.css";
-import usePagination from "../../utils/custom-hooks/usePagination";
+import usePagination from "../../hooks/usePagination";
 import Loader from "../../ui-library/Loader/Loader";
 const NewLeaveRequest = lazy(() => import("./SubComponents/NewLeaveRequest"));
 const LeaveStatus = lazy(() => import("./SubComponents/LeaveStatus"));

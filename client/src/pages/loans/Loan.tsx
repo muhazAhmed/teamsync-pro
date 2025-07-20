@@ -65,7 +65,7 @@ const Loan = () => {
         <Dropdown>
           <DropdownTrigger>
             <Button
-              color="secondary"
+              className="btn-ghost"
               endContent={<i className={icon?.chevronDown}></i>}
             >
               Action

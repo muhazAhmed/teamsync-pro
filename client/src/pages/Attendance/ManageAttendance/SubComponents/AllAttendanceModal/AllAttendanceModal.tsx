@@ -12,7 +12,7 @@ import {
 import { Button, Tooltip } from "@nextui-org/react";
 import Loader from "../../../../../ui-library/Loader/Loader";
 import { Icon, icon } from "../../../../../ui-library/Icons";
-import usePagination from "../../../../../utils/custom-hooks/usePagination";
+import usePagination from "../../../../../hooks/usePagination";
 import Pagination from "../../../../../UI-Components/Pagination/Pagination";
 import { getMethodAPI } from "../../../../../utils/apiCallMethods";
 import { serverVariables } from "../../../../../utils/serverVariables";

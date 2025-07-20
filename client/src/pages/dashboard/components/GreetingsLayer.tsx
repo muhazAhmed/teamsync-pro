@@ -1,8 +1,9 @@
 import moment from "moment";
-import { UserDetails } from "../../../utils/commonFunctions";
+import { useCurrentUser } from "../../../hooks/useCurrentUser";
+import Loader from "../../../ui-library/Loader/Loader";
 
 const GreetingsLayer = () => {
-  const name = UserDetails()?.firstName;
+  const { user, loading } = useCurrentUser();
   const getGreeting = () => {
     const hour = moment().hour();
     return hour < 5
@@ -15,10 +16,12 @@ const GreetingsLayer = () => {
       ? "Good Evening"
       : "Good Night";
   };
+
   return (
     <div className="w-full flex items-center justify-center md:justify-between">
+      {loading && <Loader />}
       <h1 className="text-2xl sm:text-3xl font-semibold">
-        {getGreeting()}, {name} 👋
+        {getGreeting()}, {user?.firstName} 👋
       </h1>
       <div className="hidden md:block">
         <h3 className="text-lg text-gray-300 font-medium">

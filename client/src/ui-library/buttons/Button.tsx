@@ -3,6 +3,7 @@ import { ButtonProps } from "../props";
 import { animatedIcon, Icon } from "../Icons";
 import { Button, Tooltip } from "@nextui-org/react";
 import clsx from "clsx";
+import HoverAnimation from "../HoverAnimation";
 
 const Buttons: FC<ButtonProps> = ({
   label,
@@ -13,9 +14,10 @@ const Buttons: FC<ButtonProps> = ({
   selected,
   iconStyles,
   loading = false,
+  hoverAnimation = false,
   ...props
 }) => {
-  const ButtonContent = (
+  const ButtonContent = () => (
     <Button
       variant={variant}
       disabled={loading}
@@ -31,6 +33,12 @@ const Buttons: FC<ButtonProps> = ({
     </Button>
   );
 
+  const Main = hoverAnimation ? (
+    <HoverAnimation>{ButtonContent()}</HoverAnimation>
+  ) : (
+    ButtonContent()
+  );
+
   return tooltip ? (
     <Tooltip
       content={tooltip.content}
@@ -38,10 +46,10 @@ const Buttons: FC<ButtonProps> = ({
       placement={tooltip.placement || "top"}
       className="round"
     >
-      {ButtonContent}
+      {Main}
     </Tooltip>
   ) : (
-    ButtonContent
+    Main
   );
 };
 
