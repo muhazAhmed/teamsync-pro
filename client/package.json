@@ -20,7 +20,7 @@
     "axios": "^1.8.4",
     "clsx": "^2.1.1",
     "file-saver": "^2.0.5",
-    "firebase": "^10.12.2",
+    "firebase": "^12.10.0",
     "framer-motion": "^12.7.4",
     "moment": "^2.30.1",
     "papaparse": "^5.5.2",
